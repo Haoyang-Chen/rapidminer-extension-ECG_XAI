@@ -1,0 +1,36 @@
+Manifest-Version: 1.0
+Created-By: RapidMiner GmbH
+Specification-Version: 1.0.0
+Specification-Vendor: RapidMiner GmbH
+Implementation-Version: 1.0.0
+Implementation-Vendor: RapidMiner GmbH
+Implementation-Title: ECG_XAI
+Implementation-URL: www.rapidminer.com
+Specification-Title: ECG_XAI
+RapidMiner-Version: 10.1.1
+RapidMiner-Type: RapidMiner_Extension
+Plugin-Dependencies: 
+Extension-ID: rmx_ecg_xai
+Namespace: ecg_xai
+Initialization-Class: com.rapidminer.extension.ecg_xai.PluginInitECG_XAI
+IOObject-Descriptor: com/rapidminer/extension/resources/ioobjectsECG_XAI
+ .xml
+Operator-Descriptor: com/rapidminer/extension/resources/OperatorsECG_XAI
+ .xml
+ParseRule-Descriptor: com/rapidminer/extension/resources/parserulesECG_X
+ AI.xml
+Group-Descriptor: com/rapidminer/extension/resources/groupsECG_XAI.prope
+ rties
+Error-Descriptor: com/rapidminer/extension/resources/i18n/ErrorsECG_XAI.
+ properties
+UserError-Descriptor: com/rapidminer/extension/resources/i18n/UserErrorM
+ essagesECG_XAI.properties
+GUI-Descriptor: com/rapidminer/extension/resources/i18n/GUIECG_XAI.prope
+ rties
+Logging-Descriptor: com/rapidminer/extension/resources/i18n/LogMessagesE
+ CG_XAI.properties
+Settings-Descriptor: com/rapidminer/extension/resources/i18n/SettingsECG
+ _XAI.properties
+SettingsStructure-Descriptor: com/rapidminer/extension/resources/setting
+ sECG_XAI.xml
+

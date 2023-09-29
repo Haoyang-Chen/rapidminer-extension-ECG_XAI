@@ -1,0 +1,11 @@
+com/rapidminer/extension/ecg_xai/operator/LeadName.java
+ com.rapidminer.extension.ecg_xai.operator.LeadName
+com/rapidminer/extension/ecg_xai/operator/ImpressionName.java
+ com.rapidminer.extension.ecg_xai.operator.ImpressionName
+com/rapidminer/extension/ecg_xai/PluginInitECG_XAI.java
+ com.rapidminer.extension.ecg_xai.PluginInitECG_XAI
+com/rapidminer/extension/ecg_xai/operator/FeatureName.java
+ com.rapidminer.extension.ecg_xai.operator.FeatureName
+com/rapidminer/extension/ecg_xai/operator/MyOwnOperator.java
+ com.rapidminer.extension.ecg_xai.operator.MyOwnOperator
+ com.rapidminer.extension.ecg_xai.operator.MyOwnOperator$1
