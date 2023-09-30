@@ -1,15 +1,59 @@
 package com.rapidminer.extension.ecg_xai.operator.nodes;
 
 import com.rapidminer.extension.ecg_xai.operator.nodes.condition.AbstractCondition;
+import com.rapidminer.extension.ecg_xai.operator.nodes.condition.Exist;
 
 public class ConditionNode extends AbstractNode{
     private AbstractCondition condition;
 
-    public ConditionNode(){
+    public ConditionNode(AbstractCondition condition){
         setType("Condition");
+        this.condition=condition;
     }
 
     public void setCondition(AbstractCondition condition) {
         this.condition=condition;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[ConditionNode] Condition: " + condition);
+        sb.append(", Type: ").append(type);
+        sb.append(", Parents: [");
+
+        for (AbstractNode parent : parents) {
+            sb.append(parent.getType()).append(", ");
+        }
+
+        if (!parents.isEmpty()) {
+            sb.delete(sb.length() - 2, sb.length());
+        }
+
+        sb.append("]");
+        sb.append(", YesSons: [");
+        for (AbstractNode yesSon : YesSon) {
+            sb.append(yesSon.getType()).append(", ");
+        }
+        if (!YesSon.isEmpty()) {
+            sb.delete(sb.length() - 2, sb.length());
+        }
+        sb.append("]");
+        sb.append(", NoSons: [");
+        for (AbstractNode noSon : NoSon) {
+            sb.append(noSon.getType()).append(", ");
+        }
+        if (!NoSon.isEmpty()) {
+            sb.delete(sb.length() - 2, sb.length());
+        }
+        sb.append("]");
+        sb.append("]");
+        return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        Exist condition = new Exist("A");
+        ConditionNode conditionNode = new ConditionNode(condition);
+        System.out.println(conditionNode);
     }
 }

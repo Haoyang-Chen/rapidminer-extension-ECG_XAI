@@ -2,34 +2,24 @@ package com.rapidminer.extension.ecg_xai.operator;
 
 import com.rapidminer.extension.ecg_xai.operator.nodes.ConditionNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.condition.Compare;
+import com.rapidminer.operator.Operator;
+import com.rapidminer.operator.OperatorDescription;
+import com.rapidminer.operator.OperatorException;
+import com.rapidminer.operator.ports.OutputPort;
+import com.rapidminer.tools.OperatorService;
 
-import java.util.ArrayList;
-import java.util.List;
+public class InitPackOperator extends Operator {
+    private OutputPort outputPort = getOutputPorts().createPort("pack");
 
-public class Model {
-    public static List<Step> steps=new ArrayList<>();
-
-    public void addStep(Step step){
-        steps.add(step);
+    public InitPackOperator(OperatorDescription description) {
+        super(description);
+        getTransformer().addGenerationRule(outputPort,Pack.class);
     }
 
     @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Model [ ");
-        for (Step step : steps) {
-            sb.append("{\n Step"+(Model.steps.indexOf(step)+1)+": ");
-            sb.append(step.toString()).append("\n }, \n");
-        }
-        if (!steps.isEmpty()) {
-            sb.delete(sb.length() - 2, sb.length());
-        }
-        sb.append("]");
-        return sb.toString();
-    }
-
-    public static void main(String[] args) {
-        Model model = new Model();
+    public void doWork() throws OperatorException {
+        Pack pack=new Pack();
+        Model model=pack.getModel();
         Step step1 = new Step();
         Compare compare=new Compare("A",">","C");
         ConditionNode conditionNode = new ConditionNode(compare);
@@ -44,6 +34,8 @@ public class Model {
 
         model.addStep(step1);
         model.addStep(step2);
-        System.out.println(model);
+
+        System.out.println(pack);
+        outputPort.deliver(pack);
     }
 }

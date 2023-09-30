@@ -22,4 +22,16 @@ public class ConditionGroup extends AbstractCondition{
     public AbstractCondition getRight() {
         return right;
     }
+
+    @Override
+    public String toString() {
+        return "(" + left + " " + relation + " " + right + ")";
+    }
+
+    public static void main(String[] args) {
+        Compare condition1 = new Compare("A", ">", "B");
+        Compare condition2 = new Compare("C", "<", "D");
+        ConditionGroup group = new ConditionGroup(condition1, condition2, "AND");
+        System.out.println(group);
+    }
 }

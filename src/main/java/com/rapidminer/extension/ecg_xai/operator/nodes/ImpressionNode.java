@@ -9,6 +9,44 @@ public class ImpressionNode extends AbstractNode{
 
     public void setImpression(String impression) {
         this.impression=impression;
-        this.setName(impression);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[ImpressionNode] Impression: " + impression);
+        sb.append(", Type: ").append(type);
+        sb.append(", Parents: [");
+        for (AbstractNode parent : parents) {
+            sb.append(parent.getType()).append(", ");
+        }
+        if (!parents.isEmpty()) {
+            sb.delete(sb.length() - 2, sb.length());
+        }
+        sb.append("]");
+        sb.append(", YesSons: [");
+        for (AbstractNode yesSon : YesSon) {
+            sb.append(yesSon.getType()).append(", ");
+        }
+        if (!YesSon.isEmpty()) {
+            sb.delete(sb.length() - 2, sb.length());
+        }
+        sb.append("]");
+        sb.append(", NoSons: [");
+        for (AbstractNode noSon : NoSon) {
+            sb.append(noSon.getType()).append(", ");
+        }
+        if (!NoSon.isEmpty()) {
+            sb.delete(sb.length() - 2, sb.length());
+        }
+        sb.append("]");
+        sb.append("]");
+        return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        ImpressionNode impressionNode = new ImpressionNode();
+        impressionNode.setImpression("AFIB");
+        System.out.println(impressionNode);
     }
 }

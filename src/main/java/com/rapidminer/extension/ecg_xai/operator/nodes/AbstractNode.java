@@ -1,27 +1,14 @@
 package com.rapidminer.extension.ecg_xai.operator.nodes;
 
-import com.rapidminer.extension.ecg_xai.operator.nodes.condition.AbstractCondition;
-
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public abstract class AbstractNode {
-    private String name;
-    private String type;
+    public String type;
 
-    private Set<AbstractNode> parents=new HashSet<>();
-    private AbstractNode YesSon=null;
-    private AbstractNode NoSon=null;
-
-    public void setName(String name){
-        this.name=name;
-    }
-
-    public String getName(){
-        return this.name;
-    }
+    public Set<AbstractNode> parents=new HashSet<>();
+    public Set<AbstractNode> YesSon=new HashSet<>();
+    public Set<AbstractNode> NoSon=new HashSet<>();
 
     public void setType(String type){
         this.type=type;
@@ -34,19 +21,22 @@ public abstract class AbstractNode {
     public void addParent(AbstractNode node, Boolean yes){
         this.parents.add(node);
         if (yes){
-            node.setYesSon(this);
+            node.addYesSon(this);
         }else{
-            node.setNoSon(this);
+            node.addNoSon(this);
         }
     }
 
-    public void setYesSon(AbstractNode node){
-        this.YesSon=node;
-        node.addParent(this, true);
+    public void addYesSon(AbstractNode node){
+        this.YesSon.add(node);
     }
 
-    public void setNoSon(AbstractNode node){
-        this.NoSon=node;
-        node.addParent(this, false);
+    public void addNoSon(AbstractNode node){
+        this.NoSon.add(node);
+    }
+
+    public static void main(String[] args) {
+        AbstractNode node = new StartNode();
+        System.out.println(node);
     }
 }

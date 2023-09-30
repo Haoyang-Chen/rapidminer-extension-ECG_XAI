@@ -22,4 +22,14 @@ public class Compare extends AbstractCondition{
     public String getRightOperand() {
         return rightOperand;
     }
+
+    @Override
+    public String toString() {
+        return leftOperand + " " + operator + " " + rightOperand;
+    }
+
+    public static void main(String[] args) {
+        Compare compare = new Compare("A", ">", "B");
+        System.out.println(compare);
+    }
 }

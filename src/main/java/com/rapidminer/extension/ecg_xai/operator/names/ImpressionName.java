@@ -1,4 +1,4 @@
-package com.rapidminer.extension.ecg_xai.operator;
+package com.rapidminer.extension.ecg_xai.operator.names;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -26,5 +26,23 @@ public class ImpressionName {
         ImpressionList.add("RAE");
         ImpressionList.add("LAFB");
         ImpressionList.add("LPFB");
+    }
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("ImpressionName [");
+        for (String impression : ImpressionList) {
+            sb.append(impression).append(", ");
+        }
+        if (ImpressionList.size() > 0) {
+            sb.delete(sb.length() - 2, sb.length());
+        }
+        sb.append("]");
+        return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        ImpressionName impressionName = new ImpressionName();
+        System.out.println(impressionName);
     }
 }

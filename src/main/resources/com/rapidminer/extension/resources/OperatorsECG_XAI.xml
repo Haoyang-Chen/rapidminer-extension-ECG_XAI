@@ -18,5 +18,11 @@
 
             </operator>
         </group>
+        <group key="ECG_group">
+            <operator>
+                <key>InitOperator</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.InitPackOperator</class>
+            </operator>
+        </group>
     </group>
 </operators>

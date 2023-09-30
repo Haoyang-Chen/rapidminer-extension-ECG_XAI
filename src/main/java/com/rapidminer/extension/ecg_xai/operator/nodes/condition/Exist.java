@@ -10,4 +10,14 @@ public class Exist extends AbstractCondition{
     public String getElement() {
         return element;
     }
+
+    @Override
+    public String toString() {
+        return "Exist(" + element + ")";
+    }
+
+    public static void main(String[] args) {
+        Exist exist = new Exist("A");
+        System.out.println(exist);
+    }
 }

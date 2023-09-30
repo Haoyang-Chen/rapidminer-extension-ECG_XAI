@@ -9,4 +9,10 @@
 	  <renderer>com.rapidminer.extension.ioobjects.renderer.ExampleIOObjectRenderer</renderer>
 	</ioobject>
     -->
+    <ioobject
+    name="Pack"
+    class="com.rapidminer.extension.ecg_xai.operator.Pack"
+    reportable="false">
+        <renderer>com.rapidminer.gui.renderer.DefaultTextRenderer</renderer>
+    </ioobject>
 </ioobjects>
