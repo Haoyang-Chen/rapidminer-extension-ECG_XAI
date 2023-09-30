@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a69f0bf6-891e-4f28-a6d8-08948b96bf3f" name="变更" comment="" />
+    <list default="true" id="a69f0bf6-891e-4f28-a6d8-08948b96bf3f" name="变更" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rapidminer/extension/ecg_xai/operator/Model.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rapidminer/extension/ecg_xai/operator/Step.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rapidminer/extension/ecg_xai/operator/nodes/AbstractNode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rapidminer/extension/ecg_xai/operator/nodes/ConditionNode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rapidminer/extension/ecg_xai/operator/nodes/condition/AbstractCondition.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rapidminer/extension/ecg_xai/operator/nodes/condition/Compare.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rapidminer/extension/ecg_xai/operator/nodes/condition/ConditionGroup.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rapidminer/extension/ecg_xai/operator/nodes/condition/Exist.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rapidminer/extension/ecg_xai/operator/nodes/condition/InSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -58,8 +70,10 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -199,7 +213,7 @@
       <updated>1695874027381</updated>
       <workItem from="1695874029645" duration="8449000" />
       <workItem from="1695973187540" duration="3000" />
-      <workItem from="1695973276996" duration="4191000" />
+      <workItem from="1695973276996" duration="8232000" />
     </task>
     <servers />
   </component>
