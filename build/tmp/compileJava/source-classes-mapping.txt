@@ -1,11 +1,11 @@
-com/rapidminer/extension/ecg_xai/operator/names/FeatureName.java
- com.rapidminer.extension.ecg_xai.operator.names.FeatureName
-com/rapidminer/extension/ecg_xai/operator/names/LeadName.java
- com.rapidminer.extension.ecg_xai.operator.names.LeadName
+com/rapidminer/extension/ecg_xai/operator/nodes/StartNode.java
+ com.rapidminer.extension.ecg_xai.operator.nodes.StartNode
+com/rapidminer/extension/ecg_xai/operator/nodes/ConditionNode.java
+ com.rapidminer.extension.ecg_xai.operator.nodes.ConditionNode
 com/rapidminer/extension/ecg_xai/PluginInitECG_XAI.java
  com.rapidminer.extension.ecg_xai.PluginInitECG_XAI
-com/rapidminer/extension/ecg_xai/operator/names/ImpressionName.java
- com.rapidminer.extension.ecg_xai.operator.names.ImpressionName
+com/rapidminer/extension/ecg_xai/operator/nodes/AbstractNode.java
+ com.rapidminer.extension.ecg_xai.operator.nodes.AbstractNode
 com/rapidminer/extension/ecg_xai/operator/nodes/condition/Compare.java
  com.rapidminer.extension.ecg_xai.operator.nodes.condition.Compare
 com/rapidminer/extension/ecg_xai/operator/nodes/condition/ConditionGroup.java
@@ -19,23 +19,25 @@ com/rapidminer/extension/ecg_xai/operator/MyOwnOperator.java
  com.rapidminer.extension.ecg_xai.operator.MyOwnOperator$1
 com/rapidminer/extension/ecg_xai/operator/nodes/condition/InSet.java
  com.rapidminer.extension.ecg_xai.operator.nodes.condition.InSet
-com/rapidminer/extension/ecg_xai/operator/Step.java
- com.rapidminer.extension.ecg_xai.operator.Step
-com/rapidminer/extension/ecg_xai/operator/nodes/AbstractNode.java
- com.rapidminer.extension.ecg_xai.operator.nodes.AbstractNode
-com/rapidminer/extension/ecg_xai/operator/nodes/StartNode.java
- com.rapidminer.extension.ecg_xai.operator.nodes.StartNode
-com/rapidminer/extension/ecg_xai/operator/PrintOperator.java
- com.rapidminer.extension.ecg_xai.operator.PrintOperator
-com/rapidminer/extension/ecg_xai/operator/nodes/ImpressionNode.java
- com.rapidminer.extension.ecg_xai.operator.nodes.ImpressionNode
-com/rapidminer/extension/ecg_xai/operator/nodes/ConditionNode.java
- com.rapidminer.extension.ecg_xai.operator.nodes.ConditionNode
 com/rapidminer/extension/ecg_xai/operator/Pack.java
  com.rapidminer.extension.ecg_xai.operator.Pack
 com/rapidminer/extension/ecg_xai/operator/InitPackOperator.java
  com.rapidminer.extension.ecg_xai.operator.InitPackOperator
+com/rapidminer/extension/ecg_xai/operator/names/LeadName.java
+ com.rapidminer.extension.ecg_xai.operator.names.LeadName
+com/rapidminer/extension/ecg_xai/operator/nodes/ImpressionNode.java
+ com.rapidminer.extension.ecg_xai.operator.nodes.ImpressionNode
 com/rapidminer/extension/ecg_xai/operator/StepStartOpeartor.java
  com.rapidminer.extension.ecg_xai.operator.StepStartOpeartor
+com/rapidminer/extension/ecg_xai/operator/names/ImpressionName.java
+ com.rapidminer.extension.ecg_xai.operator.names.ImpressionName
+com/rapidminer/extension/ecg_xai/operator/names/FeatureName.java
+ com.rapidminer.extension.ecg_xai.operator.names.FeatureName
+com/rapidminer/extension/ecg_xai/operator/PrintOperator.java
+ com.rapidminer.extension.ecg_xai.operator.PrintOperator
+com/rapidminer/extension/ecg_xai/operator/Step.java
+ com.rapidminer.extension.ecg_xai.operator.Step
 com/rapidminer/extension/ecg_xai/operator/Model.java
  com.rapidminer.extension.ecg_xai.operator.Model
+com/rapidminer/extension/ecg_xai/operator/ConditionOperator.java
+ com.rapidminer.extension.ecg_xai.operator.ConditionOperator

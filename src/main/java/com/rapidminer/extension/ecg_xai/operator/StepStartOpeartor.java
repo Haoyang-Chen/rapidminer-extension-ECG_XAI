@@ -21,10 +21,10 @@ public class StepStartOpeartor extends Operator {
     @Override
     public void doWork() throws OperatorException {
         Pack pack=pacInput.getData(Pack.class);
+        pack.setYes();
         Model model=pack.getModel();
         Step step=new Step();
         model.addStep(step);
-
         pacOutput.deliver(pack);
     }
 }

@@ -3,8 +3,9 @@ package com.rapidminer.extension.ecg_xai.operator.nodes;
 public class ImpressionNode extends AbstractNode{
     private String impression;
 
-    public ImpressionNode(){
+    public ImpressionNode(String impression){
         setType("Impression");
+        this.impression=impression;
     }
 
     public void setImpression(String impression) {
@@ -46,8 +47,7 @@ public class ImpressionNode extends AbstractNode{
     }
 
     public static void main(String[] args) {
-        ImpressionNode impressionNode = new ImpressionNode();
-        impressionNode.setImpression("AFIB");
+        ImpressionNode impressionNode = new ImpressionNode("AFIB");
         System.out.println(impressionNode);
     }
 }

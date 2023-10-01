@@ -30,6 +30,10 @@
                 <key>StepStart</key>
                 <class>com.rapidminer.extension.ecg_xai.operator.StepStartOpeartor</class>
             </operator>
+            <operator>
+                <key>Condition</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.ConditionOperator</class>
+            </operator>
         </group>
     </group>
 </operators>

@@ -19,6 +19,7 @@ public class InitPackOperator extends Operator {
     @Override
     public void doWork() throws OperatorException {
         Pack pack=new Pack();
+        pack.setYes();
         Model model=pack.getModel();
         Step step1 = new Step();
         Compare compare=new Compare("A",">","C");

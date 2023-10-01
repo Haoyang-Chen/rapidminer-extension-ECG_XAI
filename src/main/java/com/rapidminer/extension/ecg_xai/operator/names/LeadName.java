@@ -19,6 +19,11 @@ public class LeadName {
         LeadList.add("V5");
         LeadList.add("V6");
     }
+
+    public String[] getLead() {
+        return LeadList.toArray(String[]::new);
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

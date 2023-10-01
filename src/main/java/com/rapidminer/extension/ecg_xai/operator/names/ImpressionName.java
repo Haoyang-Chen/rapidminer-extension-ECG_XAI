@@ -26,7 +26,15 @@ public class ImpressionName {
         ImpressionList.add("RAE");
         ImpressionList.add("LAFB");
         ImpressionList.add("LPFB");
+        ImpressionList.add("--End--");
+        ImpressionList.add("--MoveOn--");
     }
+
+    public String[] getImpressions() {
+        return ImpressionList.toArray(String[]::new);
+    }
+
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

@@ -10,6 +10,24 @@ public class Pack extends ResultObjectAdapter {
     public static FeatureName feature=new FeatureName();
     public static ImpressionName impression=new ImpressionName();
     public static LeadName lead=new LeadName();
+    public Boolean yes;
+
+    public Pack(){
+
+    }
+
+    public Pack(Pack pack){
+        this.model=new Model(pack.getModel());
+        this.yes=true;
+    }
+
+    public void setYes(){
+        yes=true;
+    }
+
+    public void setNo(){
+        yes=false;
+    }
 
     public Model getModel(){
         return model;

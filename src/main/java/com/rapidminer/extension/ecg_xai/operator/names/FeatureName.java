@@ -1,10 +1,12 @@
 package com.rapidminer.extension.ecg_xai.operator.names;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class FeatureName {
-    public static Set<String> FeatureList=new HashSet<>();
+    public static Set<String> FeatureList= new HashSet<>();
     static {
         FeatureList.add("HR");
         FeatureList.add("SINUS");
@@ -24,6 +26,11 @@ public class FeatureName {
         FeatureList.add("T_AMP");
         FeatureList.add("QRS_SUM");
     }
+
+    public String[] getFeatures() {
+        return FeatureList.toArray(String[]::new);
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

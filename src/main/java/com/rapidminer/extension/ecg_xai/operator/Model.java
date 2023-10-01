@@ -9,8 +9,22 @@ import java.util.List;
 public class Model {
     public List<Step> steps=new ArrayList<>();
 
+    public Model(){
+
+    }
+
+    public Model(Model model){
+        for (Step step: model.steps){
+            this.steps.add(new Step(step));
+        }
+    }
+
     public void addStep(Step step){
         steps.add(step);
+    }
+
+    public Step getLastStep(){
+        return steps.get(steps.size()-1);
     }
 
     @Override
@@ -18,7 +32,7 @@ public class Model {
         StringBuilder sb = new StringBuilder();
         sb.append("Model [ ");
         for (Step step : steps) {
-            sb.append("{\n Step"+(steps.indexOf(step)+1)+": ");
+            sb.append("{\n Step").append(steps.indexOf(step) + 1).append(": ");
             sb.append(step.toString()).append("\n }, \n");
         }
         if (!steps.isEmpty()) {

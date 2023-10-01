@@ -4,7 +4,6 @@ import com.rapidminer.extension.ecg_xai.operator.nodes.AbstractNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.ConditionNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.StartNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.condition.Compare;
-import org.checkerframework.checker.units.qual.C;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +14,10 @@ public class Step {
     public Step(){
         StartNode firstNode=new StartNode();
         nodes.add(firstNode);
+    }
+
+    public Step(Step step){
+        this.nodes.addAll(step.nodes);
     }
 
     public void addNode(AbstractNode node){
