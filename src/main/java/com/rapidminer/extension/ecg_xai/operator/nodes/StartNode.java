@@ -3,16 +3,18 @@ package com.rapidminer.extension.ecg_xai.operator.nodes;
 public class StartNode extends AbstractNode{
     public StartNode(){
         setType("Start Node");
+        setIndex(0);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
+        sb.append(getIndex().toString()).append(": ");
         sb.append("[StartNode]");
-        sb.append(", Type: ").append(type);
+        sb.append(", Type: ").append(getType());
         sb.append(", YesSons: [");
         for (AbstractNode yesSon : YesSon) {
-            sb.append(yesSon.getType()).append(", ");
+            sb.append(yesSon.getIndex()).append(", ");
         }
         if (!YesSon.isEmpty()) {
             sb.delete(sb.length() - 2, sb.length());

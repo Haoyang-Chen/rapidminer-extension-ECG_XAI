@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Model {
-    public static List<Step> steps=new ArrayList<>();
+    public List<Step> steps=new ArrayList<>();
 
     public void addStep(Step step){
         steps.add(step);
@@ -18,7 +18,7 @@ public class Model {
         StringBuilder sb = new StringBuilder();
         sb.append("Model [ ");
         for (Step step : steps) {
-            sb.append("{\n Step"+(Model.steps.indexOf(step)+1)+": ");
+            sb.append("{\n Step"+(steps.indexOf(step)+1)+": ");
             sb.append(step.toString()).append("\n }, \n");
         }
         if (!steps.isEmpty()) {

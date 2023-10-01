@@ -4,11 +4,20 @@ import java.util.HashSet;
 import java.util.Set;
 
 public abstract class AbstractNode {
-    public String type;
+    private String type;
+    private Integer index;
 
     public Set<AbstractNode> parents=new HashSet<>();
     public Set<AbstractNode> YesSon=new HashSet<>();
     public Set<AbstractNode> NoSon=new HashSet<>();
+
+    public void setIndex(Integer index){
+        this.index=index;
+    }
+
+    public Integer getIndex(){
+        return this.index;
+    }
 
     public void setType(String type){
         this.type=type;

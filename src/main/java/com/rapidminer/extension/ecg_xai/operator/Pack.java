@@ -6,7 +6,7 @@ import com.rapidminer.extension.ecg_xai.operator.names.LeadName;
 import com.rapidminer.operator.ResultObjectAdapter;
 
 public class Pack extends ResultObjectAdapter {
-    public static Model model=new Model();
+    public Model model=new Model();
     public static FeatureName feature=new FeatureName();
     public static ImpressionName impression=new ImpressionName();
     public static LeadName lead=new LeadName();

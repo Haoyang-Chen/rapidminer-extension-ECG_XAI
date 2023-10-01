@@ -11,17 +11,24 @@
            </operator>
          </group>
          -->
-        <group key="example_group">
-            <operator>
-                <key>example_key</key>
-                <class>com.rapidminer.extension.ecg_xai.operator.MyOwnOperator</class>
-
-            </operator>
-        </group>
+<!--        <group key="example_group">-->
+<!--            <operator>-->
+<!--                <key>example_key</key>-->
+<!--                <class>com.rapidminer.extension.ecg_xai.operator.MyOwnOperator</class>-->
+<!--            </operator>-->
+<!--        </group>-->
         <group key="ECG_group">
             <operator>
-                <key>InitOperator</key>
+                <key>InitModel</key>
                 <class>com.rapidminer.extension.ecg_xai.operator.InitPackOperator</class>
+            </operator>
+            <operator>
+                <key>PrintModel</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.PrintOperator</class>
+            </operator>
+            <operator>
+                <key>StepStart</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.StepStartOpeartor</class>
             </operator>
         </group>
     </group>

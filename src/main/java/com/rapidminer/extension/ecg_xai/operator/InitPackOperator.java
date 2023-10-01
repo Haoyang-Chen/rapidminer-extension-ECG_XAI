@@ -9,7 +9,7 @@ import com.rapidminer.operator.ports.OutputPort;
 import com.rapidminer.tools.OperatorService;
 
 public class InitPackOperator extends Operator {
-    private OutputPort outputPort = getOutputPorts().createPort("pack");
+    private final OutputPort outputPort = getOutputPorts().createPort("Out pack");
 
     public InitPackOperator(OperatorDescription description) {
         super(description);

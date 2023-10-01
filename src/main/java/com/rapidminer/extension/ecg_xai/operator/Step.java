@@ -19,6 +19,7 @@ public class Step {
 
     public void addNode(AbstractNode node){
         nodes.add(node);
+        node.setIndex(nodes.size()-1);
     }
 
     public AbstractNode getLast(){

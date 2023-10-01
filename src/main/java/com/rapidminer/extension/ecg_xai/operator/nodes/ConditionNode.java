@@ -18,12 +18,13 @@ public class ConditionNode extends AbstractNode{
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("[ConditionNode] Condition: " + condition);
-        sb.append(", Type: ").append(type);
+        sb.append(getIndex().toString()).append(": ");
+        sb.append("[ConditionNode] Condition: ").append(condition);
+        sb.append(", Type: ").append(getType());
         sb.append(", Parents: [");
 
         for (AbstractNode parent : parents) {
-            sb.append(parent.getType()).append(", ");
+            sb.append(parent.getIndex()).append(", ");
         }
 
         if (!parents.isEmpty()) {
@@ -33,7 +34,7 @@ public class ConditionNode extends AbstractNode{
         sb.append("]");
         sb.append(", YesSons: [");
         for (AbstractNode yesSon : YesSon) {
-            sb.append(yesSon.getType()).append(", ");
+            sb.append(yesSon.getIndex()).append(", ");
         }
         if (!YesSon.isEmpty()) {
             sb.delete(sb.length() - 2, sb.length());
@@ -41,7 +42,7 @@ public class ConditionNode extends AbstractNode{
         sb.append("]");
         sb.append(", NoSons: [");
         for (AbstractNode noSon : NoSon) {
-            sb.append(noSon.getType()).append(", ");
+            sb.append(noSon.getIndex()).append(", ");
         }
         if (!NoSon.isEmpty()) {
             sb.delete(sb.length() - 2, sb.length());
