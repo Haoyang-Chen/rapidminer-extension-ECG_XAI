@@ -20,21 +20,21 @@ public class InitPackOperator extends Operator {
     public void doWork() throws OperatorException {
         Pack pack=new Pack();
         pack.setYes();
-        Model model=pack.getModel();
-        Step step1 = new Step();
-        Compare compare=new Compare("A",">","C");
-        ConditionNode conditionNode = new ConditionNode(compare);
-        conditionNode.addParent(step1.getLast(),true);
-        step1.addNode(conditionNode);
-
-        Step step2 = new Step();
-        Compare compare2=new Compare("A",">","C");
-        ConditionNode conditionNode2 = new ConditionNode(compare2);
-        conditionNode2.addParent(step2.getLast(),true);
-        step2.addNode(conditionNode2);
-
-        model.addStep(step1);
-        model.addStep(step2);
+//        Model model=pack.getModel();
+//        Step step1 = new Step();
+//        Compare compare=new Compare("A",">","C");
+//        ConditionNode conditionNode = new ConditionNode(compare);
+//        conditionNode.addParent(step1.getLast(),true);
+//        step1.addNode(conditionNode);
+//
+//        Step step2 = new Step();
+//        Compare compare2=new Compare("A",">","C");
+//        ConditionNode conditionNode2 = new ConditionNode(compare2);
+//        conditionNode2.addParent(step2.getLast(),true);
+//        step2.addNode(conditionNode2);
+//
+//        model.addStep(step1);
+//        model.addStep(step2);
 
         System.out.println(pack);
         outputPort.deliver(pack);
