@@ -25,6 +25,7 @@ import static com.rapidminer.parameter.ParameterTypeCheckBoxGroup.stringToSelect
 public class StepStartOpeartor extends Operator {
     private final InputPort pacInput=getInputPorts().createPort("In pack");
     private final OutputPort pacOutput=getOutputPorts().createPort("Out pack");
+    private static final String PARAMETER_LEADS="Focused Leads";
 
     public StepStartOpeartor(OperatorDescription description) {
         super(description);
@@ -36,18 +37,19 @@ public class StepStartOpeartor extends Operator {
         pack.setYes();
         Model model=pack.getModel();
         Step step=new Step();
-        List<String> leads= new ArrayList<>();
-        LeadName leadName = new LeadName();
-        for (String lead: leadName.getLead()){
-            boolean checked=getParameterAsBoolean(lead);
-//            LogService.getRoot().log(Level.INFO,lead);
-            if (checked){
-//                LogService.getRoot().log(Level.INFO,lead);
-                leads.add(lead);
-            }
-        }
-//        System.out.println(leads);
-        step.focus_leads=leads;
+//        List<String> leads= new ArrayList<>();
+//        LeadName leadName = new LeadName();
+//        for (String lead: leadName.getLead()){
+//            boolean checked=getParameterAsBoolean(lead);
+////            LogService.getRoot().log(Level.INFO,lead);
+//            if (checked){
+////                LogService.getRoot().log(Level.INFO,lead);
+//                leads.add(lead);
+//            }
+//        }
+////        System.out.println(leads);
+//        step.focus_leads=leads;
+        step.focus_leads=Arrays.toString(stringToSelection(getParameterAsString(PARAMETER_LEADS)));
         model.addStep(step);
         pacOutput.deliver(pack);
     }
@@ -56,9 +58,12 @@ public class StepStartOpeartor extends Operator {
     public List<ParameterType> getParameterTypes() {
         LeadName leadName = new LeadName();
         List<ParameterType> types = super.getParameterTypes();
+        ParameterTypeCheckBoxGroup leads=new ParameterTypeCheckBoxGroup(PARAMETER_LEADS,"select the leads to focus on");
         for (String lead: leadName.getLead()){
-            types.add(new ParameterTypeBoolean(lead,null,false));
+//            types.add(new ParameterTypeBoolean(lead,null,false));
+            leads.add("leads",lead);
         }
+        types.add(leads);
         return types;
     }
 }
