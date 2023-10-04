@@ -48,7 +48,7 @@ public class ConditionOperator extends Operator {
         ConditionNode conditionNode=new ConditionNode(compare);
 
         Step step=model.getLastStep();
-        conditionNode.addParent(step.getLast(),nodeYes);
+        conditionNode.addParent(step.getLastCon(),nodeYes);
         step.addNode(conditionNode);
 
         if (!Objects.equals(yes, "--End--") && !Objects.equals(yes, "--MoveOn--")){

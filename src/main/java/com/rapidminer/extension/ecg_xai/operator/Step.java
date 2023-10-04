@@ -6,10 +6,13 @@ import com.rapidminer.extension.ecg_xai.operator.nodes.StartNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.condition.Compare;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class Step {
     public List<AbstractNode> nodes=new ArrayList<>();
+    public List<String> focus_leads=new ArrayList<>();
 
     public Step(){
         StartNode firstNode=new StartNode();
@@ -18,7 +21,10 @@ public class Step {
 
     public Step(Step step){
         this.nodes.addAll(step.nodes);
+        this.focus_leads.addAll(step.focus_leads);
     }
+
+
 
     public void addNode(AbstractNode node){
         nodes.add(node);
@@ -29,9 +35,20 @@ public class Step {
         return nodes.get(nodes.size()-1);
     }
 
+    public AbstractNode getLastCon(){
+        for (int i=this.nodes.size()-1;i>=0;i--){
+            AbstractNode node=this.nodes.get(i);
+            if (!Objects.equals(node.getType(), "Impression")){
+                return node;
+            }
+        }
+        return null;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
+        sb.append(focus_leads).append("\n");
         sb.append("[Nodes: \n");
         for (AbstractNode node : nodes) {
             sb.append(node.toString()).append(", \n");

@@ -11,8 +11,7 @@ public class StartNode extends AbstractNode{
         StringBuilder sb = new StringBuilder();
         sb.append(getIndex().toString()).append(": ");
         sb.append("[StartNode]");
-        sb.append(", Type: ").append(getType());
-        sb.append(", YesSons: [");
+        sb.append(", [");
         for (AbstractNode yesSon : YesSon) {
             sb.append(yesSon.getIndex()).append(", ");
         }

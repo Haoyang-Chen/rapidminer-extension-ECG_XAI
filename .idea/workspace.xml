@@ -13,10 +13,20 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.8.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/rapidminer/extension/ecg_xai/operator/InitPackOperator.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/rapidminer/extension/ecg_xai/operator/InitPackOperator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/rapidminer/extension/ecg_xai/operator/ConditionOperator.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/rapidminer/extension/ecg_xai/operator/ConditionOperator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/rapidminer/extension/ecg_xai/operator/Step.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/rapidminer/extension/ecg_xai/operator/Step.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/rapidminer/extension/ecg_xai/operator/StepStartOpeartor.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/rapidminer/extension/ecg_xai/operator/StepStartOpeartor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/rapidminer/extension/ecg_xai/operator/nodes/ConditionNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/rapidminer/extension/ecg_xai/operator/nodes/ConditionNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/rapidminer/extension/ecg_xai/operator/nodes/ImpressionNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/rapidminer/extension/ecg_xai/operator/nodes/ImpressionNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/rapidminer/extension/ecg_xai/operator/nodes/StartNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/rapidminer/extension/ecg_xai/operator/nodes/StartNode.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/libs/rapidminer-extension-ECG_XAI-1.0.0-all.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/rapidminer-extension-ECG_XAI-1.0.0-all.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rapidminer/extension/ecg_xai/operator/InitPackOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rapidminer/extension/ecg_xai/operator/InitPackOperator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rapidminer/extension/ecg_xai/operator/ConditionOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rapidminer/extension/ecg_xai/operator/ConditionOperator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rapidminer/extension/ecg_xai/operator/Step.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rapidminer/extension/ecg_xai/operator/Step.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rapidminer/extension/ecg_xai/operator/StepStartOpeartor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rapidminer/extension/ecg_xai/operator/StepStartOpeartor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rapidminer/extension/ecg_xai/operator/nodes/ConditionNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rapidminer/extension/ecg_xai/operator/nodes/ConditionNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rapidminer/extension/ecg_xai/operator/nodes/ImpressionNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rapidminer/extension/ecg_xai/operator/nodes/ImpressionNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rapidminer/extension/ecg_xai/operator/nodes/StartNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rapidminer/extension/ecg_xai/operator/nodes/StartNode.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +50,11 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="rapidminer-extension-ECG_XAI" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="rapidminer-extension-ECG_XAI" type="f1a62948:ProjectNode" />
+                <item name="运行配置" type="7b0102dc:RunConfigurationsNode" />
               </path>
             </expand>
             <select />
@@ -82,7 +97,6 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -90,7 +104,9 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -104,8 +120,8 @@
     </option>
   </component>
   <component name="RunManager" selected="Gradle.rapidminer-extension-ECG_XAI [installExtension]">
-    <configuration name="AbstractNode" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.rapidminer.extension.ecg_xai.operator.nodes.AbstractNode" />
+    <configuration name="ConditionNode" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.rapidminer.extension.ecg_xai.operator.nodes.ConditionNode" />
       <module name="rapidminer-extension-ECG_XAI.main" />
       <extension name="coverage">
         <pattern>
@@ -117,12 +133,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Model" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.rapidminer.extension.ecg_xai.operator.Model" />
+    <configuration name="FeatureName" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.rapidminer.extension.ecg_xai.operator.names.FeatureName" />
       <module name="rapidminer-extension-ECG_XAI.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.rapidminer.extension.ecg_xai.operator.*" />
+          <option name="PATTERN" value="com.rapidminer.extension.ecg_xai.operator.names.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -130,8 +146,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StartNode" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.rapidminer.extension.ecg_xai.operator.nodes.StartNode" />
+    <configuration name="ImpressionNode" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.rapidminer.extension.ecg_xai.operator.nodes.ImpressionNode" />
       <module name="rapidminer-extension-ECG_XAI.main" />
       <extension name="coverage">
         <pattern>
@@ -143,18 +159,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Step" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.rapidminer.extension.ecg_xai.operator.Step" />
-      <module name="rapidminer-extension-ECG_XAI.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.rapidminer.extension.ecg_xai.operator.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="rapidminer-extension-ECG_XAI [init]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="init" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
     </configuration>
     <configuration name="rapidminer-extension-ECG_XAI [installExtension]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -179,11 +203,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="应用程序.ImpressionNode" />
+        <item itemvalue="应用程序.FeatureName" />
+        <item itemvalue="应用程序.ConditionNode" />
+        <item itemvalue="Gradle.rapidminer-extension-ECG_XAI [init]" />
         <item itemvalue="Gradle.rapidminer-extension-ECG_XAI [installExtension]" />
-        <item itemvalue="应用程序.Model" />
-        <item itemvalue="应用程序.Step" />
-        <item itemvalue="应用程序.AbstractNode" />
-        <item itemvalue="应用程序.StartNode" />
       </list>
     </recent_temporary>
   </component>
@@ -197,7 +221,10 @@
       <updated>1695874027381</updated>
       <workItem from="1695874029645" duration="8449000" />
       <workItem from="1695973187540" duration="3000" />
-      <workItem from="1695973276996" duration="31053000" />
+      <workItem from="1695973276996" duration="31180000" />
+      <workItem from="1696309024019" duration="1061000" />
+      <workItem from="1696312142068" duration="111000" />
+      <workItem from="1696319809401" duration="8389000" />
     </task>
     <servers />
   </component>
@@ -217,5 +244,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
