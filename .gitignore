@@ -38,6 +38,8 @@ build/
 *.swp
 *~
 
+.DS_Store
+
 # Exclude Gradle wrapper properties file
 gradle-wrapper.properties
 
