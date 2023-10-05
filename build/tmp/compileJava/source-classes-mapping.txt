@@ -33,11 +33,11 @@ com/rapidminer/extension/ecg_xai/operator/nodes/StartNode.java
  com.rapidminer.extension.ecg_xai.operator.nodes.StartNode
 com/rapidminer/extension/ecg_xai/operator/Pack.java
  com.rapidminer.extension.ecg_xai.operator.Pack
-com/rapidminer/extension/ecg_xai/operator/ConditionOperator.java
- com.rapidminer.extension.ecg_xai.operator.ConditionOperator
-com/rapidminer/extension/ecg_xai/operator/StepStartOpeartor.java
- com.rapidminer.extension.ecg_xai.operator.StepStartOpeartor
 com/rapidminer/extension/ecg_xai/operator/Step.java
  com.rapidminer.extension.ecg_xai.operator.Step
 com/rapidminer/extension/ecg_xai/operator/Model.java
  com.rapidminer.extension.ecg_xai.operator.Model
+com/rapidminer/extension/ecg_xai/operator/StepStartOpeartor.java
+ com.rapidminer.extension.ecg_xai.operator.StepStartOpeartor
+com/rapidminer/extension/ecg_xai/operator/ConditionOperator.java
+ com.rapidminer.extension.ecg_xai.operator.ConditionOperator

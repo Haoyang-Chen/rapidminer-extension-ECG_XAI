@@ -37,6 +37,7 @@ public class StepStartOpeartor extends Operator {
         pack.setYes();
         Model model=pack.getModel();
         Step step=new Step();
+//        LogService.getRoot().log(Level.INFO,getName());
 //        List<String> leads= new ArrayList<>();
 //        LeadName leadName = new LeadName();
 //        for (String lead: leadName.getLead()){

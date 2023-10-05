@@ -13,10 +13,14 @@ import com.rapidminer.operator.UserError;
 import com.rapidminer.operator.ports.InputPort;
 import com.rapidminer.operator.ports.OutputPort;
 import com.rapidminer.parameter.ParameterType;
+import com.rapidminer.parameter.ParameterTypeEnumeration;
+import com.rapidminer.parameter.ParameterTypeList;
 import com.rapidminer.parameter.ParameterTypeStringCategory;
+import com.rapidminer.tools.LogService;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.logging.Level;
 
 public class ConditionOperator extends Operator {
     private final InputPort pacInput=getInputPorts().createPort("In pack");
@@ -51,12 +55,12 @@ public class ConditionOperator extends Operator {
         conditionNode.addParent(step.getLastCon(),nodeYes);
         step.addNode(conditionNode);
 
-        if (!Objects.equals(yes, "--End--") && !Objects.equals(yes, "--MoveOn--")){
+        if (!yes.contains("--End--") && !yes.contains("--MoveOn--")){
             ImpressionNode yesImp=new ImpressionNode(yes);
             yesImp.addParent(conditionNode,true);
             step.addNode(yesImp);
         }
-        if (!Objects.equals(no, "--End--") && !Objects.equals(no, "--MoveOn--")){
+        if (!no.contains("--End--") && !no.contains("--MoveOn--")){
             ImpressionNode noImp=new ImpressionNode(no);
             noImp.addParent(conditionNode,false);
             step.addNode(noImp);
@@ -99,18 +103,18 @@ public class ConditionOperator extends Operator {
                 featureName.getFeatures(),
                 "None"
         ));
-        types.add(new ParameterTypeStringCategory(
+        types.add(new ParameterTypeEnumeration(PARAMETER_YES, "The list of Yes results", new ParameterTypeStringCategory(
                 PARAMETER_YES,
                 "Choose Yes Path",
                 impressionName.getImpressions(),
-                "None"
-        ));
-        types.add(new ParameterTypeStringCategory(
+                "--End--"
+        )));
+        types.add(new ParameterTypeEnumeration(PARAMETER_NO, "The list of Yes results", new ParameterTypeStringCategory(
                 PARAMETER_NO,
                 "Choose No Path",
                 impressionName.getImpressions(),
-                "None"
-        ));
+                "--End--"
+        )));
         return types;
     }
 }

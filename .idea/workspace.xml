@@ -13,11 +13,11 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.8.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/rapidminer/extension/ecg_xai/operator/Step.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/rapidminer/extension/ecg_xai/operator/Step.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/rapidminer/extension/ecg_xai/operator/ConditionOperator.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/rapidminer/extension/ecg_xai/operator/ConditionOperator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/rapidminer/extension/ecg_xai/operator/StepStartOpeartor.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/rapidminer/extension/ecg_xai/operator/StepStartOpeartor.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/libs/rapidminer-extension-ECG_XAI-1.0.0-all.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/rapidminer-extension-ECG_XAI-1.0.0-all.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rapidminer/extension/ecg_xai/operator/Step.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rapidminer/extension/ecg_xai/operator/Step.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rapidminer/extension/ecg_xai/operator/ConditionOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rapidminer/extension/ecg_xai/operator/ConditionOperator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rapidminer/extension/ecg_xai/operator/StepStartOpeartor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rapidminer/extension/ecg_xai/operator/StepStartOpeartor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -216,7 +216,7 @@
       <workItem from="1695973276996" duration="31180000" />
       <workItem from="1696309024019" duration="1061000" />
       <workItem from="1696312142068" duration="111000" />
-      <workItem from="1696319809401" duration="9213000" />
+      <workItem from="1696319809401" duration="10419000" />
     </task>
     <servers />
   </component>
