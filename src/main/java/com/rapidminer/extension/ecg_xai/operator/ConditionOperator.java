@@ -9,18 +9,14 @@ import com.rapidminer.extension.ecg_xai.operator.nodes.condition.Compare;
 import com.rapidminer.operator.Operator;
 import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
-import com.rapidminer.operator.UserError;
 import com.rapidminer.operator.ports.InputPort;
 import com.rapidminer.operator.ports.OutputPort;
 import com.rapidminer.parameter.ParameterType;
 import com.rapidminer.parameter.ParameterTypeEnumeration;
-import com.rapidminer.parameter.ParameterTypeList;
+import com.rapidminer.parameter.ParameterTypeString;
 import com.rapidminer.parameter.ParameterTypeStringCategory;
-import com.rapidminer.tools.LogService;
 
 import java.util.List;
-import java.util.Objects;
-import java.util.logging.Level;
 
 public class ConditionOperator extends Operator {
     private final InputPort pacInput=getInputPorts().createPort("In pack");
@@ -29,6 +25,7 @@ public class ConditionOperator extends Operator {
     private static final String PARAMETER_LEFT="left operand";
     private static final String PARAMETER_MID="middle operand";
     private static final String PARAMETER_RIGHT="right operand";
+    private static final String PARAMETER_RESULT_NAME="result name";
     private static final String PARAMETER_YES="if yes";
     private static final String PARAMETER_NO="if no";
 
@@ -42,6 +39,7 @@ public class ConditionOperator extends Operator {
         String left= getParameterAsString(PARAMETER_LEFT);
         String mid= getParameterAsString(PARAMETER_MID);
         String right= getParameterAsString(PARAMETER_RIGHT);
+        String resultName=getParameterAsString(PARAMETER_RESULT_NAME);
         String yes=getParameterAsString(PARAMETER_YES);
         String no=getParameterAsString(PARAMETER_NO);
 
@@ -50,6 +48,7 @@ public class ConditionOperator extends Operator {
         Model model=pack.getModel();
         Compare compare=new Compare(left,mid,right);
         ConditionNode conditionNode=new ConditionNode(compare);
+        conditionNode.setResultName(resultName);
 
         Step step=model.getLastStep();
         conditionNode.addParent(step.getLastCon(),nodeYes);
@@ -101,6 +100,11 @@ public class ConditionOperator extends Operator {
                 PARAMETER_RIGHT,
                 "Choose right operand",
                 featureName.getFeatures(),
+                "None"
+        ));
+        types.add(new ParameterTypeString(
+                PARAMETER_RESULT_NAME,
+                "Define result name",
                 "None"
         ));
         types.add(new ParameterTypeEnumeration(PARAMETER_YES, "The list of Yes results", new ParameterTypeStringCategory(

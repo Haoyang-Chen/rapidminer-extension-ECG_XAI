@@ -8,10 +8,7 @@ import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
 import com.rapidminer.operator.ports.InputPort;
 import com.rapidminer.operator.ports.OutputPort;
-import com.rapidminer.parameter.ParameterType;
-import com.rapidminer.parameter.ParameterTypeBoolean;
-import com.rapidminer.parameter.ParameterTypeCheckBoxGroup;
-import com.rapidminer.parameter.ParameterTypeStringCategory;
+import com.rapidminer.parameter.*;
 import com.rapidminer.tools.LogService;
 import com.rapidminer.tools.OperatorService;
 
@@ -26,6 +23,7 @@ public class StepStartOpeartor extends Operator {
     private final InputPort pacInput=getInputPorts().createPort("In pack");
     private final OutputPort pacOutput=getOutputPorts().createPort("Out pack");
     private static final String PARAMETER_LEADS="Focused Leads";
+    public static final String PARAMETER_NAME="Step Name";
 
     public StepStartOpeartor(OperatorDescription description) {
         super(description);
@@ -37,6 +35,7 @@ public class StepStartOpeartor extends Operator {
         pack.setYes();
         Model model=pack.getModel();
         Step step=new Step();
+        step.setName(getParameterAsString(PARAMETER_NAME));
 //        LogService.getRoot().log(Level.INFO,getName());
 //        List<String> leads= new ArrayList<>();
 //        LeadName leadName = new LeadName();
@@ -59,6 +58,7 @@ public class StepStartOpeartor extends Operator {
     public List<ParameterType> getParameterTypes() {
         LeadName leadName = new LeadName();
         List<ParameterType> types = super.getParameterTypes();
+        types.add(new ParameterTypeString(PARAMETER_NAME,"Name of the step","Step"));
         ParameterTypeCheckBoxGroup leads=new ParameterTypeCheckBoxGroup(PARAMETER_LEADS,"select the leads to focus on");
         for (String lead: leadName.getLead()){
 //            types.add(new ParameterTypeBoolean(lead,null,false));

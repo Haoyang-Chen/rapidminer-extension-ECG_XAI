@@ -5,10 +5,19 @@ import com.rapidminer.extension.ecg_xai.operator.nodes.condition.Exist;
 
 public class ConditionNode extends AbstractNode{
     private AbstractCondition condition;
+    private String resultName;
 
     public ConditionNode(AbstractCondition condition){
         setType("Condition");
         this.condition=condition;
+    }
+
+    public String getResultName() {
+        return resultName;
+    }
+
+    public void setResultName(String resultName) {
+        this.resultName = resultName;
     }
 
     public void setCondition(AbstractCondition condition) {
@@ -20,7 +29,7 @@ public class ConditionNode extends AbstractNode{
         StringBuilder sb = new StringBuilder();
         sb.append(getIndex().toString()).append(": ");
         sb.append("[ConditionNode], ").append(condition);
-        sb.append(", [");
+        sb.append(", ").append(resultName).append(", [");
 
         for (AbstractNode parent : parents) {
             sb.append(parent.getIndex()).append(", ");

@@ -1,12 +1,9 @@
 package com.rapidminer.extension.ecg_xai.operator.names;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class FeatureName {
-    public static Set<String> FeatureList= new HashSet<>();
+    public static Set<String> FeatureList= new LinkedHashSet<>();
     static {
         FeatureList.add("HR");
         FeatureList.add("SINUS");

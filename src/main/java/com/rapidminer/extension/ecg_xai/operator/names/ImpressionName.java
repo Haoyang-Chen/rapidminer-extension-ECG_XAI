@@ -1,10 +1,10 @@
 package com.rapidminer.extension.ecg_xai.operator.names;
 
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class ImpressionName {
-    public static Set<String> ImpressionList=new HashSet<>();
+    public static Set<String> ImpressionList=new LinkedHashSet<>();
     static {
         ImpressionList.add("SR");
         ImpressionList.add("SARRH");

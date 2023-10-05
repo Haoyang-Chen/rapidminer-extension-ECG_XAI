@@ -34,6 +34,10 @@
                 <key>Condition</key>
                 <class>com.rapidminer.extension.ecg_xai.operator.ConditionOperator</class>
             </operator>
+            <operator>
+                <key>Discretizer</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.DiscretizeOperator</class>
+            </operator>
         </group>
     </group>
 </operators>

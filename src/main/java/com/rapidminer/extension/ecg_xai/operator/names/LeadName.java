@@ -1,10 +1,11 @@
 package com.rapidminer.extension.ecg_xai.operator.names;
 
-import java.util.HashSet;
+import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class LeadName {
-    public static Set<String> LeadList=new HashSet<>();
+    public static Set<String> LeadList=new LinkedHashSet<>();
     static {
         LeadList.add("I");
         LeadList.add("II");
@@ -40,6 +41,6 @@ public class LeadName {
 
     public static void main(String[] args) {
         LeadName leadName = new LeadName();
-        System.out.println(leadName);
+        System.out.println(Arrays.toString(leadName.getLead()));
     }
 }

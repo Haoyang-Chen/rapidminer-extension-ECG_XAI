@@ -12,8 +12,8 @@ import java.util.Objects;
 
 public class Step {
     public List<AbstractNode> nodes=new ArrayList<>();
-//    public List<String> focus_leads=new ArrayList<>();
     public String focus_leads;
+    public String name;
 
     public Step(){
         StartNode firstNode=new StartNode();
@@ -23,9 +23,12 @@ public class Step {
     public Step(Step step){
         this.nodes.addAll(step.nodes);
         this.focus_leads=step.focus_leads;
+        this.name=step.name;
     }
 
-
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public void addNode(AbstractNode node){
         nodes.add(node);
