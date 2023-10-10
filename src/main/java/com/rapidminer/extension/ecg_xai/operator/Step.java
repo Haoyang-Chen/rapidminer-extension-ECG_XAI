@@ -6,7 +6,6 @@ import com.rapidminer.extension.ecg_xai.operator.nodes.StartNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.condition.Compare;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -24,6 +23,12 @@ public class Step {
         this.nodes.addAll(step.nodes);
         this.focus_leads=step.focus_leads;
         this.name=step.name;
+    }
+
+    public void flushIndex(){
+        for (int i=0;i<nodes.size();i++){
+            nodes.get(i).setIndex(i);
+        }
     }
 
     public void setName(String name) {
