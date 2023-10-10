@@ -53,53 +53,9 @@ public class MergeOperator extends Operator {
             }
         }
         pack1.getModel().getLastStep().flushIndex();
-//        AbstractNode node= nodes2.get(index_diff);
-//        int node_idx=node.getIndex();
-//        AbstractNode previous=nodes2.get(index_diff-1);
-//        Boolean yes=previous.YesSon.isEmpty();
-//        node.parents.remove(previous);
-//        node.addParent(nodes1.get(index_diff),yes);
-//        pack1.getModel().getLastStep().addNode(node);
-//        if (!node.YesSon.isEmpty()){
-//            for (AbstractNode son:node.YesSon){
-//                change_index(nodes2.get(node_idx),node,son,nodes2,nodes1);
-//            }
-//        }
-//        if (!node.NoSon.isEmpty()){
-//            for (AbstractNode son:node.NoSon){
-//                change_index(nodes2.get(node_idx),node,son,nodes2,nodes1);
-//            }
-//        }
         return pack1;
     }
 
-    public void change_index(AbstractNode parent_old,AbstractNode parent_new,AbstractNode son, List<AbstractNode> old_nodes,List<AbstractNode> new_nodes){
-        AbstractNode old_node=old_nodes.get(son.getIndex());
-        if(new_nodes.get(parent_new.getIndex()).YesSon.contains(son)){
-            new_nodes.get(parent_new.getIndex()).YesSon.remove(son);
-            son.parents.remove(parent_old);
-            son.parents.add(parent_new);
-            new_nodes.get(parent_new.getIndex()).YesSon.add(son);
-            new_nodes.add(son);
-        }
-        if(new_nodes.get(parent_new.getIndex()).NoSon.contains(son)){
-            new_nodes.get(parent_new.getIndex()).NoSon.remove(son);
-            son.parents.remove(parent_old);
-            son.parents.add(parent_new);
-            new_nodes.get(parent_new.getIndex()).NoSon.add(son);
-            new_nodes.add(son);
-        }
-        if (!son.YesSon.isEmpty()){
-            for (AbstractNode Yson:son.YesSon){
-                change_index(old_node,son,Yson,old_nodes,new_nodes);
-            }
-        }
-        if (!son.NoSon.isEmpty()){
-            for (AbstractNode Nson:son.NoSon){
-                change_index(old_node,son,Nson,old_nodes,new_nodes);
-            }
-        }
-    }
 
     @Override
     public void doWork() throws OperatorException {
