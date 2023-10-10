@@ -60,4 +60,8 @@ public class Model {
         model.addStep(step2);
         System.out.println(model);
     }
+
+    public List<Step> getSteps() {
+        return steps;
+    }
 }
