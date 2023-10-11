@@ -8,6 +8,7 @@ import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
 import com.rapidminer.operator.ports.InputPort;
 import com.rapidminer.operator.ports.OutputPort;
+import com.rapidminer.operator.ports.OutputPortExtender;
 import com.rapidminer.parameter.*;
 import com.rapidminer.tools.LogService;
 import com.rapidminer.tools.OperatorService;
@@ -21,12 +22,13 @@ import static com.rapidminer.parameter.ParameterTypeCheckBoxGroup.stringToSelect
 
 public class StepStartOpeartor extends Operator {
     private final InputPort pacInput=getInputPorts().createPort("In pack");
-    private final OutputPort pacOutput=getOutputPorts().createPort("Out pack");
+    private final OutputPortExtender outputPortExtender = new OutputPortExtender("Out pack", getOutputPorts());
     private static final String PARAMETER_LEADS="Focused Leads";
     public static final String PARAMETER_NAME="Step Name";
 
     public StepStartOpeartor(OperatorDescription description) {
         super(description);
+        outputPortExtender.start();
     }
 
     @Override
@@ -51,7 +53,10 @@ public class StepStartOpeartor extends Operator {
 //        step.focus_leads=leads;
         step.focus_leads=Arrays.toString(stringToSelection(getParameterAsString(PARAMETER_LEADS)));
         model.addStep(step);
-        pacOutput.deliver(pack);
+
+        for (OutputPort outputPort : outputPortExtender.getManagedPorts()) {
+            outputPort.deliver(new Pack(pack));
+        }
     }
 
     @Override

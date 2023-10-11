@@ -54,6 +54,10 @@ public class ConditionOperator extends Operator {
         conditionNode.addParent(step.getLastCon(),nodeYes);
         step.addNode(conditionNode);
 
+        conditionNode.Yesres=yes;
+        conditionNode.Nores=no;
+        conditionNode.runCheck();
+
         if (!yes.contains("--End--") && !yes.contains("--MoveOn--")){
             ImpressionNode yesImp=new ImpressionNode(yes);
             yesImp.addParent(conditionNode,true);

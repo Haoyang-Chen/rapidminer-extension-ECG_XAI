@@ -1,15 +1,43 @@
 package com.rapidminer.extension.ecg_xai.operator.nodes;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 public abstract class AbstractNode {
     private String type;
     private Integer index;
 
+    public String Yesres;
+
+    public String Nores;
+
     public Set<AbstractNode> parents=new HashSet<>();
     public Set<AbstractNode> YesSon=new HashSet<>();
     public Set<AbstractNode> NoSon=new HashSet<>();
+
+    public void runCheck(){
+        for(AbstractNode parent:parents){
+            for(AbstractNode grandParent:parent.parents){
+                if (Objects.equals(grandParent.type, "Condition")||Objects.equals(grandParent.type, "Start Node")){
+                    if (Objects.equals(grandParent.Yesres, "--MoveOn--") && Objects.equals(grandParent.Nores, "--MoveOn--") && (grandParent.YesSon.isEmpty()||grandParent.NoSon.isEmpty())){
+                        if(parent.YesSon.contains(this)) {
+                            parent.YesSon.remove(this);
+                            grandParent.YesSon.add(this);
+                            this.parents.remove(parent);
+                            this.parents.add(grandParent);
+                        }
+                        if(parent.NoSon.contains(this)) {
+                            parent.NoSon.remove(this);
+                            grandParent.NoSon.add(this);
+                            this.parents.remove(parent);
+                            this.parents.add(grandParent);
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     public void setIndex(Integer index){
         this.index=index;

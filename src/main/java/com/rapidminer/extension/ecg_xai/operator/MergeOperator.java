@@ -18,6 +18,7 @@ public class MergeOperator extends Operator {
     public MergeOperator(OperatorDescription description) {
         super(description);
         inputPortExtender.ensureMinimumNumberOfPorts(2);
+        inputPortExtender.start();
     }
 
     public Pack mergePack(Pack pack1,Pack pack2){
