@@ -26,6 +26,7 @@
             <operator>
                 <key>PrintModel</key>
                 <class>com.rapidminer.extension.ecg_xai.operator.PrintOperator</class>
+                <icon>pri.png</icon>
             </operator>
             <operator>
                 <key>StepStart</key>
@@ -45,10 +46,12 @@
             <operator>
                 <key>Merge</key>
                 <class>com.rapidminer.extension.ecg_xai.operator.MergeOperator</class>
+                <icon>merge_icon.png</icon>
             </operator>
             <operator>
                 <key>Relation</key>
                 <class>com.rapidminer.extension.ecg_xai.operator.RelationOperator</class>
+                <icon>rel.png</icon>
             </operator>
         </group>
     </group>
