@@ -83,28 +83,31 @@ public class ConditionOperator extends Operator {
         LeadName leadName=new LeadName();
         List<ParameterType> types=super.getParameterTypes();
 
-        String[] mid=new String[3];
+        String[] mid=new String[4];
         mid[0]=">";
         mid[1]="=";
         mid[2]="<";
+        mid[3]="is";
+
+        String[] right=new String[3];
+        right[0]="true";
+        right[1]="false";
+        right[2]="ENTER a NUMBER";
 
         types.add(new ParameterTypeStringCategory(
                 PARAMETER_LEFT,
                 "Choose left operand",
-                featureName.getFeatures(),
-                "None"
+                featureName.getFeatures()
         ));
         types.add(new ParameterTypeStringCategory(
                 PARAMETER_MID,
                 "Choose mid operand",
-                mid,
-                "None"
+                mid
         ));
         types.add(new ParameterTypeStringCategory(
                 PARAMETER_RIGHT,
                 "Choose right operand",
-                featureName.getFeatures(),
-                "None"
+                right
         ));
         types.add(new ParameterTypeString(
                 PARAMETER_RESULT_NAME,

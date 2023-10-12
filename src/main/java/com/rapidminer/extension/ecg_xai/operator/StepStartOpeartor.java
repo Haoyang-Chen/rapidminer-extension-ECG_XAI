@@ -38,19 +38,6 @@ public class StepStartOpeartor extends Operator {
         Model model=pack.getModel();
         Step step=new Step();
         step.setName(getParameterAsString(PARAMETER_NAME));
-//        LogService.getRoot().log(Level.INFO,getName());
-//        List<String> leads= new ArrayList<>();
-//        LeadName leadName = new LeadName();
-//        for (String lead: leadName.getLead()){
-//            boolean checked=getParameterAsBoolean(lead);
-////            LogService.getRoot().log(Level.INFO,lead);
-//            if (checked){
-////                LogService.getRoot().log(Level.INFO,lead);
-//                leads.add(lead);
-//            }
-//        }
-////        System.out.println(leads);
-//        step.focus_leads=leads;
         step.focus_leads=Arrays.toString(stringToSelection(getParameterAsString(PARAMETER_LEADS)));
         model.addStep(step);
 
@@ -66,7 +53,6 @@ public class StepStartOpeartor extends Operator {
         types.add(new ParameterTypeString(PARAMETER_NAME,"Name of the step","Step"));
         ParameterTypeCheckBoxGroup leads=new ParameterTypeCheckBoxGroup(PARAMETER_LEADS,"select the leads to focus on");
         for (String lead: leadName.getLead()){
-//            types.add(new ParameterTypeBoolean(lead,null,false));
             leads.add("leads",lead);
         }
         types.add(leads);

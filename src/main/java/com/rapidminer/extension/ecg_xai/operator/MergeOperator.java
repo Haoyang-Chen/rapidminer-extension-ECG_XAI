@@ -30,6 +30,7 @@ public class MergeOperator extends Operator {
         int index_diff=0;
         for(int i=0;i<less;i++){
             if(nodes1.get(i)==nodes2.get(i)){
+                continue;
             }else{
                 index_diff=i;
                 break;
@@ -37,16 +38,13 @@ public class MergeOperator extends Operator {
         }
 
         if (index_diff==0&&len1==len2){
-            LogService.getRoot().log(Level.INFO, "BBBB"+ index_diff);
             return pack1;
         }
-        LogService.getRoot().log(Level.INFO, "AAAA"+ index_diff);
         AbstractNode diff_node=nodes2.get(index_diff);
         Set<AbstractNode> parents=diff_node.parents;
         nodes1.addAll(nodes2.subList(index_diff,len2));
         for(AbstractNode parent:parents){
             int id=parent.getIndex();
-            LogService.getRoot().log(Level.INFO, String.valueOf(id));
             if(nodes2.get(id).YesSon.contains(diff_node)){
                 nodes1.get(id).YesSon.add(diff_node);
             }else {
@@ -62,11 +60,9 @@ public class MergeOperator extends Operator {
     public void doWork() throws OperatorException {
         List<Pack> packs=inputPortExtender.getData(Pack.class,true);
         Pack pack1=packs.get(0);
-//        LogService.getRoot().log(Level.INFO, String.valueOf(packs.size()));
         for (Pack pack:packs){
             pack1=mergePack(pack1,pack);
         }
-        LogService.getRoot().log(Level.INFO, "AAAA");
         outputPort.deliver(pack1);
     }
 }

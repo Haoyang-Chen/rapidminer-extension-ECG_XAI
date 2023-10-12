@@ -46,6 +46,10 @@
                 <key>Merge</key>
                 <class>com.rapidminer.extension.ecg_xai.operator.MergeOperator</class>
             </operator>
+            <operator>
+                <key>Relation</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.RelationOperator</class>
+            </operator>
         </group>
     </group>
 </operators>
