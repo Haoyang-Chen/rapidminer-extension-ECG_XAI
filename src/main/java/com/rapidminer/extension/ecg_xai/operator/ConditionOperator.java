@@ -47,8 +47,8 @@ public class ConditionOperator extends Operator {
         Boolean nodeYes=pack.yes;
         Model model=pack.getModel();
         Compare compare=new Compare(left,mid,right);
+        compare.setResultName(resultName);
         ConditionNode conditionNode=new ConditionNode(compare);
-        conditionNode.setResultName(resultName);
 
         Step step=model.getLastStep();
         conditionNode.addParent(step.getLastCon(),nodeYes);

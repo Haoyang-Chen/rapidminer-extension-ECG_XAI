@@ -5,6 +5,11 @@ public class ConditionGroup extends AbstractCondition{
     private AbstractCondition right;
     private String relation;
 
+    public ConditionGroup(){
+        left=null;
+        right=null;
+        relation=null;
+    }
     public ConditionGroup(AbstractCondition left, AbstractCondition right, String operator) {
         this.left = left;
         this.right = right;

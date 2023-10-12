@@ -53,13 +53,13 @@ public class DiscretizeOperator extends Operator {
         Compare compare_high=new Compare(feature,">",high);
         Compare compare_mid=new Compare(low+"<",feature,"<"+high);
 
+        compare_low.setResultName(lowResultName);
+        compare_high.setResultName(highResultName);
+        compare_mid.setResultName(midResultName);
+
         ConditionNode conditionNode_low = new ConditionNode(compare_low);
         ConditionNode conditionNode_high = new ConditionNode(compare_high);
         ConditionNode conditionNode_mid = new ConditionNode(compare_mid);
-
-        conditionNode_low.setResultName(lowResultName);
-        conditionNode_high.setResultName(highResultName);
-        conditionNode_mid.setResultName(midResultName);
 
         Step step=model.getLastStep();
         conditionNode_low.addParent(step.getLastCon(),nodeYes);
