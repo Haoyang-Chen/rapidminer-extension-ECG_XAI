@@ -2,6 +2,7 @@ package com.rapidminer.extension.ecg_xai.operator;
 
 import com.rapidminer.extension.ecg_xai.operator.names.FeatureName;
 import com.rapidminer.extension.ecg_xai.operator.names.ImpressionName;
+import com.rapidminer.extension.ecg_xai.operator.nodes.AbstractNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.ConditionNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.ImpressionNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.condition.Compare;
@@ -14,6 +15,7 @@ import com.rapidminer.parameter.*;
 import com.rapidminer.tools.OperatorService;
 
 import java.util.List;
+import java.util.Map;
 
 public class DiscretizeOperator extends Operator {
     private final InputPort inputPort = getInputPorts().createPort("In pack");
@@ -46,7 +48,7 @@ public class DiscretizeOperator extends Operator {
         String ifMid = getParameterAsString(PARAMETER_IF_MID);
         String ifLow = getParameterAsString(PARAMETER_IF_LOW);
         Pack pack = inputPort.getData(Pack.class);
-        Boolean nodeYes = pack.yes;
+//        Boolean nodeYes = pack.yes;
         Model model = pack.getModel();
 
         Compare compare_low=new Compare(feature,"<",low);
@@ -61,36 +63,68 @@ public class DiscretizeOperator extends Operator {
         ConditionNode conditionNode_high = new ConditionNode(compare_high);
         ConditionNode conditionNode_mid = new ConditionNode(compare_mid);
 
-        Step step=model.getLastStep();
-        conditionNode_low.addParent(step.getLastCon(),nodeYes);
-        conditionNode_high.addParent(step.getLastCon(),nodeYes);
-        conditionNode_mid.addParent(step.getLastCon(),nodeYes);
+//        Step step=model.getLastStep();
+        for (Map.Entry<AbstractNode, Boolean> entry : pack.current_parents.entrySet()){
+            AbstractNode parent=entry.getKey();
+            Boolean nodeYes=entry.getValue();
+            conditionNode_low.addParent(parent,nodeYes);
+            conditionNode_high.addParent(parent,nodeYes);
+            conditionNode_mid.addParent(parent,nodeYes);
+        }
+//        conditionNode_low.addParent(step.getLastCon(),nodeYes);
+//        conditionNode_high.addParent(step.getLastCon(),nodeYes);
+//        conditionNode_mid.addParent(step.getLastCon(),nodeYes);
 
-        step.addNode(conditionNode_low);
-        step.addNode(conditionNode_high);
-        step.addNode(conditionNode_mid);
+        Pack pack_high=new Pack(pack);
+        Pack pack_mid=new Pack(pack);
+        Pack pack_low=new Pack(pack);
+
+        pack_high.getModel().getLastStep().addNode(conditionNode_low);
+        pack_mid.getModel().getLastStep().addNode(conditionNode_mid);
+        pack_low.getModel().getLastStep().addNode(conditionNode_high);
+
+        conditionNode_low.runCheck();
+        conditionNode_high.runCheck();
+        conditionNode_mid.runCheck();
 
         if (!ifHigh.contains("--End--") && !ifHigh.contains("--MoveOn--")){
             ImpressionNode impressionNode_high = new ImpressionNode(ifHigh);
             impressionNode_high.addParent(conditionNode_high,true);
-            step.addNode(impressionNode_high);
+            pack_high.getModel().getLastStep().addNode(impressionNode_high);
         }
         if (!ifMid.contains("--End--") && !ifMid.contains("--MoveOn--")){
             ImpressionNode impressionNode_mid = new ImpressionNode(ifMid);
             impressionNode_mid.addParent(conditionNode_mid,true);
-            step.addNode(impressionNode_mid);
+            pack_mid.getModel().getLastStep().addNode(impressionNode_mid);
         }
         if (!ifLow.contains("--End--") && !ifLow.contains("--MoveOn--")){
             ImpressionNode impressionNode_low = new ImpressionNode(ifLow);
             impressionNode_low.addParent(conditionNode_low,true);
-            step.addNode(impressionNode_low);
+            pack_low.getModel().getLastStep().addNode(impressionNode_low);
         }
 
-        pack.setYes();
+        for (AbstractNode parent:conditionNode_high.parents){
+            pack_high.current_parents.remove(parent);
+        }
+        pack_high.current_parents.put(conditionNode_high,true);
 
-        outputPort_High.deliver(pack);
-        outputPort_Mid.deliver(pack);
-        outputPort_Low.deliver(pack);
+        for (AbstractNode parent:conditionNode_mid.parents){
+            pack_mid.current_parents.remove(parent);
+        }
+        pack_mid.current_parents.put(conditionNode_mid,true);
+
+        for (AbstractNode parent:conditionNode_low.parents){
+            pack_low.current_parents.remove(parent);
+        }
+        pack_low.current_parents.put(conditionNode_low,true);
+
+//        pack_high.setYes();
+//        pack_mid.setYes();
+//        pack_low.setYes();
+
+        outputPort_High.deliver(pack_high);
+        outputPort_Mid.deliver(pack_mid);
+        outputPort_Low.deliver(pack_low);
     }
 
     @Override

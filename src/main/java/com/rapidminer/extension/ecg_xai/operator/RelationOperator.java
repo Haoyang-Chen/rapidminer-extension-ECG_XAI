@@ -3,6 +3,7 @@ package com.rapidminer.extension.ecg_xai.operator;
 import com.rapidminer.extension.ecg_xai.operator.names.FeatureName;
 import com.rapidminer.extension.ecg_xai.operator.names.ImpressionName;
 import com.rapidminer.extension.ecg_xai.operator.names.LeadName;
+import com.rapidminer.extension.ecg_xai.operator.nodes.AbstractNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.ConditionNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.ImpressionNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.condition.Compare;
@@ -18,6 +19,7 @@ import com.rapidminer.parameter.conditions.BooleanParameterCondition;
 import com.rapidminer.tools.LogService;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.logging.Level;
 
@@ -48,7 +50,7 @@ public class RelationOperator extends Operator {
     @Override
     public void doWork() throws OperatorException {
         Pack pack=pacInput.getData(Pack.class);
-        Boolean nodeYes=pack.yes;
+//        Boolean nodeYes=pack.yes;
         Model model=pack.getModel();
 
         Step step=model.getLastStep();
@@ -83,7 +85,12 @@ public class RelationOperator extends Operator {
             conditionNode = new ConditionNode(temp_compare);
         }
 
-        conditionNode.addParent(step.getLastCon(),nodeYes);
+        for (Map.Entry<AbstractNode, Boolean> entry : pack.current_parents.entrySet()){
+            AbstractNode parent=entry.getKey();
+            Boolean nodeYes=entry.getValue();
+            conditionNode.addParent(parent,nodeYes);
+        }
+//        conditionNode.addParent(step.getLastCon(),nodeYes);
         step.addNode(conditionNode);
         conditionNode.Yesres=yes;
         conditionNode.Nores=no;
@@ -100,9 +107,13 @@ public class RelationOperator extends Operator {
             step.addNode(noImp);
         }
 
-        pack.setYes();
+        for (AbstractNode parent:conditionNode.parents){
+            pack.current_parents.remove(parent);
+//            LogService.getRoot().log(Level.INFO,"AA");
+        }
+        pack.current_parents.put(conditionNode,true);
         Pack noPack=new Pack(pack);
-        noPack.setNo();
+        noPack.current_parents.put(conditionNode,false);
         yesOutput.deliver(pack);
         noOutput.deliver(noPack);
     }

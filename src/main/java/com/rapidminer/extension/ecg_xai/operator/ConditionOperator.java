@@ -3,6 +3,7 @@ package com.rapidminer.extension.ecg_xai.operator;
 import com.rapidminer.extension.ecg_xai.operator.names.FeatureName;
 import com.rapidminer.extension.ecg_xai.operator.names.ImpressionName;
 import com.rapidminer.extension.ecg_xai.operator.names.LeadName;
+import com.rapidminer.extension.ecg_xai.operator.nodes.AbstractNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.ConditionNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.ImpressionNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.condition.Compare;
@@ -15,8 +16,11 @@ import com.rapidminer.parameter.ParameterType;
 import com.rapidminer.parameter.ParameterTypeEnumeration;
 import com.rapidminer.parameter.ParameterTypeString;
 import com.rapidminer.parameter.ParameterTypeStringCategory;
+import com.rapidminer.tools.LogService;
 
 import java.util.List;
+import java.util.Map;
+import java.util.logging.Level;
 
 public class ConditionOperator extends Operator {
     private final InputPort pacInput=getInputPorts().createPort("In pack");
@@ -44,14 +48,20 @@ public class ConditionOperator extends Operator {
         String no=getParameterAsString(PARAMETER_NO);
 
         Pack pack=pacInput.getData(Pack.class);
-        Boolean nodeYes=pack.yes;
+//        Boolean nodeYes=pack.yes;
         Model model=pack.getModel();
         Compare compare=new Compare(left,mid,right);
         compare.setResultName(resultName);
         ConditionNode conditionNode=new ConditionNode(compare);
 
         Step step=model.getLastStep();
-        conditionNode.addParent(step.getLastCon(),nodeYes);
+
+        for (Map.Entry<AbstractNode, Boolean> entry : pack.current_parents.entrySet()){
+            AbstractNode parent=entry.getKey();
+            Boolean nodeYes=entry.getValue();
+            conditionNode.addParent(parent,nodeYes);
+        }
+//        conditionNode.addParent(step.getLastCon(),nodeYes);
         step.addNode(conditionNode);
 
         conditionNode.Yesres=yes;
@@ -69,9 +79,14 @@ public class ConditionOperator extends Operator {
             step.addNode(noImp);
         }
 
-        pack.setYes();
+        for (AbstractNode parent:conditionNode.parents){
+            pack.current_parents.remove(parent);
+//            LogService.getRoot().log(Level.INFO,"AA");
+        }
+        pack.current_parents.put(conditionNode,true);
+
         Pack noPack=new Pack(pack);
-        noPack.setNo();
+        noPack.current_parents.put(conditionNode,false);
         yesOutput.deliver(pack);
         noOutput.deliver(noPack);
     }

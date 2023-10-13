@@ -45,12 +45,14 @@ public class MergeOperator extends Operator {
         nodes1.addAll(nodes2.subList(index_diff,len2));
         for(AbstractNode parent:parents){
             int id=parent.getIndex();
+//            LogService.getRoot().log(Level.INFO, parent.toString());
             if(nodes2.get(id).YesSon.contains(diff_node)){
                 nodes1.get(id).YesSon.add(diff_node);
             }else {
                 nodes1.get(id).NoSon.add(diff_node);
             }
         }
+        diff_node.runCheck();
         pack1.getModel().getLastStep().flushIndex();
         return pack1;
     }
@@ -60,9 +62,12 @@ public class MergeOperator extends Operator {
     public void doWork() throws OperatorException {
         List<Pack> packs=inputPortExtender.getData(Pack.class,true);
         Pack pack1=packs.get(0);
+        pack1.current_parents.clear();
         for (Pack pack:packs){
             pack1=mergePack(pack1,pack);
+            pack1.current_parents.put(pack.getModel().getLastStep().getLastCon(),pack.current_parents.get(pack.getModel().getLastStep().getLastCon()));
         }
+//        LogService.getRoot().log(Level.INFO,pack1.current_parents.toString());
         outputPort.deliver(pack1);
     }
 }

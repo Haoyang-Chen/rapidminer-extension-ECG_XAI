@@ -1,5 +1,8 @@
 package com.rapidminer.extension.ecg_xai.operator.nodes.condition;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Compare extends AbstractCondition{
     private String leftOperand;
     private String operator;
