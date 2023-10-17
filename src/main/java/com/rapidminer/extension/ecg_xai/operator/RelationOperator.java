@@ -60,7 +60,7 @@ public class RelationOperator extends Operator {
         String entries=getParameterAsString(PARAMETER_CON);
         String relation=getParameterAsString(PARAMETER_TYPE);
 
-        LogService.getRoot().log(Level.INFO,entries);
+//        LogService.getRoot().log(Level.INFO,entries);
         String[] entryList=ParameterTypeEnumeration.transformString2Enumeration(getParameterAsString(PARAMETER_CON));
         String temp_entry=entryList[0];
         String[] temp_tuple=ParameterTypeTupel.transformString2Tupel(temp_entry);
