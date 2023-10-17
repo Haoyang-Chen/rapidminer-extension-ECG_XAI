@@ -20,6 +20,7 @@ import com.rapidminer.tools.LogService;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.logging.Level;
 
 public class ConditionOperator extends Operator {
@@ -30,6 +31,7 @@ public class ConditionOperator extends Operator {
     private static final String PARAMETER_MID="middle operand";
     private static final String PARAMETER_RIGHT="right operand";
     private static final String PARAMETER_RESULT_NAME="result name";
+    private static final String PARAMETER_LEAD="Focused Lead";
     private static final String PARAMETER_YES="if yes";
     private static final String PARAMETER_NO="if no";
 
@@ -44,13 +46,19 @@ public class ConditionOperator extends Operator {
         String mid= getParameterAsString(PARAMETER_MID);
         String right= getParameterAsString(PARAMETER_RIGHT);
         String resultName=getParameterAsString(PARAMETER_RESULT_NAME);
+        String lead=getParameterAsString(PARAMETER_LEAD);
         String yes=getParameterAsString(PARAMETER_YES);
         String no=getParameterAsString(PARAMETER_NO);
 
         Pack pack=pacInput.getData(Pack.class);
 //        Boolean nodeYes=pack.yes;
         Model model=pack.getModel();
-        Compare compare=new Compare(left,mid,right);
+        Compare compare;
+        if (Objects.equals(lead, "None")) {
+            compare = new Compare(left, mid, right);
+        }else {
+            compare = new Compare(left, mid, right, lead);
+        }
         compare.setResultName(resultName);
         ConditionNode conditionNode=new ConditionNode(compare);
 
@@ -127,6 +135,12 @@ public class ConditionOperator extends Operator {
         types.add(new ParameterTypeString(
                 PARAMETER_RESULT_NAME,
                 "Define result name",
+                "None"
+        ));
+        types.add(new ParameterTypeStringCategory(
+                PARAMETER_LEAD,
+                "select the lead to focus on, can be None",
+                leadName.getLead(),
                 "None"
         ));
         types.add(new ParameterTypeEnumeration(PARAMETER_YES, "The list of Yes results", new ParameterTypeStringCategory(

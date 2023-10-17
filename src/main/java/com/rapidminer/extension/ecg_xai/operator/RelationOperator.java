@@ -72,7 +72,12 @@ public class RelationOperator extends Operator {
             for (int i = 1; i < entryList.length; i++) {
                 String entry = entryList[i];
                 String[] tuple = ParameterTypeTupel.transformString2Tupel(entry);
-                Compare compare = new Compare(tuple[0], tuple[1], tuple[2]);
+                Compare compare;
+                if (Objects.equals(tuple[4], "None")) {
+                    compare = new Compare(tuple[0], tuple[1], tuple[2]);
+                }else{
+                    compare = new Compare(tuple[0], tuple[1], tuple[2],tuple[4]);
+                }
                 compare.setResultName(tuple[3]);
                 if (condition.getLeft()==null){
                     condition=new ConditionGroup(temp_compare,compare,relation);
@@ -152,11 +157,9 @@ public class RelationOperator extends Operator {
 //        mid_opearnd.registerDependencyCondition(new BooleanParameterCondition(this,PARAMETER_IMP_OR_CON,true,true));
 //        right_operand.registerDependencyCondition(new BooleanParameterCondition(this,PARAMETER_IMP_OR_CON,true,true));
 
-//        ParameterTypeCheckBoxGroup leads=new ParameterTypeCheckBoxGroup(PARAMETER_LEADS,"select the leads to focus on");
-//        for (String lead: leadName.getLead()){leads.add("leads",lead);}
-//        leads.add("leads","Default");
+        ParameterTypeStringCategory leads=new ParameterTypeStringCategory(PARAMETER_LEADS,"select the leads to focus on",leadName.getLead(),"None");
 
-        ParameterTypeTupel enrty=new ParameterTypeTupel(PARAMETER_ENTRY,"define an entry", left_operand,mid_opearnd,right_operand,result_name);
+        ParameterTypeTupel enrty=new ParameterTypeTupel(PARAMETER_ENTRY,"define an entry", left_operand,mid_opearnd,right_operand,result_name,leads);
 
         List<ParameterType> types = super.getParameterTypes();
         types.add(new ParameterTypeStringCategory(PARAMETER_TYPE,"select the type of this opeartor",op_type,"single"));
