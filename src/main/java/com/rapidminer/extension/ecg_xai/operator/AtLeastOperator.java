@@ -16,6 +16,7 @@ import com.rapidminer.parameter.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class AtLeastOperator extends Operator {
     private final InputPort pacInput=getInputPorts().createPort("In pack");
@@ -28,6 +29,7 @@ public class AtLeastOperator extends Operator {
     private static final String PARAMETER_MID="middle operand";
     private static final String PARAMETER_RIGHT="right operand";
     private static final String PARAMETER_RESULT_NAME="result name";
+    private static final String PARAMETER_LEADS="Focused Leads";
     private static final String PARAMETER_YES="if yes";
     private static final String PARAMETER_NO="if no";
 
@@ -52,7 +54,12 @@ public class AtLeastOperator extends Operator {
 
         for (String entry : entryList) {
             String[] tuple = ParameterTypeTupel.transformString2Tupel(entry);
-            Compare compare = new Compare(tuple[0], tuple[1], tuple[2]);
+            Compare compare;
+            if (Objects.equals(tuple[4], "None")) {
+                compare = new Compare(tuple[0], tuple[1], tuple[2]);
+            }else{
+                compare = new Compare(tuple[0], tuple[1], tuple[2],tuple[4]);
+            }
             compare.setResultName(tuple[3]);
             atLeastNode.addCondition(compare);
         }
@@ -92,6 +99,7 @@ public class AtLeastOperator extends Operator {
     @Override
     public List<ParameterType> getParameterTypes() {
         FeatureName featureName=new FeatureName();
+        LeadName leadName=new LeadName();
         ImpressionName impressionName=new ImpressionName();
 
         String[] mid=new String[4];
@@ -110,7 +118,9 @@ public class AtLeastOperator extends Operator {
         ParameterTypeStringCategory right_operand=new ParameterTypeStringCategory(PARAMETER_RIGHT,"right operand",right);
         ParameterTypeString result_name=new ParameterTypeString(PARAMETER_RESULT_NAME, "Define result name", "None");
 
-        ParameterTypeTupel enrty=new ParameterTypeTupel(PARAMETER_ENTRY,"define an entry", left_operand,mid_opearnd,right_operand,result_name);
+        ParameterTypeStringCategory leads=new ParameterTypeStringCategory(PARAMETER_LEADS,"select the leads to focus on",leadName.getLead(),"None");
+
+        ParameterTypeTupel enrty=new ParameterTypeTupel(PARAMETER_ENTRY,"define an entry", left_operand,mid_opearnd,right_operand,result_name,leads);
 
         List<ParameterType> types = super.getParameterTypes();
         types.add(new ParameterTypeInt(PARAMETER_NUM,"At least () is true",1,10,2));
