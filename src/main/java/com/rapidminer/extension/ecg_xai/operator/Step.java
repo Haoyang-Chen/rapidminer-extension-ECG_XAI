@@ -57,7 +57,8 @@ public class Step {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(focus_leads).append("\n");
+        sb.append(name).append("\n");
+        sb.append("Focuse On: ").append(focus_leads).append("\n");
         sb.append("[Nodes: \n");
         for (AbstractNode node : nodes) {
             sb.append(node.toString()).append(", \n");

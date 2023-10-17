@@ -25,8 +25,7 @@ public class PrintOperator extends Operator {
     @Override
     public void doWork() throws OperatorException {
         Pack pack=pacInput.getData(Pack.class);
-        System.out.println(pack);
-        pacOutput.deliver(pack);
         LogService.getRoot().log(Level.INFO,pack.toString());
+        pacOutput.deliver(pack);
     }
 }

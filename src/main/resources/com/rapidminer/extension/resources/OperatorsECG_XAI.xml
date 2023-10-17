@@ -19,17 +19,17 @@
 <!--        </group>-->
         <group key="ECG_group">
             <operator>
-                <key>InitModel</key>
+                <key>Init Model</key>
                 <class>com.rapidminer.extension.ecg_xai.operator.InitPackOperator</class>
                 <icon>start.png</icon>
             </operator>
             <operator>
-                <key>PrintModel</key>
+                <key>Print Model</key>
                 <class>com.rapidminer.extension.ecg_xai.operator.PrintOperator</class>
                 <icon>pri.png</icon>
             </operator>
             <operator>
-                <key>StepStart</key>
+                <key>New Step</key>
                 <class>com.rapidminer.extension.ecg_xai.operator.StepStartOpeartor</class>
                 <icon>add1.png</icon>
             </operator>
@@ -54,7 +54,7 @@
                 <icon>rel.png</icon>
             </operator>
             <operator>
-                <key>AtLeast</key>
+                <key>At Least</key>
                 <class>com.rapidminer.extension.ecg_xai.operator.AtLeastOperator</class>
 <!--                <icon>rel.png</icon>-->
             </operator>

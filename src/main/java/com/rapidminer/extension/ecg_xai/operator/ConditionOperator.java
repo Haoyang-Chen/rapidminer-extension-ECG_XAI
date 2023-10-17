@@ -27,13 +27,13 @@ public class ConditionOperator extends Operator {
     private final InputPort pacInput=getInputPorts().createPort("In pack");
     private final OutputPort yesOutput=getOutputPorts().createPort("yes");
     private final OutputPort noOutput=getOutputPorts().createPort("no");
-    private static final String PARAMETER_LEFT="left operand";
-    private static final String PARAMETER_MID="middle operand";
-    private static final String PARAMETER_RIGHT="right operand";
-    private static final String PARAMETER_RESULT_NAME="result name";
+    private static final String PARAMETER_LEFT="Left Operand";
+    private static final String PARAMETER_MID="Middle Operand";
+    private static final String PARAMETER_RIGHT="Right Operand";
+    private static final String PARAMETER_RESULT_NAME="Result Name";
     private static final String PARAMETER_LEAD="Focused Lead";
-    private static final String PARAMETER_YES="if yes";
-    private static final String PARAMETER_NO="if no";
+    private static final String PARAMETER_YES="If Yes";
+    private static final String PARAMETER_NO="If No";
 
 
     public ConditionOperator(OperatorDescription description) {

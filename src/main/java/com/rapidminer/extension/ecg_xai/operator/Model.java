@@ -30,15 +30,14 @@ public class Model {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Model [ ");
+        sb.append("Model \n");
         for (Step step : steps) {
-            sb.append("{\n Step").append(steps.indexOf(step) + 1).append(": ");
-            sb.append(step.toString()).append("\n }, \n");
+            sb.append("Step").append(steps.indexOf(step) + 1).append(": \n{\n");
+            sb.append(step.toString()).append("\n }, \n \n");
         }
         if (!steps.isEmpty()) {
             sb.delete(sb.length() - 2, sb.length());
         }
-        sb.append("]");
         return sb.toString();
     }
 
