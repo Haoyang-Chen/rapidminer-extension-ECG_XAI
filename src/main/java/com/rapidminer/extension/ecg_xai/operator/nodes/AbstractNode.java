@@ -1,5 +1,8 @@
 package com.rapidminer.extension.ecg_xai.operator.nodes;
 
+import com.rapidminer.extension.ecg_xai.operator.nodes.condition.AbstractCondition;
+import com.rapidminer.extension.ecg_xai.operator.nodes.condition.Compare;
+
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -45,6 +48,10 @@ public abstract class AbstractNode {
 
     public Integer getIndex(){
         return this.index;
+    }
+
+    public AbstractCondition getCondition(){
+        return null;
     }
 
     public void setType(String type){

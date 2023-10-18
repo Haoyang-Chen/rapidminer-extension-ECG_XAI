@@ -63,6 +63,11 @@
                 <class>com.rapidminer.extension.ecg_xai.operator.DuplicateOperator</class>
                 <!--                <icon>rel.png</icon>-->
             </operator>
+            <operator>
+                <key>Combine</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.CombineOperator</class>
+                <!--                <icon>rel.png</icon>-->
+            </operator>
         </group>
     </group>
 </operators>

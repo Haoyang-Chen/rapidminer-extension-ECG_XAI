@@ -1,6 +1,7 @@
 package com.rapidminer.extension.ecg_xai.operator.nodes;
 
 import com.rapidminer.extension.ecg_xai.operator.nodes.condition.AbstractCondition;
+import com.rapidminer.extension.ecg_xai.operator.nodes.condition.Compare;
 import com.rapidminer.extension.ecg_xai.operator.nodes.condition.Exist;
 
 public class ConditionNode extends AbstractNode{
@@ -15,6 +16,10 @@ public class ConditionNode extends AbstractNode{
         this.condition=condition;
     }
 
+    @Override
+    public AbstractCondition getCondition() {
+        return this.condition;
+    }
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
