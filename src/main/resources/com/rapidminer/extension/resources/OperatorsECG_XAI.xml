@@ -58,6 +58,11 @@
                 <class>com.rapidminer.extension.ecg_xai.operator.AtLeastOperator</class>
 <!--                <icon>rel.png</icon>-->
             </operator>
+            <operator>
+                <key>Duplicate Pack</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.DuplicateOperator</class>
+                <!--                <icon>rel.png</icon>-->
+            </operator>
         </group>
     </group>
 </operators>
