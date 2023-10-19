@@ -6,6 +6,7 @@ import com.rapidminer.extension.ecg_xai.operator.nodes.AtLeastNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.ConditionNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.ImpressionNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.condition.AbstractCondition;
+import com.rapidminer.extension.ecg_xai.operator.nodes.condition.Compare;
 import com.rapidminer.extension.ecg_xai.operator.nodes.condition.ConditionGroup;
 import com.rapidminer.io.process.conditions.ParameterEqualsCondition;
 import com.rapidminer.operator.Operator;
@@ -16,10 +17,12 @@ import com.rapidminer.operator.ports.OutputPort;
 import com.rapidminer.parameter.*;
 import com.rapidminer.parameter.conditions.BooleanParameterCondition;
 import com.rapidminer.parameter.conditions.EqualStringCondition;
+import com.rapidminer.tools.LogService;
 import com.rapidminer.tools.OperatorService;
 
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
 
 public class CombineOperator extends Operator {
     private final InputPortExtender inputPortExtender = new InputPortExtender("In pack", getInputPorts());
@@ -71,6 +74,7 @@ public class CombineOperator extends Operator {
                             conditionGroup.setRight(condition);
                         } else{
                             conditionGroup=new ConditionGroup(conditionGroup,condition,relation);
+                            ((ConditionNode) conditionNode).setCondition(conditionGroup);
                         }
                         for (AbstractNode grandParent:node.parents){
                             if(grandParent.YesSon.contains(node)){
