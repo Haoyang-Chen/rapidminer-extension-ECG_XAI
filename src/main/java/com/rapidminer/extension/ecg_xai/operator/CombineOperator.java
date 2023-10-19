@@ -5,6 +5,7 @@ import com.rapidminer.extension.ecg_xai.operator.nodes.AbstractNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.AtLeastNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.ImpressionNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.condition.AbstractCondition;
+import com.rapidminer.io.process.conditions.ParameterEqualsCondition;
 import com.rapidminer.operator.Operator;
 import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
@@ -14,6 +15,8 @@ import com.rapidminer.parameter.ParameterType;
 import com.rapidminer.parameter.ParameterTypeEnumeration;
 import com.rapidminer.parameter.ParameterTypeInt;
 import com.rapidminer.parameter.ParameterTypeStringCategory;
+import com.rapidminer.parameter.conditions.BooleanParameterCondition;
+import com.rapidminer.parameter.conditions.EqualStringCondition;
 import com.rapidminer.tools.OperatorService;
 
 import java.util.List;
@@ -23,10 +26,12 @@ public class CombineOperator extends Operator {
     private final InputPortExtender inputPortExtender = new InputPortExtender("In pack", getInputPorts());
     private final OutputPort yesOutput=getOutputPorts().createPort("yes");
     private final OutputPort noOutput=getOutputPorts().createPort("no");
+    private static final String PARAMETER_TYPE="Type";
 
     private static final String PARAMETER_YES="If Yes";
     private static final String PARAMETER_NO="If No";
     private static final String PARAMETER_NUM="At Least () Satisfied";
+    private static final String PARAMETER_RE="Relation";
     public CombineOperator(OperatorDescription description) {
         super(description);
         inputPortExtender.ensureMinimumNumberOfPorts(1);
@@ -90,9 +95,26 @@ public class CombineOperator extends Operator {
 
     @Override
     public List<ParameterType> getParameterTypes() {
+        String[] type=new String[2];
+        type[0]="Relation";
+        type[1]="At Least";
+
+        String[] relation_type =new String[2];
+        relation_type[0]="and";
+        relation_type[1]="or";
+
         ImpressionName impressionName=new ImpressionName();
         List<ParameterType> types = super.getParameterTypes();
-        types.add(new ParameterTypeInt(PARAMETER_NUM,"At least () is true",1,10,2));
+        ParameterTypeStringCategory opType=new ParameterTypeStringCategory(PARAMETER_TYPE, "Choose Combination Type", type);
+        ParameterTypeStringCategory reType=new ParameterTypeStringCategory(PARAMETER_RE, "Choose Relation Type", relation_type);
+        ParameterTypeInt numType=new ParameterTypeInt(PARAMETER_NUM,"At least () is true",1,10,2);
+        reType.registerDependencyCondition(new EqualStringCondition(this, PARAMETER_TYPE, true, "Relation"));
+        numType.registerDependencyCondition(new EqualStringCondition(this, PARAMETER_TYPE, true, "At Least"));
+
+        types.add(opType);
+        types.add(reType);
+        types.add(numType);
+
         types.add(new ParameterTypeEnumeration(PARAMETER_YES, "The list of Yes results",
                 new ParameterTypeStringCategory(
                         PARAMETER_YES,
