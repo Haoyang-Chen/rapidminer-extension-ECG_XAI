@@ -114,7 +114,6 @@ public class RelationOperator extends Operator {
 
         for (AbstractNode parent:conditionNode.parents){
             pack.current_parents.remove(parent);
-//            LogService.getRoot().log(Level.INFO,"AA");
         }
         pack.current_parents.put(conditionNode,true);
         Pack noPack=new Pack(pack);

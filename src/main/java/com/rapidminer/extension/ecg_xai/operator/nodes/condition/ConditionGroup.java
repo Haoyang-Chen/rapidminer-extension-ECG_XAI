@@ -16,6 +16,18 @@ public class ConditionGroup extends AbstractCondition{
         this.relation = operator;
     }
 
+    public void setLeft(AbstractCondition left) {
+        this.left = left;
+    }
+
+    public void setRight(AbstractCondition right) {
+        this.right = right;
+    }
+
+    public void setRelation(String relation) {
+        this.relation = relation;
+    }
+
     public String getOperator() {
         return relation;
     }
