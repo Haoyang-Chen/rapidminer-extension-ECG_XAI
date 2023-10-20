@@ -53,7 +53,7 @@ public class DiscretizeOperator extends Operator {
 
         Compare compare_low=new Compare(feature,"<",low);
         Compare compare_high=new Compare(feature,">",high);
-        Compare compare_mid=new Compare(low+"<",feature,"<"+high);
+        Compare compare_mid=new Compare(low+" <",feature,"< "+high);
 
         compare_low.setResultName(lowResultName);
         compare_high.setResultName(highResultName);
