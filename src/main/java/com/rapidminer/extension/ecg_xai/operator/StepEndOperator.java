@@ -14,10 +14,10 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.logging.Level;
 
-public class MergeOperator extends Operator {
+public class StepEndOperator extends Operator {
     private final InputPortExtender inputPortExtender = new InputPortExtender("Input", getInputPorts());
     private final OutputPort outputPort = getOutputPorts().createPort("Output");
-    public MergeOperator(OperatorDescription description) {
+    public StepEndOperator(OperatorDescription description) {
         super(description);
         inputPortExtender.ensureMinimumNumberOfPorts(2);
         inputPortExtender.start();
@@ -34,8 +34,8 @@ public class MergeOperator extends Operator {
             if(nodes1.get(i)==nodes2.get(i)){
                 continue;
             }else{
-                    index_diff = i;
-                    break;
+                index_diff = i;
+                break;
             }
         }
 

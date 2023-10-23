@@ -18,21 +18,13 @@
 <!--            </operator>-->
 <!--        </group>-->
         <group key="ECG_group">
-            <operator>
-                <key>Init Model</key>
-                <class>com.rapidminer.extension.ecg_xai.operator.InitPackOperator</class>
-                <icon>start.png</icon>
-            </operator>
+
             <operator>
                 <key>Print Model</key>
                 <class>com.rapidminer.extension.ecg_xai.operator.PrintOperator</class>
                 <icon>pri.png</icon>
             </operator>
-            <operator>
-                <key>New Step</key>
-                <class>com.rapidminer.extension.ecg_xai.operator.StepStartOpeartor</class>
-                <icon>add1.png</icon>
-            </operator>
+
             <operator>
                 <key>Condition</key>
                 <class>com.rapidminer.extension.ecg_xai.operator.ConditionOperator</class>
@@ -67,6 +59,34 @@
                 <key>Combine</key>
                 <class>com.rapidminer.extension.ecg_xai.operator.CombineOperator</class>
                 <icon>joi.png</icon>
+            </operator>
+            <operator>
+                <key>NewCon</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.NewConOperator</class>
+            </operator>
+        </group>
+
+        <group key="Control">
+            <operator>
+                <key>Init Model</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.InitPackOperator</class>
+                <icon>start.png</icon>
+            </operator>
+            <operator>
+                <key>Step Start</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.StepStartOpeartor</class>
+                <icon>add1.png</icon>
+            </operator>
+            <operator>
+                <key>Step End</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.StepEndOperator</class>
+            </operator>
+        </group>
+
+        <group key="Result">
+            <operator>
+                <key>Result</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.ResultOperator</class>
             </operator>
         </group>
     </group>

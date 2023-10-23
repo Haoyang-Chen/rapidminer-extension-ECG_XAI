@@ -38,6 +38,10 @@ public class Compare extends AbstractCondition{
         return rightOperand;
     }
 
+    public String getLead() {
+        return lead;
+    }
+
     @Override
     public String toString() {
         if (lead==null) {

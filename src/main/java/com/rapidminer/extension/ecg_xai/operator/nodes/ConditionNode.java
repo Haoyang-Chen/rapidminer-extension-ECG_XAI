@@ -12,6 +12,15 @@ public class ConditionNode extends AbstractNode{
         this.condition=condition;
     }
 
+//    public boolean EqualCon(AbstractCondition condition){
+//        if (this.condition instanceof Compare && condition instanceof Compare){
+//            Compare thisCon=(Compare)this.condition;
+//            Compare thatCon=(Compare)condition;
+//            return thisCon.getLeftOperand().equals(thatCon.getLeftOperand()) && thisCon.getOperator().equals(thatCon.getOperator()) && thisCon.getRightOperand().equals(thatCon.getRightOperand());
+//        }
+//        return false;
+//    }
+
     public void setCondition(AbstractCondition condition) {
         this.condition=condition;
     }
