@@ -26,7 +26,8 @@ public class Pack extends ResultObjectAdapter {
     }
 
     public Pack(Pack pack){
-        this.model=new Model(pack.getModel());
+//        this.model=new Model(pack.getModel());
+        this.model=pack.getModel();
 //        this.yes=true;
         this.current_parents=new HashMap<>();
         this.current_parents.putAll(pack.current_parents);

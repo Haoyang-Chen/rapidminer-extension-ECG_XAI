@@ -77,10 +77,10 @@
                 <class>com.rapidminer.extension.ecg_xai.operator.StepStartOpeartor</class>
                 <icon>add1.png</icon>
             </operator>
-            <operator>
-                <key>Step End</key>
-                <class>com.rapidminer.extension.ecg_xai.operator.StepEndOperator</class>
-            </operator>
+<!--            <operator>-->
+<!--                <key>Step End</key>-->
+<!--                <class>com.rapidminer.extension.ecg_xai.operator.StepEndOperator</class>-->
+<!--            </operator>-->
         </group>
 
         <group key="Result">
