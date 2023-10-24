@@ -62,6 +62,15 @@ public class StepEndOperator extends Operator {
 
     @Override
     public void doWork() throws OperatorException {
+//        merge: 不再按列表顺序一个个检查，按深度优先搜索
+//
+//        一共两棵树，首先匹配根节点，一致后匹配子节点，首先对于所有根节点的子节点，如果有节点在被动树上而不在模版树，则直接归并所有子子节点并继续检查
+//
+//        如果所有节点都同时存在于两边，则对每棵子树再次检查
+//
+//        保证每次用被动树更新模版树
+
+
         List<Pack> packs=inputPortExtender.getData(Pack.class,true);
         Pack pack1=packs.get(0);
         pack1.current_parents.clear();
