@@ -17,48 +17,8 @@
 <!--                <class>com.rapidminer.extension.ecg_xai.operator.MyOwnOperator</class>-->
 <!--            </operator>-->
 <!--        </group>-->
-        <group key="ECG_group">
 
-            <operator>
-                <key>Print Model</key>
-                <class>com.rapidminer.extension.ecg_xai.operator.PrintOperator</class>
-                <icon>pri.png</icon>
-            </operator>
-
-
-            <operator>
-                <key>Discretizer</key>
-                <class>com.rapidminer.extension.ecg_xai.operator.DiscretizeOperator</class>
-                <icon>three.png</icon>
-            </operator>
-<!--            <operator>-->
-<!--                <key>Merge</key>-->
-<!--                <class>com.rapidminer.extension.ecg_xai.operator.MergeOperator</class>-->
-<!--                <icon>merge_icon.png</icon>-->
-<!--            </operator>-->
-            <operator>
-                <key>Relation</key>
-                <class>com.rapidminer.extension.ecg_xai.operator.RelationOperator</class>
-                <icon>rel.png</icon>
-            </operator>
-            <operator>
-                <key>At Least</key>
-                <class>com.rapidminer.extension.ecg_xai.operator.AtLeastOperator</class>
-<!--                <icon>rel.png</icon>-->
-            </operator>
-            <operator>
-                <key>Duplicate Pack</key>
-                <class>com.rapidminer.extension.ecg_xai.operator.DuplicateOperator</class>
-                <icon>dup.png</icon>
-            </operator>
-            <operator>
-                <key>Combine</key>
-                <class>com.rapidminer.extension.ecg_xai.operator.CombineOperator</class>
-                <icon>joi.png</icon>
-            </operator>
-        </group>
-
-        <group key="Operartors">
+        <group key="Operators">
             <operator>
                 <key>Condition</key>
                 <class>com.rapidminer.extension.ecg_xai.operator.ConditionOperator</class>
@@ -67,7 +27,7 @@
             <operator>
                 <key>IsTrue</key>
                 <class>com.rapidminer.extension.ecg_xai.operator.ExistOperator</class>
-                <!--                <icon>gt.png</icon> -->
+                <icon>tru.png</icon>
             </operator>
         </group>
 
@@ -82,12 +42,33 @@
                 <class>com.rapidminer.extension.ecg_xai.operator.StepStartOpeartor</class>
                 <icon>add1.png</icon>
             </operator>
+            <operator>
+                <key>Duplicate Pack</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.DuplicateOperator</class>
+                <icon>dup.png</icon>
+            </operator>
+            <operator>
+                <key>Combine</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.CombineOperator</class>
+                <icon>joi.png</icon>
+            </operator>
+            <operator>
+                <key>Print Model</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.PrintOperator</class>
+                <icon>pri.png</icon>
+            </operator>
+            <operator>
+                <key>Discretizer</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.DiscretizeOperator</class>
+                <icon>three.png</icon>
+            </operator>
         </group>
 
         <group key="Result">
             <operator>
                 <key>Result</key>
                 <class>com.rapidminer.extension.ecg_xai.operator.ResultOperator</class>
+                <icon>che.png</icon>
             </operator>
         </group>
     </group>
