@@ -30,8 +30,8 @@ public class CombineOperator extends Operator {
     private final OutputPort noOutput=getOutputPorts().createPort("no");
     private static final String PARAMETER_TYPE="Type";
 
-    private static final String PARAMETER_YES="If Yes";
-    private static final String PARAMETER_NO="If No";
+//    private static final String PARAMETER_YES="If Yes Move On";
+//    private static final String PARAMETER_NO="If No Move On";
     private static final String PARAMETER_NUM="At Least () Satisfied";
     private static final String PARAMETER_RESULT_NAME="Result Name";
     private static final String PARAMETER_RE="Relation";
@@ -48,8 +48,8 @@ public class CombineOperator extends Operator {
         Model model=pack.getModel();
         Step step=model.getLastStep();
 
-        String yes=getParameterAsString(PARAMETER_YES);
-        String no=getParameterAsString(PARAMETER_NO);
+//        boolean yes=getParameterAsBoolean(PARAMETER_YES);
+//        boolean no=getParameterAsBoolean(PARAMETER_NO);
 
         String type=getParameterAsString(PARAMETER_TYPE);
 
@@ -119,22 +119,15 @@ public class CombineOperator extends Operator {
                 break;
         }
 
-        conditionNode.Yesres=yes;
-        conditionNode.Nores=no;
+//        conditionNode.YesMove = yes;
+//        conditionNode.NoMove = no;
         step.addNode(conditionNode);
-        conditionNode.runCheck();
-        if (!yes.contains("--End--") && !yes.contains("--MoveOn--")){
-            ImpressionNode yesImp=new ImpressionNode(yes);
-            yesImp.addParent(conditionNode,true);
-            step.addNode(yesImp);
-        }
-        if (!no.contains("--End--") && !no.contains("--MoveOn--")){
-            ImpressionNode noImp=new ImpressionNode(no);
-            noImp.addParent(conditionNode,false);
-            step.addNode(noImp);
-        }
-        pack.current_parents.put(conditionNode,true);
+//        conditionNode.runCheck();
+
+
+        pack.current_parents.clear();
         Pack noPack=new Pack(pack);
+        pack.current_parents.put(conditionNode,true);
         noPack.current_parents.put(conditionNode,false);
         yesOutput.deliver(pack);
         noOutput.deliver(noPack);
@@ -166,20 +159,8 @@ public class CombineOperator extends Operator {
         types.add(numType);
         types.add(result_name);
 
-        types.add(new ParameterTypeEnumeration(PARAMETER_YES, "The list of Yes results",
-                new ParameterTypeStringCategory(
-                        PARAMETER_YES,
-                        "Choose Yes Path",
-                        impressionName.getImpressions(),
-                        "--End--"
-                )));
-        types.add(new ParameterTypeEnumeration(PARAMETER_NO, "The list of Yes results",
-                new ParameterTypeStringCategory(
-                        PARAMETER_NO,
-                        "Choose No Path",
-                        impressionName.getImpressions(),
-                        "--End--"
-                )));
+//        types.add(new ParameterTypeBoolean(PARAMETER_YES, "If Yes Move On", false, false));
+//        types.add(new ParameterTypeBoolean(PARAMETER_NO, "If No Move On", false, false));
         return types;
     }
 }

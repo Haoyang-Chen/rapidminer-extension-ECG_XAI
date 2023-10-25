@@ -17,7 +17,6 @@ import java.util.Map;
 
 public class ResultOperator extends Operator {
     private final InputPort Input=getInputPorts().createPort("In pack");
-    private final OutputPort Output=getOutputPorts().createPort("Out pack");
     private static final String PARAMETER_NAME="Result Name";
     public ResultOperator(OperatorDescription description) {
         super(description);
@@ -36,7 +35,7 @@ public class ResultOperator extends Operator {
             impNode.addParent(parent,nodeYes);
         }
         step.addNode(impNode);
-        Output.deliver(new Pack(pack));
+        this.rename(name);
     }
 
     @Override

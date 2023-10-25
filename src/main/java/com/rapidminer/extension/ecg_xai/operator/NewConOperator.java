@@ -29,8 +29,8 @@ public class NewConOperator extends Operator {
     private static final String PARAMETER_RIGHT="Right Operand";
     private static final String PARAMETER_RESULT_NAME="Result Name";
     private static final String PARAMETER_LEAD="Focused Lead";
-    private static final String PARAMETER_YES="If Yes Move On";
-    private static final String PARAMETER_NO="If No Move On";
+//    private static final String PARAMETER_YES="If Yes Move On";
+//    private static final String PARAMETER_NO="If No Move On";
 
 
     public NewConOperator(OperatorDescription description) {
@@ -44,8 +44,8 @@ public class NewConOperator extends Operator {
         String right= getParameterAsString(PARAMETER_RIGHT);
         String resultName=getParameterAsString(PARAMETER_RESULT_NAME);
         String lead=getParameterAsString(PARAMETER_LEAD);
-        boolean yes=getParameterAsBoolean(PARAMETER_YES);
-        boolean no=getParameterAsBoolean(PARAMETER_NO);
+//        boolean yes=getParameterAsBoolean(PARAMETER_YES);
+//        boolean no=getParameterAsBoolean(PARAMETER_NO);
 
         Pack pack=pacInput.getData(Pack.class);
         Model model=pack.getModel();
@@ -55,6 +55,7 @@ public class NewConOperator extends Operator {
         }else {
             compare = new Compare(left, mid, right, lead);
         }
+        this.rename(compare.toString());
         compare.setResultName(resultName);
         ConditionNode conditionNode=new ConditionNode(compare);
 
@@ -68,9 +69,9 @@ public class NewConOperator extends Operator {
 
         step.addNode(conditionNode);
 
-        conditionNode.YesMove=yes;
-        conditionNode.NoMove=no;
-        conditionNode.runNewCheck();
+//        conditionNode.YesMove=yes;
+//        conditionNode.NoMove=no;
+//        conditionNode.runNewCheck();
 
 //        if (!yes.contains("--End--") && !yes.contains("--MoveOn--")){
 //            ImpressionNode yesImp=new ImpressionNode(yes);
@@ -139,8 +140,8 @@ public class NewConOperator extends Operator {
                 leadName.getLead(),
                 "None"
         ));
-        types.add(new ParameterTypeBoolean(PARAMETER_YES, "If Yes Move On", false, false));
-        types.add(new ParameterTypeBoolean(PARAMETER_NO, "If No Move On", false, false));
+//        types.add(new ParameterTypeBoolean(PARAMETER_YES, "If Yes Move On", false, false));
+//        types.add(new ParameterTypeBoolean(PARAMETER_NO, "If No Move On", false, false));
 
         return types;
     }

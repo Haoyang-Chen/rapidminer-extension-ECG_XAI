@@ -10,7 +10,7 @@ public class StartNode extends AbstractNode{
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(getIndex().toString()).append(": ");
-        sb.append("[StartNode]");
+        sb.append("{[StartNode]");
         sb.append(", [");
         for (AbstractNode yesSon : YesSon) {
             sb.append(yesSon.getIndex()).append(", ");
@@ -19,7 +19,7 @@ public class StartNode extends AbstractNode{
             sb.delete(sb.length() - 2, sb.length());
         }
         sb.append("]");
-        sb.append("]");
+        sb.append("}");
         return sb.toString();
     }
 

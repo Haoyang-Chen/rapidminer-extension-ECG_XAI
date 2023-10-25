@@ -44,9 +44,9 @@ public class DiscretizeOperator extends Operator {
         String highResultName = getParameterAsString(PARAMETER_HIGH_RESULT_NAME);
         String midResultName = getParameterAsString(PARAMETER_MID_RESULT_NAME);
         String lowResultName = getParameterAsString(PARAMETER_LOW_RESULT_NAME);
-        String ifHigh = getParameterAsString(PARAMETER_IF_HIGH);
-        String ifMid = getParameterAsString(PARAMETER_IF_MID);
-        String ifLow = getParameterAsString(PARAMETER_IF_LOW);
+//        String ifHigh = getParameterAsString(PARAMETER_IF_HIGH);
+//        String ifMid = getParameterAsString(PARAMETER_IF_MID);
+//        String ifLow = getParameterAsString(PARAMETER_IF_LOW);
         Pack pack = inputPort.getData(Pack.class);
 //        Boolean nodeYes = pack.yes;
         Model model = pack.getModel();
@@ -82,26 +82,26 @@ public class DiscretizeOperator extends Operator {
         pack_high.getModel().getLastStep().addNode(conditionNode_low);
         pack_mid.getModel().getLastStep().addNode(conditionNode_mid);
         pack_low.getModel().getLastStep().addNode(conditionNode_high);
+//
+//        conditionNode_low.runCheck();
+//        conditionNode_high.runCheck();
+//        conditionNode_mid.runCheck();
 
-        conditionNode_low.runCheck();
-        conditionNode_high.runCheck();
-        conditionNode_mid.runCheck();
-
-        if (!ifHigh.contains("--End--") && !ifHigh.contains("--MoveOn--")){
-            ImpressionNode impressionNode_high = new ImpressionNode(ifHigh);
-            impressionNode_high.addParent(conditionNode_high,true);
-            pack_high.getModel().getLastStep().addNode(impressionNode_high);
-        }
-        if (!ifMid.contains("--End--") && !ifMid.contains("--MoveOn--")){
-            ImpressionNode impressionNode_mid = new ImpressionNode(ifMid);
-            impressionNode_mid.addParent(conditionNode_mid,true);
-            pack_mid.getModel().getLastStep().addNode(impressionNode_mid);
-        }
-        if (!ifLow.contains("--End--") && !ifLow.contains("--MoveOn--")){
-            ImpressionNode impressionNode_low = new ImpressionNode(ifLow);
-            impressionNode_low.addParent(conditionNode_low,true);
-            pack_low.getModel().getLastStep().addNode(impressionNode_low);
-        }
+//        if (!ifHigh.contains("--End--") && !ifHigh.contains("--MoveOn--")){
+//            ImpressionNode impressionNode_high = new ImpressionNode(ifHigh);
+//            impressionNode_high.addParent(conditionNode_high,true);
+//            pack_high.getModel().getLastStep().addNode(impressionNode_high);
+//        }
+//        if (!ifMid.contains("--End--") && !ifMid.contains("--MoveOn--")){
+//            ImpressionNode impressionNode_mid = new ImpressionNode(ifMid);
+//            impressionNode_mid.addParent(conditionNode_mid,true);
+//            pack_mid.getModel().getLastStep().addNode(impressionNode_mid);
+//        }
+//        if (!ifLow.contains("--End--") && !ifLow.contains("--MoveOn--")){
+//            ImpressionNode impressionNode_low = new ImpressionNode(ifLow);
+//            impressionNode_low.addParent(conditionNode_low,true);
+//            pack_low.getModel().getLastStep().addNode(impressionNode_low);
+//        }
 
         for (AbstractNode parent:conditionNode_high.parents){
             pack_high.current_parents.remove(parent);
@@ -138,24 +138,24 @@ public class DiscretizeOperator extends Operator {
         types.add(new ParameterTypeString(PARAMETER_HIGH_RESULT_NAME,"High Result Name",null));
         types.add(new ParameterTypeString(PARAMETER_MID_RESULT_NAME,"Mid Result Name",null));
         types.add(new ParameterTypeString(PARAMETER_LOW_RESULT_NAME,"Low Result Name",null));
-        types.add(new ParameterTypeEnumeration(PARAMETER_IF_HIGH,"If High",new ParameterTypeStringCategory(
-                PARAMETER_IF_HIGH,
-                "Choose High Path",
-                impressionName.getImpressions(),
-                "--End--"
-        )));
-        types.add(new ParameterTypeEnumeration(PARAMETER_IF_MID,"If Mid",new ParameterTypeStringCategory(
-                PARAMETER_IF_MID,
-                "Choose Mid Path",
-                impressionName.getImpressions(),
-                "--End--"
-        )));
-        types.add(new ParameterTypeEnumeration(PARAMETER_IF_LOW,"If Low",new ParameterTypeStringCategory(
-                PARAMETER_IF_LOW,
-                "Choose Low Path",
-                impressionName.getImpressions(),
-                "--End--"
-        )));
+//        types.add(new ParameterTypeEnumeration(PARAMETER_IF_HIGH,"If High",new ParameterTypeStringCategory(
+//                PARAMETER_IF_HIGH,
+//                "Choose High Path",
+//                impressionName.getImpressions(),
+//                "--End--"
+//        )));
+//        types.add(new ParameterTypeEnumeration(PARAMETER_IF_MID,"If Mid",new ParameterTypeStringCategory(
+//                PARAMETER_IF_MID,
+//                "Choose Mid Path",
+//                impressionName.getImpressions(),
+//                "--End--"
+//        )));
+//        types.add(new ParameterTypeEnumeration(PARAMETER_IF_LOW,"If Low",new ParameterTypeStringCategory(
+//                PARAMETER_IF_LOW,
+//                "Choose Low Path",
+//                impressionName.getImpressions(),
+//                "--End--"
+//        )));
         return types;
     }
 

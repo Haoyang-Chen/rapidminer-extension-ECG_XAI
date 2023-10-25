@@ -33,11 +33,14 @@ public class StepStartOpeartor extends Operator {
 
     @Override
     public void doWork() throws OperatorException {
+        String name=getParameterAsString(PARAMETER_NAME);
         Pack pack=pacInput.getData(Pack.class);
         pack.current_parents.clear();
         Model model=pack.getModel();
         Step step=new Step();
-        step.setName(getParameterAsString(PARAMETER_NAME));
+        step.setName(name);
+        this.rename(name);
+
         step.focus_leads=Arrays.toString(stringToSelection(getParameterAsString(PARAMETER_LEADS)));
         model.addStep(step);
         pack.current_parents.put(step.nodes.get(0),true);

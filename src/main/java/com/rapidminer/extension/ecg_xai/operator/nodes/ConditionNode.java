@@ -33,7 +33,7 @@ public class ConditionNode extends AbstractNode{
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(getIndex().toString()).append(": ");
-        sb.append("[ConditionNode], ").append(condition);
+        sb.append("{[ConditionNode], ").append(condition);
         sb.append(", ").append(condition.getResultName()).append(", [");
 
         for (AbstractNode parent : parents) {
@@ -61,7 +61,7 @@ public class ConditionNode extends AbstractNode{
             sb.delete(sb.length() - 2, sb.length());
         }
         sb.append("]");
-        sb.append("]");
+        sb.append("}");
         return sb.toString();
     }
 
