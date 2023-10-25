@@ -27,6 +27,9 @@ public class ImpressionName {
         ImpressionList.add("RAE");
         ImpressionList.add("LAFB");
         ImpressionList.add("LPFB");
+        ImpressionList.add("PRWP");
+        ImpressionList.add("LAD");
+        ImpressionList.add("RAD");
     }
 
     public String[] getImpressions() {

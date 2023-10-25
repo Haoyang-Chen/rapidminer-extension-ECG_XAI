@@ -23,9 +23,9 @@ public class Exist extends AbstractCondition{
     @Override
     public String toString() {
         if (lead==null) {
-            return element + "is true";
+            return element + " is true";
         }else {
-            return element + "is true in "+lead;
+            return element + " is true in "+lead;
         }
     }
 
