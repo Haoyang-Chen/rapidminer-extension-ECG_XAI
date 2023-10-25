@@ -12,10 +12,7 @@ import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
 import com.rapidminer.operator.ports.InputPort;
 import com.rapidminer.operator.ports.OutputPort;
-import com.rapidminer.parameter.ParameterType;
-import com.rapidminer.parameter.ParameterTypeEnumeration;
-import com.rapidminer.parameter.ParameterTypeString;
-import com.rapidminer.parameter.ParameterTypeStringCategory;
+import com.rapidminer.parameter.*;
 import com.rapidminer.tools.LogService;
 
 import java.util.List;
@@ -28,12 +25,12 @@ public class ConditionOperator extends Operator {
     private final OutputPort yesOutput=getOutputPorts().createPort("yes");
     private final OutputPort noOutput=getOutputPorts().createPort("no");
     private static final String PARAMETER_LEFT="Left Operand";
-    private static final String PARAMETER_MID="Middle Operand";
+    private static final String PARAMETER_MID="Operator";
     private static final String PARAMETER_RIGHT="Right Operand";
     private static final String PARAMETER_RESULT_NAME="Result Name";
     private static final String PARAMETER_LEAD="Focused Lead";
-    private static final String PARAMETER_YES="If Yes";
-    private static final String PARAMETER_NO="If No";
+//    private static final String PARAMETER_YES="If Yes Move On";
+//    private static final String PARAMETER_NO="If No Move On";
 
 
     public ConditionOperator(OperatorDescription description) {
@@ -47,11 +44,10 @@ public class ConditionOperator extends Operator {
         String right= getParameterAsString(PARAMETER_RIGHT);
         String resultName=getParameterAsString(PARAMETER_RESULT_NAME);
         String lead=getParameterAsString(PARAMETER_LEAD);
-        String yes=getParameterAsString(PARAMETER_YES);
-        String no=getParameterAsString(PARAMETER_NO);
+//        boolean yes=getParameterAsBoolean(PARAMETER_YES);
+//        boolean no=getParameterAsBoolean(PARAMETER_NO);
 
         Pack pack=pacInput.getData(Pack.class);
-//        Boolean nodeYes=pack.yes;
         Model model=pack.getModel();
         Compare compare;
         if (Objects.equals(lead, "None")) {
@@ -59,6 +55,7 @@ public class ConditionOperator extends Operator {
         }else {
             compare = new Compare(left, mid, right, lead);
         }
+        this.rename(compare.toString());
         compare.setResultName(resultName);
         ConditionNode conditionNode=new ConditionNode(compare);
 
@@ -69,31 +66,32 @@ public class ConditionOperator extends Operator {
             Boolean nodeYes=entry.getValue();
             conditionNode.addParent(parent,nodeYes);
         }
-//        conditionNode.addParent(step.getLastCon(),nodeYes);
+
         step.addNode(conditionNode);
 
-        conditionNode.Yesres=yes;
-        conditionNode.Nores=no;
-        conditionNode.runCheck();
+//        conditionNode.YesMove=yes;
+//        conditionNode.NoMove=no;
+//        conditionNode.runNewCheck();
 
-        if (!yes.contains("--End--") && !yes.contains("--MoveOn--")){
-            ImpressionNode yesImp=new ImpressionNode(yes);
-            yesImp.addParent(conditionNode,true);
-            step.addNode(yesImp);
-        }
-        if (!no.contains("--End--") && !no.contains("--MoveOn--")){
-            ImpressionNode noImp=new ImpressionNode(no);
-            noImp.addParent(conditionNode,false);
-            step.addNode(noImp);
-        }
+//        if (!yes.contains("--End--") && !yes.contains("--MoveOn--")){
+//            ImpressionNode yesImp=new ImpressionNode(yes);
+//            yesImp.addParent(conditionNode,true);
+//            step.addNode(yesImp);
+//        }
+//        if (!no.contains("--End--") && !no.contains("--MoveOn--")){
+//            ImpressionNode noImp=new ImpressionNode(no);
+//            noImp.addParent(conditionNode,false);
+//            step.addNode(noImp);
+//        }
 
         for (AbstractNode parent:conditionNode.parents){
             pack.current_parents.remove(parent);
-//            LogService.getRoot().log(Level.INFO,"AA");
         }
         Pack noPack=new Pack(pack);
         pack.current_parents.put(conditionNode,true);
         noPack.current_parents.put(conditionNode,false);
+//        LogService.getRoot().log(Level.INFO,pack.current_parents.toString());
+//        LogService.getRoot().log(Level.INFO,noPack.current_parents.toString());
         yesOutput.deliver(pack);
         noOutput.deliver(noPack);
     }
@@ -101,20 +99,17 @@ public class ConditionOperator extends Operator {
     @Override
     public List<ParameterType> getParameterTypes(){
         FeatureName featureName=new FeatureName();
-        ImpressionName impressionName=new ImpressionName();
+//        ImpressionName impressionName=new ImpressionName();
         LeadName leadName=new LeadName();
         List<ParameterType> types=super.getParameterTypes();
 
-        String[] mid=new String[4];
+        String[] mid=new String[3];
         mid[0]=">";
         mid[1]="=";
         mid[2]="<";
-        mid[3]="is";
 
-        String[] right=new String[3];
-        right[0]="true";
-        right[1]="false";
-        right[2]="ENTER a NUMBER";
+        String[] right=new String[1];
+        right[0]="ENTER a NUMBER";
 
         types.add(new ParameterTypeStringCategory(
                 PARAMETER_LEFT,
@@ -142,18 +137,9 @@ public class ConditionOperator extends Operator {
                 leadName.getLead(),
                 "None"
         ));
-        types.add(new ParameterTypeEnumeration(PARAMETER_YES, "The list of Yes results", new ParameterTypeStringCategory(
-                PARAMETER_YES,
-                "Choose Yes Path",
-                impressionName.getImpressions(),
-                "--End--"
-        )));
-        types.add(new ParameterTypeEnumeration(PARAMETER_NO, "The list of Yes results", new ParameterTypeStringCategory(
-                PARAMETER_NO,
-                "Choose No Path",
-                impressionName.getImpressions(),
-                "--End--"
-        )));
+//        types.add(new ParameterTypeBoolean(PARAMETER_YES, "If Yes Move On", false, false));
+//        types.add(new ParameterTypeBoolean(PARAMETER_NO, "If No Move On", false, false));
+
         return types;
     }
 }

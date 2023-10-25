@@ -6,7 +6,6 @@ public class FeatureName {
     public static Set<String> FeatureList= new LinkedHashSet<>();
     static {
         FeatureList.add("HR");
-        FeatureList.add("SINUS");
         FeatureList.add("RR_DIFF");
         FeatureList.add("PR_DUR");
         FeatureList.add("QRS_DUR");
@@ -22,26 +21,6 @@ public class FeatureName {
         FeatureList.add("RS_RATIO");
         FeatureList.add("T_AMP");
         FeatureList.add("QRS_SUM");
-        FeatureList.add("SR");
-        FeatureList.add("SARRH");
-        FeatureList.add("SBRAD");
-        FeatureList.add("STACH");
-        FeatureList.add("AFIB");
-        FeatureList.add("AFLT");
-        FeatureList.add("AVB");
-        FeatureList.add("LBBB");
-        FeatureList.add("RBBB");
-        FeatureList.add("WPW");
-        FeatureList.add("IVCD");
-        FeatureList.add("IMI");
-        FeatureList.add("AMI");
-        FeatureList.add("LMI");
-        FeatureList.add("LVH");
-        FeatureList.add("RVH");
-        FeatureList.add("LAE");
-        FeatureList.add("RAE");
-        FeatureList.add("LAFB");
-        FeatureList.add("LPFB");
     }
 
     public String[] getFeatures() {

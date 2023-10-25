@@ -2,9 +2,18 @@ package com.rapidminer.extension.ecg_xai.operator.nodes.condition;
 
 public class Exist extends AbstractCondition{
     private String element;
+    private String lead=null;
+
+    public Exist() {
+        super();
+    }
 
     public Exist(String element) {
         this.element = element;
+    }
+    public Exist(String element, String lead) {
+        this.element = element;
+        this.lead=lead;
     }
 
     public String getElement() {
@@ -13,7 +22,11 @@ public class Exist extends AbstractCondition{
 
     @Override
     public String toString() {
-        return "Exist(" + element + ")";
+        if (lead==null) {
+            return element + "is true";
+        }else {
+            return element + "is true in "+lead;
+        }
     }
 
     public static void main(String[] args) {

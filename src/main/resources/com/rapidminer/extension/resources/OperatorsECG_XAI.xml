@@ -31,6 +31,11 @@
                 <icon>gt.png</icon>
             </operator>
             <operator>
+                <key>IsTrue</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.ExistOperator</class>
+<!--                <icon>gt.png</icon> -->
+            </operator>
+            <operator>
                 <key>Discretizer</key>
                 <class>com.rapidminer.extension.ecg_xai.operator.DiscretizeOperator</class>
                 <icon>three.png</icon>
@@ -60,10 +65,6 @@
                 <class>com.rapidminer.extension.ecg_xai.operator.CombineOperator</class>
                 <icon>joi.png</icon>
             </operator>
-            <operator>
-                <key>NewCon</key>
-                <class>com.rapidminer.extension.ecg_xai.operator.NewConOperator</class>
-            </operator>
         </group>
 
         <group key="Control">
@@ -77,10 +78,6 @@
                 <class>com.rapidminer.extension.ecg_xai.operator.StepStartOpeartor</class>
                 <icon>add1.png</icon>
             </operator>
-<!--            <operator>-->
-<!--                <key>Step End</key>-->
-<!--                <class>com.rapidminer.extension.ecg_xai.operator.StepEndOperator</class>-->
-<!--            </operator>-->
         </group>
 
         <group key="Result">

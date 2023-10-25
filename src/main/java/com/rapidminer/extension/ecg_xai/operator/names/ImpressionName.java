@@ -6,6 +6,7 @@ import java.util.Set;
 public class ImpressionName {
     public static Set<String> ImpressionList=new LinkedHashSet<>();
     static {
+        ImpressionList.add("SINUS");
         ImpressionList.add("SR");
         ImpressionList.add("SARRH");
         ImpressionList.add("SBRAD");
@@ -26,8 +27,6 @@ public class ImpressionName {
         ImpressionList.add("RAE");
         ImpressionList.add("LAFB");
         ImpressionList.add("LPFB");
-        ImpressionList.add("--End--");
-        ImpressionList.add("--MoveOn--");
     }
 
     public String[] getImpressions() {
