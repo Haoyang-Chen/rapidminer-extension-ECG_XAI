@@ -25,26 +25,17 @@
                 <icon>pri.png</icon>
             </operator>
 
-            <operator>
-                <key>Condition</key>
-                <class>com.rapidminer.extension.ecg_xai.operator.ConditionOperator</class>
-                <icon>gt.png</icon>
-            </operator>
-            <operator>
-                <key>IsTrue</key>
-                <class>com.rapidminer.extension.ecg_xai.operator.ExistOperator</class>
-<!--                <icon>gt.png</icon> -->
-            </operator>
+
             <operator>
                 <key>Discretizer</key>
                 <class>com.rapidminer.extension.ecg_xai.operator.DiscretizeOperator</class>
                 <icon>three.png</icon>
             </operator>
-            <operator>
-                <key>Merge</key>
-                <class>com.rapidminer.extension.ecg_xai.operator.MergeOperator</class>
-                <icon>merge_icon.png</icon>
-            </operator>
+<!--            <operator>-->
+<!--                <key>Merge</key>-->
+<!--                <class>com.rapidminer.extension.ecg_xai.operator.MergeOperator</class>-->
+<!--                <icon>merge_icon.png</icon>-->
+<!--            </operator>-->
             <operator>
                 <key>Relation</key>
                 <class>com.rapidminer.extension.ecg_xai.operator.RelationOperator</class>
@@ -64,6 +55,19 @@
                 <key>Combine</key>
                 <class>com.rapidminer.extension.ecg_xai.operator.CombineOperator</class>
                 <icon>joi.png</icon>
+            </operator>
+        </group>
+
+        <group key="Operartors">
+            <operator>
+                <key>Condition</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.ConditionOperator</class>
+                <icon>gt.png</icon>
+            </operator>
+            <operator>
+                <key>IsTrue</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.ExistOperator</class>
+                <!--                <icon>gt.png</icon> -->
             </operator>
         </group>
 
