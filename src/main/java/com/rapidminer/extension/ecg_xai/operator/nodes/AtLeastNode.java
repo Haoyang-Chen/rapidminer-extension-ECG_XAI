@@ -27,7 +27,7 @@ public class AtLeastNode extends AbstractNode{
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(getIndex().toString()).append(": ");
-        sb.append("[AtLeastNode], ");
+        sb.append("{[AtLeastNode], ");
         sb.append("At least ").append(num).append(" of the conditions:\n");
         for (AbstractCondition condition : conditions) {
             sb.append(condition).append(", ").append(condition.getResultName()).append("\n");
@@ -59,7 +59,7 @@ public class AtLeastNode extends AbstractNode{
             sb.delete(sb.length() - 2, sb.length());
         }
         sb.append("]");
-        sb.append("]");
+        sb.append("}");
         return sb.toString();
     }
 }
