@@ -62,6 +62,10 @@
                 <class>com.rapidminer.extension.ecg_xai.operator.DiscretizeOperator</class>
                 <icon>three.png</icon>
             </operator>
+            <operator>
+                <key>Calculate</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.CalOperator</class>
+            </operator>
         </group>
 
         <group key="Result">

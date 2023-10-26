@@ -16,11 +16,11 @@
     </group>
     -->
     <operator>
-        <key>example_key</key>
-        <name>example_operator</name>
-        <tags>
-            <tag>nothing</tag>
-        </tags>
+        <key>Condition</key>
+        <name>Compare</name>
+<!--        <tags>-->
+<!--            <tag>nothing</tag>-->
+<!--        </tags>-->
     </operator>
 
 </operatorHelp>
