@@ -1,5 +1,8 @@
-package com.rapidminer.extension.ecg_xai.operator;
+package com.rapidminer.extension.ecg_xai.operator.AbandonedOperator;
 
+import com.rapidminer.extension.ecg_xai.operator.Model;
+import com.rapidminer.extension.ecg_xai.operator.Pack;
+import com.rapidminer.extension.ecg_xai.operator.Step;
 import com.rapidminer.extension.ecg_xai.operator.names.FeatureName;
 import com.rapidminer.extension.ecg_xai.operator.names.ImpressionName;
 import com.rapidminer.extension.ecg_xai.operator.names.LeadName;

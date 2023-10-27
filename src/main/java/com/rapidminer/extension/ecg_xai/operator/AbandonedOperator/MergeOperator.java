@@ -1,5 +1,6 @@
-package com.rapidminer.extension.ecg_xai.operator;
+package com.rapidminer.extension.ecg_xai.operator.AbandonedOperator;
 
+import com.rapidminer.extension.ecg_xai.operator.Pack;
 import com.rapidminer.extension.ecg_xai.operator.nodes.AbstractNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.ConditionNode;
 import com.rapidminer.operator.Operator;
@@ -23,7 +24,7 @@ public class MergeOperator extends Operator {
         inputPortExtender.start();
     }
 
-    public Pack mergePack(Pack pack1,Pack pack2){
+    public Pack mergePack(Pack pack1, Pack pack2){
         List<AbstractNode> nodes1=pack1.getModel().getLastStep().nodes;
         List<AbstractNode> nodes2=pack2.getModel().getLastStep().nodes;
         int len1=nodes1.size();
