@@ -15,4 +15,10 @@
     reportable="false">
         <renderer>com.rapidminer.gui.renderer.DefaultTextRenderer</renderer>
     </ioobject>
+    <ioobject
+            name="StringInfo"
+            class="com.rapidminer.extension.ecg_xai.operator.StringInfo"
+            reportable="false">
+        <renderer>com.rapidminer.gui.renderer.DefaultTextRenderer</renderer>
+    </ioobject>
 </ioobjects>

@@ -29,6 +29,10 @@
                 <class>com.rapidminer.extension.ecg_xai.operator.ExistOperator</class>
                 <icon>tru.png</icon>
             </operator>
+            <operator>
+                <key>DataOperator1</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.DataOperator1</class>
+            </operator>
         </group>
 
         <group key="Control">
