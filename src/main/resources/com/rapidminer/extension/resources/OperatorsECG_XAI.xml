@@ -25,8 +25,17 @@
                 <icon>gt.png</icon>
             </operator>
             <operator>
+                <key>Condition2</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.ConditionOperator2</class>
+            </operator>
+            <operator>
                 <key>IsTrue</key>
                 <class>com.rapidminer.extension.ecg_xai.operator.ExistOperator</class>
+                <icon>tru.png</icon>
+            </operator>
+            <operator>
+                <key>IsTrue2</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.ExistOperator2</class>
                 <icon>tru.png</icon>
             </operator>
             <operator>
@@ -76,6 +85,11 @@
             <operator>
                 <key>Result</key>
                 <class>com.rapidminer.extension.ecg_xai.operator.ResultOperator</class>
+                <icon>che.png</icon>
+            </operator>
+            <operator>
+                <key>Result2</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.ResultOperator2</class>
                 <icon>che.png</icon>
             </operator>
         </group>

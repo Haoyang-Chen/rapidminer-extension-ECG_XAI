@@ -1,5 +1,8 @@
 package com.rapidminer.extension.ecg_xai.operator;
 
+import com.rapidminer.example.Example;
+import com.rapidminer.example.ExampleSet;
+import com.rapidminer.example.set.SimpleExampleSet;
 import com.rapidminer.operator.*;
 import com.rapidminer.operator.ports.OutputPort;
 
