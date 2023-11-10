@@ -10,19 +10,19 @@ import com.rapidminer.operator.ports.OutputPortExtender;
 import com.rapidminer.tools.OperatorService;
 
 public class InitPackOperator extends Operator {
-    private final OutputPortExtender outputPortExtender = new OutputPortExtender("Out pack", getOutputPorts());
-
+//    private final OutputPortExtender outputPortExtender = new OutputPortExtender("Out pack", getOutputPorts());
+    private final OutputPort outputPort = getOutputPorts().createPort("Model");
     public InitPackOperator(OperatorDescription description) {
         super(description);
-        outputPortExtender.start();
+//        outputPortExtender.start();
     }
 
     @Override
     public void doWork() throws OperatorException {
         Pack pack=new Pack();
-
-        for (OutputPort outputPort : outputPortExtender.getManagedPorts()) {
-            outputPort.deliver(new Pack(pack));
-        }
+        outputPort.deliver(pack);
+//        for (OutputPort outputPort : outputPortExtender.getManagedPorts()) {
+//            outputPort.deliver(new Pack(pack));
+//        }
     }
 }

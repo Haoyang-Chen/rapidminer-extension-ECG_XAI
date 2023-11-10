@@ -17,6 +17,12 @@
 <!--                <class>com.rapidminer.extension.ecg_xai.operator.MyOwnOperator</class>-->
 <!--            </operator>-->
 <!--        </group>-->
+        <group key="SuperOperators">
+            <operator>
+                <key>FeatureData</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.superOperator.FeatureSourceOperator</class>
+            </operator>
+        </group>
 
         <group key="Operators">
             <operator>
