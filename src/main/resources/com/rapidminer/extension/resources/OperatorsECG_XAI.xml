@@ -22,6 +22,10 @@
                 <key>FeatureData</key>
                 <class>com.rapidminer.extension.ecg_xai.operator.superOperator.FeatureSourceOperator</class>
             </operator>
+            <operator>
+                <key>Step1</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step1Operator</class>
+            </operator>
         </group>
 
         <group key="Operators">

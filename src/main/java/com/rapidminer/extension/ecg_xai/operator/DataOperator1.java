@@ -7,6 +7,7 @@ import com.rapidminer.operator.*;
 import com.rapidminer.operator.ports.OutputPort;
 
 public class DataOperator1 extends Operator {
+    private final OutputPort SINUSOutput=getOutputPorts().createPort("SINUS");
     private final OutputPort HROutput=getOutputPorts().createPort("HR");
     private final OutputPort RR_DIFFOutput=getOutputPorts().createPort("RR_DIFF");
     private final OutputPort PR_DUROutput=getOutputPorts().createPort("PR_DUR");
@@ -30,6 +31,7 @@ public class DataOperator1 extends Operator {
 
     @Override
     public void doWork() throws OperatorException {
+        SINUSOutput.deliver(new StringInfo("SINUS"));
         HROutput.deliver(new StringInfo("HR"));
         RR_DIFFOutput.deliver(new StringInfo("RR_DIFF"));
         PR_DUROutput.deliver(new StringInfo("PR_DUR"));

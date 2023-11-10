@@ -5,6 +5,7 @@ import java.util.*;
 public class FeatureName {
     public static Set<String> FeatureList= new LinkedHashSet<>();
     static {
+        FeatureList.add("SINUS");
         FeatureList.add("HR");
         FeatureList.add("RR_DIFF");
         FeatureList.add("PR_DUR");

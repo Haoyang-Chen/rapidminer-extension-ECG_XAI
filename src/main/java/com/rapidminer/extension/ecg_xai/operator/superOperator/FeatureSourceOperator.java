@@ -10,6 +10,8 @@ import com.rapidminer.operator.ports.metadata.PassThroughRule;
 
 
 public class FeatureSourceOperator extends OperatorChain {
+    private final OutputPort SINUSOutput=getOutputPorts().createPort("SINUS");
+    private final InputPort SINUSInput = getSubprocess(0).getInnerSinks().createPort("SINUS");
     private final OutputPort HROutput=getOutputPorts().createPort("HR");
     private final InputPort HRInput = getSubprocess(0).getInnerSinks().createPort("HR");
     private final OutputPort RR_DIFFOutput=getOutputPorts().createPort("RR_DIFF");
@@ -46,7 +48,7 @@ public class FeatureSourceOperator extends OperatorChain {
     public FeatureSourceOperator(OperatorDescription description) {
         super(description, "Executed Process");
         outExtender.start();
-//
+        getTransformer().addRule(new PassThroughRule(SINUSInput, SINUSOutput, false));
         getTransformer().addRule(new PassThroughRule(HRInput, HROutput, false));
         getTransformer().addRule(new PassThroughRule(RR_DIFFInput, RR_DIFFOutput, false));
         getTransformer().addRule(new PassThroughRule(PR_DURInput, PR_DUROutput, false));
@@ -74,6 +76,9 @@ public class FeatureSourceOperator extends OperatorChain {
     public void doWork() throws OperatorException {
         outExtender.reset();
         getSubprocess(0).execute();
+        if(SINUSInput.isConnected()) {
+            SINUSOutput.deliver(SINUSInput.getData(StringInfo.class));
+        }
         if(HRInput.isConnected()) {
             HROutput.deliver(HRInput.getData(StringInfo.class));
         }
