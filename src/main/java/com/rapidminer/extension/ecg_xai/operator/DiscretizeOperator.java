@@ -19,10 +19,11 @@ import java.util.Map;
 
 public class DiscretizeOperator extends Operator {
     private final InputPort inputPort = getInputPorts().createPort("In pack");
+    private final InputPort featureInput = getInputPorts().createPort("Feature");
     private final OutputPort outputPort_High = getOutputPorts().createPort("High");
     private final OutputPort outputPort_Mid = getOutputPorts().createPort("Mid");
     private final OutputPort outputPort_Low = getOutputPorts().createPort("Low");
-    private static final String PARAMETER_FEATURE="Feature";
+//    private static final String PARAMETER_FEATURE="Feature";
     private static final String PARAMETER_HIGH="Upper Bound";
     private static final String PARAMETER_LOW="Lower Bound";
     private static final String PARAMETER_HIGH_RESULT_NAME="High Result Name";
@@ -38,7 +39,8 @@ public class DiscretizeOperator extends Operator {
 
     @Override
     public void doWork() throws OperatorException {
-        String feature = getParameterAsString(PARAMETER_FEATURE);
+//        String feature = getParameterAsString(PARAMETER_FEATURE);
+        String feature = featureInput.getData(StringInfo.class).toString();
         String high = getParameterAsString(PARAMETER_HIGH);
         String low = getParameterAsString(PARAMETER_LOW);
         String highResultName = getParameterAsString(PARAMETER_HIGH_RESULT_NAME);
@@ -129,10 +131,10 @@ public class DiscretizeOperator extends Operator {
 
     @Override
     public List<ParameterType> getParameterTypes(){
-        FeatureName featureName=new FeatureName();
-        ImpressionName impressionName=new ImpressionName();
+//        FeatureName featureName=new FeatureName();
+//        ImpressionName impressionName=new ImpressionName();
         List<ParameterType> types = super.getParameterTypes();
-        types.add(new ParameterTypeStringCategory(PARAMETER_FEATURE,"Feature to discretize",featureName.getFeatures(),null));
+//        types.add(new ParameterTypeStringCategory(PARAMETER_FEATURE,"Feature to discretize",featureName.getFeatures(),null));
         types.add(new ParameterTypeString(PARAMETER_HIGH,"Upper Bound",null));
         types.add(new ParameterTypeString(PARAMETER_LOW,"Lower Bound",null));
         types.add(new ParameterTypeString(PARAMETER_HIGH_RESULT_NAME,"High Result Name",null));

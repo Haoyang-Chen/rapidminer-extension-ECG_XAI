@@ -26,6 +26,10 @@
                 <key>Step1</key>
                 <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step1Operator</class>
             </operator>
+            <operator>
+                <key>Step2</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step2Operator</class>
+            </operator>
         </group>
 
         <group key="Operators">
