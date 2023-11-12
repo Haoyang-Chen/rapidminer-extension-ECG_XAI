@@ -10,8 +10,8 @@ public class DataOperator1 extends Operator {
     private final OutputPort SINUSOutput=getOutputPorts().createPort("SINUS");
     private final OutputPort HROutput=getOutputPorts().createPort("HR");
     private final OutputPort RR_DIFFOutput=getOutputPorts().createPort("RR_DIFF");
-    private final OutputPort PR_DUROutput=getOutputPorts().createPort("PR_DUR");
     private final OutputPort QRS_DUROutput=getOutputPorts().createPort("QRS_DUR");
+    private final OutputPort PR_DUROutput=getOutputPorts().createPort("PR_DUR");
     private final OutputPort ST_AMPOutput=getOutputPorts().createPort("ST_AMP");
     private final OutputPort Q_DUROutput=getOutputPorts().createPort("Q_DUR");
     private final OutputPort Q_AMPOutput=getOutputPorts().createPort("Q_AMP");
@@ -34,8 +34,8 @@ public class DataOperator1 extends Operator {
         SINUSOutput.deliver(new StringInfo("SINUS"));
         HROutput.deliver(new StringInfo("HR"));
         RR_DIFFOutput.deliver(new StringInfo("RR_DIFF"));
-        PR_DUROutput.deliver(new StringInfo("PR_DUR"));
         QRS_DUROutput.deliver(new StringInfo("QRS_DUR"));
+        PR_DUROutput.deliver(new StringInfo("PR_DUR"));
         ST_AMPOutput.deliver(new StringInfo("ST_AMP"));
         Q_DUROutput.deliver(new StringInfo("Q_DUR"));
         Q_AMPOutput.deliver(new StringInfo("Q_AMP"));

@@ -16,10 +16,10 @@ public class FeatureSourceOperator extends OperatorChain {
     private final InputPort HRInput = getSubprocess(0).getInnerSinks().createPort("HR");
     private final OutputPort RR_DIFFOutput=getOutputPorts().createPort("RR_DIFF");
     private final InputPort RR_DIFFInput = getSubprocess(0).getInnerSinks().createPort("RR_DIFF");
-    private final OutputPort PR_DUROutput=getOutputPorts().createPort("PR_DUR");
-    private final InputPort PR_DURInput = getSubprocess(0).getInnerSinks().createPort("PR_DUR");
     private final OutputPort QRS_DUROutput=getOutputPorts().createPort("QRS_DUR");
     private final InputPort QRS_DURInput = getSubprocess(0).getInnerSinks().createPort("QRS_DUR");
+    private final OutputPort PR_DUROutput=getOutputPorts().createPort("PR_DUR");
+    private final InputPort PR_DURInput = getSubprocess(0).getInnerSinks().createPort("PR_DUR");
     private final OutputPort ST_AMPOutput=getOutputPorts().createPort("ST_AMP");
     private final InputPort ST_AMPInput = getSubprocess(0).getInnerSinks().createPort("ST_AMP");
     private final OutputPort Q_DUROutput=getOutputPorts().createPort("Q_DUR");
@@ -51,8 +51,8 @@ public class FeatureSourceOperator extends OperatorChain {
         getTransformer().addRule(new PassThroughRule(SINUSInput, SINUSOutput, false));
         getTransformer().addRule(new PassThroughRule(HRInput, HROutput, false));
         getTransformer().addRule(new PassThroughRule(RR_DIFFInput, RR_DIFFOutput, false));
-        getTransformer().addRule(new PassThroughRule(PR_DURInput, PR_DUROutput, false));
         getTransformer().addRule(new PassThroughRule(QRS_DURInput, QRS_DUROutput, false));
+        getTransformer().addRule(new PassThroughRule(PR_DURInput, PR_DUROutput, false));
         getTransformer().addRule(new PassThroughRule(ST_AMPInput, ST_AMPOutput, false));
         getTransformer().addRule(new PassThroughRule(Q_DURInput, Q_DUROutput, false));
         getTransformer().addRule(new PassThroughRule(Q_AMPInput, Q_AMPOutput, false));
@@ -85,11 +85,11 @@ public class FeatureSourceOperator extends OperatorChain {
         if(RR_DIFFInput.isConnected()) {
             RR_DIFFOutput.deliver(RR_DIFFInput.getData(StringInfo.class));
         }
-        if(PR_DURInput.isConnected()) {
-            PR_DUROutput.deliver(PR_DURInput.getData(StringInfo.class));
-        }
         if(QRS_DURInput.isConnected()) {
             QRS_DUROutput.deliver(QRS_DURInput.getData(StringInfo.class));
+        }
+        if(PR_DURInput.isConnected()) {
+            PR_DUROutput.deliver(PR_DURInput.getData(StringInfo.class));
         }
         if(ST_AMPInput.isConnected()) {
             ST_AMPOutput.deliver(ST_AMPInput.getData(StringInfo.class));
