@@ -34,6 +34,30 @@
                 <key>Step3</key>
                 <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step3Operator</class>
             </operator>
+            <operator>
+                <key>Step4</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step4Operator</class>
+            </operator>
+            <operator>
+                <key>Step5</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step5Operator</class>
+            </operator>
+            <operator>
+                <key>Step6</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step6Operator</class>
+            </operator>
+            <operator>
+                <key>Step7</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step7Operator</class>
+            </operator>
+            <operator>
+                <key>Step8</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step8Operator</class>
+            </operator>
+            <operator>
+                <key>Step9</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step9Operator</class>
+            </operator>
         </group>
 
         <group key="Operators">
