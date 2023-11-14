@@ -19,6 +19,9 @@ public class Step4Operator extends AbstractStepOperator {
     //IMI
     private final InputPort IMI_STEInput = getSubprocess(0).getInnerSinks().createPort("IMI_STE");
     private final OutputPort IMI_STEOutput=getOutputPorts().createPort("IMI_STE");
+    //STE
+    private final InputPort STEInput = getSubprocess(0).getInnerSinks().createPort("STE");
+    private final OutputPort STEOutput=getOutputPorts().createPort("STE");
     //LVH
     private final InputPort LVHInput = getSubprocess(0).getInnerSinks().createPort("LVH");
     private final OutputPort LVHOutput=getOutputPorts().createPort("LVH");
@@ -34,6 +37,9 @@ public class Step4Operator extends AbstractStepOperator {
     //IMI_STD
     private final InputPort IMI_STDInput = getSubprocess(0).getInnerSinks().createPort("IMI_STD");
     private final OutputPort IMI_STDOutput=getOutputPorts().createPort("IMI_STD");
+    //STD
+    private final InputPort STDInput = getSubprocess(0).getInnerSinks().createPort("STD");
+    private final OutputPort STDOutput=getOutputPorts().createPort("STD");
 
 
     public Step4Operator(OperatorDescription description) {
@@ -42,11 +48,13 @@ public class Step4Operator extends AbstractStepOperator {
         getTransformer().addRule(new PassThroughRule(LMI_STEInput, LMI_STEOutput, false));
         getTransformer().addRule(new PassThroughRule(AMI_STEInput, AMI_STEOutput, false));
         getTransformer().addRule(new PassThroughRule(IMI_STEInput, IMI_STEOutput, false));
+        getTransformer().addRule(new PassThroughRule(STEInput, STEOutput, false));
         getTransformer().addRule(new PassThroughRule(LVHInput, LVHOutput, false));
         getTransformer().addRule(new PassThroughRule(RVHInput, RVHOutput, false));
         getTransformer().addRule(new PassThroughRule(AMI_STDInput, AMI_STDOutput, false));
         getTransformer().addRule(new PassThroughRule(LMI_STDInput, LMI_STDOutput, false));
         getTransformer().addRule(new PassThroughRule(IMI_STDInput, IMI_STDOutput, false));
+        getTransformer().addRule(new PassThroughRule(STDInput, STDOutput, false));
     }
 
     @Override
@@ -59,11 +67,13 @@ public class Step4Operator extends AbstractStepOperator {
         LMI_STEOutput.deliver(LMI_STEInput.getData(StringInfo.class));
         AMI_STEOutput.deliver(AMI_STEInput.getData(StringInfo.class));
         IMI_STEOutput.deliver(IMI_STEInput.getData(StringInfo.class));
+        STEOutput.deliver(STEInput.getData(StringInfo.class));
         LVHOutput.deliver(LVHInput.getData(StringInfo.class));
         RVHOutput.deliver(RVHInput.getData(StringInfo.class));
         AMI_STDOutput.deliver(AMI_STDInput.getData(StringInfo.class));
         LMI_STDOutput.deliver(LMI_STDInput.getData(StringInfo.class));
         IMI_STDOutput.deliver(IMI_STDInput.getData(StringInfo.class));
+        STDOutput.deliver(STDInput.getData(StringInfo.class));
         outExtender.collect();
     }
 }

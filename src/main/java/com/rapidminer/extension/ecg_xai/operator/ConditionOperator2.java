@@ -23,6 +23,7 @@ public class ConditionOperator2 extends Operator {
     private final InputPort leftInput=getInputPorts().createPort("left");
     private final OutputPort yesOutput=getOutputPorts().createPort("yes");
     private final OutputPort noOutput=getOutputPorts().createPort("no");
+    private final OutputPort ResultOutput=getOutputPorts().createPort("result");
     private static final String PARAMETER_MID="Operator";
     private static final String PARAMETER_RIGHT="Right Operand";
     private static final String PARAMETER_RESULT_NAME="Result Name";
@@ -91,6 +92,7 @@ public class ConditionOperator2 extends Operator {
 //        LogService.getRoot().log(Level.INFO,noPack.current_parents.toString());
         yesOutput.deliver(pack);
         noOutput.deliver(noPack);
+        ResultOutput.deliver(new StringInfo(resultName));
     }
 
     @Override
