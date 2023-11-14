@@ -1,36 +1,32 @@
 package com.rapidminer.extension.ecg_xai.operator;
 
-import com.rapidminer.extension.ecg_xai.operator.names.FeatureName;
-import com.rapidminer.extension.ecg_xai.operator.names.ImpressionName;
 import com.rapidminer.extension.ecg_xai.operator.names.LeadName;
 import com.rapidminer.extension.ecg_xai.operator.nodes.AbstractNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.ConditionNode;
-import com.rapidminer.extension.ecg_xai.operator.nodes.ImpressionNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.condition.Compare;
 import com.rapidminer.operator.Operator;
 import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
 import com.rapidminer.operator.ports.InputPort;
 import com.rapidminer.operator.ports.OutputPort;
-import com.rapidminer.parameter.*;
-import com.rapidminer.tools.LogService;
+import com.rapidminer.parameter.ParameterType;
+import com.rapidminer.parameter.ParameterTypeString;
+import com.rapidminer.parameter.ParameterTypeStringCategory;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.logging.Level;
 
 public class ConditionOperator extends Operator {
     private final InputPort pacInput=getInputPorts().createPort("In pack");
+    private final InputPort leftInput=getInputPorts().createPort("left");
     private final OutputPort yesOutput=getOutputPorts().createPort("yes");
     private final OutputPort noOutput=getOutputPorts().createPort("no");
-    private static final String PARAMETER_LEFT="Left Operand";
+    private final OutputPort ResultOutput=getOutputPorts().createPort("result");
     private static final String PARAMETER_MID="Operator";
     private static final String PARAMETER_RIGHT="Right Operand";
     private static final String PARAMETER_RESULT_NAME="Result Name";
     private static final String PARAMETER_LEAD="Focused Lead";
-//    private static final String PARAMETER_YES="If Yes Move On";
-//    private static final String PARAMETER_NO="If No Move On";
 
 
     public ConditionOperator(OperatorDescription description) {
@@ -39,7 +35,8 @@ public class ConditionOperator extends Operator {
 
     @Override
     public void doWork() throws OperatorException {
-        String left= getParameterAsString(PARAMETER_LEFT);
+//        String left= getParameterAsString(PARAMETER_LEFT);
+        String left= leftInput.getData(StringInfo.class).toString();
         String mid= getParameterAsString(PARAMETER_MID);
         String right= getParameterAsString(PARAMETER_RIGHT);
         String resultName=getParameterAsString(PARAMETER_RESULT_NAME);
@@ -94,12 +91,11 @@ public class ConditionOperator extends Operator {
 //        LogService.getRoot().log(Level.INFO,noPack.current_parents.toString());
         yesOutput.deliver(pack);
         noOutput.deliver(noPack);
+        ResultOutput.deliver(new StringInfo(resultName));
     }
 
     @Override
     public List<ParameterType> getParameterTypes(){
-        FeatureName featureName=new FeatureName();
-//        ImpressionName impressionName=new ImpressionName();
         LeadName leadName=new LeadName();
         List<ParameterType> types=super.getParameterTypes();
 
@@ -111,11 +107,6 @@ public class ConditionOperator extends Operator {
         String[] right=new String[1];
         right[0]="ENTER a NUMBER";
 
-        types.add(new ParameterTypeStringCategory(
-                PARAMETER_LEFT,
-                "Choose left operand",
-                featureName.getFeatures()
-        ));
         types.add(new ParameterTypeStringCategory(
                 PARAMETER_MID,
                 "Choose mid operand",
@@ -137,9 +128,6 @@ public class ConditionOperator extends Operator {
                 leadName.getLead(),
                 "None"
         ));
-//        types.add(new ParameterTypeBoolean(PARAMETER_YES, "If Yes Move On", false, false));
-//        types.add(new ParameterTypeBoolean(PARAMETER_NO, "If No Move On", false, false));
-
         return types;
     }
 }

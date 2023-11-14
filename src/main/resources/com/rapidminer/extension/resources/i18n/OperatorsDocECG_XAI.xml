@@ -16,11 +16,25 @@
     </group>
     -->
     <operator>
-        <key>Condition</key>
+        <key>Condition2</key>
         <name>Compare</name>
 <!--        <tags>-->
 <!--            <tag>nothing</tag>-->
 <!--        </tags>-->
+    </operator>
+    <operator>
+        <key>IsTrue2</key>
+        <name>IsTrue</name>
+        <!--        <tags>-->
+        <!--            <tag>nothing</tag>-->
+        <!--        </tags>-->
+    </operator>
+    <operator>
+        <key>Result2</key>
+        <name>Result</name>
+        <!--        <tags>-->
+        <!--            <tag>nothing</tag>-->
+        <!--        </tags>-->
     </operator>
 
 </operatorHelp>
