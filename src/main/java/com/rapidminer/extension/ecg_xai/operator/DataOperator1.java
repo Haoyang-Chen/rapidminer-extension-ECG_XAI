@@ -23,6 +23,7 @@ public class DataOperator1 extends Operator {
     private final OutputPort R_AMPOutput=getOutputPorts().createPort("R_AMP");
     private final OutputPort S_AMPOutput=getOutputPorts().createPort("S_AMP");
     private final OutputPort RS_RATIOOutput=getOutputPorts().createPort("RS_RATIO");
+    private final OutputPort RADOutput=getOutputPorts().createPort("RAD");
     private final OutputPort T_AMPOutput=getOutputPorts().createPort("T_AMP");
     private final OutputPort QRS_SUMOutput=getOutputPorts().createPort("QRS_SUM");
 
@@ -48,6 +49,7 @@ public class DataOperator1 extends Operator {
         R_AMPOutput.deliver(new StringInfo("R_AMP"));
         S_AMPOutput.deliver(new StringInfo("S_AMP"));
         RS_RATIOOutput.deliver(new StringInfo("RS_RATIO"));
+        RADOutput.deliver(new StringInfo("RAD"));
         T_AMPOutput.deliver(new StringInfo("T_AMP"));
         QRS_SUMOutput.deliver(new StringInfo("QRS_SUM"));
     }

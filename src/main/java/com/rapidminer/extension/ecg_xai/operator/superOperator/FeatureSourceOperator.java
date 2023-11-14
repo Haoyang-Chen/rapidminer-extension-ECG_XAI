@@ -42,6 +42,8 @@ public class FeatureSourceOperator extends OperatorChain {
     private final InputPort S_AMPInput = getSubprocess(0).getInnerSinks().createPort("S_AMP");
     private final OutputPort RS_RATIOOutput=getOutputPorts().createPort("RS_RATIO");
     private final InputPort RS_RATIOInput = getSubprocess(0).getInnerSinks().createPort("RS_RATIO");
+    private final OutputPort RADOutput=getOutputPorts().createPort("RAD");
+    private final InputPort RADInput = getSubprocess(0).getInnerSinks().createPort("RAD");
     private final OutputPort T_AMPOutput=getOutputPorts().createPort("T_AMP");
     private final InputPort T_AMPInput = getSubprocess(0).getInnerSinks().createPort("T_AMP");
     private final OutputPort QRS_SUMOutput=getOutputPorts().createPort("QRS_SUM");
@@ -66,6 +68,7 @@ public class FeatureSourceOperator extends OperatorChain {
         getTransformer().addRule(new PassThroughRule(R_AMPInput, R_AMPOutput, false));
         getTransformer().addRule(new PassThroughRule(S_AMPInput, S_AMPOutput, false));
         getTransformer().addRule(new PassThroughRule(RS_RATIOInput, RS_RATIOOutput, false));
+        getTransformer().addRule(new PassThroughRule(RADInput, RADOutput, false));
         getTransformer().addRule(new PassThroughRule(T_AMPInput, T_AMPOutput, false));
         getTransformer().addRule(new PassThroughRule(QRS_SUMInput, QRS_SUMOutput, false));
         getTransformer().addRule(outExtender.makePassThroughRule());
@@ -126,6 +129,9 @@ public class FeatureSourceOperator extends OperatorChain {
         }
         if(RS_RATIOInput.isConnected()) {
             RS_RATIOOutput.deliver(RS_RATIOInput.getData(StringInfo.class));
+        }
+        if(RADInput.isConnected()) {
+            RADOutput.deliver(RADInput.getData(StringInfo.class));
         }
         if(T_AMPInput.isConnected()) {
             T_AMPOutput.deliver(T_AMPInput.getData(StringInfo.class));
