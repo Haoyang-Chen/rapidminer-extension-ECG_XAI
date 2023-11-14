@@ -15,6 +15,7 @@ public class DataOperator1 extends Operator {
     private final OutputPort ST_AMPOutput=getOutputPorts().createPort("ST_AMP");
     private final OutputPort Q_DUROutput=getOutputPorts().createPort("Q_DUR");
     private final OutputPort Q_AMPOutput=getOutputPorts().createPort("Q_AMP");
+    private final OutputPort PRWPOutput=getOutputPorts().createPort("PRWP");
     private final OutputPort P_DUROutput=getOutputPorts().createPort("P_DUR");
     private final OutputPort P_AMPOutput=getOutputPorts().createPort("P_AMP");
     private final OutputPort AGEOutput=getOutputPorts().createPort("AGE");
@@ -39,6 +40,7 @@ public class DataOperator1 extends Operator {
         ST_AMPOutput.deliver(new StringInfo("ST_AMP"));
         Q_DUROutput.deliver(new StringInfo("Q_DUR"));
         Q_AMPOutput.deliver(new StringInfo("Q_AMP"));
+        PRWPOutput.deliver(new StringInfo("PRWP"));
         P_DUROutput.deliver(new StringInfo("P_DUR"));
         P_AMPOutput.deliver(new StringInfo("P_AMP"));
         AGEOutput.deliver(new StringInfo("AGE"));

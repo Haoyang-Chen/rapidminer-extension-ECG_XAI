@@ -26,6 +26,8 @@ public class FeatureSourceOperator extends OperatorChain {
     private final InputPort Q_DURInput = getSubprocess(0).getInnerSinks().createPort("Q_DUR");
     private final OutputPort Q_AMPOutput=getOutputPorts().createPort("Q_AMP");
     private final InputPort Q_AMPInput = getSubprocess(0).getInnerSinks().createPort("Q_AMP");
+    private final OutputPort PRWPOutput=getOutputPorts().createPort("PRWP");
+    private final InputPort PRWPInput = getSubprocess(0).getInnerSinks().createPort("PRWP");
     private final OutputPort P_DUROutput=getOutputPorts().createPort("P_DUR");
     private final InputPort P_DURInput = getSubprocess(0).getInnerSinks().createPort("P_DUR");
     private final OutputPort P_AMPOutput=getOutputPorts().createPort("P_AMP");
@@ -56,6 +58,7 @@ public class FeatureSourceOperator extends OperatorChain {
         getTransformer().addRule(new PassThroughRule(ST_AMPInput, ST_AMPOutput, false));
         getTransformer().addRule(new PassThroughRule(Q_DURInput, Q_DUROutput, false));
         getTransformer().addRule(new PassThroughRule(Q_AMPInput, Q_AMPOutput, false));
+        getTransformer().addRule(new PassThroughRule(PRWPInput, PRWPOutput, false));
         getTransformer().addRule(new PassThroughRule(P_DURInput, P_DUROutput, false));
         getTransformer().addRule(new PassThroughRule(P_AMPInput, P_AMPOutput, false));
         getTransformer().addRule(new PassThroughRule(AGEInput, AGEOutput, false));
@@ -99,6 +102,9 @@ public class FeatureSourceOperator extends OperatorChain {
         }
         if(Q_AMPInput.isConnected()) {
             Q_AMPOutput.deliver(Q_AMPInput.getData(StringInfo.class));
+        }
+        if(PRWPInput.isConnected()) {
+            PRWPOutput.deliver(PRWPInput.getData(StringInfo.class));
         }
         if(P_DURInput.isConnected()) {
             P_DUROutput.deliver(P_DURInput.getData(StringInfo.class));
