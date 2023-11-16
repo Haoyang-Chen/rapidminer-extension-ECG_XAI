@@ -38,6 +38,8 @@ public class Step5Operator extends AbstractStepOperator {
 
     public Step5Operator(OperatorDescription description) {
         super(description);
+        inExtender.start();
+        outExtender.start();
         getTransformer().addRule(new PassThroughRule(Q_DUROutput,Q_DURInput, false));
         getTransformer().addRule(new PassThroughRule(Q_AMPOutput, Q_AMPInput, false));
         getTransformer().addRule(new PassThroughRule(PRWPOutput, PRWPInput, false));
@@ -51,6 +53,7 @@ public class Step5Operator extends AbstractStepOperator {
 
     @Override
     public void doWork() throws OperatorException {
+        outExtender.reset();
         inExtender.passDataThrough();
         InModelOutput.deliver(InModelInput.getData(Pack.class));
         Q_DURInput.deliver(Q_DUROutput.getData(StringInfo.class));

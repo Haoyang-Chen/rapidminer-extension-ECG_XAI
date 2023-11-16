@@ -33,6 +33,8 @@ public class Step7Operator extends AbstractStepOperator {
 
     public Step7Operator(OperatorDescription description) {
         super(description);
+        inExtender.start();
+        outExtender.start();
         getTransformer().addRule(new PassThroughRule(AGEOutput,AGEInput, false));
         getTransformer().addRule(new PassThroughRule(MALEOutput,MALEInput, false));
         getTransformer().addRule(new PassThroughRule(R_AMPOutput, R_AMPInput, false));
@@ -45,6 +47,7 @@ public class Step7Operator extends AbstractStepOperator {
 
     @Override
     public void doWork() throws OperatorException {
+        outExtender.reset();
         inExtender.passDataThrough();
         InModelOutput.deliver(InModelInput.getData(Pack.class));
         AGEInput.deliver(AGEOutput.getData(StringInfo.class));

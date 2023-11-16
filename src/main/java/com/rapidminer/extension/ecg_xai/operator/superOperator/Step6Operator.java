@@ -31,6 +31,8 @@ public class Step6Operator extends AbstractStepOperator {
 
     public Step6Operator(OperatorDescription description) {
         super(description);
+        inExtender.start();
+        outExtender.start();
         getTransformer().addRule(new PassThroughRule(P_DUROutput,P_DURInput, false));
         getTransformer().addRule(new PassThroughRule(P_AMPOutput, P_AMPInput, false));
         getTransformer().addRule(new PassThroughRule(LAEInput, LAEOutput, false));
@@ -41,6 +43,7 @@ public class Step6Operator extends AbstractStepOperator {
 
     @Override
     public void doWork() throws OperatorException {
+        outExtender.reset();
         inExtender.passDataThrough();
         InModelOutput.deliver(InModelInput.getData(Pack.class));
         P_DURInput.deliver(P_DUROutput.getData(StringInfo.class));

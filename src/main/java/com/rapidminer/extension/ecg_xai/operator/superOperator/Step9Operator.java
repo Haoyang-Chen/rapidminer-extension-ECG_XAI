@@ -31,6 +31,8 @@ public class Step9Operator extends AbstractStepOperator {
 
     public Step9Operator(OperatorDescription description) {
         super(description);
+        inExtender.start();
+        outExtender.start();
         getTransformer().addRule(new PassThroughRule(QRS_SUMOutput,QRS_SUMInput, false));
         getTransformer().addRule(new PassThroughRule(NORM_AXISInput, NORM_AXISOutput, false));
         getTransformer().addRule(new PassThroughRule(LADInput, LADOutput, false));
@@ -41,6 +43,7 @@ public class Step9Operator extends AbstractStepOperator {
 
     @Override
     public void doWork() throws OperatorException {
+        outExtender.reset();
         inExtender.passDataThrough();
         InModelOutput.deliver(InModelInput.getData(Pack.class));
         QRS_SUMInput.deliver(QRS_SUMOutput.getData(StringInfo.class));

@@ -44,6 +44,8 @@ public class Step4Operator extends AbstractStepOperator {
 
     public Step4Operator(OperatorDescription description) {
         super(description);
+        inExtender.start();
+        outExtender.start();
         getTransformer().addRule(new PassThroughRule(ST_AMPOutput,ST_AMPInput, false));
         getTransformer().addRule(new PassThroughRule(LMI_STEInput, LMI_STEOutput, false));
         getTransformer().addRule(new PassThroughRule(AMI_STEInput, AMI_STEOutput, false));
@@ -59,6 +61,7 @@ public class Step4Operator extends AbstractStepOperator {
 
     @Override
     public void doWork() throws OperatorException {
+        outExtender.reset();
         inExtender.passDataThrough();
         InModelOutput.deliver(InModelInput.getData(Pack.class));
         ST_AMPInput.deliver(ST_AMPOutput.getData(StringInfo.class));

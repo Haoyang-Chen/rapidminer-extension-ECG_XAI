@@ -38,6 +38,8 @@ public class Step1Operator extends AbstractStepOperator {
 
     public Step1Operator(OperatorDescription description) {
         super(description);
+        inExtender.start();
+        outExtender.start();
         getTransformer().addRule(new PassThroughRule(SINUSOutput,SINUSInput, false));
         getTransformer().addRule(new PassThroughRule(HROutput, HRInput, false));
         getTransformer().addRule(new PassThroughRule(RR_DIFFOutput, RR_DIFFInput, false));
@@ -47,10 +49,13 @@ public class Step1Operator extends AbstractStepOperator {
         getTransformer().addRule(new PassThroughRule(SBRADInput, SBRADOutput, false));
         getTransformer().addRule(new PassThroughRule(AFIBInput, AFIBOutput, false));
         getTransformer().addRule(new PassThroughRule(AFLTInput, AFLTOutput, false));
+        getTransformer().addRule(inExtender.makePassThroughRule());
+        getTransformer().addRule(outExtender.makePassThroughRule());
     }
 
     @Override
     public void doWork() throws OperatorException {
+        outExtender.reset();
         inExtender.passDataThrough();
         InModelOutput.deliver(InModelInput.getData(Pack.class));
         SINUSInput.deliver(SINUSOutput.getData(StringInfo.class));

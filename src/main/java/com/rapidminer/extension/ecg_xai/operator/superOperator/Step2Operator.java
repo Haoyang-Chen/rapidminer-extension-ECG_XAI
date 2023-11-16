@@ -27,6 +27,8 @@ public class Step2Operator extends AbstractStepOperator {
 
     public Step2Operator(OperatorDescription description) {
         super(description);
+        inExtender.start();
+        outExtender.start();
         getTransformer().addRule(new PassThroughRule(QRS_DUROutput,QRS_DURInput, false));
         getTransformer().addRule(new PassThroughRule(PR_DUROutput, PR_DURInput, false));
         getTransformer().addRule(new PassThroughRule(LBBBInput, LBBBOutput, false));
@@ -36,6 +38,7 @@ public class Step2Operator extends AbstractStepOperator {
 
     @Override
     public void doWork() throws OperatorException {
+        outExtender.reset();
         inExtender.passDataThrough();
         InModelOutput.deliver(InModelInput.getData(Pack.class));
         QRS_DURInput.deliver(QRS_DUROutput.getData(StringInfo.class));

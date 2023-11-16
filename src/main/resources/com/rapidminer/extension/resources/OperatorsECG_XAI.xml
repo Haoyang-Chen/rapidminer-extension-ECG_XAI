@@ -63,6 +63,11 @@
                 <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step9Operator</class>
                 <icon>9.png</icon>
             </operator>
+            <operator>
+                <key>Step</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.superOperator.StepOperator</class>
+<!--                <icon>9.png</icon>-->
+            </operator>
         </group>
 
         <group key="Operators">
