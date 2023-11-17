@@ -14,12 +14,14 @@ import com.rapidminer.parameter.ParameterTypeStringCategory;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class ResultOperator2 extends Operator {
     private final InputPort Input=getInputPorts().createPort("In pack");
     private final OutputPort output=getOutputPorts().createPort("Out result");
     private static final String PARAMETER_NAME="Result Name";
-    private static final String PARAMETER_TYPE="Abnormality";
+    private static final String PARAMETER_TYPE="Result Type";
+    private static final String PARAMETER_AB_TYPE ="Abnormality";
     public ResultOperator2(OperatorDescription description) {
         super(description);
     }
@@ -27,12 +29,13 @@ public class ResultOperator2 extends Operator {
     @Override
     public void doWork() throws com.rapidminer.operator.OperatorException {
         String name=getParameterAsString(PARAMETER_NAME);
-        boolean type=getParameterAsBoolean(PARAMETER_TYPE);
+        String type=getParameterAsString(PARAMETER_TYPE);
+        boolean ab_type =getParameterAsBoolean(PARAMETER_AB_TYPE);
         Pack pack=Input.getData(Pack.class);
         Model model=pack.getModel();
         Step step=model.getLastStep();
         ImpressionNode impNode;
-        if (type) {
+        if (ab_type) {
             impNode = new ImpressionNode(name+" (Abnormal)");
         }else{
             impNode = new ImpressionNode(name);
@@ -44,7 +47,11 @@ public class ResultOperator2 extends Operator {
         }
         step.addNode(impNode);
         this.rename(name);
-        output.deliver(new StringInfo(name));
+        if (Objects.equals(type, "General")) {
+            output.deliver(new StringInfo_General(name));
+        }else{
+            output.deliver(new StringInfo_Lead(name));
+        }
     }
 
     @Override
@@ -56,7 +63,8 @@ public class ResultOperator2 extends Operator {
                 "Choose Result Name",
                 impressionName.getImpressions()
         )));
-        types.add(new ParameterTypeBoolean(PARAMETER_TYPE,"Abnormality",false));
+        types.add(new ParameterTypeStringCategory(PARAMETER_TYPE,"Type of the Data",new String[]{"General","Lead Specific"},"General"));
+        types.add(new ParameterTypeBoolean(PARAMETER_AB_TYPE,"Abnormality",false));
         return types;
     }
 }

@@ -49,6 +49,38 @@
                     <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step4.Step4Operator</class>
                     <icon>4.png</icon>
                 </operator>
+                <operator>
+                    <key>Assess for STE</key>
+                    <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step4.AssessForSTE</class>
+                </operator>
+                <operator>
+                    <key>Assess for STD</key>
+                    <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step4.AssessForSTD</class>
+                </operator>
+                <operator>
+                    <key>Check STE in Lateral Leeds</key>
+                    <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step4.CheckSTEInLateralLeeds</class>
+                </operator>
+                <operator>
+                    <key>Check STE in Contiguous Precordial Leads</key>
+                    <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step4.CheckSTEInContiguousPrecordialLeads</class>
+                </operator>
+                <operator>
+                    <key>Check STE in Inferior Leads</key>
+                    <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step4.CheckSTEInInferiorLeads</class>
+                </operator>
+                <operator>
+                    <key>Check STD for LVH</key>
+                    <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step4.CheckSTDforLVH</class>
+                </operator>
+                <operator>
+                    <key>Check STD for RVH</key>
+                    <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step4.CheckSTDforRVH</class>
+                </operator>
+                <operator>
+                    <key>Check STD in Inferior Leads</key>
+                    <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step4.CheckSTDInInferiorLeads</class>
+                </operator>
             </group>
             <group key="Step5">
                 <operator>
