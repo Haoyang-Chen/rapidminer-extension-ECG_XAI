@@ -8,6 +8,7 @@ import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.ports.InputPort;
 import com.rapidminer.operator.ports.OutputPort;
 import com.rapidminer.parameter.ParameterType;
+import com.rapidminer.parameter.ParameterTypeBoolean;
 import com.rapidminer.parameter.ParameterTypeEnumeration;
 import com.rapidminer.parameter.ParameterTypeStringCategory;
 
@@ -18,6 +19,7 @@ public class ResultOperator2 extends Operator {
     private final InputPort Input=getInputPorts().createPort("In pack");
     private final OutputPort output=getOutputPorts().createPort("Out result");
     private static final String PARAMETER_NAME="Result Name";
+    private static final String PARAMETER_TYPE="Abnormality";
     public ResultOperator2(OperatorDescription description) {
         super(description);
     }
@@ -25,10 +27,16 @@ public class ResultOperator2 extends Operator {
     @Override
     public void doWork() throws com.rapidminer.operator.OperatorException {
         String name=getParameterAsString(PARAMETER_NAME);
+        boolean type=getParameterAsBoolean(PARAMETER_TYPE);
         Pack pack=Input.getData(Pack.class);
         Model model=pack.getModel();
         Step step=model.getLastStep();
-        ImpressionNode impNode=new ImpressionNode(name);
+        ImpressionNode impNode;
+        if (type) {
+            impNode = new ImpressionNode(name+" (Abnormal)");
+        }else{
+            impNode = new ImpressionNode(name);
+        }
         for (Map.Entry<AbstractNode, Boolean> entry : pack.current_parents.entrySet()){
             AbstractNode parent=entry.getKey();
             Boolean nodeYes=entry.getValue();
@@ -48,6 +56,7 @@ public class ResultOperator2 extends Operator {
                 "Choose Result Name",
                 impressionName.getImpressions()
         )));
+        types.add(new ParameterTypeBoolean(PARAMETER_TYPE,"Abnormality",false));
         return types;
     }
 }

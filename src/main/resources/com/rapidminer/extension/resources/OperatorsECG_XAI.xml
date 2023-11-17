@@ -144,6 +144,10 @@
                 <class>com.rapidminer.extension.ecg_xai.operator.ResultOperator2</class>
                 <icon>che.png</icon>
             </operator>
+            <operator>
+                <key>Lead Specify Operator</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.LeadSpecifyOperator</class>
+            </operator>
         </group>
     </group>
 </operators>
