@@ -36,7 +36,7 @@ public class ResultOperator2 extends Operator {
         }
         step.addNode(impNode);
         this.rename(name);
-        output.deliver(new StringInfo(name));
+        output.deliver(new StringInfo_General(name));
     }
 
     @Override

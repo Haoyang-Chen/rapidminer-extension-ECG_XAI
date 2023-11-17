@@ -1,7 +1,7 @@
 package com.rapidminer.extension.ecg_xai.operator.superOperator;
 
 import com.rapidminer.extension.ecg_xai.operator.Pack;
-import com.rapidminer.extension.ecg_xai.operator.StringInfo;
+import com.rapidminer.extension.ecg_xai.operator.StringInfo_General;
 import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
 import com.rapidminer.operator.ports.InputPort;
@@ -64,19 +64,19 @@ public class Step4Operator extends AbstractStepOperator {
         outExtender.reset();
         inExtender.passDataThrough();
         InModelOutput.deliver(InModelInput.getData(Pack.class));
-        ST_AMPInput.deliver(ST_AMPOutput.getData(StringInfo.class));
+        ST_AMPInput.deliver(ST_AMPOutput.getData(StringInfo_General.class));
         getSubprocess(0).execute();
         OutModelOutput.deliver(InModelInput.getData(Pack.class));
-        LMI_STEOutput.deliver(LMI_STEInput.getData(StringInfo.class));
-        AMI_STEOutput.deliver(AMI_STEInput.getData(StringInfo.class));
-        IMI_STEOutput.deliver(IMI_STEInput.getData(StringInfo.class));
-        STEOutput.deliver(STEInput.getData(StringInfo.class));
-        LVHOutput.deliver(LVHInput.getData(StringInfo.class));
-        RVHOutput.deliver(RVHInput.getData(StringInfo.class));
-        AMI_STDOutput.deliver(AMI_STDInput.getData(StringInfo.class));
-        LMI_STDOutput.deliver(LMI_STDInput.getData(StringInfo.class));
-        IMI_STDOutput.deliver(IMI_STDInput.getData(StringInfo.class));
-        STDOutput.deliver(STDInput.getData(StringInfo.class));
+        LMI_STEOutput.deliver(LMI_STEInput.getData(StringInfo_General.class));
+        AMI_STEOutput.deliver(AMI_STEInput.getData(StringInfo_General.class));
+        IMI_STEOutput.deliver(IMI_STEInput.getData(StringInfo_General.class));
+        STEOutput.deliver(STEInput.getData(StringInfo_General.class));
+        LVHOutput.deliver(LVHInput.getData(StringInfo_General.class));
+        RVHOutput.deliver(RVHInput.getData(StringInfo_General.class));
+        AMI_STDOutput.deliver(AMI_STDInput.getData(StringInfo_General.class));
+        LMI_STDOutput.deliver(LMI_STDInput.getData(StringInfo_General.class));
+        IMI_STDOutput.deliver(IMI_STDInput.getData(StringInfo_General.class));
+        STDOutput.deliver(STDInput.getData(StringInfo_General.class));
         outExtender.collect();
     }
 }

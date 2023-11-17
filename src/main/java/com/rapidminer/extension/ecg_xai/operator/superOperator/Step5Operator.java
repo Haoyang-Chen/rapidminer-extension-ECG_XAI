@@ -1,7 +1,7 @@
 package com.rapidminer.extension.ecg_xai.operator.superOperator;
 
 import com.rapidminer.extension.ecg_xai.operator.Pack;
-import com.rapidminer.extension.ecg_xai.operator.StringInfo;
+import com.rapidminer.extension.ecg_xai.operator.StringInfo_General;
 import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
 import com.rapidminer.operator.ports.InputPort;
@@ -56,17 +56,17 @@ public class Step5Operator extends AbstractStepOperator {
         outExtender.reset();
         inExtender.passDataThrough();
         InModelOutput.deliver(InModelInput.getData(Pack.class));
-        Q_DURInput.deliver(Q_DUROutput.getData(StringInfo.class));
-        Q_AMPInput.deliver(Q_AMPOutput.getData(StringInfo.class));
-        PRWPInput.deliver(PRWPOutput.getData(StringInfo.class));
+        Q_DURInput.deliver(Q_DUROutput.getData(StringInfo_General.class));
+        Q_AMPInput.deliver(Q_AMPOutput.getData(StringInfo_General.class));
+        PRWPInput.deliver(PRWPOutput.getData(StringInfo_General.class));
         getSubprocess(0).execute();
         OutModelOutput.deliver(InModelInput.getData(Pack.class));
-        IMI_STEOutput.deliver(IMI_STEInput.getData(StringInfo.class));
-        LMI_STEOutput.deliver(LMI_STEInput.getData(StringInfo.class));
-        AMI_QPOutput.deliver(AMI_QPInput.getData(StringInfo.class));
-        AMI_PRWPOutput.deliver(AMI_PRWPInput.getData(StringInfo.class));
-        LVHOutput.deliver(LVHInput.getData(StringInfo.class));
-        LBBBOutput.deliver(LBBBInput.getData(StringInfo.class));
+        IMI_STEOutput.deliver(IMI_STEInput.getData(StringInfo_General.class));
+        LMI_STEOutput.deliver(LMI_STEInput.getData(StringInfo_General.class));
+        AMI_QPOutput.deliver(AMI_QPInput.getData(StringInfo_General.class));
+        AMI_PRWPOutput.deliver(AMI_PRWPInput.getData(StringInfo_General.class));
+        LVHOutput.deliver(LVHInput.getData(StringInfo_General.class));
+        LBBBOutput.deliver(LBBBInput.getData(StringInfo_General.class));
         outExtender.collect();
     }
 }

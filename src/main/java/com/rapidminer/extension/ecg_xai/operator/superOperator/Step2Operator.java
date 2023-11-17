@@ -1,8 +1,7 @@
 package com.rapidminer.extension.ecg_xai.operator.superOperator;
 
 import com.rapidminer.extension.ecg_xai.operator.Pack;
-import com.rapidminer.extension.ecg_xai.operator.StringInfo;
-import com.rapidminer.operator.OperatorChain;
+import com.rapidminer.extension.ecg_xai.operator.StringInfo_General;
 import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
 import com.rapidminer.operator.ports.InputPort;
@@ -41,13 +40,13 @@ public class Step2Operator extends AbstractStepOperator {
         outExtender.reset();
         inExtender.passDataThrough();
         InModelOutput.deliver(InModelInput.getData(Pack.class));
-        QRS_DURInput.deliver(QRS_DUROutput.getData(StringInfo.class));
-        PR_DURInput.deliver(PR_DUROutput.getData(StringInfo.class));
+        QRS_DURInput.deliver(QRS_DUROutput.getData(StringInfo_General.class));
+        PR_DURInput.deliver(PR_DUROutput.getData(StringInfo_General.class));
         getSubprocess(0).execute();
         OutModelOutput.deliver(InModelInput.getData(Pack.class));
-        LBBBOutput.deliver(LBBBInput.getData(StringInfo.class));
-        RBBBOutput.deliver(RBBBInput.getData(StringInfo.class));
-        AVBOutput.deliver(AVBInput.getData(StringInfo.class));
+        LBBBOutput.deliver(LBBBInput.getData(StringInfo_General.class));
+        RBBBOutput.deliver(RBBBInput.getData(StringInfo_General.class));
+        AVBOutput.deliver(AVBInput.getData(StringInfo_General.class));
         outExtender.collect();
     }
 }

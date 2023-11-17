@@ -16,8 +16,14 @@
         <renderer>com.rapidminer.gui.renderer.DefaultTextRenderer</renderer>
     </ioobject>
     <ioobject
-            name="StringInfo"
-            class="com.rapidminer.extension.ecg_xai.operator.StringInfo"
+            name="StringInfo_General"
+            class="com.rapidminer.extension.ecg_xai.operator.StringInfo_General"
+            reportable="false">
+        <renderer>com.rapidminer.gui.renderer.DefaultTextRenderer</renderer>
+    </ioobject>
+    <ioobject
+            name="StringInfo_Lead"
+            class="com.rapidminer.extension.ecg_xai.operator.StringInfo_Lead"
             reportable="false">
         <renderer>com.rapidminer.gui.renderer.DefaultTextRenderer</renderer>
     </ioobject>

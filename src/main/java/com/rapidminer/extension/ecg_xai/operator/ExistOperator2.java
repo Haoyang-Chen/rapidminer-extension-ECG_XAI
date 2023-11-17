@@ -1,6 +1,5 @@
 package com.rapidminer.extension.ecg_xai.operator;
 
-import com.rapidminer.extension.ecg_xai.operator.names.ImpressionName;
 import com.rapidminer.extension.ecg_xai.operator.names.LeadName;
 import com.rapidminer.extension.ecg_xai.operator.nodes.AbstractNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.ConditionNode;
@@ -32,7 +31,7 @@ public class ExistOperator2 extends Operator {
 
     @Override
     public void doWork() throws OperatorException {
-        String left= leftInput.getData(StringInfo.class).toString();
+        String left= leftInput.getData(StringInfo_General.class).toString();
         String lead=getParameterAsString(PARAMETER_LEAD);
 
         Pack pack=pacInput.getData(Pack.class);

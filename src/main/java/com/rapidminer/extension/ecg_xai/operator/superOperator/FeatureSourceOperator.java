@@ -1,7 +1,6 @@
 package com.rapidminer.extension.ecg_xai.operator.superOperator;
 
-import com.rapidminer.extension.ecg_xai.operator.Pack;
-import com.rapidminer.extension.ecg_xai.operator.StringInfo;
+import com.rapidminer.extension.ecg_xai.operator.StringInfo_General;
 import com.rapidminer.operator.*;
 import com.rapidminer.operator.ports.CollectingPortPairExtender;
 import com.rapidminer.operator.ports.InputPort;
@@ -83,61 +82,61 @@ public class FeatureSourceOperator extends OperatorChain {
         outExtender.reset();
         getSubprocess(0).execute();
         if(SINUSInput.isConnected()) {
-            SINUSOutput.deliver(SINUSInput.getData(StringInfo.class));
+            SINUSOutput.deliver(SINUSInput.getData(StringInfo_General.class));
         }
         if(HRInput.isConnected()) {
-            HROutput.deliver(HRInput.getData(StringInfo.class));
+            HROutput.deliver(HRInput.getData(StringInfo_General.class));
         }
         if(RR_DIFFInput.isConnected()) {
-            RR_DIFFOutput.deliver(RR_DIFFInput.getData(StringInfo.class));
+            RR_DIFFOutput.deliver(RR_DIFFInput.getData(StringInfo_General.class));
         }
         if(QRS_DURInput.isConnected()) {
-            QRS_DUROutput.deliver(QRS_DURInput.getData(StringInfo.class));
+            QRS_DUROutput.deliver(QRS_DURInput.getData(StringInfo_General.class));
         }
         if(PR_DURInput.isConnected()) {
-            PR_DUROutput.deliver(PR_DURInput.getData(StringInfo.class));
+            PR_DUROutput.deliver(PR_DURInput.getData(StringInfo_General.class));
         }
         if(ST_AMPInput.isConnected()) {
-            ST_AMPOutput.deliver(ST_AMPInput.getData(StringInfo.class));
+            ST_AMPOutput.deliver(ST_AMPInput.getData(StringInfo_General.class));
         }
         if(Q_DURInput.isConnected()) {
-            Q_DUROutput.deliver(Q_DURInput.getData(StringInfo.class));
+            Q_DUROutput.deliver(Q_DURInput.getData(StringInfo_General.class));
         }
         if(Q_AMPInput.isConnected()) {
-            Q_AMPOutput.deliver(Q_AMPInput.getData(StringInfo.class));
+            Q_AMPOutput.deliver(Q_AMPInput.getData(StringInfo_General.class));
         }
         if(PRWPInput.isConnected()) {
-            PRWPOutput.deliver(PRWPInput.getData(StringInfo.class));
+            PRWPOutput.deliver(PRWPInput.getData(StringInfo_General.class));
         }
         if(P_DURInput.isConnected()) {
-            P_DUROutput.deliver(P_DURInput.getData(StringInfo.class));
+            P_DUROutput.deliver(P_DURInput.getData(StringInfo_General.class));
         }
         if(P_AMPInput.isConnected()) {
-            P_AMPOutput.deliver(P_AMPInput.getData(StringInfo.class));
+            P_AMPOutput.deliver(P_AMPInput.getData(StringInfo_General.class));
         }
         if(AGEInput.isConnected()) {
-            AGEOutput.deliver(AGEInput.getData(StringInfo.class));
+            AGEOutput.deliver(AGEInput.getData(StringInfo_General.class));
         }
         if(MALEInput.isConnected()) {
-            MALEOutput.deliver(MALEInput.getData(StringInfo.class));
+            MALEOutput.deliver(MALEInput.getData(StringInfo_General.class));
         }
         if(R_AMPInput.isConnected()) {
-            R_AMPOutput.deliver(R_AMPInput.getData(StringInfo.class));
+            R_AMPOutput.deliver(R_AMPInput.getData(StringInfo_General.class));
         }
         if(S_AMPInput.isConnected()) {
-            S_AMPOutput.deliver(S_AMPInput.getData(StringInfo.class));
+            S_AMPOutput.deliver(S_AMPInput.getData(StringInfo_General.class));
         }
         if(RS_RATIOInput.isConnected()) {
-            RS_RATIOOutput.deliver(RS_RATIOInput.getData(StringInfo.class));
+            RS_RATIOOutput.deliver(RS_RATIOInput.getData(StringInfo_General.class));
         }
         if(RADInput.isConnected()) {
-            RADOutput.deliver(RADInput.getData(StringInfo.class));
+            RADOutput.deliver(RADInput.getData(StringInfo_General.class));
         }
         if(T_AMPInput.isConnected()) {
-            T_AMPOutput.deliver(T_AMPInput.getData(StringInfo.class));
+            T_AMPOutput.deliver(T_AMPInput.getData(StringInfo_General.class));
         }
         if(QRS_SUMInput.isConnected()) {
-            QRS_SUMOutput.deliver(QRS_SUMInput.getData(StringInfo.class));
+            QRS_SUMOutput.deliver(QRS_SUMInput.getData(StringInfo_General.class));
         }
         outExtender.collect();
     }

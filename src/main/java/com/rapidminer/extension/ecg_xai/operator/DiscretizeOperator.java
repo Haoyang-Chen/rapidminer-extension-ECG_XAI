@@ -1,10 +1,7 @@
 package com.rapidminer.extension.ecg_xai.operator;
 
-import com.rapidminer.extension.ecg_xai.operator.names.FeatureName;
-import com.rapidminer.extension.ecg_xai.operator.names.ImpressionName;
 import com.rapidminer.extension.ecg_xai.operator.nodes.AbstractNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.ConditionNode;
-import com.rapidminer.extension.ecg_xai.operator.nodes.ImpressionNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.condition.Compare;
 import com.rapidminer.operator.Operator;
 import com.rapidminer.operator.OperatorDescription;
@@ -12,7 +9,6 @@ import com.rapidminer.operator.OperatorException;
 import com.rapidminer.operator.ports.InputPort;
 import com.rapidminer.operator.ports.OutputPort;
 import com.rapidminer.parameter.*;
-import com.rapidminer.tools.OperatorService;
 
 import java.util.List;
 import java.util.Map;
@@ -40,7 +36,7 @@ public class DiscretizeOperator extends Operator {
     @Override
     public void doWork() throws OperatorException {
 //        String feature = getParameterAsString(PARAMETER_FEATURE);
-        String feature = featureInput.getData(StringInfo.class).toString();
+        String feature = featureInput.getData(StringInfo_General.class).toString();
         String high = getParameterAsString(PARAMETER_HIGH);
         String low = getParameterAsString(PARAMETER_LOW);
         String highResultName = getParameterAsString(PARAMETER_HIGH_RESULT_NAME);

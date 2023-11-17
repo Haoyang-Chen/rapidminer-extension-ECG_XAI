@@ -1,8 +1,7 @@
 package com.rapidminer.extension.ecg_xai.operator.superOperator;
 
 import com.rapidminer.extension.ecg_xai.operator.Pack;
-import com.rapidminer.extension.ecg_xai.operator.StringInfo;
-import com.rapidminer.operator.OperatorChain;
+import com.rapidminer.extension.ecg_xai.operator.StringInfo_General;
 import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
 import com.rapidminer.operator.ports.InputPort;
@@ -58,17 +57,17 @@ public class Step1Operator extends AbstractStepOperator {
         outExtender.reset();
         inExtender.passDataThrough();
         InModelOutput.deliver(InModelInput.getData(Pack.class));
-        SINUSInput.deliver(SINUSOutput.getData(StringInfo.class));
-        HRInput.deliver(HROutput.getData(StringInfo.class));
-        RR_DIFFInput.deliver(RR_DIFFOutput.getData(StringInfo.class));
+        SINUSInput.deliver(SINUSOutput.getData(StringInfo_General.class));
+        HRInput.deliver(HROutput.getData(StringInfo_General.class));
+        RR_DIFFInput.deliver(RR_DIFFOutput.getData(StringInfo_General.class));
         getSubprocess(0).execute();
         OutModelOutput.deliver(InModelInput.getData(Pack.class));
-        SARRHOutput.deliver(SARRHInput.getData(StringInfo.class));
-        STACHOutput.deliver(STACHInput.getData(StringInfo.class));
-        SROutput.deliver(SRInput.getData(StringInfo.class));
-        SBRADOutput.deliver(SBRADInput.getData(StringInfo.class));
-        AFIBOutput.deliver(AFIBInput.getData(StringInfo.class));
-        AFLTOutput.deliver(AFLTInput.getData(StringInfo.class));
+        SARRHOutput.deliver(SARRHInput.getData(StringInfo_General.class));
+        STACHOutput.deliver(STACHInput.getData(StringInfo_General.class));
+        SROutput.deliver(SRInput.getData(StringInfo_General.class));
+        SBRADOutput.deliver(SBRADInput.getData(StringInfo_General.class));
+        AFIBOutput.deliver(AFIBInput.getData(StringInfo_General.class));
+        AFLTOutput.deliver(AFLTInput.getData(StringInfo_General.class));
         outExtender.collect();
     }
 }

@@ -1,7 +1,7 @@
 package com.rapidminer.extension.ecg_xai.operator.superOperator;
 
 import com.rapidminer.extension.ecg_xai.operator.Pack;
-import com.rapidminer.extension.ecg_xai.operator.StringInfo;
+import com.rapidminer.extension.ecg_xai.operator.StringInfo_General;
 import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
 import com.rapidminer.operator.ports.InputPort;
@@ -52,16 +52,16 @@ public class Step8Operator extends AbstractStepOperator {
         outExtender.reset();
         inExtender.passDataThrough();
         InModelOutput.deliver(InModelInput.getData(Pack.class));
-        T_AMPInput.deliver(T_AMPOutput.getData(StringInfo.class));
-        STEInput.deliver(STEOutput.getData(StringInfo.class));
-        STDInput.deliver(STDOutput.getData(StringInfo.class));
+        T_AMPInput.deliver(T_AMPOutput.getData(StringInfo_General.class));
+        STEInput.deliver(STEOutput.getData(StringInfo_General.class));
+        STDInput.deliver(STDOutput.getData(StringInfo_General.class));
         getSubprocess(0).execute();
         OutModelOutput.deliver(InModelInput.getData(Pack.class));
-        IMIOutput.deliver(IMIInput.getData(StringInfo.class));
-        AMIOutput.deliver(AMIInput.getData(StringInfo.class));
-        LMIOutput.deliver(LMIInput.getData(StringInfo.class));
-        LVHOutput.deliver(LVHInput.getData(StringInfo.class));
-        RVHOutput.deliver(RVHInput.getData(StringInfo.class));
+        IMIOutput.deliver(IMIInput.getData(StringInfo_General.class));
+        AMIOutput.deliver(AMIInput.getData(StringInfo_General.class));
+        LMIOutput.deliver(LMIInput.getData(StringInfo_General.class));
+        LVHOutput.deliver(LVHInput.getData(StringInfo_General.class));
+        RVHOutput.deliver(RVHInput.getData(StringInfo_General.class));
         outExtender.collect();
     }
 }
