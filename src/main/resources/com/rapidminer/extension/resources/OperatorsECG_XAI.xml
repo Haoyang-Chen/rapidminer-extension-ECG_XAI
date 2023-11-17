@@ -18,51 +18,69 @@
 <!--            </operator>-->
 <!--        </group>-->
         <group key="StepOperators">
-            <operator>
-                <key>Step1</key>
-                <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step1Operator</class>
-                <icon>1.png</icon>
-            </operator>
-            <operator>
-                <key>Step2</key>
-                <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step2Operator</class>
-                <icon>2.png</icon>
-            </operator>
-            <operator>
-                <key>Step3</key>
-                <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step3Operator</class>
-                <icon>3.png</icon>
-            </operator>
-            <operator>
-                <key>Step4</key>
-                <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step4Operator</class>
-                <icon>4.png</icon>
-            </operator>
-            <operator>
-                <key>Step5</key>
-                <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step5Operator</class>
-                <icon>5.png</icon>
-            </operator>
-            <operator>
-                <key>Step6</key>
-                <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step6Operator</class>
-                <icon>6.png</icon>
-            </operator>
-            <operator>
-                <key>Step7</key>
-                <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step7Operator</class>
-                <icon>7.png</icon>
-            </operator>
-            <operator>
-                <key>Step8</key>
-                <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step8Operator</class>
-                <icon>8.png</icon>
-            </operator>
-            <operator>
-                <key>Step9</key>
-                <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step9Operator</class>
-                <icon>9.png</icon>
-            </operator>
+            <group key="Step1">
+                <operator>
+                    <key>Step1</key>
+                    <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step1Operator</class>
+                    <icon>1.png</icon>
+                </operator>
+            </group>
+            <group key="Step2">
+                <operator>
+                    <key>Step2</key>
+                    <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step2Operator</class>
+                    <icon>2.png</icon>
+                </operator>
+            </group>
+            <group key="Step3">
+                <operator>
+                    <key>Step3</key>
+                    <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step3Operator</class>
+                    <icon>3.png</icon>
+                </operator>
+            </group>
+            <group key="Step4">
+                <operator>
+                    <key>Step4</key>
+                    <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step4Operator</class>
+                    <icon>4.png</icon>
+                </operator>
+            </group>
+            <group key="Step5">
+                <operator>
+                    <key>Step5</key>
+                    <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step5Operator</class>
+                    <icon>5.png</icon>
+                </operator>
+            </group>
+            <group key="Step6">
+                <operator>
+                    <key>Step6</key>
+                    <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step6Operator</class>
+                    <icon>6.png</icon>
+                </operator>
+            </group>
+            <group key="Step7">
+                <operator>
+                    <key>Step7</key>
+                    <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step7Operator</class>
+                    <icon>7.png</icon>
+                </operator>
+            </group>
+            <group key="Step8">
+                <operator>
+                    <key>Step8</key>
+                    <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step8Operator</class>
+                    <icon>8.png</icon>
+                </operator>
+            </group>
+            <group key="Step9">
+                <operator>
+                    <key>Step9</key>
+                    <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step9Operator</class>
+                    <icon>9.png</icon>
+                </operator>
+            </group>
             <operator>
                 <key>Step</key>
                 <class>com.rapidminer.extension.ecg_xai.operator.superOperator.StepOperator</class>
@@ -85,10 +103,6 @@
                 <key>IsTrue2</key>
                 <class>com.rapidminer.extension.ecg_xai.operator.ExistOperator2</class>
                 <icon>tru.png</icon>
-            </operator>
-            <operator>
-                <key>DataRetriever</key>
-                <class>com.rapidminer.extension.ecg_xai.operator.DataRetriever</class>
             </operator>
         </group>
 
@@ -147,6 +161,10 @@
             <operator>
                 <key>Lead Specify Operator</key>
                 <class>com.rapidminer.extension.ecg_xai.operator.LeadSpecifyOperator</class>
+            </operator>
+            <operator>
+                <key>DataRetriever</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.DataRetriever</class>
             </operator>
         </group>
     </group>
