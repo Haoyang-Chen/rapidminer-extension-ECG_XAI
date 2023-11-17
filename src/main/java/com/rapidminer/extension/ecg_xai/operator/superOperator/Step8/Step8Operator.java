@@ -1,7 +1,8 @@
-package com.rapidminer.extension.ecg_xai.operator.superOperator;
+package com.rapidminer.extension.ecg_xai.operator.superOperator.Step8;
 
 import com.rapidminer.extension.ecg_xai.operator.Pack;
 import com.rapidminer.extension.ecg_xai.operator.StringInfo;
+import com.rapidminer.extension.ecg_xai.operator.superOperator.AbstractStepOperator;
 import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
 import com.rapidminer.operator.ports.InputPort;
