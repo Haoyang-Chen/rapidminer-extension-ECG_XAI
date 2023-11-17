@@ -1,7 +1,7 @@
 package com.rapidminer.extension.ecg_xai.operator.superOperator;
 
 import com.rapidminer.extension.ecg_xai.operator.Pack;
-import com.rapidminer.extension.ecg_xai.operator.StringInfo_General;
+import com.rapidminer.extension.ecg_xai.operator.StringInfo;
 import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
 import com.rapidminer.operator.ports.InputPort;
@@ -13,22 +13,22 @@ public class Step7Operator extends AbstractStepOperator {
     private final OutputPort AGEInput = getSubprocess(0).getInnerSources().createPort("AGE");
     private final InputPort MALEOutput=getInputPorts().createPort("MALE");
     private final OutputPort MALEInput = getSubprocess(0).getInnerSources().createPort("MALE");
-    private final InputPort R_AMPOutput=getInputPorts().createPort("R_AMP");
-    private final OutputPort R_AMPInput = getSubprocess(0).getInnerSources().createPort("R_AMP");
-    private final InputPort S_AMPOutput=getInputPorts().createPort("S_AMP");
-    private final OutputPort S_AMPInput = getSubprocess(0).getInnerSources().createPort("S_AMP");
-    private final InputPort RS_RATIOOutput=getInputPorts().createPort("RS_RATIO");
-    private final OutputPort RS_RATIOInput = getSubprocess(0).getInnerSources().createPort("RS_RATIO");
-    private final InputPort RADOutput=getInputPorts().createPort("RAD");
-    private final OutputPort RADInput = getSubprocess(0).getInnerSources().createPort("RAD");
+    private final InputPort R_AMPOutput=getInputPorts().createPort("R_AMP R wave amplitude");
+    private final OutputPort R_AMPInput = getSubprocess(0).getInnerSources().createPort("R_AMP R wave amplitude");
+    private final InputPort S_AMPOutput=getInputPorts().createPort("S_AMP S wave amplitude");
+    private final OutputPort S_AMPInput = getSubprocess(0).getInnerSources().createPort("S_AMP S wave amplitude");
+    private final InputPort RS_RATIOOutput=getInputPorts().createPort("RS_RATIO R/S wave amplitude ratio");
+    private final OutputPort RS_RATIOInput = getSubprocess(0).getInnerSources().createPort("RS_RATIO R/S wave amplitude ratio");
+    private final InputPort RADOutput=getInputPorts().createPort("RAD right axis deviation");
+    private final OutputPort RADInput = getSubprocess(0).getInnerSources().createPort("RAD right axis deviation");
 
 
     //LVH
-    private final InputPort LVHInput = getSubprocess(0).getInnerSinks().createPort("LVH");
-    private final OutputPort LVHOutput=getOutputPorts().createPort("LVH");
+    private final InputPort LVHInput = getSubprocess(0).getInnerSinks().createPort("LVH left ventricular hypertrophy");
+    private final OutputPort LVHOutput=getOutputPorts().createPort("LVH left ventricular hypertrophy");
     //RVH
-    private final InputPort RVHInput = getSubprocess(0).getInnerSinks().createPort("RVH");
-    private final OutputPort RVHOutput=getOutputPorts().createPort("RVH");
+    private final InputPort RVHInput = getSubprocess(0).getInnerSinks().createPort("RVH right ventricular hypertrophy");
+    private final OutputPort RVHOutput=getOutputPorts().createPort("RVH right ventricular hypertrophy");
 
 
     public Step7Operator(OperatorDescription description) {
@@ -50,16 +50,16 @@ public class Step7Operator extends AbstractStepOperator {
         outExtender.reset();
         inExtender.passDataThrough();
         InModelOutput.deliver(InModelInput.getData(Pack.class));
-        AGEInput.deliver(AGEOutput.getData(StringInfo_General.class));
-        MALEInput.deliver(MALEOutput.getData(StringInfo_General.class));
-        R_AMPInput.deliver(R_AMPOutput.getData(StringInfo_General.class));
-        S_AMPInput.deliver(S_AMPOutput.getData(StringInfo_General.class));
-        RS_RATIOInput.deliver(RS_RATIOOutput.getData(StringInfo_General.class));
-        RADInput.deliver(RADOutput.getData(StringInfo_General.class));
+        AGEInput.deliver(AGEOutput.getData(StringInfo.class));
+        MALEInput.deliver(MALEOutput.getData(StringInfo.class));
+        R_AMPInput.deliver(R_AMPOutput.getData(StringInfo.class));
+        S_AMPInput.deliver(S_AMPOutput.getData(StringInfo.class));
+        RS_RATIOInput.deliver(RS_RATIOOutput.getData(StringInfo.class));
+        RADInput.deliver(RADOutput.getData(StringInfo.class));
         getSubprocess(0).execute();
         OutModelOutput.deliver(InModelInput.getData(Pack.class));
-        LVHOutput.deliver(LVHInput.getData(StringInfo_General.class));
-        RVHOutput.deliver(RVHInput.getData(StringInfo_General.class));
+        LVHOutput.deliver(LVHInput.getData(StringInfo.class));
+        RVHOutput.deliver(RVHInput.getData(StringInfo.class));
         outExtender.collect();
     }
 }

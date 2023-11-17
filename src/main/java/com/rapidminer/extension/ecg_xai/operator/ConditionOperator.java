@@ -36,7 +36,7 @@ public class ConditionOperator extends Operator {
     @Override
     public void doWork() throws OperatorException {
 //        String left= getParameterAsString(PARAMETER_LEFT);
-        String left= leftInput.getData(StringInfo_General.class).toString();
+        String left= leftInput.getData(StringInfo.class).toString();
         String mid= getParameterAsString(PARAMETER_MID);
         String right= getParameterAsString(PARAMETER_RIGHT);
         String resultName=getParameterAsString(PARAMETER_RESULT_NAME);
@@ -91,7 +91,7 @@ public class ConditionOperator extends Operator {
 //        LogService.getRoot().log(Level.INFO,noPack.current_parents.toString());
         yesOutput.deliver(pack);
         noOutput.deliver(noPack);
-        ResultOutput.deliver(new StringInfo_General(resultName));
+        ResultOutput.deliver(new StringInfo(resultName));
     }
 
     @Override

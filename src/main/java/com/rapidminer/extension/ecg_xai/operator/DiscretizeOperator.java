@@ -36,7 +36,7 @@ public class DiscretizeOperator extends Operator {
     @Override
     public void doWork() throws OperatorException {
 //        String feature = getParameterAsString(PARAMETER_FEATURE);
-        String feature = featureInput.getData(StringInfo_General.class).toString();
+        String feature = featureInput.getData(StringInfo.class).toString();
         String high = getParameterAsString(PARAMETER_HIGH);
         String low = getParameterAsString(PARAMETER_LOW);
         String highResultName = getParameterAsString(PARAMETER_HIGH_RESULT_NAME);

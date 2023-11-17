@@ -1,7 +1,7 @@
 package com.rapidminer.extension.ecg_xai.operator.superOperator;
 
 import com.rapidminer.extension.ecg_xai.operator.Pack;
-import com.rapidminer.extension.ecg_xai.operator.StringInfo_General;
+import com.rapidminer.extension.ecg_xai.operator.StringInfo;
 import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
 import com.rapidminer.operator.ports.InputPort;
@@ -16,17 +16,17 @@ public class Step9Operator extends AbstractStepOperator {
     private final InputPort NORM_AXISInput = getSubprocess(0).getInnerSinks().createPort("NORM_AXIS");
     private final OutputPort NORM_AXISOutput=getOutputPorts().createPort("NORM_AXIS");
     //LAD
-    private final InputPort LADInput = getSubprocess(0).getInnerSinks().createPort("LAD");
-    private final OutputPort LADOutput=getOutputPorts().createPort("LAD");
+    private final InputPort LADInput = getSubprocess(0).getInnerSinks().createPort("LAD left axis deviation");
+    private final OutputPort LADOutput=getOutputPorts().createPort("LAD left axis deviation");
     //LAFB
-    private final InputPort LAFBInput = getSubprocess(0).getInnerSinks().createPort("LAFB");
-    private final OutputPort LAFBOutput=getOutputPorts().createPort("LAFB");
+    private final InputPort LAFBInput = getSubprocess(0).getInnerSinks().createPort("LAFB left anterior fascicular block");
+    private final OutputPort LAFBOutput=getOutputPorts().createPort("LAFB left anterior fascicular block");
     //RAD
-    private final InputPort RADInput = getSubprocess(0).getInnerSinks().createPort("RAD");
-    private final OutputPort RADOutput=getOutputPorts().createPort("RAD");
+    private final InputPort RADInput = getSubprocess(0).getInnerSinks().createPort("RAD right axis deviation");
+    private final OutputPort RADOutput=getOutputPorts().createPort("RAD right axis deviation");
     //LPFB
-    private final InputPort LPFBInput = getSubprocess(0).getInnerSinks().createPort("LPFB");
-    private final OutputPort LPFBOutput=getOutputPorts().createPort("LPFB");
+    private final InputPort LPFBInput = getSubprocess(0).getInnerSinks().createPort("LPFB left posterior fascicular block");
+    private final OutputPort LPFBOutput=getOutputPorts().createPort("LPFB left posterior fascicular block");
 
 
     public Step9Operator(OperatorDescription description) {
@@ -46,14 +46,14 @@ public class Step9Operator extends AbstractStepOperator {
         outExtender.reset();
         inExtender.passDataThrough();
         InModelOutput.deliver(InModelInput.getData(Pack.class));
-        QRS_SUMInput.deliver(QRS_SUMOutput.getData(StringInfo_General.class));
+        QRS_SUMInput.deliver(QRS_SUMOutput.getData(StringInfo.class));
         getSubprocess(0).execute();
         OutModelOutput.deliver(InModelInput.getData(Pack.class));
-        NORM_AXISOutput.deliver(NORM_AXISInput.getData(StringInfo_General.class));
-        LADOutput.deliver(LADInput.getData(StringInfo_General.class));
-        LAFBOutput.deliver(LAFBInput.getData(StringInfo_General.class));
-        RADOutput.deliver(RADInput.getData(StringInfo_General.class));
-        LPFBOutput.deliver(LPFBInput.getData(StringInfo_General.class));
+        NORM_AXISOutput.deliver(NORM_AXISInput.getData(StringInfo.class));
+        LADOutput.deliver(LADInput.getData(StringInfo.class));
+        LAFBOutput.deliver(LAFBInput.getData(StringInfo.class));
+        RADOutput.deliver(RADInput.getData(StringInfo.class));
+        LPFBOutput.deliver(LPFBInput.getData(StringInfo.class));
         outExtender.collect();
     }
 }

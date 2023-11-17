@@ -1,6 +1,6 @@
 package com.rapidminer.extension.ecg_xai.operator.superOperator;
 
-import com.rapidminer.extension.ecg_xai.operator.StringInfo_General;
+import com.rapidminer.extension.ecg_xai.operator.StringInfo;
 import com.rapidminer.operator.*;
 import com.rapidminer.operator.ports.CollectingPortPairExtender;
 import com.rapidminer.operator.ports.InputPort;
@@ -9,42 +9,42 @@ import com.rapidminer.operator.ports.metadata.PassThroughRule;
 
 
 public class FeatureSourceOperator extends OperatorChain {
-    private final OutputPort SINUSOutput=getOutputPorts().createPort("SINUS");
-    private final InputPort SINUSInput = getSubprocess(0).getInnerSinks().createPort("SINUS");
-    private final OutputPort HROutput=getOutputPorts().createPort("HR");
-    private final InputPort HRInput = getSubprocess(0).getInnerSinks().createPort("HR");
-    private final OutputPort RR_DIFFOutput=getOutputPorts().createPort("RR_DIFF");
-    private final InputPort RR_DIFFInput = getSubprocess(0).getInnerSinks().createPort("RR_DIFF");
-    private final OutputPort QRS_DUROutput=getOutputPorts().createPort("QRS_DUR");
-    private final InputPort QRS_DURInput = getSubprocess(0).getInnerSinks().createPort("QRS_DUR");
-    private final OutputPort PR_DUROutput=getOutputPorts().createPort("PR_DUR");
-    private final InputPort PR_DURInput = getSubprocess(0).getInnerSinks().createPort("PR_DUR");
-    private final OutputPort ST_AMPOutput=getOutputPorts().createPort("ST_AMP");
-    private final InputPort ST_AMPInput = getSubprocess(0).getInnerSinks().createPort("ST_AMP");
-    private final OutputPort Q_DUROutput=getOutputPorts().createPort("Q_DUR");
-    private final InputPort Q_DURInput = getSubprocess(0).getInnerSinks().createPort("Q_DUR");
-    private final OutputPort Q_AMPOutput=getOutputPorts().createPort("Q_AMP");
-    private final InputPort Q_AMPInput = getSubprocess(0).getInnerSinks().createPort("Q_AMP");
-    private final OutputPort PRWPOutput=getOutputPorts().createPort("PRWP");
-    private final InputPort PRWPInput = getSubprocess(0).getInnerSinks().createPort("PRWP");
-    private final OutputPort P_DUROutput=getOutputPorts().createPort("P_DUR");
-    private final InputPort P_DURInput = getSubprocess(0).getInnerSinks().createPort("P_DUR");
-    private final OutputPort P_AMPOutput=getOutputPorts().createPort("P_AMP");
-    private final InputPort P_AMPInput = getSubprocess(0).getInnerSinks().createPort("P_AMP");
+    private final OutputPort SINUSOutput=getOutputPorts().createPort("SINUS rhythm is sinus");
+    private final InputPort SINUSInput = getSubprocess(0).getInnerSinks().createPort("SINUS rhythm is sinus");
+    private final OutputPort HROutput=getOutputPorts().createPort("HR heart rate");
+    private final InputPort HRInput = getSubprocess(0).getInnerSinks().createPort("HR heart rate");
+    private final OutputPort RR_DIFFOutput=getOutputPorts().createPort("RR_DIFF RR interval");
+    private final InputPort RR_DIFFInput = getSubprocess(0).getInnerSinks().createPort("RR_DIFF RR interval");
+    private final OutputPort QRS_DUROutput=getOutputPorts().createPort("QRS_DUR QRS duration");
+    private final InputPort QRS_DURInput = getSubprocess(0).getInnerSinks().createPort("QRS_DUR QRS duration");
+    private final OutputPort PR_DUROutput=getOutputPorts().createPort("PR_DUR PR duration");
+    private final InputPort PR_DURInput = getSubprocess(0).getInnerSinks().createPort("PR_DUR PR duration");
+    private final OutputPort ST_AMPOutput=getOutputPorts().createPort("ST_AMP ST amplitude");
+    private final InputPort ST_AMPInput = getSubprocess(0).getInnerSinks().createPort("ST_AMP ST amplitude");
+    private final OutputPort Q_DUROutput=getOutputPorts().createPort("Q_DUR Q wave duration");
+    private final InputPort Q_DURInput = getSubprocess(0).getInnerSinks().createPort("Q_DUR Q wave duration");
+    private final OutputPort Q_AMPOutput=getOutputPorts().createPort("Q_AMP Q wave amplitude");
+    private final InputPort Q_AMPInput = getSubprocess(0).getInnerSinks().createPort("Q_AMP Q wave amplitude");
+    private final OutputPort PRWPOutput=getOutputPorts().createPort("PRWP Poor R wave progression");
+    private final InputPort PRWPInput = getSubprocess(0).getInnerSinks().createPort("PRWP Poor R wave progression");
+    private final OutputPort P_DUROutput=getOutputPorts().createPort("P_DUR P wave duration");
+    private final InputPort P_DURInput = getSubprocess(0).getInnerSinks().createPort("P_DUR P wave duration");
+    private final OutputPort P_AMPOutput=getOutputPorts().createPort("P_AMP P wave amplitude");
+    private final InputPort P_AMPInput = getSubprocess(0).getInnerSinks().createPort("P_AMP P wave amplitude");
     private final OutputPort AGEOutput=getOutputPorts().createPort("AGE");
     private final InputPort AGEInput = getSubprocess(0).getInnerSinks().createPort("AGE");
     private final OutputPort MALEOutput=getOutputPorts().createPort("MALE");
     private final InputPort MALEInput = getSubprocess(0).getInnerSinks().createPort("MALE");
-    private final OutputPort R_AMPOutput=getOutputPorts().createPort("R_AMP");
-    private final InputPort R_AMPInput = getSubprocess(0).getInnerSinks().createPort("R_AMP");
-    private final OutputPort S_AMPOutput=getOutputPorts().createPort("S_AMP");
-    private final InputPort S_AMPInput = getSubprocess(0).getInnerSinks().createPort("S_AMP");
-    private final OutputPort RS_RATIOOutput=getOutputPorts().createPort("RS_RATIO");
-    private final InputPort RS_RATIOInput = getSubprocess(0).getInnerSinks().createPort("RS_RATIO");
-    private final OutputPort RADOutput=getOutputPorts().createPort("RAD");
-    private final InputPort RADInput = getSubprocess(0).getInnerSinks().createPort("RAD");
-    private final OutputPort T_AMPOutput=getOutputPorts().createPort("T_AMP");
-    private final InputPort T_AMPInput = getSubprocess(0).getInnerSinks().createPort("T_AMP");
+    private final OutputPort R_AMPOutput=getOutputPorts().createPort("R_AMP R wave amplitude");
+    private final InputPort R_AMPInput = getSubprocess(0).getInnerSinks().createPort("R_AMP R wave amplitude");
+    private final OutputPort S_AMPOutput=getOutputPorts().createPort("S_AMP S wave amplitude");
+    private final InputPort S_AMPInput = getSubprocess(0).getInnerSinks().createPort("S_AMP S wave amplitude");
+    private final OutputPort RS_RATIOOutput=getOutputPorts().createPort("RS_RATIO R/S wave amplitude ratio");
+    private final InputPort RS_RATIOInput = getSubprocess(0).getInnerSinks().createPort("RS_RATIO R/S wave amplitude ratio");
+    private final OutputPort RADOutput=getOutputPorts().createPort("RAD right axis deviation");
+    private final InputPort RADInput = getSubprocess(0).getInnerSinks().createPort("RAD right axis deviation");
+    private final OutputPort T_AMPOutput=getOutputPorts().createPort("T_AMP T wave amplitude");
+    private final InputPort T_AMPInput = getSubprocess(0).getInnerSinks().createPort("T_AMP T wave amplitude");
     private final OutputPort QRS_SUMOutput=getOutputPorts().createPort("QRS_SUM");
     private final InputPort QRS_SUMInput = getSubprocess(0).getInnerSinks().createPort("QRS_SUM");
 
@@ -82,61 +82,61 @@ public class FeatureSourceOperator extends OperatorChain {
         outExtender.reset();
         getSubprocess(0).execute();
         if(SINUSInput.isConnected()) {
-            SINUSOutput.deliver(SINUSInput.getData(StringInfo_General.class));
+            SINUSOutput.deliver(SINUSInput.getData(StringInfo.class));
         }
         if(HRInput.isConnected()) {
-            HROutput.deliver(HRInput.getData(StringInfo_General.class));
+            HROutput.deliver(HRInput.getData(StringInfo.class));
         }
         if(RR_DIFFInput.isConnected()) {
-            RR_DIFFOutput.deliver(RR_DIFFInput.getData(StringInfo_General.class));
+            RR_DIFFOutput.deliver(RR_DIFFInput.getData(StringInfo.class));
         }
         if(QRS_DURInput.isConnected()) {
-            QRS_DUROutput.deliver(QRS_DURInput.getData(StringInfo_General.class));
+            QRS_DUROutput.deliver(QRS_DURInput.getData(StringInfo.class));
         }
         if(PR_DURInput.isConnected()) {
-            PR_DUROutput.deliver(PR_DURInput.getData(StringInfo_General.class));
+            PR_DUROutput.deliver(PR_DURInput.getData(StringInfo.class));
         }
         if(ST_AMPInput.isConnected()) {
-            ST_AMPOutput.deliver(ST_AMPInput.getData(StringInfo_General.class));
+            ST_AMPOutput.deliver(ST_AMPInput.getData(StringInfo.class));
         }
         if(Q_DURInput.isConnected()) {
-            Q_DUROutput.deliver(Q_DURInput.getData(StringInfo_General.class));
+            Q_DUROutput.deliver(Q_DURInput.getData(StringInfo.class));
         }
         if(Q_AMPInput.isConnected()) {
-            Q_AMPOutput.deliver(Q_AMPInput.getData(StringInfo_General.class));
+            Q_AMPOutput.deliver(Q_AMPInput.getData(StringInfo.class));
         }
         if(PRWPInput.isConnected()) {
-            PRWPOutput.deliver(PRWPInput.getData(StringInfo_General.class));
+            PRWPOutput.deliver(PRWPInput.getData(StringInfo.class));
         }
         if(P_DURInput.isConnected()) {
-            P_DUROutput.deliver(P_DURInput.getData(StringInfo_General.class));
+            P_DUROutput.deliver(P_DURInput.getData(StringInfo.class));
         }
         if(P_AMPInput.isConnected()) {
-            P_AMPOutput.deliver(P_AMPInput.getData(StringInfo_General.class));
+            P_AMPOutput.deliver(P_AMPInput.getData(StringInfo.class));
         }
         if(AGEInput.isConnected()) {
-            AGEOutput.deliver(AGEInput.getData(StringInfo_General.class));
+            AGEOutput.deliver(AGEInput.getData(StringInfo.class));
         }
         if(MALEInput.isConnected()) {
-            MALEOutput.deliver(MALEInput.getData(StringInfo_General.class));
+            MALEOutput.deliver(MALEInput.getData(StringInfo.class));
         }
         if(R_AMPInput.isConnected()) {
-            R_AMPOutput.deliver(R_AMPInput.getData(StringInfo_General.class));
+            R_AMPOutput.deliver(R_AMPInput.getData(StringInfo.class));
         }
         if(S_AMPInput.isConnected()) {
-            S_AMPOutput.deliver(S_AMPInput.getData(StringInfo_General.class));
+            S_AMPOutput.deliver(S_AMPInput.getData(StringInfo.class));
         }
         if(RS_RATIOInput.isConnected()) {
-            RS_RATIOOutput.deliver(RS_RATIOInput.getData(StringInfo_General.class));
+            RS_RATIOOutput.deliver(RS_RATIOInput.getData(StringInfo.class));
         }
         if(RADInput.isConnected()) {
-            RADOutput.deliver(RADInput.getData(StringInfo_General.class));
+            RADOutput.deliver(RADInput.getData(StringInfo.class));
         }
         if(T_AMPInput.isConnected()) {
-            T_AMPOutput.deliver(T_AMPInput.getData(StringInfo_General.class));
+            T_AMPOutput.deliver(T_AMPInput.getData(StringInfo.class));
         }
         if(QRS_SUMInput.isConnected()) {
-            QRS_SUMOutput.deliver(QRS_SUMInput.getData(StringInfo_General.class));
+            QRS_SUMOutput.deliver(QRS_SUMInput.getData(StringInfo.class));
         }
         outExtender.collect();
     }

@@ -103,11 +103,11 @@
                 <class>com.rapidminer.extension.ecg_xai.operator.StepStartOpeartor</class>
                 <icon>add1.png</icon>
             </operator>
-<!--            <operator>-->
-<!--                <key>Duplicate Pack</key>-->
-<!--                <class>com.rapidminer.extension.ecg_xai.operator.DuplicateOperator</class>-->
-<!--                <icon>dup.png</icon>-->
-<!--            </operator>-->
+            <operator>
+                <key>Duplicate Pack</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.DuplicateOperator</class>
+                <icon>dup.png</icon>
+            </operator>
             <operator>
                 <key>Combine</key>
                 <class>com.rapidminer.extension.ecg_xai.operator.CombineOperator</class>
