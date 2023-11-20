@@ -160,7 +160,7 @@
             </operator>
 <!--            <operator>-->
 <!--                <key>IsTrue</key>-->
-<!--                <class>com.rapidminer.extension.ecg_xai.operator.ExistOperator</class>-->
+<!--                <class>com.rapidminer.extension.ecg_xai.operator.AbandonedOperator.ExistOperator</class>-->
 <!--                <icon>tru.png</icon>-->
 <!--            </operator>-->
             <operator>
@@ -173,37 +173,37 @@
         <group key="Control">
             <operator>
                 <key>Init Model</key>
-                <class>com.rapidminer.extension.ecg_xai.operator.InitPackOperator</class>
+                <class>com.rapidminer.extension.ecg_xai.operator.ControlOperators.InitPackOperator</class>
                 <icon>start.png</icon>
             </operator>
             <operator>
                 <key>Step Start</key>
-                <class>com.rapidminer.extension.ecg_xai.operator.StepStartOpeartor</class>
+                <class>com.rapidminer.extension.ecg_xai.operator.ControlOperators.StepStartOpeartor</class>
                 <icon>add1.png</icon>
             </operator>
             <operator>
                 <key>Duplicate Pack</key>
-                <class>com.rapidminer.extension.ecg_xai.operator.DuplicateOperator</class>
+                <class>com.rapidminer.extension.ecg_xai.operator.ControlOperators.DuplicateOperator</class>
                 <icon>dup.png</icon>
             </operator>
             <operator>
                 <key>Combine</key>
-                <class>com.rapidminer.extension.ecg_xai.operator.CombineOperator</class>
+                <class>com.rapidminer.extension.ecg_xai.operator.ControlOperators.CombineOperator</class>
                 <icon>joi.png</icon>
             </operator>
             <operator>
                 <key>Print Model</key>
-                <class>com.rapidminer.extension.ecg_xai.operator.PrintOperator</class>
+                <class>com.rapidminer.extension.ecg_xai.operator.ControlOperators.PrintOperator</class>
                 <icon>pri.png</icon>
             </operator>
             <operator>
                 <key>Discretizer</key>
-                <class>com.rapidminer.extension.ecg_xai.operator.DiscretizeOperator</class>
+                <class>com.rapidminer.extension.ecg_xai.operator.ControlOperators.DiscretizeOperator</class>
                 <icon>three.png</icon>
             </operator>
             <operator>
                 <key>Calculate</key>
-                <class>com.rapidminer.extension.ecg_xai.operator.CalOperator</class>
+                <class>com.rapidminer.extension.ecg_xai.operator.ControlOperators.CalOperator</class>
             </operator>
         </group>
 
@@ -214,21 +214,21 @@
             </operator>
 <!--            <operator>-->
 <!--                <key>Result</key>-->
-<!--                <class>com.rapidminer.extension.ecg_xai.operator.ResultOperator</class>-->
+<!--                <class>com.rapidminer.extension.ecg_xai.operator.AbandonedOperator.ResultOperator</class>-->
 <!--                <icon>che.png</icon>-->
 <!--            </operator>-->
             <operator>
                 <key>Result2</key>
-                <class>com.rapidminer.extension.ecg_xai.operator.ResultOperator2</class>
+                <class>com.rapidminer.extension.ecg_xai.operator.DataOperarors.ResultOperator2</class>
                 <icon>che.png</icon>
             </operator>
             <operator>
                 <key>Lead Specify Operator</key>
-                <class>com.rapidminer.extension.ecg_xai.operator.LeadSpecifyOperator</class>
+                <class>com.rapidminer.extension.ecg_xai.operator.DataOperarors.LeadSpecifyOperator</class>
             </operator>
             <operator>
                 <key>DataRetriever</key>
-                <class>com.rapidminer.extension.ecg_xai.operator.DataRetriever</class>
+                <class>com.rapidminer.extension.ecg_xai.operator.DataOperarors.DataRetriever</class>
             </operator>
         </group>
     </group>

@@ -1,37 +1,30 @@
-package com.rapidminer.extension.ecg_xai.operator;
+package com.rapidminer.extension.ecg_xai.operator.ControlOperators;
 
+import com.rapidminer.extension.ecg_xai.operator.Structures.Model;
+import com.rapidminer.extension.ecg_xai.operator.Structures.Pack;
+import com.rapidminer.extension.ecg_xai.operator.Structures.Step;
 import com.rapidminer.extension.ecg_xai.operator.names.ImpressionName;
 import com.rapidminer.extension.ecg_xai.operator.nodes.AbstractNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.AtLeastNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.ConditionNode;
-import com.rapidminer.extension.ecg_xai.operator.nodes.ImpressionNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.condition.AbstractCondition;
-import com.rapidminer.extension.ecg_xai.operator.nodes.condition.Compare;
 import com.rapidminer.extension.ecg_xai.operator.nodes.condition.ConditionGroup;
-import com.rapidminer.io.process.conditions.ParameterEqualsCondition;
 import com.rapidminer.operator.Operator;
 import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
 import com.rapidminer.operator.ports.InputPortExtender;
 import com.rapidminer.operator.ports.OutputPort;
 import com.rapidminer.parameter.*;
-import com.rapidminer.parameter.conditions.BooleanParameterCondition;
 import com.rapidminer.parameter.conditions.EqualStringCondition;
-import com.rapidminer.tools.LogService;
-import com.rapidminer.tools.OperatorService;
 
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
 
 public class CombineOperator extends Operator {
     private final InputPortExtender inputPortExtender = new InputPortExtender("In pack", getInputPorts());
     private final OutputPort yesOutput=getOutputPorts().createPort("yes");
     private final OutputPort noOutput=getOutputPorts().createPort("no");
     private static final String PARAMETER_TYPE="Type";
-
-//    private static final String PARAMETER_YES="If Yes Move On";
-//    private static final String PARAMETER_NO="If No Move On";
     private static final String PARAMETER_NUM="At Least () Satisfied";
     private static final String PARAMETER_RESULT_NAME="Result Name";
     private static final String PARAMETER_RE="Relation";
@@ -47,9 +40,6 @@ public class CombineOperator extends Operator {
         Pack pack= new Pack(packs.get(0));
         Model model=pack.getModel();
         Step step=model.getLastStep();
-
-//        boolean yes=getParameterAsBoolean(PARAMETER_YES);
-//        boolean no=getParameterAsBoolean(PARAMETER_NO);
 
         String type=getParameterAsString(PARAMETER_TYPE);
 
@@ -119,12 +109,7 @@ public class CombineOperator extends Operator {
                 break;
         }
 
-//        conditionNode.YesMove = yes;
-//        conditionNode.NoMove = no;
         step.addNode(conditionNode);
-//        conditionNode.runCheck();
-
-
         pack.current_parents.clear();
         Pack noPack=new Pack(pack);
         pack.current_parents.put(conditionNode,true);

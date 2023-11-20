@@ -1,5 +1,8 @@
-package com.rapidminer.extension.ecg_xai.operator;
+package com.rapidminer.extension.ecg_xai.operator.ControlOperators;
 
+import com.rapidminer.extension.ecg_xai.operator.Structures.Model;
+import com.rapidminer.extension.ecg_xai.operator.Structures.Pack;
+import com.rapidminer.extension.ecg_xai.operator.Structures.Step;
 import com.rapidminer.extension.ecg_xai.operator.names.FeatureName;
 import com.rapidminer.extension.ecg_xai.operator.names.LeadName;
 import com.rapidminer.extension.ecg_xai.operator.nodes.AbstractNode;

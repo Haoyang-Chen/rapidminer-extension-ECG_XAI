@@ -1,19 +1,14 @@
 package com.rapidminer.extension.ecg_xai.operator.AbandonedOperator;
 
-import com.rapidminer.extension.ecg_xai.operator.Pack;
+import com.rapidminer.extension.ecg_xai.operator.Structures.Pack;
 import com.rapidminer.extension.ecg_xai.operator.nodes.AbstractNode;
-import com.rapidminer.extension.ecg_xai.operator.nodes.ConditionNode;
 import com.rapidminer.operator.Operator;
 import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
 import com.rapidminer.operator.ports.InputPortExtender;
 import com.rapidminer.operator.ports.OutputPort;
-import com.rapidminer.tools.LogService;
 
 import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.logging.Level;
 
 public class StepEndOperator extends Operator {
     private final InputPortExtender inputPortExtender = new InputPortExtender("Input", getInputPorts());

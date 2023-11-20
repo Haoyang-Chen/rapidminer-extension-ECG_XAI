@@ -1,5 +1,8 @@
-package com.rapidminer.extension.ecg_xai.operator;
+package com.rapidminer.extension.ecg_xai.operator.ControlOperators;
 
+import com.rapidminer.extension.ecg_xai.operator.Structures.Model;
+import com.rapidminer.extension.ecg_xai.operator.Structures.Pack;
+import com.rapidminer.extension.ecg_xai.operator.Structures.StringInfo;
 import com.rapidminer.extension.ecg_xai.operator.nodes.AbstractNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.ConditionNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.condition.Compare;

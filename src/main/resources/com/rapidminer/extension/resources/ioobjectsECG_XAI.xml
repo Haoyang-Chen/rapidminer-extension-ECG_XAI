@@ -11,19 +11,19 @@
     -->
     <ioobject
     name="Pack"
-    class="com.rapidminer.extension.ecg_xai.operator.Pack"
+    class="com.rapidminer.extension.ecg_xai.operator.Structures.Pack"
     reportable="false">
         <renderer>com.rapidminer.gui.renderer.DefaultTextRenderer</renderer>
     </ioobject>
     <ioobject
             name="StringInfo_General"
-            class="com.rapidminer.extension.ecg_xai.operator.StringInfo_General"
+            class="com.rapidminer.extension.ecg_xai.operator.Structures.StringInfo_General"
             reportable="false">
         <renderer>com.rapidminer.gui.renderer.DefaultTextRenderer</renderer>
     </ioobject>
     <ioobject
             name="StringInfo_Lead"
-            class="com.rapidminer.extension.ecg_xai.operator.StringInfo_Lead"
+            class="com.rapidminer.extension.ecg_xai.operator.Structures.StringInfo_Lead"
             reportable="false">
         <renderer>com.rapidminer.gui.renderer.DefaultTextRenderer</renderer>
     </ioobject>

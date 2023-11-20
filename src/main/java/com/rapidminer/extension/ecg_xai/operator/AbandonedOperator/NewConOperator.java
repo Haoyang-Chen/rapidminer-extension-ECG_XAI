@@ -1,14 +1,13 @@
 package com.rapidminer.extension.ecg_xai.operator.AbandonedOperator;
 
-import com.rapidminer.extension.ecg_xai.operator.Model;
-import com.rapidminer.extension.ecg_xai.operator.Pack;
-import com.rapidminer.extension.ecg_xai.operator.Step;
+import com.rapidminer.extension.ecg_xai.operator.Structures.Model;
+import com.rapidminer.extension.ecg_xai.operator.Structures.Pack;
+import com.rapidminer.extension.ecg_xai.operator.Structures.Step;
 import com.rapidminer.extension.ecg_xai.operator.names.FeatureName;
 import com.rapidminer.extension.ecg_xai.operator.names.ImpressionName;
 import com.rapidminer.extension.ecg_xai.operator.names.LeadName;
 import com.rapidminer.extension.ecg_xai.operator.nodes.AbstractNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.ConditionNode;
-import com.rapidminer.extension.ecg_xai.operator.nodes.ImpressionNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.condition.Compare;
 import com.rapidminer.operator.Operator;
 import com.rapidminer.operator.OperatorDescription;
@@ -16,12 +15,10 @@ import com.rapidminer.operator.OperatorException;
 import com.rapidminer.operator.ports.InputPort;
 import com.rapidminer.operator.ports.OutputPort;
 import com.rapidminer.parameter.*;
-import com.rapidminer.tools.LogService;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.logging.Level;
 
 public class NewConOperator extends Operator {
     private final InputPort pacInput=getInputPorts().createPort("In pack");

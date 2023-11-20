@@ -1,6 +1,6 @@
 package com.rapidminer.extension.ecg_xai.operator.superOperator;
 
-import com.rapidminer.extension.ecg_xai.operator.StringInfo;
+import com.rapidminer.extension.ecg_xai.operator.Structures.StringInfo;
 import com.rapidminer.operator.*;
 import com.rapidminer.operator.ports.CollectingPortPairExtender;
 import com.rapidminer.operator.ports.InputPort;

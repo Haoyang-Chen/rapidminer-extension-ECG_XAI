@@ -1,5 +1,6 @@
-package com.rapidminer.extension.ecg_xai.operator;
+package com.rapidminer.extension.ecg_xai.operator.DataOperarors;
 
+import com.rapidminer.extension.ecg_xai.operator.Structures.*;
 import com.rapidminer.extension.ecg_xai.operator.names.ImpressionName;
 import com.rapidminer.extension.ecg_xai.operator.nodes.AbstractNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.ImpressionNode;

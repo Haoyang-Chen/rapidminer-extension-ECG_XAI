@@ -1,4 +1,4 @@
-package com.rapidminer.extension.ecg_xai.operator;
+package com.rapidminer.extension.ecg_xai.operator.Structures;
 
 import com.rapidminer.extension.ecg_xai.operator.names.FeatureName;
 import com.rapidminer.extension.ecg_xai.operator.names.ImpressionName;
@@ -6,9 +6,7 @@ import com.rapidminer.extension.ecg_xai.operator.names.LeadName;
 import com.rapidminer.extension.ecg_xai.operator.nodes.AbstractNode;
 import com.rapidminer.operator.ResultObjectAdapter;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Pack extends ResultObjectAdapter {
