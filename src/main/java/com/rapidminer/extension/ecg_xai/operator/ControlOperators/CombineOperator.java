@@ -30,7 +30,6 @@ public class CombineOperator extends Operator {
     private static final String PARAMETER_RE="Relation";
     public CombineOperator(OperatorDescription description) {
         super(description);
-        inputPortExtender.ensureMinimumNumberOfPorts(1);
         inputPortExtender.start();
     }
 
@@ -105,7 +104,6 @@ public class CombineOperator extends Operator {
                         }
                     }
                 }
-
                 break;
         }
 

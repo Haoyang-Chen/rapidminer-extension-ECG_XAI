@@ -1,9 +1,6 @@
 package com.rapidminer.extension.ecg_xai.operator.superOperator.Step8;
 
-import com.rapidminer.extension.ecg_xai.operator.Structures.Model;
-import com.rapidminer.extension.ecg_xai.operator.Structures.Pack;
-import com.rapidminer.extension.ecg_xai.operator.Structures.Step;
-import com.rapidminer.extension.ecg_xai.operator.Structures.StringInfo;
+import com.rapidminer.extension.ecg_xai.operator.Structures.*;
 import com.rapidminer.extension.ecg_xai.operator.names.ImpressionName;
 import com.rapidminer.extension.ecg_xai.operator.names.LeadName;
 import com.rapidminer.extension.ecg_xai.operator.nodes.AbstractNode;
