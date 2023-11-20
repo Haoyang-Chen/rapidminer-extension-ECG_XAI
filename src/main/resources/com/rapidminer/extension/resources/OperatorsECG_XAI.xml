@@ -88,6 +88,18 @@
                     <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step5.Step5Operator</class>
                     <icon>5.png</icon>
                 </operator>
+                <operator>
+                    <key>Check Pathological Q in Inferior Leads</key>
+                    <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step5.CheckPathQInInferiorLeads</class>
+                </operator>
+                <operator>
+                    <key>Check Pathological Q in Lateral Leads</key>
+                    <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step5.CheckPathQInLateralLeads</class>
+                </operator>
+                <operator>
+                    <key>Check Pathological Q for AMI</key>
+                    <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step5.CheckPathQforAMI</class>
+                </operator>
             </group>
             <group key="Step6">
                 <operator>
