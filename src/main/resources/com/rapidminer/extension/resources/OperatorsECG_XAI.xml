@@ -114,6 +114,14 @@
                     <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step7.Step7Operator</class>
                     <icon>7.png</icon>
                 </operator>
+                <operator>
+                    <key>Assess for LVH</key>
+                    <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step7.AssessForLVH</class>
+                </operator>
+                <operator>
+                    <key>Assess for RVH</key>
+                    <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step7.AssessForRVH</class>
+                </operator>
             </group>
             <group key="Step8">
                 <operator>
