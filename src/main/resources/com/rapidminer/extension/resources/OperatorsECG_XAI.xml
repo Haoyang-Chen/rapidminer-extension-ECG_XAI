@@ -129,6 +129,14 @@
                     <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step8.Step8Operator</class>
                     <icon>8.png</icon>
                 </operator>
+                <operator>
+                    <key>Assess T Waves</key>
+                    <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step8.AssessTWaves</class>
+                </operator>
+                <operator>
+                    <key>Assess for VH</key>
+                    <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step8.AssessForVH</class>
+                </operator>
             </group>
             <group key="Step9">
                 <operator>
