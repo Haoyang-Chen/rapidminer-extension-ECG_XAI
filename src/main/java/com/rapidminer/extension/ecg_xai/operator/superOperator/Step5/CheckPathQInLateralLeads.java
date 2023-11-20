@@ -37,8 +37,7 @@ public class CheckPathQInLateralLeads extends AbstractStepOperator {
         Q_DURInput.deliver(Q_DUROutput.getData(StringInfo.class));
         Q_AMPInput.deliver(Q_AMPOutput.getData(StringInfo.class));
         getSubprocess(0).execute();
-        OutModelOutput.deliver(InModelInput.getData(Pack.class));
-        LMI_STEOutput.deliver(LMI_STEInput.getData(StringInfo.class));
+        LMI_STEOutput.deliver(LMI_STEInput.getData(Pack.class));
         outExtender.collect();
     }
 }

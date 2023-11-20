@@ -37,8 +37,7 @@ public class CheckPathQforAMI extends AbstractStepOperator {
         Q_DURInput.deliver(Q_DUROutput.getData(StringInfo.class));
         Q_AMPInput.deliver(Q_AMPOutput.getData(StringInfo.class));
         getSubprocess(0).execute();
-        OutModelOutput.deliver(InModelInput.getData(Pack.class));
-        AMI_QPOutput.deliver(AMI_QPInput.getData(StringInfo.class));
+        AMI_QPOutput.deliver(AMI_QPInput.getData(Pack.class));
         outExtender.collect();
     }
 }

@@ -39,8 +39,7 @@ public class CheckPathQInInferiorLeads extends AbstractStepOperator {
         Q_DURInput.deliver(Q_DUROutput.getData(StringInfo.class));
         Q_AMPInput.deliver(Q_AMPOutput.getData(StringInfo.class));
         getSubprocess(0).execute();
-        OutModelOutput.deliver(InModelInput.getData(Pack.class));
-        IMI_STEOutput.deliver(IMI_STEInput.getData(StringInfo.class));
+        IMI_STEOutput.deliver(IMI_STEInput.getData(Pack.class));
         outExtender.collect();
     }
 }
