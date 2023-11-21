@@ -205,6 +205,10 @@
                 <key>Calculate</key>
                 <class>com.rapidminer.extension.ecg_xai.operator.ControlOperators.CalOperator</class>
             </operator>
+            <operator>
+                <key>Loop Operator</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.ControlOperators.LoopOperator</class>
+            </operator>
         </group>
 
         <group key="Data">
