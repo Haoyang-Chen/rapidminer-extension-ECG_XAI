@@ -209,6 +209,10 @@
                 <key>Loop Operator</key>
                 <class>com.rapidminer.extension.ecg_xai.operator.ControlOperators.LoopOperator</class>
             </operator>
+            <operator>
+                <key>Export Operator</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.ControlOperators.ExportModelOperator</class>
+            </operator>
         </group>
 
         <group key="Data">

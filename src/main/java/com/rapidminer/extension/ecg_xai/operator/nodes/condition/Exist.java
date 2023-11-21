@@ -33,4 +33,16 @@ public class Exist extends AbstractCondition{
         Exist exist = new Exist("A");
         System.out.println(exist);
     }
+
+    public String getLeftOperand() {
+        return null;
+    }
+
+    public String getOperator() {
+        return null;
+    }
+
+    public String getRightOperand() {
+        return null;
+    }
 }

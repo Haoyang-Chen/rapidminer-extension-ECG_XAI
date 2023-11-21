@@ -12,4 +12,8 @@ abstract public class AbstractCondition {
     }
 
     abstract public String toString();
+
+    abstract public String getLeftOperand();
+    abstract public String getOperator();
+    abstract public String getRightOperand();
 }

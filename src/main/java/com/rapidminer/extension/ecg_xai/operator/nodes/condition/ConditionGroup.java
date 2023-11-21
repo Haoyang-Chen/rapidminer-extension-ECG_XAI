@@ -45,6 +45,14 @@ public class ConditionGroup extends AbstractCondition{
         return "(" + left + " " + relation + " " + right + ")";
     }
 
+    public String getLeftOperand() {
+        return null;
+    }
+
+    public String getRightOperand() {
+        return null;
+    }
+
     public static void main(String[] args) {
         Compare condition1 = new Compare("A", ">", "B");
         Compare condition2 = new Compare("C", "<", "D");

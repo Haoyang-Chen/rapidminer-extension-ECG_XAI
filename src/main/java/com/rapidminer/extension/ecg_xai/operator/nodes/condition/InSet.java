@@ -36,4 +36,21 @@ public class InSet extends AbstractCondition{
         }
         return element + " in " + set;
     }
+
+    public static void main(String[] args) {
+        InSet inSet = new InSet("A");
+        System.out.println(inSet);
+    }
+
+    public String getLeftOperand() {
+        return null;
+    }
+
+    public String getOperator() {
+        return null;
+    }
+
+    public String getRightOperand() {
+        return null;
+    }
 }
