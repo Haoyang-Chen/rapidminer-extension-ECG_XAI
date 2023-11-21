@@ -47,7 +47,7 @@ public class Compare extends AbstractCondition{
         if (lead==null) {
             return leftOperand + " " + operator + " " + rightOperand;
         }else {
-            return leftOperand + " " + operator + " " + rightOperand+" in "+lead;
+            return leftOperand+"_"+lead + " " + operator + " " + rightOperand;
         }
     }
 

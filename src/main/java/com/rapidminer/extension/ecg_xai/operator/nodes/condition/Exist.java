@@ -25,7 +25,7 @@ public class Exist extends AbstractCondition{
         if (lead==null) {
             return element + " is true";
         }else {
-            return element + " is true in "+lead;
+            return element+"_"+lead + " is true";
         }
     }
 
