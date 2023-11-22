@@ -37,9 +37,11 @@ public class ResultOperator2 extends Operator {
         Step step=model.getLastStep();
         ImpressionNode impNode;
         if (ab_type) {
-            impNode = new ImpressionNode(name+" (Abnormal)");
+            impNode = new ImpressionNode(name);
+            impNode.abnormal=true;
         }else{
             impNode = new ImpressionNode(name);
+            impNode.abnormal=false;
         }
         for (Map.Entry<AbstractNode, Boolean> entry : pack.current_parents.entrySet()){
             AbstractNode parent=entry.getKey();

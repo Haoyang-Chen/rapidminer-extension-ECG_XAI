@@ -29,6 +29,10 @@ public class ConditionNode extends AbstractNode{
     public AbstractCondition getCondition() {
         return this.condition;
     }
+
+    public String getImpression(){
+        return null;
+    }
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

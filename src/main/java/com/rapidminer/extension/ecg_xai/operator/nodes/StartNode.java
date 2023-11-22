@@ -6,6 +6,10 @@ public class StartNode extends AbstractNode{
         setIndex(0);
     }
 
+    public String getImpression() {
+        return null;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

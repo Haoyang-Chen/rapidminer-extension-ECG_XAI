@@ -3,11 +3,10 @@ package com.rapidminer.extension.ecg_xai.operator.nodes;
 import com.rapidminer.extension.ecg_xai.operator.nodes.condition.AbstractCondition;
 import com.rapidminer.extension.ecg_xai.operator.nodes.condition.Compare;
 
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public abstract class AbstractNode {
+    public Boolean abnormal;
     private String type;
     private Integer index;
 
@@ -122,4 +121,6 @@ public abstract class AbstractNode {
         }
         return false;
     }
+
+    public abstract String getImpression();
 }

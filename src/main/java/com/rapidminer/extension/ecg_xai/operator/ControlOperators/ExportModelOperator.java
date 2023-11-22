@@ -49,22 +49,36 @@ public class ExportModelOperator extends Operator {
 //        step.getOperations();
 
         // create attribute list
-        Attribute[] attributes = new Attribute[3];
+        Attribute[] attributes = new Attribute[8];
 
-        attributes[0] = AttributeFactory.createAttribute ("Operations", Ontology.STRING);
-        attributes[1] = AttributeFactory.createAttribute("Required Features", Ontology.STRING);
-        attributes[2] = AttributeFactory.createAttribute("Thresholds", Ontology.STRING);
+        attributes[0] = AttributeFactory.createAttribute ("focused leads", Ontology.STRING);
+        attributes[1] = AttributeFactory.createAttribute("obj_feat_names", Ontology.STRING);
+        attributes[2] = AttributeFactory.createAttribute("thresholds", Ontology.STRING);
+        attributes[3] = AttributeFactory.createAttribute("comp_op_names", Ontology.STRING);
+        attributes[4] = AttributeFactory.createAttribute("NORM_if_NOT", Ontology.STRING);
+        attributes[5] = AttributeFactory.createAttribute("traces", Ontology.STRING);
+        attributes[6] = AttributeFactory.createAttribute ("Operations", Ontology.STRING);
+        attributes[7] = AttributeFactory.createAttribute("Required Features", Ontology.STRING);
+
 
         MemoryExampleTable table = new MemoryExampleTable(attributes);
 
-        DataRowFactory ROW_FACTORY = new DataRowFactory(0);
-        String[] data = new String[3];
-        data[0]=step.getOperations().toString();
-        data[1]=step.getRequiredFeatures().toString();
-        data[2]=step.getThresholds().toString();
+//        for (Step step:model.steps) {
+            DataRowFactory ROW_FACTORY = new DataRowFactory(0);
+            String[] data = new String[8];
 
-        DataRow row = ROW_FACTORY.create(data, attributes);
-        table.addDataRow(row);
+            data[0] = step.getFocusedLeads();
+            data[1] = step.getObjFeatNames().toString();
+            data[2] = step.getThresholds().toString();
+            data[3] = step.getCompOpNames().toString();
+            data[4] = step.getNormIfNot().toString();
+            data[5] = step.getTrace().toString();
+            data[6]=step.getOperations().toString();
+            data[7]=step.getRequiredFeatures().toString();
+
+            DataRow row = ROW_FACTORY.create(data, attributes);
+            table.addDataRow(row);
+//        }
         ExampleSet exampleSet = table.createExampleSet();
 
         LogService.getRoot().log(Level.INFO,"abaaba");

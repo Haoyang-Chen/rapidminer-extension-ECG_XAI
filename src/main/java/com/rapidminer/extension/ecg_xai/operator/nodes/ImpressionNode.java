@@ -11,12 +11,18 @@ public class ImpressionNode extends AbstractNode{
     public void setImpression(String impression) {
         this.impression=impression;
     }
+    public String getImpression() {
+        return this.impression;
+    }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(getIndex().toString()).append(": ");
         sb.append("{[ImpressionNode], ").append(impression);
+        if (abnormal){
+            sb.append(" (abnormal)");
+        }
         sb.append(", [");
         for (AbstractNode parent : parents) {
             sb.append(parent.getIndex()).append(", ");

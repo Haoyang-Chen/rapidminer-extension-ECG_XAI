@@ -23,6 +23,10 @@ public class AtLeastNode extends AbstractNode{
         this.num = num;
     }
 
+    public String getImpression(){
+        return null;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
