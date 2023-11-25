@@ -32,7 +32,7 @@ public class LoopOperator extends OperatorChain {
     public final OutputPort OutModelOutput=getOutputPorts().createPort("Model");
 
     public final PortPairExtender inExtender =
-            new PortPairExtender("other",
+            new PortPairExtender("Input",
                     getInputPorts(), getSubprocess(0).getInnerSources());
 
     private static final String PARAMETER_LOOP="Loop Over";

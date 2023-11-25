@@ -1,11 +1,21 @@
 package com.rapidminer.extension.ecg_xai.operator.superOperator;
 
+import com.rapidminer.example.Attribute;
+import com.rapidminer.example.ExampleSet;
+import com.rapidminer.example.table.AttributeFactory;
+import com.rapidminer.example.table.DataRow;
+import com.rapidminer.example.table.DataRowFactory;
+import com.rapidminer.example.table.MemoryExampleTable;
 import com.rapidminer.extension.ecg_xai.operator.Structures.StringInfo;
 import com.rapidminer.operator.*;
 import com.rapidminer.operator.ports.CollectingPortPairExtender;
 import com.rapidminer.operator.ports.InputPort;
 import com.rapidminer.operator.ports.OutputPort;
 import com.rapidminer.operator.ports.metadata.PassThroughRule;
+import com.rapidminer.tools.Ontology;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class FeatureSourceOperator extends OperatorChain {
@@ -48,6 +58,12 @@ public class FeatureSourceOperator extends OperatorChain {
     private final OutputPort QRS_SUMOutput=getOutputPorts().createPort("QRS_SUM");
     private final InputPort QRS_SUMInput = getSubprocess(0).getInnerSinks().createPort("QRS_SUM");
 
+    private final CollectingPortPairExtender outExtender =
+            new CollectingPortPairExtender("other",
+                    getSubprocess(0).getInnerSinks(), getOutputPorts());
+
+    private final OutputPort SUMMARY_port=getOutputPorts().createPort("Summary gives a summary of all the features");
+
     public FeatureSourceOperator(OperatorDescription description) {
         super(description, "Executed Process");
         outExtender.start();
@@ -72,73 +88,106 @@ public class FeatureSourceOperator extends OperatorChain {
         getTransformer().addRule(new PassThroughRule(QRS_SUMInput, QRS_SUMOutput, false));
         getTransformer().addRule(outExtender.makePassThroughRule());
     }
-    private final CollectingPortPairExtender outExtender =
-            new CollectingPortPairExtender("other",
-                    getSubprocess(0).getInnerSinks(), getOutputPorts());
-
 
     @Override
     public void doWork() throws OperatorException {
         outExtender.reset();
         getSubprocess(0).execute();
+        List<String> features=new ArrayList<>();
         if(SINUSInput.isConnected()) {
             SINUSOutput.deliver(SINUSInput.getData(StringInfo.class));
+            features.add(SINUSInput.getData(StringInfo.class).toString());
         }
         if(HRInput.isConnected()) {
             HROutput.deliver(HRInput.getData(StringInfo.class));
+            features.add(HRInput.getData(StringInfo.class).toString());
         }
         if(RR_DIFFInput.isConnected()) {
             RR_DIFFOutput.deliver(RR_DIFFInput.getData(StringInfo.class));
+            features.add(RR_DIFFInput.getData(StringInfo.class).toString());
         }
         if(QRS_DURInput.isConnected()) {
             QRS_DUROutput.deliver(QRS_DURInput.getData(StringInfo.class));
+            features.add(QRS_DURInput.getData(StringInfo.class).toString());
         }
         if(PR_DURInput.isConnected()) {
             PR_DUROutput.deliver(PR_DURInput.getData(StringInfo.class));
+            features.add(PR_DURInput.getData(StringInfo.class).toString());
         }
         if(ST_AMPInput.isConnected()) {
             ST_AMPOutput.deliver(ST_AMPInput.getData(StringInfo.class));
+            features.add(ST_AMPInput.getData(StringInfo.class).toString());
         }
         if(Q_DURInput.isConnected()) {
             Q_DUROutput.deliver(Q_DURInput.getData(StringInfo.class));
+            features.add(Q_DURInput.getData(StringInfo.class).toString());
         }
         if(Q_AMPInput.isConnected()) {
             Q_AMPOutput.deliver(Q_AMPInput.getData(StringInfo.class));
+            features.add(Q_AMPInput.getData(StringInfo.class).toString());
         }
         if(PRWPInput.isConnected()) {
             PRWPOutput.deliver(PRWPInput.getData(StringInfo.class));
+            features.add(PRWPInput.getData(StringInfo.class).toString());
         }
         if(P_DURInput.isConnected()) {
             P_DUROutput.deliver(P_DURInput.getData(StringInfo.class));
+            features.add(P_DURInput.getData(StringInfo.class).toString());
         }
         if(P_AMPInput.isConnected()) {
             P_AMPOutput.deliver(P_AMPInput.getData(StringInfo.class));
+            features.add(P_AMPInput.getData(StringInfo.class).toString());
         }
         if(AGEInput.isConnected()) {
             AGEOutput.deliver(AGEInput.getData(StringInfo.class));
+            features.add(AGEInput.getData(StringInfo.class).toString());
         }
         if(MALEInput.isConnected()) {
             MALEOutput.deliver(MALEInput.getData(StringInfo.class));
+            features.add(MALEInput.getData(StringInfo.class).toString());
         }
         if(R_AMPInput.isConnected()) {
             R_AMPOutput.deliver(R_AMPInput.getData(StringInfo.class));
+            features.add(R_AMPInput.getData(StringInfo.class).toString());
         }
         if(S_AMPInput.isConnected()) {
             S_AMPOutput.deliver(S_AMPInput.getData(StringInfo.class));
+            features.add(S_AMPInput.getData(StringInfo.class).toString());
         }
         if(RS_RATIOInput.isConnected()) {
             RS_RATIOOutput.deliver(RS_RATIOInput.getData(StringInfo.class));
+            features.add(RS_RATIOInput.getData(StringInfo.class).toString());
         }
         if(RADInput.isConnected()) {
             RADOutput.deliver(RADInput.getData(StringInfo.class));
+            features.add(RADInput.getData(StringInfo.class).toString());
         }
         if(T_AMPInput.isConnected()) {
             T_AMPOutput.deliver(T_AMPInput.getData(StringInfo.class));
+            features.add(T_AMPInput.getData(StringInfo.class).toString());
         }
         if(QRS_SUMInput.isConnected()) {
             QRS_SUMOutput.deliver(QRS_SUMInput.getData(StringInfo.class));
+            features.add(QRS_SUMInput.getData(StringInfo.class).toString());
         }
         outExtender.collect();
+        List<StringInfo> others = outExtender.getData(StringInfo.class, true);
+        for (StringInfo other : others) {
+            features.add(other.toString());
+        }
+        com.rapidminer.example.Attribute[] attributes = new Attribute[1];
+
+        attributes[0] = AttributeFactory.createAttribute ("features", Ontology.STRING);
+
+        MemoryExampleTable table = new MemoryExampleTable(attributes);
+        DataRowFactory ROW_FACTORY = new DataRowFactory(0);
+        String[] data = new String[1];
+
+        data[0] = features.toString();
+        DataRow row = ROW_FACTORY.create(data, attributes);
+        table.addDataRow(row);
+        ExampleSet exampleSet = table.createExampleSet();
+        SUMMARY_port.deliver(exampleSet);
     }
 
 }
