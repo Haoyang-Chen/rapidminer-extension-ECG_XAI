@@ -12,10 +12,14 @@ import com.rapidminer.operator.ports.CollectingPortPairExtender;
 import com.rapidminer.operator.ports.InputPort;
 import com.rapidminer.operator.ports.OutputPort;
 import com.rapidminer.operator.ports.metadata.PassThroughRule;
+import com.rapidminer.tools.LogService;
 import com.rapidminer.tools.Ontology;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.logging.Level;
 
 
 public class FeatureSourceOperator extends OperatorChain {
@@ -89,91 +93,104 @@ public class FeatureSourceOperator extends OperatorChain {
         getTransformer().addRule(outExtender.makePassThroughRule());
     }
 
+    public void putSum(Set<String> features,StringInfo info){
+        if (info.type.equals("General")){
+            features.add("'"+info+"'");
+        }else {
+            features.add("'"+info+"(lead)"+"'");
+        }
+    }
+
     @Override
     public void doWork() throws OperatorException {
         outExtender.reset();
         getSubprocess(0).execute();
-        List<String> features=new ArrayList<>();
+        Set<String> features=new HashSet<>();
         if(SINUSInput.isConnected()) {
             SINUSOutput.deliver(SINUSInput.getData(StringInfo.class));
-            features.add(SINUSInput.getData(StringInfo.class).toString());
+            putSum(features,SINUSInput.getData(StringInfo.class));
         }
         if(HRInput.isConnected()) {
             HROutput.deliver(HRInput.getData(StringInfo.class));
-            features.add(HRInput.getData(StringInfo.class).toString());
+            putSum(features,HRInput.getData(StringInfo.class));
         }
         if(RR_DIFFInput.isConnected()) {
             RR_DIFFOutput.deliver(RR_DIFFInput.getData(StringInfo.class));
-            features.add(RR_DIFFInput.getData(StringInfo.class).toString());
+            putSum(features,RR_DIFFInput.getData(StringInfo.class));
         }
         if(QRS_DURInput.isConnected()) {
             QRS_DUROutput.deliver(QRS_DURInput.getData(StringInfo.class));
-            features.add(QRS_DURInput.getData(StringInfo.class).toString());
+            putSum(features,QRS_DURInput.getData(StringInfo.class));
         }
         if(PR_DURInput.isConnected()) {
             PR_DUROutput.deliver(PR_DURInput.getData(StringInfo.class));
-            features.add(PR_DURInput.getData(StringInfo.class).toString());
+            putSum(features,PR_DURInput.getData(StringInfo.class));
         }
         if(ST_AMPInput.isConnected()) {
             ST_AMPOutput.deliver(ST_AMPInput.getData(StringInfo.class));
-            features.add(ST_AMPInput.getData(StringInfo.class).toString());
+            putSum(features,ST_AMPInput.getData(StringInfo.class));
         }
         if(Q_DURInput.isConnected()) {
             Q_DUROutput.deliver(Q_DURInput.getData(StringInfo.class));
-            features.add(Q_DURInput.getData(StringInfo.class).toString());
+            putSum(features,Q_DURInput.getData(StringInfo.class));
         }
         if(Q_AMPInput.isConnected()) {
             Q_AMPOutput.deliver(Q_AMPInput.getData(StringInfo.class));
-            features.add(Q_AMPInput.getData(StringInfo.class).toString());
+            putSum(features,Q_AMPInput.getData(StringInfo.class));
         }
         if(PRWPInput.isConnected()) {
             PRWPOutput.deliver(PRWPInput.getData(StringInfo.class));
-            features.add(PRWPInput.getData(StringInfo.class).toString());
+            putSum(features,PRWPInput.getData(StringInfo.class));
         }
         if(P_DURInput.isConnected()) {
             P_DUROutput.deliver(P_DURInput.getData(StringInfo.class));
-            features.add(P_DURInput.getData(StringInfo.class).toString());
+            putSum(features,P_DURInput.getData(StringInfo.class));
         }
         if(P_AMPInput.isConnected()) {
             P_AMPOutput.deliver(P_AMPInput.getData(StringInfo.class));
-            features.add(P_AMPInput.getData(StringInfo.class).toString());
+            putSum(features,P_AMPInput.getData(StringInfo.class));
         }
         if(AGEInput.isConnected()) {
             AGEOutput.deliver(AGEInput.getData(StringInfo.class));
-            features.add(AGEInput.getData(StringInfo.class).toString());
+            putSum(features,AGEInput.getData(StringInfo.class));
         }
         if(MALEInput.isConnected()) {
             MALEOutput.deliver(MALEInput.getData(StringInfo.class));
-            features.add(MALEInput.getData(StringInfo.class).toString());
+            putSum(features,MALEInput.getData(StringInfo.class));
         }
         if(R_AMPInput.isConnected()) {
             R_AMPOutput.deliver(R_AMPInput.getData(StringInfo.class));
-            features.add(R_AMPInput.getData(StringInfo.class).toString());
+            putSum(features,R_AMPInput.getData(StringInfo.class));
         }
         if(S_AMPInput.isConnected()) {
             S_AMPOutput.deliver(S_AMPInput.getData(StringInfo.class));
-            features.add(S_AMPInput.getData(StringInfo.class).toString());
+            putSum(features,S_AMPInput.getData(StringInfo.class));
         }
         if(RS_RATIOInput.isConnected()) {
             RS_RATIOOutput.deliver(RS_RATIOInput.getData(StringInfo.class));
-            features.add(RS_RATIOInput.getData(StringInfo.class).toString());
+            putSum(features,RS_RATIOInput.getData(StringInfo.class));
         }
         if(RADInput.isConnected()) {
             RADOutput.deliver(RADInput.getData(StringInfo.class));
-            features.add(RADInput.getData(StringInfo.class).toString());
+            putSum(features,RADInput.getData(StringInfo.class));
         }
         if(T_AMPInput.isConnected()) {
             T_AMPOutput.deliver(T_AMPInput.getData(StringInfo.class));
-            features.add(T_AMPInput.getData(StringInfo.class).toString());
+            putSum(features,T_AMPInput.getData(StringInfo.class));
         }
         if(QRS_SUMInput.isConnected()) {
             QRS_SUMOutput.deliver(QRS_SUMInput.getData(StringInfo.class));
-            features.add(QRS_SUMInput.getData(StringInfo.class).toString());
+            putSum(features,QRS_SUMInput.getData(StringInfo.class));
         }
         outExtender.collect();
         List<StringInfo> others = outExtender.getData(StringInfo.class, true);
         for (StringInfo other : others) {
-            features.add(other.toString());
+            LogService.getRoot().log(Level.INFO,other.type);
+            if (other.type.equals("General")){
+                features.add("'"+other+"'");
+            }else {
+                features.add("'"+other+"(lead)"+"'");
+            }
         }
         com.rapidminer.example.Attribute[] attributes = new Attribute[1];
 
