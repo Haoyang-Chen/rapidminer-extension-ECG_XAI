@@ -1,10 +1,14 @@
 package com.rapidminer.extension.ecg_xai.operator.Structures;
 
+import com.rapidminer.extension.ecg_xai.operator.nodes.AbstractNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.ConditionNode;
+import com.rapidminer.extension.ecg_xai.operator.nodes.ImpressionNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.condition.Compare;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Model {
     public List<Step> steps=new ArrayList<>();
@@ -58,6 +62,18 @@ public class Model {
         model.addStep(step1);
         model.addStep(step2);
         System.out.println(model);
+    }
+
+    public Set<String> getResults(){
+        Set<String> results=new HashSet<>();
+        for (Step step:steps){
+            for (AbstractNode node:step.nodes){
+                if (node instanceof ImpressionNode){
+                    results.add("'"+node.getImpression()+"'");
+                }
+            }
+        }
+        return results;
     }
 
     public List<Step> getSteps() {
