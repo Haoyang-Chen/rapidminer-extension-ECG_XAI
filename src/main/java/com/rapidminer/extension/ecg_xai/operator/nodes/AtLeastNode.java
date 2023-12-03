@@ -10,6 +10,7 @@ public class AtLeastNode extends AbstractNode{
 
     public AtLeastNode() {
         super();
+        setType("AtLeast");
         this.conditions = new java.util.ArrayList<>();
     }
 

@@ -25,6 +25,11 @@ public class Exist extends AbstractCondition{
         return element;
     }
 
+    @Override
+    public String getLead() {
+        return lead;
+    }
+
     public String getElement() {
         return element;
     }

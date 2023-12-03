@@ -48,7 +48,7 @@ public class ExportModelOperator extends Operator {
 
         MemoryExampleTable table = new MemoryExampleTable(attributes);
 
-        for (Step step:model.steps.subList(0,2)) {
+        for (Step step:model.steps.subList(0,3)) {
             DataRowFactory ROW_FACTORY = new DataRowFactory(0);
             String[] data = new String[10];
 

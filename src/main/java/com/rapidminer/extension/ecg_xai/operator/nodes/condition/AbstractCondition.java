@@ -1,9 +1,9 @@
 package com.rapidminer.extension.ecg_xai.operator.nodes.condition;
 
 abstract public class AbstractCondition {
-    protected String resultName="none";
+    protected String resultName="None";
 
-    public String type="none";
+    public String type="None";
 
     public void setResultName(String resultName) {
         this.resultName = resultName;
@@ -12,6 +12,8 @@ abstract public class AbstractCondition {
     public String getResultName() {
         return resultName;
     }
+
+    abstract public String getLead();
 
     abstract public String toString();
 

@@ -57,7 +57,11 @@ public class ConditionOperator extends Operator {
             compare = new Compare(left, mid, right, lead);
         }
         this.rename(compare.toString());
-        compare.setResultName(resultName);
+        if (Objects.equals(lead, "None")) {
+            compare.setResultName(resultName);
+        }else{
+            compare.setResultName(resultName+"_"+lead);
+        }
         ConditionNode conditionNode=new ConditionNode(compare);
 
         Step step=model.getLastStep();
