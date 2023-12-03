@@ -1,9 +1,5 @@
 package com.rapidminer.extension.ecg_xai.operator.ControlOperators;
 
-import com.rapidminer.adaption.belt.IOTable;
-import com.rapidminer.belt.column.Column;
-import com.rapidminer.belt.table.Table;
-import com.rapidminer.belt.table.TableBuilder;
 import com.rapidminer.extension.ecg_xai.operator.Structures.Model;
 import com.rapidminer.extension.ecg_xai.operator.Structures.Pack;
 import com.rapidminer.extension.ecg_xai.operator.Structures.Step;
@@ -15,23 +11,10 @@ import com.rapidminer.operator.ports.OutputPort;
 
 import com.rapidminer.example.*;
 import com.rapidminer.example.table .*;
-import com.rapidminer.example.set .*;
 import com.rapidminer.tools.LogService;
 import com.rapidminer.tools .Ontology;
-import java.util.*;
 
-import java.util.UUID;
 import java.util.logging.Level;
-
-import com.rapidminer.adaption.belt.IOTable;
-import com.rapidminer.belt.table.Builders;
-import com.rapidminer.belt.table.Table;
-import com.rapidminer.belt.table.TableBuilder;
-import com.rapidminer.operator.Operator;
-import com.rapidminer.operator.OperatorDescription;
-import com.rapidminer.operator.OperatorException;
-import com.rapidminer.operator.ports.OutputPort;
-import com.rapidminer.tools.belt.BeltTools;
 
 public class ExportModelOperator extends Operator {
     private final InputPort pacInput=getInputPorts().createPort("In pack");
@@ -44,7 +27,7 @@ public class ExportModelOperator extends Operator {
     public void doWork() throws OperatorException {
         Pack pack=pacInput.getData(Pack.class);
         Model model=pack.getModel();
-        Step step=model.steps.get(1);
+//        Step step=model.steps.get(1);
 //        LogService.getRoot().log(Level.INFO,step.toString());
 //        step.getOperations();
 
@@ -65,7 +48,7 @@ public class ExportModelOperator extends Operator {
 
         MemoryExampleTable table = new MemoryExampleTable(attributes);
 
-//        for (Step step:model.steps) {
+        for (Step step:model.steps.subList(0,2)) {
             DataRowFactory ROW_FACTORY = new DataRowFactory(0);
             String[] data = new String[10];
 
@@ -81,15 +64,15 @@ public class ExportModelOperator extends Operator {
 
             DataRow row = ROW_FACTORY.create(data, attributes);
             table.addDataRow(row);
-//        }
-        DataRowFactory ROW_FACTORY2 = new DataRowFactory(0);
-        String[] data2 = new String[10];
+        }
+        DataRowFactory ROW_FACTORY_SUM = new DataRowFactory(0);
+        String[] data_SUM = new String[10];
 
-        data2[0] = "Summary";
-        data2[9] = model.getResults().toString();
+        data_SUM[0] = "Summary";
+        data_SUM[9] = model.getResults().toString();
 
-        DataRow row2 = ROW_FACTORY2.create(data2, attributes);
-        table.addDataRow(row2);
+        DataRow row_SUM = ROW_FACTORY_SUM.create(data_SUM, attributes);
+        table.addDataRow(row_SUM);
 
         ExampleSet exampleSet = table.createExampleSet();
 

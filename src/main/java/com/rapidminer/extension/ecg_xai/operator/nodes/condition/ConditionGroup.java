@@ -6,11 +6,15 @@ public class ConditionGroup extends AbstractCondition{
     private String relation;
 
     public ConditionGroup(){
+        super();
+        this.type="ConditionGroup";
         left=null;
         right=null;
         relation=null;
     }
     public ConditionGroup(AbstractCondition left, AbstractCondition right, String operator) {
+        super();
+        this.type="ConditionGroup";
         this.left = left;
         this.right = right;
         this.relation = operator;
@@ -28,7 +32,7 @@ public class ConditionGroup extends AbstractCondition{
         this.relation = relation;
     }
 
-    public String getOperator() {
+    public String getMidOperand() {
         return relation;
     }
 
@@ -43,6 +47,21 @@ public class ConditionGroup extends AbstractCondition{
     @Override
     public String toString() {
         return "(" + left + " " + relation + " " + right + ")";
+    }
+
+    @Override
+    public String getFeature() {
+        return null;
+    }
+
+    @Override
+    public String getOperator() {
+        return null;
+    }
+
+    @Override
+    public String getThreshold() {
+        return null;
     }
 
     public String getLeftOperand() {

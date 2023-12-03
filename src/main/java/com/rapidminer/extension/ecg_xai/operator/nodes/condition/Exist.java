@@ -6,14 +6,23 @@ public class Exist extends AbstractCondition{
 
     public Exist() {
         super();
+        this.type="Exist";
     }
 
     public Exist(String element) {
+        super();
+        this.type="Exist";
         this.element = element;
     }
     public Exist(String element, String lead) {
+        super();
+        this.type="Exist";
         this.element = element;
         this.lead=lead;
+    }
+
+    public String getResultName(){
+        return element;
     }
 
     public String getElement() {
@@ -29,6 +38,21 @@ public class Exist extends AbstractCondition{
         }
     }
 
+    @Override
+    public String getFeature() {
+        return element;
+    }
+
+    @Override
+    public String getOperator() {
+        return null;
+    }
+
+    @Override
+    public String getThreshold() {
+        return null;
+    }
+
     public static void main(String[] args) {
         Exist exist = new Exist("A");
         System.out.println(exist);
@@ -38,7 +62,7 @@ public class Exist extends AbstractCondition{
         return null;
     }
 
-    public String getOperator() {
+    public String getMidOperand() {
         return null;
     }
 

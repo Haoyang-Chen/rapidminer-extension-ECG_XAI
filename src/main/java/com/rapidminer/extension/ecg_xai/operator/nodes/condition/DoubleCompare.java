@@ -1,44 +1,45 @@
 package com.rapidminer.extension.ecg_xai.operator.nodes.condition;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class Compare extends AbstractCondition{
+public class DoubleCompare extends AbstractCondition{
     private String leftOperand;
-    private String operator;
+    private String midOperand;
     private String rightOperand;
     private String lead=null;
 
-    public Compare() {
+    public DoubleCompare() {
         super();
-        this.type="Compare";
+        this.type="DoubleCompare";
     }
 
-    public Compare(String leftOperand, String operator, String rightOperand) {
+    public DoubleCompare(String leftOperand, String operator, String rightOperand) {
         super();
-        this.type="Compare";
+        this.type="DoubleCompare";
         this.leftOperand = leftOperand;
-        this.operator = operator;
+        this.midOperand = operator;
         this.rightOperand = rightOperand;
     }
 
-    public Compare(String leftOperand, String operator, String rightOperand,String lead) {
+    public DoubleCompare(String leftOperand, String operator, String rightOperand, String lead) {
+        super();
+        this.type="DoubleCompare";
         this.leftOperand = leftOperand;
-        this.operator = operator;
+        this.midOperand = operator;
         this.rightOperand = rightOperand;
         this.lead=lead;
     }
 
     public String getFeature() {
-    	return leftOperand;
+    	return midOperand;
     }
 
+    @Override
     public String getOperator() {
-    	return operator;
+        return null;
     }
 
+    @Override
     public String getThreshold() {
-    	return rightOperand;
+        return null;
     }
 
     public String getLeftOperand() {
@@ -46,7 +47,7 @@ public class Compare extends AbstractCondition{
     }
 
     public String getMidOperand() {
-        return operator;
+        return midOperand;
     }
 
     public String getRightOperand() {
@@ -60,14 +61,14 @@ public class Compare extends AbstractCondition{
     @Override
     public String toString() {
         if (lead==null) {
-            return leftOperand + " " + operator + " " + rightOperand;
+            return leftOperand + " " + midOperand + " " + rightOperand;
         }else {
-            return leftOperand+"_"+lead + " " + operator + " " + rightOperand;
+            return leftOperand+"_"+lead + " " + midOperand + " " + rightOperand;
         }
     }
 
     public static void main(String[] args) {
-        Compare compare = new Compare("A", ">", "B");
+        DoubleCompare compare = new DoubleCompare("A", ">", "B");
         System.out.println(compare);
     }
 }

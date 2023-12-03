@@ -19,6 +19,7 @@ public abstract class AbstractNode {
     public Boolean NoMove;
 
     public Set<AbstractNode> parents=new HashSet<>();
+    public List<AbstractNode> brothers=new ArrayList<>();
     public Set<AbstractNode> YesSon=new HashSet<>();
     public Set<AbstractNode> NoSon=new HashSet<>();
 
@@ -115,7 +116,7 @@ public abstract class AbstractNode {
             Compare thisCon=(Compare)this.getCondition();
             Compare thatCon=(Compare)abstractNode.getCondition();
             return thisCon.getLeftOperand().equals(thatCon.getLeftOperand())
-                    && thisCon.getOperator().equals(thatCon.getOperator())
+                    && thisCon.getMidOperand().equals(thatCon.getMidOperand())
                     && thisCon.getRightOperand().equals(thatCon.getRightOperand())
                     && thisCon.getLead().equals(thatCon.getLead());
         }

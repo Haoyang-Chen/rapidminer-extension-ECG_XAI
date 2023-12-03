@@ -141,10 +141,14 @@ public class Step {
         Dictionary<String,String> operations=new Hashtable<>();
         for (AbstractNode node:nodes){
             if (Objects.equals(node.getType(), "Condition")){
-                operations.put(node.getCondition().getResultName(),node.getCondition().toString());
+                if (node.getCondition().type=="Compare"){
+                    operations.put(node.getCondition().getResultName(),node.getCondition().toString());
+                }else if (node.getCondition().type=="DoubleCompare"){
+                    operations.put(node.getCondition().getResultName(),"~"+node.brothers.get(0).getCondition().getResultName()+" AND ~"+node.brothers.get(1).getCondition().getResultName());
+                }
+//                operations.put(node.getCondition().getResultName(),node.getCondition().toString());
             }
         }
-//        LogService.getRoot().log(Level.INFO,operations.toString());
         return operations;
     }
 
@@ -152,10 +156,9 @@ public class Step {
         List<String> features=new ArrayList<>();
         for (AbstractNode node:nodes){
             if (Objects.equals(node.getType(), "Condition")){
-                features.add(node.getCondition().getLeftOperand());
+                features.add(node.getCondition().getFeature());
             }
         }
-//        LogService.getRoot().log(Level.INFO,features.toString());
         return features;
     }
 
@@ -163,7 +166,9 @@ public class Step {
         Dictionary<String,String> threshold=new Hashtable<>();
         for (AbstractNode node:nodes){
             if (Objects.equals(node.getType(), "Condition")){
-                threshold.put(node.getCondition().getResultName(),node.getCondition().getRightOperand());
+                if (Objects.equals(node.getCondition().type, "Compare")) {
+                    threshold.put(node.getCondition().getResultName(), node.getCondition().getRightOperand());
+                }
             }
         }
 //        LogService.getRoot().log(Level.INFO,threshold.toString());
@@ -189,13 +194,15 @@ public class Step {
         List<String> comp_op_names=new ArrayList<>();
         for (AbstractNode node:nodes){
             if (Objects.equals(node.getType(), "Condition")){
-                String op="";
-                if (node.getCondition().getOperator()=="<"){
-                    op="_lt";
-                }else{
-                    op="_gt";
+                if (Objects.equals(node.getCondition().type, "Compare")) {
+                    String op = "";
+                    if (Objects.equals(node.getCondition().getMidOperand(), "<")) {
+                        op = "_lt";
+                    } else {
+                        op = "_gt";
+                    }
+                    comp_op_names.add(node.getCondition().getResultName() + op);
                 }
-                comp_op_names.add(node.getCondition().getResultName()+op);
             }
         }
 //        LogService.getRoot().log(Level.INFO,comp_op_names.toString());

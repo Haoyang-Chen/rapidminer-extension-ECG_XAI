@@ -16,7 +16,7 @@ public class ConditionNode extends AbstractNode{
 //        if (this.condition instanceof Compare && condition instanceof Compare){
 //            Compare thisCon=(Compare)this.condition;
 //            Compare thatCon=(Compare)condition;
-//            return thisCon.getLeftOperand().equals(thatCon.getLeftOperand()) && thisCon.getOperator().equals(thatCon.getOperator()) && thisCon.getRightOperand().equals(thatCon.getRightOperand());
+//            return thisCon.getLeftOperand().equals(thatCon.getLeftOperand()) && thisCon.getMidOperand().equals(thatCon.getMidOperand()) && thisCon.getRightOperand().equals(thatCon.getRightOperand());
 //        }
 //        return false;
 //    }

@@ -6,6 +6,7 @@ import com.rapidminer.extension.ecg_xai.operator.Structures.StringInfo;
 import com.rapidminer.extension.ecg_xai.operator.nodes.AbstractNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.ConditionNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.condition.Compare;
+import com.rapidminer.extension.ecg_xai.operator.nodes.condition.DoubleCompare;
 import com.rapidminer.operator.Operator;
 import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
@@ -54,7 +55,7 @@ public class DiscretizeOperator extends Operator {
 
         Compare compare_low=new Compare(feature,"<",low);
         Compare compare_high=new Compare(feature,">",high);
-        Compare compare_mid=new Compare(low+" <",feature,"< "+high);
+        DoubleCompare compare_mid=new DoubleCompare(low+" <",feature,"< "+high);
 
         compare_low.setResultName(lowResultName);
         compare_high.setResultName(highResultName);
@@ -63,6 +64,8 @@ public class DiscretizeOperator extends Operator {
         ConditionNode conditionNode_low = new ConditionNode(compare_low);
         ConditionNode conditionNode_high = new ConditionNode(compare_high);
         ConditionNode conditionNode_mid = new ConditionNode(compare_mid);
+        conditionNode_mid.brothers.add(conditionNode_low);
+        conditionNode_mid.brothers.add(conditionNode_high);
 
 //        Step step=model.getLastStep();
         for (Map.Entry<AbstractNode, Boolean> entry : pack.current_parents.entrySet()){
