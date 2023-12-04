@@ -185,7 +185,7 @@ public class FeatureSourceOperator extends OperatorChain {
         outExtender.collect();
         List<StringInfo> others = outExtender.getData(StringInfo.class, true);
         for (StringInfo other : others) {
-            LogService.getRoot().log(Level.INFO,other.type);
+//            LogService.getRoot().log(Level.INFO,other.type);
             if (other.type.equals("General")){
                 features.add("'"+other+"'");
             }else {

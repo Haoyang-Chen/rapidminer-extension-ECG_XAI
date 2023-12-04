@@ -18,6 +18,7 @@ abstract public class AbstractCondition {
     abstract public String toString();
 
     abstract public String getFeature();
+
     abstract public String getOperator();
     abstract public String getThreshold();
 

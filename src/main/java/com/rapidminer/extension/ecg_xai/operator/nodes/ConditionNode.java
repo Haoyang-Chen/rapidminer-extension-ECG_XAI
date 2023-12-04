@@ -21,6 +21,10 @@ public class ConditionNode extends AbstractNode{
 //        return false;
 //    }
 
+    public String getResultName(){
+        return condition.getResultName();
+    }
+
     public void setCondition(AbstractCondition condition) {
         this.condition=condition;
     }

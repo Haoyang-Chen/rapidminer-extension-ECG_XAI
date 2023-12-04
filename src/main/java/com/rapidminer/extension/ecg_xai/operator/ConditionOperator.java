@@ -51,6 +51,9 @@ public class ConditionOperator extends Operator {
         Pack pack=pacInput.getData(Pack.class);
         Model model=pack.getModel();
         Compare compare;
+        if (!Objects.equals(lead, "None")&&!left.contains(lead)){
+            left+="_"+lead;
+        }
         if (Objects.equals(lead, "None")) {
             compare = new Compare(left, mid, right);
         }else {

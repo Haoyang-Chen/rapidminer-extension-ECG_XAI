@@ -15,6 +15,10 @@ public class ImpressionNode extends AbstractNode{
         return this.impression;
     }
 
+    public String getResultName(){
+        return this.impression;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

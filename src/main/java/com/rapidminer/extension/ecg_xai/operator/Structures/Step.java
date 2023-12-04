@@ -1,9 +1,6 @@
 package com.rapidminer.extension.ecg_xai.operator.Structures;
 
-import com.rapidminer.extension.ecg_xai.operator.nodes.AbstractNode;
-import com.rapidminer.extension.ecg_xai.operator.nodes.ConditionNode;
-import com.rapidminer.extension.ecg_xai.operator.nodes.ImpressionNode;
-import com.rapidminer.extension.ecg_xai.operator.nodes.StartNode;
+import com.rapidminer.extension.ecg_xai.operator.nodes.*;
 import com.rapidminer.extension.ecg_xai.operator.nodes.condition.Compare;
 import com.rapidminer.extension.ecg_xai.operator.nodes.condition.ConditionGroup;
 import com.rapidminer.tools.LogService;
@@ -146,8 +143,8 @@ public class Step {
     // LQRS->LBBB
     // LPR->AVB
 
-    public Dictionary<String,String> getOperations(){
-        Dictionary<String,String> operations=new Hashtable<>();
+    public Map<String,String> getOperations(){
+        Map<String,String> operations=new Hashtable<>();
         for (AbstractNode node:nodes){
             if (Objects.equals(node.getType(), "Condition")){
                 if (node.getCondition().type=="Compare"){
@@ -155,11 +152,12 @@ public class Step {
                 }else if (node.getCondition().type=="DoubleCompare"){
                     operations.put(node.getCondition().getResultName(),"~"+node.brothers.get(0).getCondition().getResultName()+" AND ~"+node.brothers.get(1).getCondition().getResultName());
                 }else if (node.getCondition().type=="ConditionGroup"){
-                    Dictionary<String,String> tempOperations=((ConditionGroup) node.getCondition()).getOperations();
-                    for (int i=0;i<tempOperations.size();i++){
-                        operations.put(tempOperations.keys().nextElement(),tempOperations.elements().nextElement());
-                    }
+                    Map<String,String> tempOperations=((ConditionGroup) node.getCondition()).getOperations();
+                    operations.putAll(tempOperations);
                 }
+            }else if (node instanceof AtLeastNode){
+                Map<String,String> tempOperations=(((AtLeastNode) node).getOperations());
+                operations.putAll(tempOperations);
             }
         }
         return operations;
@@ -167,29 +165,37 @@ public class Step {
 
     public Set<String> getRequiredFeatures(){
         Set<String> features=new HashSet<>();
-        for (AbstractNode node:nodes){
-            if (Objects.equals(node.getType(), "Condition")){
-                features.add(node.getCondition().getFeature());
+        for (AbstractNode node:nodes) {
+            if (Objects.equals(node.getType(), "Condition")) {
+                if (node.getCondition().type == "Compare") {
+                    features.add(node.getCondition().getFeature());
+                } else if (node.getCondition().type == "ConditionGroup") {
+                    String tempFeatures = node.getCondition().getFeature();
+                    features.addAll(List.of(tempFeatures.split(", ")));
+                }
+            } else if (node instanceof AtLeastNode) {
+                String tempFeatures = (((AtLeastNode) node).getFeature());
+                features.addAll(List.of(tempFeatures.split(", ")));
             }
         }
         return features;
     }
 
-    public Dictionary<String,String> getThresholds(){
-        Dictionary<String,String> threshold=new Hashtable<>();
+    public Map<String,String> getThresholds(){
+        Map<String,String> threshold=new Hashtable<>();
         for (AbstractNode node:nodes){
             if (Objects.equals(node.getType(), "Condition")){
                 if (Objects.equals(node.getCondition().type, "Compare")) {
                     threshold.put(node.getCondition().getResultName(), node.getCondition().getRightOperand());
                 }else if (node.getCondition().type=="ConditionGroup"){
-                    Dictionary<String,String> tempThreshold=((ConditionGroup) node.getCondition()).getThresholds();
-                    for (int i=0;i<tempThreshold.size();i++){
-                        threshold.put(tempThreshold.keys().nextElement(),tempThreshold.elements().nextElement());
-                    }
+                    Map<String,String> tempThreshold=((ConditionGroup) node.getCondition()).getThresholds();
+                    threshold.putAll(tempThreshold);
                 }
+            }else if (node instanceof AtLeastNode){
+                Map<String,String> tempThreshold=(((AtLeastNode) node).getThresholds());
+                threshold.putAll(tempThreshold);
             }
         }
-//        LogService.getRoot().log(Level.INFO,threshold.toString());
         return threshold;
     }
 
@@ -224,9 +230,11 @@ public class Step {
                     List<String> tempCompOpNames=((ConditionGroup) node.getCondition()).getCompOpNames();
                     comp_op_names.addAll(tempCompOpNames);
                 }
+            }else if (node instanceof AtLeastNode){
+                List<String> tempCompOpNames=(((AtLeastNode) node).getCompOpNames());
+                comp_op_names.addAll(tempCompOpNames);
             }
         }
-//        LogService.getRoot().log(Level.INFO,comp_op_names.toString());
         return comp_op_names;
     }
 
@@ -235,9 +243,9 @@ public class Step {
         List<String> norm_if_not=new ArrayList<>();
         for (AbstractNode node:nodes){
             if (Objects.equals(node.getType(), "Impression")){
-                LogService.getRoot().log(Level.INFO,node.toString());
+//                LogService.getRoot().log(Level.INFO,node.toString());
                 if (node.abnormal){
-                    LogService.getRoot().log(Level.INFO,"abnormal");
+//                    LogService.getRoot().log(Level.INFO,"abnormal");
                     norm_if_not.add(node.getImpression()+"_"+this.getName()+"_imp");
                 }
             }
@@ -257,12 +265,14 @@ public class Step {
                 return trace;
             }else {
                 if (parent.YesSon.contains(node)) {
-                    trace = trace + parent.getCondition().getResultName() + "->";
+                    trace = trace + parent.getResultName() + " AND ";
                 } else {
-                    trace = trace + "~(" + parent.getCondition().getResultName() + ")->";
+                    trace = trace + "~(" + parent.getResultName() + ") AND ";
                 }
             }
             if (node.getType()=="Impression"){
+                trace=trace.substring(0,trace.length()-5);
+                trace+=" -> ";
                 trace=trace+node.getImpression();
             }
         }

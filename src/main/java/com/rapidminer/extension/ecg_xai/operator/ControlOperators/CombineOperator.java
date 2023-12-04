@@ -8,6 +8,7 @@ import com.rapidminer.extension.ecg_xai.operator.nodes.AbstractNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.AtLeastNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.ConditionNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.condition.AbstractCondition;
+import com.rapidminer.extension.ecg_xai.operator.nodes.condition.Compare;
 import com.rapidminer.extension.ecg_xai.operator.nodes.condition.ConditionGroup;
 import com.rapidminer.operator.Operator;
 import com.rapidminer.operator.OperatorDescription;
@@ -16,6 +17,7 @@ import com.rapidminer.operator.ports.InputPortExtender;
 import com.rapidminer.operator.ports.OutputPort;
 import com.rapidminer.parameter.*;
 import com.rapidminer.parameter.conditions.EqualStringCondition;
+import org.checkerframework.checker.units.qual.C;
 
 import java.util.List;
 import java.util.Map;
@@ -56,24 +58,69 @@ public class CombineOperator extends Operator {
                         AbstractNode node = entry.getKey();
                         step.nodes.remove(node);
                         AbstractCondition condition = node.getCondition();
-                        if (conditionGroup.getLeft()==null){
-                            conditionGroup.setLeft(condition);
-                        } else if (conditionGroup.getRight()==null) {
-                            conditionGroup.setRelation(relation);
-                            conditionGroup.setRight(condition);
-                        } else{
-                            conditionGroup=new ConditionGroup(conditionGroup,condition,relation);
-                            ((ConditionNode) conditionNode).setCondition(conditionGroup);
-                        }
-                        for (AbstractNode grandParent:node.parents){
-                            if(grandParent.YesSon.contains(node)){
-                                grandParent.YesSon.remove(node);
-                                conditionNode.addParent(grandParent,true);
+                        boolean parentCondition=false;
+                        ConditionGroup tempCG=new ConditionGroup();
+                        for (AbstractNode parent:node.parents){
+                            if (parent instanceof ConditionNode){
+                                if (parent.YesSon.contains(node)) {
+                                    tempCG.setRight(parent.getCondition());
+                                    tempCG.setRelation("AND");
+                                    parent.YesSon.remove(node);
+                                }else if (parent.NoSon.contains(node)){
+                                    AbstractCondition parentCon=parent.getCondition();
+                                    if (parentCon instanceof Compare) {
+                                        Compare tempCon;
+                                        if (parentCon.getLead()==null) {
+                                            tempCon = new Compare(parentCon.getLeftOperand(), parentCon.getMidOperand(), parentCon.getRightOperand());
+                                        }else{
+                                            tempCon = new Compare(parentCon.getLeftOperand(), parentCon.getMidOperand(), parentCon.getRightOperand(),parentCon.getLead());
+                                        }
+                                        tempCon.setResultName("~"+parentCon.getResultName());
+                                    }
+                                    tempCG.setRight(parent.getCondition());
+                                    tempCG.setRelation("AND NOT");
+                                    parent.NoSon.remove(node);
+                                }
+                                tempCG.setLeft(condition);
+                                parentCondition=true;
                             }
-                            if(grandParent.NoSon!=null&&grandParent.NoSon.contains(node)){
-                                grandParent.NoSon.add(conditionNode);
-                                grandParent.NoSon.remove(node);
-                                conditionNode.addParent(grandParent,false);
+                        }
+                        if (parentCondition){
+                            if (conditionGroup.getLeft() == null) {
+                                conditionGroup.setLeft(tempCG);
+                            } else if (conditionGroup.getRight() == null) {
+                                conditionGroup.setRelation(relation);
+                                conditionGroup.setRight(tempCG);
+                            } else {
+                                conditionGroup = new ConditionGroup(conditionGroup, tempCG, relation);
+                                ((ConditionNode) conditionNode).setCondition(conditionGroup);
+                            }
+                        }else {
+                            if (conditionGroup.getLeft() == null) {
+                                conditionGroup.setLeft(condition);
+                            } else if (conditionGroup.getRight() == null) {
+                                conditionGroup.setRelation(relation);
+                                conditionGroup.setRight(condition);
+                            } else {
+                                conditionGroup = new ConditionGroup(conditionGroup, condition, relation);
+                                ((ConditionNode) conditionNode).setCondition(conditionGroup);
+                            }
+                        }
+                        for (AbstractNode parent :node.parents){
+                            if (parentCondition){
+                                for (AbstractNode grandparent:parent.parents){
+                                    grandparent.YesSon.remove(parent);
+                                    conditionNode.addParent(grandparent,true);
+                                }
+                            }
+                            if(parent.YesSon.contains(node)){
+                                parent.YesSon.remove(node);
+                                conditionNode.addParent(parent,true);
+                            }
+                            if(parent.NoSon!=null&& parent.NoSon.contains(node)){
+                                parent.NoSon.add(conditionNode);
+                                parent.NoSon.remove(node);
+                                conditionNode.addParent(parent,false);
                             }
                         }
                     }

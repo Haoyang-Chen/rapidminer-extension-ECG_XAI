@@ -48,7 +48,7 @@ public class ExportModelOperator extends Operator {
 
         MemoryExampleTable table = new MemoryExampleTable(attributes);
 
-        for (Step step:model.steps.subList(0,3)) {
+        for (Step step:model.steps) {
             DataRowFactory ROW_FACTORY = new DataRowFactory(0);
             String[] data = new String[10];
 
@@ -76,7 +76,7 @@ public class ExportModelOperator extends Operator {
 
         ExampleSet exampleSet = table.createExampleSet();
 
-        LogService.getRoot().log(Level.INFO,"abaaba");
+//        LogService.getRoot().log(Level.INFO,"abaaba");
         modelOutput.deliver(exampleSet);
     }
 }

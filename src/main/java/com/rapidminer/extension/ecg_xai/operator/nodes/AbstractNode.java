@@ -124,4 +124,8 @@ public abstract class AbstractNode {
     }
 
     public abstract String getImpression();
+
+    public String getResultName() {
+        return null;
+    }
 }

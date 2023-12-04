@@ -62,47 +62,39 @@ public class ConditionGroup extends AbstractCondition{
                 return this.resultName;
             }
         }
-        return left.getResultName()+" "+relation+" "+right.getResultName();
+        return "("+left.getResultName()+" "+relation+" "+right.getResultName()+")";
     }
 
-    public Dictionary<String,String> getOperations(){
-        Dictionary<String,String> operations=new Hashtable<>();
+    public Map<String,String> getOperations(){
+        Map<String,String> operations=new Hashtable<>();
         if (left instanceof Compare){
             operations.put(left.getResultName(),left.toString());
         }else if (left instanceof ConditionGroup){
-            Dictionary<String,String> tempOperations=((ConditionGroup) left).getOperations();
-            for (int i=0;i<tempOperations.size();i++){
-                operations.put(tempOperations.keys().nextElement(),tempOperations.elements().nextElement());
-            }
+            Map<String,String> tempOperations=((ConditionGroup) left).getOperations();
+            operations.putAll(tempOperations);
         }
         if (right instanceof Compare) {
             operations.put(right.getResultName(), right.toString());
         }else if (right instanceof ConditionGroup){
-            Dictionary<String,String> tempOperations=((ConditionGroup) right).getOperations();
-            for (int i=0;i<tempOperations.size();i++){
-                operations.put(tempOperations.keys().nextElement(),tempOperations.elements().nextElement());
-            }
+            Map<String,String> tempOperations=((ConditionGroup) right).getOperations();
+            operations.putAll(tempOperations);
         }
         return operations;
     }
 
-    public Dictionary<String,String> getThresholds(){
-        Dictionary<String,String> thresholds=new Hashtable<>();
+    public Map<String,String> getThresholds(){
+        Map<String,String> thresholds=new Hashtable<>();
         if (left instanceof Compare){
             thresholds.put(left.getResultName(), left.getThreshold());
         }else if (left instanceof ConditionGroup){
-            Dictionary<String,String> tempThresholds=((ConditionGroup) left).getThresholds();
-            for (int i=0;i<tempThresholds.size();i++){
-                thresholds.put(tempThresholds.keys().nextElement(),tempThresholds.elements().nextElement());
-            }
+            Map<String,String> tempThresholds=((ConditionGroup) left).getThresholds();
+            thresholds.putAll(tempThresholds);
         }
         if (right instanceof Compare) {
             thresholds.put(right.getResultName(), right.getThreshold());
         }else if (right instanceof ConditionGroup){
-            Dictionary<String,String> tempThresholds=((ConditionGroup) right).getThresholds();
-            for (int i=0;i<tempThresholds.size();i++){
-                thresholds.put(tempThresholds.keys().nextElement(),tempThresholds.elements().nextElement());
-            }
+            Map<String,String> tempThresholds=((ConditionGroup) right).getThresholds();
+            thresholds.putAll(tempThresholds);
         }
         return thresholds;
     }

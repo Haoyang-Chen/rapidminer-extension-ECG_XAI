@@ -10,6 +10,10 @@ public class StartNode extends AbstractNode{
         return null;
     }
 
+    public String getResultName() {
+        return super.getResultName();
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
