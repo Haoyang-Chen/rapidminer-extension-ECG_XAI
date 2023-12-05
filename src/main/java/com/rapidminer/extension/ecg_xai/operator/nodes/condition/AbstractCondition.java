@@ -1,7 +1,7 @@
 package com.rapidminer.extension.ecg_xai.operator.nodes.condition;
 
 abstract public class AbstractCondition {
-    protected String resultName="None";
+    public String resultName="None";
 
     public String type="None";
 

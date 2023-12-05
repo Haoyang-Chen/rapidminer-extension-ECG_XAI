@@ -1,5 +1,7 @@
 package com.rapidminer.extension.ecg_xai.operator.nodes;
 
+import java.util.Set;
+
 public class ImpressionNode extends AbstractNode{
     private String impression;
 
@@ -13,6 +15,11 @@ public class ImpressionNode extends AbstractNode{
     }
     public String getImpression() {
         return this.impression;
+    }
+
+    @Override
+    public Set<String> getMidOutput() {
+        return null;
     }
 
     public String getResultName(){

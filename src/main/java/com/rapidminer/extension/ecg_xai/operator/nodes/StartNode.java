@@ -1,5 +1,7 @@
 package com.rapidminer.extension.ecg_xai.operator.nodes;
 
+import java.util.Set;
+
 public class StartNode extends AbstractNode{
     public StartNode(){
         setType("Start Node");
@@ -7,6 +9,11 @@ public class StartNode extends AbstractNode{
     }
 
     public String getImpression() {
+        return null;
+    }
+
+    @Override
+    public Set<String> getMidOutput() {
         return null;
     }
 

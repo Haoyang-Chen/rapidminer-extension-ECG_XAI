@@ -53,6 +53,7 @@ public class AtLeastNode extends AbstractNode{
         return sb.toString();
     }
 
+
     public Map<String,String> getOperations(){
         Map<String,String> operations = new Hashtable<>();
         for (AbstractCondition condition : conditions) {
@@ -109,6 +110,19 @@ public class AtLeastNode extends AbstractNode{
 
     public String getImpression(){
         return null;
+    }
+
+    @Override
+    public Set<String> getMidOutput() {
+        Set<String> midOutput=new HashSet<>();
+        for (AbstractCondition condition : conditions) {
+            if (condition instanceof Compare) {
+                midOutput.add(condition.getResultName());
+            } else if (condition instanceof ConditionGroup) {
+                midOutput.addAll(((ConditionGroup) condition).getMidOutput());
+            }
+        }
+        return midOutput;
     }
 
     @Override

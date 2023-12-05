@@ -2,7 +2,10 @@ package com.rapidminer.extension.ecg_xai.operator.nodes;
 
 import com.rapidminer.extension.ecg_xai.operator.nodes.condition.AbstractCondition;
 import com.rapidminer.extension.ecg_xai.operator.nodes.condition.Compare;
+import com.rapidminer.extension.ecg_xai.operator.nodes.condition.ConditionGroup;
 import com.rapidminer.extension.ecg_xai.operator.nodes.condition.Exist;
+
+import java.util.*;
 
 public class ConditionNode extends AbstractNode{
     private AbstractCondition condition;
@@ -20,6 +23,15 @@ public class ConditionNode extends AbstractNode{
 //        }
 //        return false;
 //    }
+    public Set<String> getMidOutput(){
+        Set<String> midOutput=new HashSet<>();
+        if (condition instanceof ConditionGroup){
+            midOutput.addAll(((ConditionGroup) condition).getMidOutput());
+        }else if (condition instanceof Compare){
+            midOutput.add(condition.getResultName());
+        }
+        return midOutput;
+    }
 
     public String getResultName(){
         return condition.getResultName();

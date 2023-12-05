@@ -32,7 +32,7 @@ public class ExportModelOperator extends Operator {
 //        step.getOperations();
 
         // create attribute list
-        Attribute[] attributes = new Attribute[10];
+        Attribute[] attributes = new Attribute[11];
 
         attributes[0] = AttributeFactory.createAttribute ("Name", Ontology.STRING);
         attributes[1] = AttributeFactory.createAttribute ("focused leads", Ontology.STRING);
@@ -44,13 +44,14 @@ public class ExportModelOperator extends Operator {
         attributes[7] = AttributeFactory.createAttribute ("Operations", Ontology.STRING);
         attributes[8] = AttributeFactory.createAttribute("Required Features", Ontology.STRING);
         attributes[9] = AttributeFactory.createAttribute("diagnosis", Ontology.STRING);
+        attributes[10] = AttributeFactory.createAttribute("MidOutputs", Ontology.STRING);
 
 
         MemoryExampleTable table = new MemoryExampleTable(attributes);
 
         for (Step step:model.steps) {
             DataRowFactory ROW_FACTORY = new DataRowFactory(0);
-            String[] data = new String[10];
+            String[] data = new String[11];
 
             data[0] = step.getName();
             data[1] = step.getFocusedLeads();
@@ -61,15 +62,17 @@ public class ExportModelOperator extends Operator {
             data[6] = step.getTrace().toString();
             data[7]=step.getOperations().toString();
             data[8]=step.getRequiredFeatures().toString();
+            data[10]=step.getMidOutput().toString();
 
             DataRow row = ROW_FACTORY.create(data, attributes);
             table.addDataRow(row);
         }
         DataRowFactory ROW_FACTORY_SUM = new DataRowFactory(0);
-        String[] data_SUM = new String[10];
+        String[] data_SUM = new String[11];
 
         data_SUM[0] = "Summary";
         data_SUM[9] = model.getResults().toString();
+//        data_SUM[10] = model.getMidOutput().toString();
 
         DataRow row_SUM = ROW_FACTORY_SUM.create(data_SUM, attributes);
         table.addDataRow(row_SUM);

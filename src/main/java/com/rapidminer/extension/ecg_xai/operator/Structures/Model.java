@@ -3,6 +3,7 @@ package com.rapidminer.extension.ecg_xai.operator.Structures;
 import com.rapidminer.extension.ecg_xai.operator.nodes.AbstractNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.ConditionNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.ImpressionNode;
+import com.rapidminer.extension.ecg_xai.operator.nodes.StartNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.condition.Compare;
 
 import java.util.ArrayList;
@@ -74,6 +75,22 @@ public class Model {
             }
         }
         return results;
+    }
+
+    public Set<String> getMidOutput(){
+        Set<String> midOutput=new HashSet<>();
+        Set<String> temp=new HashSet<>();
+        for (Step step:steps){
+            for (AbstractNode node:step.nodes){
+                if (!(node instanceof StartNode || node instanceof ImpressionNode)){
+                    midOutput.addAll(node.getMidOutput());
+                }
+            }
+        }
+        for (String mid:midOutput){
+            temp.add("'" + mid + "'");
+        }
+        return temp;
     }
 
     public List<Step> getSteps() {

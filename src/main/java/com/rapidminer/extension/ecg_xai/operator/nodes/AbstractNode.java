@@ -125,6 +125,8 @@ public abstract class AbstractNode {
 
     public abstract String getImpression();
 
+    public abstract Set<String> getMidOutput();
+
     public String getResultName() {
         return null;
     }

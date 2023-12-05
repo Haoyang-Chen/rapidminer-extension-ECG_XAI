@@ -165,6 +165,7 @@ public class Step {
 
     public Set<String> getRequiredFeatures(){
         Set<String> features=new HashSet<>();
+        Set<String> temp=new HashSet<>();
         for (AbstractNode node:nodes) {
             if (Objects.equals(node.getType(), "Condition")) {
                 if (node.getCondition().type == "Compare") {
@@ -178,7 +179,10 @@ public class Step {
                 features.addAll(List.of(tempFeatures.split(", ")));
             }
         }
-        return features;
+        for (String feature:features){
+            temp.add("'" + feature + "'");
+        }
+        return temp;
     }
 
     public Map<String,String> getThresholds(){
@@ -252,6 +256,20 @@ public class Step {
         }
 //        LogService.getRoot().log(Level.INFO,norm_if_not.toString());
         return norm_if_not;
+    }
+
+    public Set<String> getMidOutput(){
+        Set<String> midOutput=new HashSet<>();
+        Set<String> temp=new HashSet<>();
+        for (AbstractNode node:nodes){
+            if (!(node instanceof StartNode || node instanceof ImpressionNode)){
+                midOutput.addAll(node.getMidOutput());
+            }
+        }
+        for (String mid:midOutput){
+            temp.add("'" + mid + "'");
+        }
+        return temp;
     }
 
     public String findTrace(AbstractNode node, String trace){

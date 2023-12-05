@@ -30,6 +30,9 @@ public class Compare extends AbstractCondition{
     }
 
     public String getFeature() {
+        if (leftOperand.contains("+") || leftOperand.contains("-")){
+            return leftOperand.substring(0,leftOperand.indexOf("+")-1)+", "+leftOperand.substring(leftOperand.indexOf("+")+2);
+        }
     	return leftOperand;
     }
 

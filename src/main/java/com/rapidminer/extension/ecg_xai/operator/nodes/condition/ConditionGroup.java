@@ -53,6 +53,31 @@ public class ConditionGroup extends AbstractCondition{
         return "(" + left + " " + relation + " " + right + ")";
     }
 
+    public Set<String> getMidOutput(){
+        Set<String> midOutput=new HashSet<>();
+        if(!Objects.equals(this.resultName, "none") && !this.resultName.equals("None")){
+            if (this.getLead()!=null){
+                midOutput.add(this.resultName+"_"+this.getLead());
+                return midOutput;
+            }else {
+                midOutput.add(this.resultName);
+                return midOutput;
+            }
+        }else{
+            if (left instanceof ConditionGroup){
+                midOutput.addAll(((ConditionGroup) left).getMidOutput());
+            }else if (left instanceof Compare){
+                midOutput.add(left.getResultName());
+            }
+            if (right instanceof Compare){
+                midOutput.add(right.getResultName());
+            }else if (right instanceof ConditionGroup){
+                midOutput.addAll(((ConditionGroup) right).getMidOutput());
+            }
+        }
+        return midOutput;
+    }
+
     @Override
     public String getResultName(){
         if (!Objects.equals(this.resultName, "none") && !this.resultName.equals("None")){
