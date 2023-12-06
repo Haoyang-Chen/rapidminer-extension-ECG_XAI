@@ -44,7 +44,7 @@ public class ExportModelOperator extends Operator {
         attributes[7] = AttributeFactory.createAttribute ("Operations", Ontology.STRING);
         attributes[8] = AttributeFactory.createAttribute("Required Features", Ontology.STRING);
         attributes[9] = AttributeFactory.createAttribute("diagnosis", Ontology.STRING);
-        attributes[10] = AttributeFactory.createAttribute("MidOutputs", Ontology.STRING);
+        attributes[10] = AttributeFactory.createAttribute("ResultOutputs", Ontology.STRING);
 
 
         MemoryExampleTable table = new MemoryExampleTable(attributes);
@@ -56,13 +56,13 @@ public class ExportModelOperator extends Operator {
             data[0] = step.getName();
             data[1] = step.getFocusedLeads();
             data[2] = step.getObjFeatNames().toString();
-            data[3] = step.getThresholds().toString();
+            data[3] = step.getThresholds().toString().replace("=",":");
             data[4] = step.getCompOpNames().toString();
             data[5] = step.getNormIfNot().toString();
             data[6] = step.getTrace().toString();
-            data[7]=step.getOperations().toString();
+            data[7]=step.getOperations().toString().replace("=",":");
             data[8]=step.getRequiredFeatures().toString();
-            data[10]=step.getMidOutput().toString();
+            data[10]=step.getResultOutput().toString();
 
             DataRow row = ROW_FACTORY.create(data, attributes);
             table.addDataRow(row);

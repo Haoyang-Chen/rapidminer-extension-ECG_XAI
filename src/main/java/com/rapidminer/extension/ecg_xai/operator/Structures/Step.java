@@ -3,10 +3,8 @@ package com.rapidminer.extension.ecg_xai.operator.Structures;
 import com.rapidminer.extension.ecg_xai.operator.nodes.*;
 import com.rapidminer.extension.ecg_xai.operator.nodes.condition.Compare;
 import com.rapidminer.extension.ecg_xai.operator.nodes.condition.ConditionGroup;
-import com.rapidminer.tools.LogService;
 
 import java.util.*;
-import java.util.logging.Level;
 
 public class Step {
     public List<AbstractNode> nodes=new ArrayList<>();
@@ -44,7 +42,7 @@ public class Step {
             }
         }
 
-        return initials.toString();
+        return initials.toString().replace("&","");
     }
 
 
@@ -145,6 +143,7 @@ public class Step {
 
     public Map<String,String> getOperations(){
         Map<String,String> operations=new Hashtable<>();
+        Map<String,String> temp=new Hashtable<>();
         for (AbstractNode node:nodes){
             if (Objects.equals(node.getType(), "Condition")){
                 if (node.getCondition().type=="Compare"){
@@ -160,7 +159,13 @@ public class Step {
                 operations.putAll(tempOperations);
             }
         }
-        return operations;
+        for (String key:operations.keySet()){
+            String value=operations.get(key);
+            key="'"+key+"'";
+            value="'"+value+"'";
+            temp.put(key,value);
+        }
+        return temp;
     }
 
     public Set<String> getRequiredFeatures(){
@@ -187,6 +192,7 @@ public class Step {
 
     public Map<String,String> getThresholds(){
         Map<String,String> threshold=new Hashtable<>();
+        Map<String,String> temp=new Hashtable<>();
         for (AbstractNode node:nodes){
             if (Objects.equals(node.getType(), "Condition")){
                 if (Objects.equals(node.getCondition().type, "Compare")) {
@@ -200,26 +206,40 @@ public class Step {
                 threshold.putAll(tempThreshold);
             }
         }
-        return threshold;
+        for (String key:threshold.keySet()){
+            String value=threshold.get(key);
+            key="'"+key+"'";
+            value="'"+value+"'";
+            temp.put(key,value);
+        }
+        return temp;
     }
 
     public String getFocusedLeads(){
-        return this.focus_leads;
+        List<String> temp=new ArrayList<>();
+        for (String lead:focus_leads.split(", ")){
+            temp.add("'"+lead+"'");
+        }
+        return temp.toString();
     }
 
-    public List<String> getObjFeatNames(){
-        List<String> obj_feat_names=new ArrayList<>();
+    public List<String> getResultOutput(){
+        List<String> resultOutput =new ArrayList<>();
+        List<String> temp=new ArrayList<>();
         for (AbstractNode node:nodes){
             if (Objects.equals(node.getType(), "Impression")){
-                obj_feat_names.add(node.getImpression()+"_"+this.getName());
+                resultOutput.add(node.getImpression()+"_"+this.getName());
             }
         }
-//        LogService.getRoot().log(Level.INFO,obj_feat_names.toString());
-        return obj_feat_names;
+        for (String obj: resultOutput){
+            temp.add("'"+obj+"'");
+        }
+        return temp;
     }
 
     public List<String> getCompOpNames(){
         List<String> comp_op_names=new ArrayList<>();
+        List<String> temp=new ArrayList<>();
         for (AbstractNode node:nodes){
             if (Objects.equals(node.getType(), "Condition")){
                 if (Objects.equals(node.getCondition().type, "Compare")) {
@@ -239,34 +259,38 @@ public class Step {
                 comp_op_names.addAll(tempCompOpNames);
             }
         }
-        return comp_op_names;
+        for (String comp:comp_op_names){
+            temp.add("'"+comp+"'");
+        }
+        return temp;
     }
 
 
     public List<String> getNormIfNot(){
         List<String> norm_if_not=new ArrayList<>();
+        List<String> temp=new ArrayList<>();
         for (AbstractNode node:nodes){
             if (Objects.equals(node.getType(), "Impression")){
-//                LogService.getRoot().log(Level.INFO,node.toString());
                 if (node.abnormal){
-//                    LogService.getRoot().log(Level.INFO,"abnormal");
                     norm_if_not.add(node.getImpression()+"_"+this.getName()+"_imp");
                 }
             }
         }
-//        LogService.getRoot().log(Level.INFO,norm_if_not.toString());
-        return norm_if_not;
+        for (String norm:norm_if_not){
+            temp.add("'"+norm+"'");
+        }
+        return temp;
     }
 
-    public Set<String> getMidOutput(){
-        Set<String> midOutput=new HashSet<>();
+    public Set<String> getObjFeatNames(){
+        Set<String> objFeatNames =new HashSet<>();
         Set<String> temp=new HashSet<>();
         for (AbstractNode node:nodes){
             if (!(node instanceof StartNode || node instanceof ImpressionNode)){
-                midOutput.addAll(node.getMidOutput());
+                objFeatNames.addAll(node.getMidOutput());
             }
         }
-        for (String mid:midOutput){
+        for (String mid: objFeatNames){
             temp.add("'" + mid + "'");
         }
         return temp;
@@ -299,13 +323,16 @@ public class Step {
 
     public List<String> getTrace(){
         List<String> traces=new ArrayList<>();
+        List<String> temp=new ArrayList<>();
         for (AbstractNode node:nodes){
             if (Objects.equals(node.getType(), "Impression")){
                 traces.add(findTrace(node,""));
             }
         }
-//        LogService.getRoot().log(Level.INFO,traces.toString());
-        return traces;
+        for (String trace:traces){
+            temp.add("'"+trace+"'");
+        }
+        return temp;
     }
 }
 //focused_leads: list[str] = ALL_LEADS
