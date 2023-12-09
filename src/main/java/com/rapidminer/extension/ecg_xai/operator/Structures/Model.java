@@ -65,33 +65,33 @@ public class Model {
         System.out.println(model);
     }
 
-    public Set<String> getResults(){
-        Set<String> results=new HashSet<>();
-        for (Step step:steps){
-            for (AbstractNode node:step.nodes){
-                if (node instanceof ImpressionNode){
-                    results.add("'"+node.getImpression()+"'");
-                }
-            }
-        }
-        return results;
-    }
+//    public Set<String> getResults(){
+//        Set<String> results=new HashSet<>();
+//        for (Step step:steps){
+//            for (AbstractNode node:step.nodes){
+//                if (node instanceof ImpressionNode){
+//                    results.add("'"+node.getImpression()+"'");
+//                }
+//            }
+//        }
+//        return results;
+//    }
 
-    public Set<String> getMidOutput(){
-        Set<String> midOutput=new HashSet<>();
-        Set<String> temp=new HashSet<>();
-        for (Step step:steps){
-            for (AbstractNode node:step.nodes){
-                if (!(node instanceof StartNode || node instanceof ImpressionNode)){
-                    midOutput.addAll(node.getMidOutput());
-                }
-            }
-        }
-        for (String mid:midOutput){
-            temp.add("'" + mid + "'");
-        }
-        return temp;
-    }
+//    public Set<String> getMidOutput(){
+//        Set<String> midOutput=new HashSet<>();
+//        Set<String> temp=new HashSet<>();
+//        for (Step step:steps){
+//            for (AbstractNode node:step.nodes){
+//                if (!(node instanceof StartNode || node instanceof ImpressionNode)){
+//                    midOutput.addAll(node.getMidOutput());
+//                }
+//            }
+//        }
+//        for (String mid:midOutput){
+//            temp.add("'" + mid + "'");
+//        }
+//        return temp;
+//    }
 
     public List<Step> getSteps() {
         return steps;

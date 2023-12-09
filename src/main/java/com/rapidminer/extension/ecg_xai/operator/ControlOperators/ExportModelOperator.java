@@ -18,7 +18,7 @@ import java.util.logging.Level;
 
 public class ExportModelOperator extends Operator {
     private final InputPort pacInput=getInputPorts().createPort("In pack");
-    private final OutputPort modelOutput=getOutputPorts().createPort("model");
+    private final OutputPort modelOutput=getOutputPorts().createPort("Summary of the Model(Table)");
     public ExportModelOperator(OperatorDescription description) {
         super(description);
     }
@@ -62,20 +62,12 @@ public class ExportModelOperator extends Operator {
             data[6] = step.getTrace().toString();
             data[7]=step.getOperations().toString().replace("=",":");
             data[8]=step.getRequiredFeatures().toString();
+            data[9]=step.getDiagnosis().toString();
             data[10]=step.getResultOutput().toString();
 
             DataRow row = ROW_FACTORY.create(data, attributes);
             table.addDataRow(row);
         }
-        DataRowFactory ROW_FACTORY_SUM = new DataRowFactory(0);
-        String[] data_SUM = new String[11];
-
-        data_SUM[0] = "Summary";
-        data_SUM[9] = model.getResults().toString();
-//        data_SUM[10] = model.getMidOutput().toString();
-
-        DataRow row_SUM = ROW_FACTORY_SUM.create(data_SUM, attributes);
-        table.addDataRow(row_SUM);
 
         ExampleSet exampleSet = table.createExampleSet();
 

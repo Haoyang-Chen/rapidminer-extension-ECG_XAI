@@ -237,6 +237,16 @@ public class Step {
         return temp;
     }
 
+    public List<String> getDiagnosis() {
+        List<String> results = new ArrayList<>();
+        for (AbstractNode node : nodes) {
+            if (node instanceof ImpressionNode) {
+                results.add("'" + node.getImpression() + "'");
+            }
+        }
+        return results;
+    }
+
     public List<String> getCompOpNames(){
         List<String> comp_op_names=new ArrayList<>();
         List<String> temp=new ArrayList<>();
