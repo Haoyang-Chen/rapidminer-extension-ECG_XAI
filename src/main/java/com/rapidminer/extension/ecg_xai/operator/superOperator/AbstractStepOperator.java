@@ -9,8 +9,9 @@ import com.rapidminer.operator.ports.PortPairExtender;
 import com.rapidminer.operator.ports.metadata.PassThroughRule;
 
 public class AbstractStepOperator extends OperatorChain {
-    public final InputPort InModelInput=getInputPorts().createPort("Model");
-    public final OutputPort InModelOutput = getSubprocess(0).getInnerSources().createPort("Model");
+    public final InputPort InModelInput=getInputPorts().createPort("Control");
+    public final OutputPort InModelOutput = getSubprocess(0).getInnerSources().createPort("Control");
+    public final OutputPort OutControlOutput=getOutputPorts().createPort("Control");
     public final OutputPort OutModelOutput=getOutputPorts().createPort("Model");
     public final PortPairExtender inExtender =
             new PortPairExtender("other",
@@ -23,6 +24,7 @@ public class AbstractStepOperator extends OperatorChain {
         super(description, "Executed Process");
         getTransformer().addRule(new PassThroughRule(InModelInput, InModelOutput, false));
         getTransformer().addRule(new PassThroughRule(InModelInput, OutModelOutput, false));
+        getTransformer().addRule(new PassThroughRule(InModelInput, OutControlOutput, false));
     }
 
 }
