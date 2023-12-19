@@ -57,12 +57,14 @@ public class Step1Operator extends AbstractStepOperator {
     public void doWork() throws OperatorException {
         outExtender.reset();
         inExtender.passDataThrough();
-        InModelOutput.deliver(InModelInput.getData(Pack.class));
+        Pack pack=new Pack();
+        InControlOutput.deliver(pack);
         SINUSInput.deliver(SINUSOutput.getData(StringInfo.class));
         HRInput.deliver(HROutput.getData(StringInfo.class));
         RR_DIFFInput.deliver(RR_DIFFOutput.getData(StringInfo.class));
         getSubprocess(0).execute();
-        OutModelOutput.deliver(InModelInput.getData(Pack.class));
+//        OutControlOutput.deliver(InControlInput.getData(Pack.class));
+        OutSummaryOutput.deliver(pack);
         SARRHOutput.deliver(SARRHInput.getData(StringInfo.class));
         STACHOutput.deliver(STACHInput.getData(StringInfo.class));
         SROutput.deliver(SRInput.getData(StringInfo.class));

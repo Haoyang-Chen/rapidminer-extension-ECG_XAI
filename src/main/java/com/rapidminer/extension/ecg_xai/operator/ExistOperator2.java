@@ -39,7 +39,7 @@ public class ExistOperator2 extends Operator {
         String lead=getParameterAsString(PARAMETER_LEAD);
 
         Pack pack=pacInput.getData(Pack.class);
-        Model model=pack.getModel();
+//        Model model=pack.getModel();
         Exist exist;
         if (Objects.equals(lead, "None")) {
             exist = new Exist(left);
@@ -49,7 +49,8 @@ public class ExistOperator2 extends Operator {
         this.rename(exist.toString());
         ConditionNode conditionNode=new ConditionNode(exist);
 
-        Step step=model.getLastStep();
+//        Step step=model.getLastStep();
+        Step step=pack.getStep();
 
         for (Map.Entry<AbstractNode, Boolean> entry : pack.current_parents.entrySet()){
             AbstractNode parent=entry.getKey();

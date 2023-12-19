@@ -56,12 +56,14 @@ public class Step5Operator extends AbstractStepOperator {
     public void doWork() throws OperatorException {
         outExtender.reset();
         inExtender.passDataThrough();
-        InModelOutput.deliver(InModelInput.getData(Pack.class));
+        Pack pack=new Pack();
+        InControlOutput.deliver(pack);
         Q_DURInput.deliver(Q_DUROutput.getData(StringInfo.class));
         Q_AMPInput.deliver(Q_AMPOutput.getData(StringInfo.class));
         PRWPInput.deliver(PRWPOutput.getData(StringInfo.class));
         getSubprocess(0).execute();
-        OutModelOutput.deliver(InModelInput.getData(Pack.class));
+//        OutControlOutput.deliver(InControlInput.getData(Pack.class));
+        OutSummaryOutput.deliver(pack);
         IMI_STEOutput.deliver(IMI_STEInput.getData(StringInfo.class));
         LMI_STEOutput.deliver(LMI_STEInput.getData(StringInfo.class));
         AMI_QPOutput.deliver(AMI_QPInput.getData(StringInfo.class));

@@ -33,8 +33,9 @@ public class ResultOperator2 extends Operator {
         String type=getParameterAsString(PARAMETER_TYPE);
         boolean ab_type =getParameterAsBoolean(PARAMETER_AB_TYPE);
         Pack pack=Input.getData(Pack.class);
-        Model model=pack.getModel();
-        Step step=model.getLastStep();
+//        Model model=pack.getModel();
+//        Step step=model.getLastStep();
+        Step step=pack.getStep();
         ImpressionNode impNode;
         if (ab_type) {
             impNode = new ImpressionNode(name);

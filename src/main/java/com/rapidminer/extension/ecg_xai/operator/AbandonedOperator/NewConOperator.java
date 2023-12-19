@@ -48,7 +48,7 @@ public class NewConOperator extends Operator {
 //        boolean no=getParameterAsBoolean(PARAMETER_NO);
 
         Pack pack=pacInput.getData(Pack.class);
-        Model model=pack.getModel();
+//        Model model=pack.getModel();
         Compare compare;
         if (Objects.equals(lead, "None")) {
             compare = new Compare(left, mid, right);
@@ -59,7 +59,8 @@ public class NewConOperator extends Operator {
         compare.setResultName(resultName);
         ConditionNode conditionNode=new ConditionNode(compare);
 
-        Step step=model.getLastStep();
+//        Step step=model.getLastStep();
+        Step step=pack.getStep();
 
         for (Map.Entry<AbstractNode, Boolean> entry : pack.current_parents.entrySet()){
             AbstractNode parent=entry.getKey();

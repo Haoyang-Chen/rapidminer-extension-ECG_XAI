@@ -27,8 +27,9 @@ public class ResultOperator extends Operator {
     public void doWork() throws com.rapidminer.operator.OperatorException {
         String name=getParameterAsString(PARAMETER_NAME);
         Pack pack=Input.getData(Pack.class);
-        Model model=pack.getModel();
-        Step step=model.getLastStep();
+//        Model model=pack.getModel();
+//        Step step=model.getLastStep();
+        Step step=pack.getStep();
         ImpressionNode impNode=new ImpressionNode(name);
         for (Map.Entry<AbstractNode, Boolean> entry : pack.current_parents.entrySet()){
             AbstractNode parent=entry.getKey();

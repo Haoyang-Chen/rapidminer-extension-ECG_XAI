@@ -40,11 +40,13 @@ public class Step2Operator extends AbstractStepOperator {
     public void doWork() throws OperatorException {
         outExtender.reset();
         inExtender.passDataThrough();
-        InModelOutput.deliver(InModelInput.getData(Pack.class));
+        Pack pack=new Pack();
+        InControlOutput.deliver(pack);
         QRS_DURInput.deliver(QRS_DUROutput.getData(StringInfo.class));
         PR_DURInput.deliver(PR_DUROutput.getData(StringInfo.class));
         getSubprocess(0).execute();
-        OutModelOutput.deliver(InModelInput.getData(Pack.class));
+//        OutControlOutput.deliver(InControlInput.getData(Pack.class));
+        OutSummaryOutput.deliver(pack);
         LBBBOutput.deliver(LBBBInput.getData(StringInfo.class));
         RBBBOutput.deliver(RBBBInput.getData(StringInfo.class));
         AVBOutput.deliver(AVBInput.getData(StringInfo.class));

@@ -46,11 +46,13 @@ public class Step6Operator extends AbstractStepOperator {
     public void doWork() throws OperatorException {
         outExtender.reset();
         inExtender.passDataThrough();
-        InModelOutput.deliver(InModelInput.getData(Pack.class));
+        Pack pack=new Pack();
+        InControlOutput.deliver(pack);
         P_DURInput.deliver(P_DUROutput.getData(StringInfo.class));
         P_AMPInput.deliver(P_AMPOutput.getData(StringInfo.class));
         getSubprocess(0).execute();
-        OutModelOutput.deliver(InModelInput.getData(Pack.class));
+//        OutControlOutput.deliver(InControlInput.getData(Pack.class));
+        OutSummaryOutput.deliver(pack);
         LAEOutput.deliver(LAEInput.getData(StringInfo.class));
         RAEOutput.deliver(RAEInput.getData(StringInfo.class));
         LVHOutput.deliver(LVHInput.getData(StringInfo.class));

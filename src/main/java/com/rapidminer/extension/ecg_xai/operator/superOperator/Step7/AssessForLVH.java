@@ -3,13 +3,16 @@ package com.rapidminer.extension.ecg_xai.operator.superOperator.Step7;
 import com.rapidminer.extension.ecg_xai.operator.Structures.Pack;
 import com.rapidminer.extension.ecg_xai.operator.Structures.StringInfo;
 import com.rapidminer.extension.ecg_xai.operator.superOperator.AbstractStepOperator;
+import com.rapidminer.operator.OperatorChain;
 import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
 import com.rapidminer.operator.ports.InputPort;
 import com.rapidminer.operator.ports.OutputPort;
 import com.rapidminer.operator.ports.metadata.PassThroughRule;
 
-public class AssessForLVH extends AbstractStepOperator {
+public class AssessForLVH extends OperatorChain {
+    public final InputPort InModelInput=getInputPorts().createPort("Model");
+    public final OutputPort InModelOutput = getSubprocess(0).getInnerSources().createPort("Model");
     private final InputPort AGEOutput=getInputPorts().createPort("AGE");
     private final OutputPort AGEInput = getSubprocess(0).getInnerSources().createPort("AGE");
     private final InputPort MALEOutput=getInputPorts().createPort("MALE");
@@ -26,9 +29,8 @@ public class AssessForLVH extends AbstractStepOperator {
 
 
     public AssessForLVH(OperatorDescription description) {
-        super(description);
-        inExtender.start();
-        outExtender.start();
+        super(description,"Executed Process");
+        getTransformer().addRule(new PassThroughRule(InModelInput, InModelOutput, false));
         getTransformer().addRule(new PassThroughRule(AGEOutput,AGEInput, false));
         getTransformer().addRule(new PassThroughRule(MALEOutput,MALEInput, false));
         getTransformer().addRule(new PassThroughRule(R_AMPOutput, R_AMPInput, false));
@@ -38,8 +40,6 @@ public class AssessForLVH extends AbstractStepOperator {
 
     @Override
     public void doWork() throws OperatorException {
-        outExtender.reset();
-        inExtender.passDataThrough();
         InModelOutput.deliver(InModelInput.getData(Pack.class));
         AGEInput.deliver(AGEOutput.getData(StringInfo.class));
         MALEInput.deliver(MALEOutput.getData(StringInfo.class));
@@ -47,6 +47,5 @@ public class AssessForLVH extends AbstractStepOperator {
         S_AMPInput.deliver(S_AMPOutput.getData(StringInfo.class));
         getSubprocess(0).execute();
         LVHOutput.deliver(LVHInput.getData(Pack.class));
-        outExtender.collect();
     }
 }

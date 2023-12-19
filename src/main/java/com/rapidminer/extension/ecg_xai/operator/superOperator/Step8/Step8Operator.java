@@ -52,12 +52,14 @@ public class Step8Operator extends AbstractStepOperator {
     public void doWork() throws OperatorException {
         outExtender.reset();
         inExtender.passDataThrough();
-        InModelOutput.deliver(InModelInput.getData(Pack.class));
+        Pack pack=new Pack();
+        InControlOutput.deliver(pack);
         T_AMPInput.deliver(T_AMPOutput.getData(StringInfo.class));
         STEInput.deliver(STEOutput.getData(StringInfo.class));
         STDInput.deliver(STDOutput.getData(StringInfo.class));
         getSubprocess(0).execute();
-        OutModelOutput.deliver(InModelInput.getData(Pack.class));
+//        OutControlOutput.deliver(InControlInput.getData(Pack.class));
+        OutSummaryOutput.deliver(pack);
         IMIOutput.deliver(IMIInput.getData(StringInfo.class));
         AMIOutput.deliver(AMIInput.getData(StringInfo.class));
         LMIOutput.deliver(LMIInput.getData(StringInfo.class));

@@ -67,8 +67,9 @@ public class LoopOperator extends OperatorChain {
             packs.add(OutModelInput.getData(Pack.class));
         }
         Pack pack= new Pack(packs.get(0));
-        Model model=pack.getModel();
-        Step step=model.getLastStep();
+//        Model model=pack.getModel();
+//        Step step=model.getLastStep();
+        Step step=pack.getStep();
 
         AbstractNode conditionNode=null;
         switch (type) {

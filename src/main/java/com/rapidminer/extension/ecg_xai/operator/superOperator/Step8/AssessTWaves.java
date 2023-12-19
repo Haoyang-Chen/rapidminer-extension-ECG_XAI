@@ -54,6 +54,7 @@ public class AssessTWaves extends OperatorChain {
         getTransformer().addRule(new PassThroughRule(T_AMPOutput,T_AMPInput, false));
         getTransformer().addRule(new PassThroughRule(STEOutput, STEInput, false));
         getTransformer().addRule(new PassThroughRule(STDOutput, STDInput, false));
+
     }
 
     @Override
@@ -75,8 +76,9 @@ public class AssessTWaves extends OperatorChain {
                 packs.add(OutModelInput.getData(Pack.class));
             }
             Pack pack= new Pack(packs.get(0));
-            Model model=pack.getModel();
-            Step step=model.getLastStep();
+//            Model model=pack.getModel();
+//            Step step=model.getLastStep();
+            Step step=pack.getStep();
 
             AbstractNode conditionNode=null;
             switch (type) {

@@ -10,7 +10,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Pack extends ResultObjectAdapter {
-    public Model model=new Model();
+//    public Model model=new Model();
+    public Step step=new Step();
     public static FeatureName feature=new FeatureName();
     public static ImpressionName impression=new ImpressionName();
     public static LeadName lead=new LeadName();
@@ -25,7 +26,8 @@ public class Pack extends ResultObjectAdapter {
 
     public Pack(Pack pack){
 //        this.model=new Model(pack.getModel());
-        this.model=pack.getModel();
+//        this.model=pack.getModel();
+        this.step=pack.step;
 //        this.yes=true;
         this.current_parents=new HashMap<>();
         this.current_parents.putAll(pack.current_parents);
@@ -39,10 +41,13 @@ public class Pack extends ResultObjectAdapter {
 //        yes=false;
 //    }
 
-    public Model getModel(){
-        return model;
-    }
+//    public Model getModel(){
+//        return model;
+//    }
 
+    public Step getStep(){
+        return step;
+    }
     public FeatureName getFeature(){
         return feature;
     }
@@ -55,8 +60,12 @@ public class Pack extends ResultObjectAdapter {
         return lead;
     }
 
+//    @Override
+//    public String toString() {
+//        return model.toString();
+//    }
     @Override
     public String toString() {
-        return model.toString();
+        return step.toString();
     }
 }

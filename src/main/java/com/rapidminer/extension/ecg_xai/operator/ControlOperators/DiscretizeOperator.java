@@ -2,6 +2,7 @@ package com.rapidminer.extension.ecg_xai.operator.ControlOperators;
 
 import com.rapidminer.extension.ecg_xai.operator.Structures.Model;
 import com.rapidminer.extension.ecg_xai.operator.Structures.Pack;
+import com.rapidminer.extension.ecg_xai.operator.Structures.Step;
 import com.rapidminer.extension.ecg_xai.operator.Structures.StringInfo;
 import com.rapidminer.extension.ecg_xai.operator.nodes.AbstractNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.ConditionNode;
@@ -51,7 +52,7 @@ public class DiscretizeOperator extends Operator {
 //        String ifLow = getParameterAsString(PARAMETER_IF_LOW);
         Pack pack = inputPort.getData(Pack.class);
 //        Boolean nodeYes = pack.yes;
-        Model model = pack.getModel();
+//        Model model = pack.getModel();
 
         Compare compare_low=new Compare(feature,"<",low);
         Compare compare_high=new Compare(feature,">",high);
@@ -83,9 +84,15 @@ public class DiscretizeOperator extends Operator {
         Pack pack_mid=new Pack(pack);
         Pack pack_low=new Pack(pack);
 
-        pack_high.getModel().getLastStep().addNode(conditionNode_low);
-        pack_mid.getModel().getLastStep().addNode(conditionNode_mid);
-        pack_low.getModel().getLastStep().addNode(conditionNode_high);
+        Step step=pack.getStep();
+
+        step.addNode(conditionNode_low);
+        step.addNode(conditionNode_mid);
+        step.addNode(conditionNode_high);
+
+//        pack_high.getModel().getLastStep().addNode(conditionNode_low);
+//        pack_mid.getModel().getLastStep().addNode(conditionNode_mid);
+//        pack_low.getModel().getLastStep().addNode(conditionNode_high);
 //
 //        conditionNode_low.runCheck();
 //        conditionNode_high.runCheck();

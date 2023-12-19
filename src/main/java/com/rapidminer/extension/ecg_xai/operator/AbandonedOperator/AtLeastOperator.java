@@ -43,9 +43,10 @@ public class AtLeastOperator extends Operator {
     @Override
     public void doWork() throws OperatorException {
         Pack pack=pacInput.getData(Pack.class);
-        Model model=pack.getModel();
-
-        Step step=model.getLastStep();
+//        Model model=pack.getModel();
+//
+//        Step step=model.getLastStep();
+        Step step=pack.getStep();
 
         String yes=getParameterAsString(PARAMETER_YES);
         String no=getParameterAsString(PARAMETER_NO);

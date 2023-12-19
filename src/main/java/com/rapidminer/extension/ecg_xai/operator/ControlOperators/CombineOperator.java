@@ -39,8 +39,9 @@ public class CombineOperator extends Operator {
     public void doWork() throws OperatorException {
         List<Pack> packs = inputPortExtender.getData(Pack.class, true);
         Pack pack= new Pack(packs.get(0));
-        Model model=pack.getModel();
-        Step step=model.getLastStep();
+//        Model model=pack.getModel();
+//        Step step=model.getLastStep();
+        Step step=pack.getStep();
 
         String type=getParameterAsString(PARAMETER_TYPE);
 

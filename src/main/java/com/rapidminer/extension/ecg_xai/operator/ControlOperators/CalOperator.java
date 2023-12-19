@@ -51,9 +51,10 @@ public class CalOperator extends Operator {
 
 
         Pack pack=pacInput.getData(Pack.class);
-        Model model=pack.getModel();
+//        Model model=pack.getModel();
 
-        Step step=model.getLastStep();
+//        Step step=model.getLastStep();
+        Step step=pack.getStep();
 
         String relation=getParameterAsString(PARAMETER_TYPE);
         String mid=getParameterAsString(PARAMETER_MID);

@@ -21,8 +21,10 @@ public class MergeOperator extends Operator {
     }
 
     public Pack mergePack(Pack pack1, Pack pack2){
-        List<AbstractNode> nodes1=pack1.getModel().getLastStep().nodes;
-        List<AbstractNode> nodes2=pack2.getModel().getLastStep().nodes;
+//        List<AbstractNode> nodes1=pack1.getModel().getLastStep().nodes;
+//        List<AbstractNode> nodes2=pack2.getModel().getLastStep().nodes;
+        List<AbstractNode> nodes1=pack1.getStep().nodes;
+        List<AbstractNode> nodes2=pack2.getStep().nodes;
         int len1=nodes1.size();
         int len2=nodes2.size();
         int less=Math.min(len1,len2);
@@ -52,7 +54,7 @@ public class MergeOperator extends Operator {
             }
         }
         diff_node.runCheck();
-        pack1.getModel().getLastStep().flushIndex();
+        pack1.getStep().flushIndex();
         return pack1;
     }
 
@@ -64,7 +66,7 @@ public class MergeOperator extends Operator {
         pack1.current_parents.clear();
         for (Pack pack:packs){
             pack1=mergePack(pack1,pack);
-            pack1.current_parents.put(pack.getModel().getLastStep().getLastCon(),pack.current_parents.get(pack.getModel().getLastStep().getLastCon()));
+            pack1.current_parents.put(pack.getStep().getLastCon(),pack.current_parents.get(pack.getStep().getLastCon()));
         }
 //        LogService.getRoot().log(Level.INFO,pack1.current_parents.toString());
         outputPort.deliver(pack1);

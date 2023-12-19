@@ -7,6 +7,7 @@ import com.rapidminer.operator.Operator;
 import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
 import com.rapidminer.operator.ports.InputPort;
+import com.rapidminer.operator.ports.InputPortExtender;
 import com.rapidminer.operator.ports.OutputPort;
 
 import com.rapidminer.example.*;
@@ -14,19 +15,22 @@ import com.rapidminer.example.table .*;
 import com.rapidminer.tools.LogService;
 import com.rapidminer.tools .Ontology;
 
+import java.util.List;
 import java.util.logging.Level;
 
 public class ExportModelOperator extends Operator {
-    private final InputPort pacInput=getInputPorts().createPort("In pack");
+//    private final InputPort pacInput=getInputPorts().createPort("In pack");
+    private final InputPortExtender inputExtender = new InputPortExtender("Summary", getInputPorts());
     private final OutputPort modelOutput=getOutputPorts().createPort("Summary of the Model(Table)");
     public ExportModelOperator(OperatorDescription description) {
         super(description);
+        inputExtender.start();
     }
 
     @Override
     public void doWork() throws OperatorException {
-        Pack pack=pacInput.getData(Pack.class);
-        Model model=pack.getModel();
+//        Pack pack=pacInput.getData(Pack.class);
+//        Model model=pack.getModel();
 //        Step step=model.steps.get(1);
 //        LogService.getRoot().log(Level.INFO,step.toString());
 //        step.getOperations();
@@ -49,7 +53,10 @@ public class ExportModelOperator extends Operator {
 
         MemoryExampleTable table = new MemoryExampleTable(attributes);
 
-        for (Step step:model.steps) {
+        List<Pack> packs=inputExtender.getData(Pack.class,true);
+
+        for (Pack pack:packs) {
+            Step step = pack.getStep();
             DataRowFactory ROW_FACTORY = new DataRowFactory(0);
             String[] data = new String[11];
 

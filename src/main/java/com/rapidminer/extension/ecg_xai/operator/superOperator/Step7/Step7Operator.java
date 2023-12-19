@@ -50,7 +50,8 @@ public class Step7Operator extends AbstractStepOperator {
     public void doWork() throws OperatorException {
         outExtender.reset();
         inExtender.passDataThrough();
-        InModelOutput.deliver(InModelInput.getData(Pack.class));
+        Pack pack=new Pack();
+        InControlOutput.deliver(pack);
         AGEInput.deliver(AGEOutput.getData(StringInfo.class));
         MALEInput.deliver(MALEOutput.getData(StringInfo.class));
         R_AMPInput.deliver(R_AMPOutput.getData(StringInfo.class));
@@ -58,7 +59,8 @@ public class Step7Operator extends AbstractStepOperator {
         RS_RATIOInput.deliver(RS_RATIOOutput.getData(StringInfo.class));
         RADInput.deliver(RADOutput.getData(StringInfo.class));
         getSubprocess(0).execute();
-        OutModelOutput.deliver(InModelInput.getData(Pack.class));
+//        OutControlOutput.deliver(InControlInput.getData(Pack.class));
+        OutSummaryOutput.deliver(pack);
         LVHOutput.deliver(LVHInput.getData(StringInfo.class));
         RVHOutput.deliver(RVHInput.getData(StringInfo.class));
         outExtender.collect();

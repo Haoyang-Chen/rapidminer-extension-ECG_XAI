@@ -33,14 +33,16 @@ public class StepStartOpeartor extends Operator {
         String name=getParameterAsString(PARAMETER_NAME);
         Pack pack=pacInput.getData(Pack.class);
         pack.current_parents.clear();
-        Model model=pack.getModel();
+//        Model model=pack.getModel();
+//        Pack pack=new Pack();
         Step step=new Step();
         step.setName(name);
         this.rename(name);
 
         step.focus_leads=Arrays.toString(stringToSelection(getParameterAsString(PARAMETER_LEADS)));
-        model.addStep(step);
+//        model.addStep(step);
         pack.current_parents.put(step.nodes.get(0),true);
+        pack.step=step;
 
         for (OutputPort outputPort : outputPortExtender.getManagedPorts()) {
             outputPort.deliver(new Pack(pack));

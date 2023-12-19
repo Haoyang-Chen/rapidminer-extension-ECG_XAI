@@ -98,11 +98,11 @@ public class StepEndOperator extends Operator {
         List<Pack> packs=inputPortExtender.getData(Pack.class,true);
         Pack pack1=packs.get(0);
         pack1.current_parents.clear();
-        List<AbstractNode> tree1=pack1.getModel().getLastStep().nodes;
+        List<AbstractNode> tree1=pack1.getStep().nodes;
         for (Pack pack:packs){
-            List<AbstractNode> tree2=pack.getModel().getLastStep().nodes;
+            List<AbstractNode> tree2=pack.getStep().nodes;
             tree1=mergeTree(tree1,tree2);
-            pack1.getModel().getLastStep().flushIndex();
+            pack1.getStep().flushIndex();
         }
         outputPort.deliver(pack1);
     }
