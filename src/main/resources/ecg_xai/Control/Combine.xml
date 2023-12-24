@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../../../rapidminerreferencemanual/documentation2html.xsl"?>
+<p1:documents xmlns:p1="http://rapid-i.com/schemas/documentation/reference/1.0"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://rapid-i.com/schemas/documentation/reference/1.0 ">
+
+    <operator key="operator.ecg_xai:Combine" locale="en"
+              version="6.0.000">
+        <title>Combine</title>
+        <synopsis>This is the Combine Operator, which is used to combine two or more nodes into one node.
+        </synopsis>
+        <text>
+            <paragraph>
+                This operator is used to combine two or more nodes into one node. It has a extendable input port, which takes input of different Pack object whose most recent nodes differ, it combines these nodes into one node, and output a Pack object containing the step object with the combined nodes.
+            </paragraph>
+            <paragraph>This operator can deal with complex combinations of nodes, such as the AND OR relationships between nodes, it also supports combining several nodes into a group condition where at least N conditions should be met.
+            </paragraph>
+        </text>
+        <inputPorts>
+            <port name="In pack" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+                An extendable input port, which takes input of different Pack object whose most recent node different from each other.
+            </port>
+        </inputPorts>
+        <outputPorts>
+            <port name="yes" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+                Outputs a Pack object, which contains the current step model with the new combined Condition Node added, the
+                parent is set to this new node, and the route indicator is set to Yes.
+            </port>
+            <port name="no" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+                Outputs a Pack object, which contains the current step model with the new combined Condition Node added, the
+                parent is set to this new node, and the route indicator is set to No.
+            </port>
+        </outputPorts>
+
+        <!-- description of the parameters and the corresponding values -->
+        <parameters>
+            <parameter key="Type" type="selection">
+                Select the type of the combination here, ethier "Relation" or "At Least".
+            </parameter>
+            <parameter key="Relation" type="selection">
+                Select the relation of the combination here, ethier "AND" or "OR". (Available when "Type" is set to "Relation".)
+            </parameter>
+            <parameter key="At Least () Satisfied" type="input">
+                Input the number of conditions that should be met here. (Available when "Type" is set to "At Least".)
+            </parameter>
+            <parameter key="Result Name" type="Optional">
+                Input the name of the result here, e.g. "RBBB".
+            </parameter>
+        </parameters>
+
+
+
+        <relatedDocuments>
+            <!-- ... -->
+        </relatedDocuments>
+    </operator>
+</p1:documents>

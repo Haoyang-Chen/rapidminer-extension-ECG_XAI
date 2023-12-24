@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../../../rapidminerreferencemanual/documentation2html.xsl"?>
+<p1:documents xmlns:p1="http://rapid-i.com/schemas/documentation/reference/1.0"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://rapid-i.com/schemas/documentation/reference/1.0 ">
+
+    <operator key="operator.ecg_xai:Discretizer" locale="en"
+              version="6.0.000">
+        <title>Discretizer</title>
+        <synopsis>This is the Discretizer Operator, which discretizes the input data to three levels and set different results for each level.
+        </synopsis>
+        <text>
+            <paragraph>
+                This operator discretize the feature data into HIGH, MID and LOW according to the threshold, and set different results for each level. As well as create different Pack objects for each level.
+            </paragraph>
+        </text>
+        <inputPorts>
+            <port name="In pack" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+                Input the Pack object.
+            </port>
+            <port name="Feature" type="com.rapidminer.extension.ecg_xai.operator.Structures.StringInfo">
+                Receives a String object, containing the name of the feature, which is to be discretized.
+            </port>
+        </inputPorts>
+        <outputPorts>
+            <port name="High" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+                Outputs a Pack object, which contains the current step model with the new high Condition Node added.
+            </port>
+            <port name="Mid" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+                Outputs a Pack object, which contains the current step model with the new mid Condition Node added.
+            </port>
+            <port name="Low" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+                Outputs a Pack object, which contains the current step model with the new low Condition Node added.
+            </port>
+        </outputPorts>
+
+        <!-- description of the parameters and the corresponding values -->
+        <parameters>
+            <parameter key="Upper Bound" type="input">
+                Input the upper bound of the threshold here, which is between high and mid, e.g. 5.
+            </parameter>
+            <parameter key="Lower Bound" type="input">
+                Input the lower bound of the threshold here, which is between mid and low, e.g. 3.
+            </parameter>
+            <parameter key="High Result Name" type="Optional">
+                Input the name of the discretized high result here, e.g. "RBBB".
+            </parameter>
+            <parameter key="Mid Result Name" type="Optional">
+                Input the name of the discretized mid result here, e.g. "RBBB".
+            </parameter>
+            <parameter key="Low Result Name" type="Optional">
+                Input the name of the discretized low result here, e.g. "RBBB".
+            </parameter>
+        </parameters>
+
+
+
+        <relatedDocuments>
+            <!-- ... -->
+        </relatedDocuments>
+    </operator>
+</p1:documents>

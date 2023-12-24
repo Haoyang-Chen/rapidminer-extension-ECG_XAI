@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../../../rapidminerreferencemanual/documentation2html.xsl"?>
+<p1:documents xmlns:p1="http://rapid-i.com/schemas/documentation/reference/1.0"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://rapid-i.com/schemas/documentation/reference/1.0 ">
+
+    <operator key="operator.ecg_xai:Check BBB" locale="en"
+              version="6.0.000">
+        <title>Check BBB</title>
+        <synopsis>Super Operator Template for Check BBB
+        </synopsis>
+        <text>
+            <paragraph>This is a super operator defined for Check BBB in ECG diagnosis, with pre-deined input ports and outpot ports.</paragraph>
+            <paragraph>The input Model port receives the step model. The output Yes and No ports are like the one in ECG_XAI Operators, indicating the result is satisfying the condition or not.</paragraph>
+        </text>
+        <inputPorts>
+            <port name="Model" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+                Input port for the step model. This operator will add its inner process to this step.
+            </port>
+        </inputPorts>
+        <outputPorts>
+            <port name="Yes" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+                Output port for this operator, indicating the route where the result is satisfying the condition.
+            </port>
+            <port name="No" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+                Output port for this operator, indicating the route where the result is not satisfying the condition.
+            </port>
+        </outputPorts>
+
+
+
+        <relatedDocuments>
+            <!-- ... -->
+        </relatedDocuments>
+    </operator>
+</p1:documents>

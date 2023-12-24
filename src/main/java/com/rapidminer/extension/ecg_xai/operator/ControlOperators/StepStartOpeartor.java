@@ -20,7 +20,7 @@ import static com.rapidminer.parameter.ParameterTypeCheckBoxGroup.stringToSelect
 public class StepStartOpeartor extends Operator {
     private final InputPort pacInput=getInputPorts().createPort("In pack");
     private final OutputPortExtender outputPortExtender = new OutputPortExtender("Out pack", getOutputPorts());
-    private static final String PARAMETER_LEADS="Focused Leads";
+//    private static final String PARAMETER_LEADS="Focused Leads";
     public static final String PARAMETER_NAME="Step Name";
 
     public StepStartOpeartor(OperatorDescription description) {
@@ -39,7 +39,7 @@ public class StepStartOpeartor extends Operator {
         step.setName(name);
         this.rename(name);
 
-        step.focus_leads=Arrays.toString(stringToSelection(getParameterAsString(PARAMETER_LEADS)));
+//        step.focus_leads=Arrays.toString(stringToSelection(getParameterAsString(PARAMETER_LEADS)));
 //        model.addStep(step);
         pack.current_parents.put(step.nodes.get(0),true);
         pack.step=step;
@@ -54,11 +54,11 @@ public class StepStartOpeartor extends Operator {
         LeadName leadName = new LeadName();
         List<ParameterType> types = super.getParameterTypes();
         types.add(new ParameterTypeString(PARAMETER_NAME,"Name of the step","Step"));
-        ParameterTypeCheckBoxGroup leads=new ParameterTypeCheckBoxGroup(PARAMETER_LEADS,"select the leads to focus on");
-        for (String lead: leadName.getLead()){
-            leads.add("leads",lead);
-        }
-        types.add(leads);
+//        ParameterTypeCheckBoxGroup leads=new ParameterTypeCheckBoxGroup(PARAMETER_LEADS,"select the leads to focus on");
+//        for (String lead: leadName.getLead()){
+//            leads.add("leads",lead);
+//        }
+//        types.add(leads);
         return types;
     }
 }

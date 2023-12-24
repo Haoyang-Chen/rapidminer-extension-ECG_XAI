@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../../../rapidminerreferencemanual/documentation2html.xsl"?>
+<p1:documents xmlns:p1="http://rapid-i.com/schemas/documentation/reference/1.0"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://rapid-i.com/schemas/documentation/reference/1.0 ">
+
+    <operator key="operator.ecg_xai:Check Pathological Q in Lateral Leads" locale="en"
+              version="6.0.000">
+        <title>Check Pathological Q in Lateral Leads</title>
+        <synopsis>Super Operator Template for Check Pathological Q in Lateral Leads
+        </synopsis>
+        <text>
+            <paragraph>This is a super operator defined for Check Pathological Q in Lateral Leads in ECG diagnosis, with pre-deined input ports and outpot ports.</paragraph>
+            <paragraph>The input Model port receives the step model.</paragraph>
+        </text>
+        <inputPorts>
+            <port name="Model" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+                Input port for the step model. This operator will add its inner process to this step.
+            </port>
+        </inputPorts>
+
+
+
+        <relatedDocuments>
+            <!-- ... -->
+        </relatedDocuments>
+    </operator>
+</p1:documents>

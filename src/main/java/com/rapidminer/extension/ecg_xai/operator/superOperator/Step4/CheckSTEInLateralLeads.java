@@ -9,7 +9,7 @@ package com.rapidminer.extension.ecg_xai.operator.superOperator.Step4;
         import com.rapidminer.operator.ports.OutputPort;
         import com.rapidminer.operator.ports.metadata.PassThroughRule;
 
-public class CheckSTEInLateralLeeds extends OperatorChain {
+public class CheckSTEInLateralLeads extends OperatorChain {
     public final InputPort InModelInput=getInputPorts().createPort("Model");
     public final OutputPort InModelOutput = getSubprocess(0).getInnerSources().createPort("Model");
     private final InputPort ST_AMPOutput=getInputPorts().createPort("ST_AMP ST amplitude");
@@ -20,7 +20,7 @@ public class CheckSTEInLateralLeeds extends OperatorChain {
     private final InputPort STEInput = getSubprocess(0).getInnerSinks().createPort("STE ST segment elevation");
     private final OutputPort STEOutput=getOutputPorts().createPort("STE ST segment elevation");
 
-    public CheckSTEInLateralLeeds(OperatorDescription description) {
+    public CheckSTEInLateralLeads(OperatorDescription description) {
         super(description,"Executed Process");
         getTransformer().addRule(new PassThroughRule(InModelInput, InModelOutput, false));
         getTransformer().addRule(new PassThroughRule(ST_AMPOutput,ST_AMPInput, false));

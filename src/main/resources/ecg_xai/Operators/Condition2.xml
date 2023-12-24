@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../../../rapidminerreferencemanual/documentation2html.xsl"?>
+<p1:documents xmlns:p1="http://rapid-i.com/schemas/documentation/reference/1.0"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://rapid-i.com/schemas/documentation/reference/1.0 ">
+
+    <operator key="operator.ecg_xai:Condition2" locale="en"
+              version="6.0.000">
+        <title>Condition</title>
+        <synopsis>This is the Condition Operator, which is used to check if a compare condition is true or false.
+        </synopsis>
+        <text>
+            <paragraph>This Condition Operator receive the step object from its parent operator through input Model
+                Port, add the compare condition to the step model, and return two new routes which indicates the True or
+                False of its compare condition.
+            </paragraph>
+            <paragraph>This Operator gets the current step model from the input Pack, create a new Condition Node with
+                its data input, connect itself with its parent, and add this new node to the step's nodes list.
+            </paragraph>
+            <paragraph>Important: this operator is building the step model, without any calculation or training, no
+                results or data will be generated.
+            </paragraph>
+        </text>
+        <inputPorts>
+            <port name="In pack" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+                The input Pack object, which contains the current step model, the parent where this Pack was generated,
+                and the route indicator[Yes, No] from the parent.
+            </port>
+            <port name="left" type="com.rapidminer.extension.ecg_xai.operator.Structures.StringInfo">
+                Receives a String object, containing the name of the left operand, which is the first operand of the
+                compare condition.
+            </port>
+        </inputPorts>
+        <outputPorts>
+            <port name="yes" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+                Outputs a Pack object, which contains the current step model with the new Condition Node added, the
+                parent is set to this new node, and the route indicator is set to Yes.
+            </port>
+            <port name="no" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+                Outputs a Pack object, which contains the current step model with the new Condition Node added, the
+                parent is set to this new node, and the route indicator is set to No.
+            </port>
+            <port name="result" type="com.rapidminer.extension.ecg_xai.operator.Structures.StringInfo">
+                Outputs a String object, containing the name of the result of the compare condition.
+            </port>
+        </outputPorts>
+
+        <!-- description of the parameters and the corresponding values -->
+        <parameters>
+            <parameter key="Operator" type="configurable">
+                Input or select the compare operator here, e.g. > =.
+            </parameter>
+            <parameter key="Right Operand" type="configurable">
+                Input or select the right operand here, normally a number, e.g. 5.
+            </parameter>
+            <parameter key="Result Name" type="Optional">
+                Input the name of the result here, e.g. "RBBB".
+            </parameter>
+            <parameter key="Focused Lead" type="Optional">
+                Select the name of the focused lead here, e.g. "II". (Doing this will add a lead tag to the input string of data.)
+            </parameter>
+        </parameters>
+
+
+
+        <relatedDocuments>
+            <!-- ... -->
+        </relatedDocuments>
+    </operator>
+</p1:documents>

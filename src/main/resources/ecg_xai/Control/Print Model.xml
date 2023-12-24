@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../../../rapidminerreferencemanual/documentation2html.xsl"?>
+<p1:documents xmlns:p1="http://rapid-i.com/schemas/documentation/reference/1.0"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://rapid-i.com/schemas/documentation/reference/1.0 ">
+
+    <operator key="operator.ecg_xai:Print Model" locale="en"
+              version="6.0.000">
+        <title>Print Model</title>
+        <synopsis>This is the Print Model Operator, which prints the model to the console.
+        </synopsis>
+        <inputPorts>
+            <port name="In Pack" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+                Input the Pack object.
+            </port>
+        </inputPorts>
+        <outputPorts>
+            <port name="Out Pack" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+                Outputs the pack object unchanged.
+            </port>
+        </outputPorts>
+
+
+        <relatedDocuments>
+            <!-- ... -->
+        </relatedDocuments>
+    </operator>
+</p1:documents>

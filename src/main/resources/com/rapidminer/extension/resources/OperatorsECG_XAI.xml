@@ -11,12 +11,12 @@
            </operator>
          </group>
          -->
-<!--        <group key="example_group">-->
-<!--            <operator>-->
-<!--                <key>example_key</key>-->
-<!--                <class>com.rapidminer.extension.ecg_xai.operator.MyOwnOperator</class>-->
-<!--            </operator>-->
-<!--        </group>-->
+        <!--        <group key="example_group">-->
+        <!--            <operator>-->
+        <!--                <key>example_key</key>-->
+        <!--                <class>com.rapidminer.extension.ecg_xai.operator.MyOwnOperator</class>-->
+        <!--            </operator>-->
+        <!--        </group>-->
         <group key="StepOperators">
             <group key="Step1">
                 <operator>
@@ -58,12 +58,14 @@
                     <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step4.AssessForSTD</class>
                 </operator>
                 <operator>
-                    <key>Check STE in Lateral Leeds</key>
-                    <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step4.CheckSTEInLateralLeeds</class>
+                    <key>Check STE in Lateral Leads</key>
+                    <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step4.CheckSTEInLateralLeads</class>
                 </operator>
                 <operator>
                     <key>Check STE in Contiguous Precordial Leads</key>
-                    <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step4.CheckSTEInContiguousPrecordialLeads</class>
+                    <class>
+                        com.rapidminer.extension.ecg_xai.operator.superOperator.Step4.CheckSTEInContiguousPrecordialLeads
+                    </class>
                 </operator>
                 <operator>
                     <key>Check STE in Inferior Leads</key>
@@ -90,11 +92,13 @@
                 </operator>
                 <operator>
                     <key>Check Pathological Q in Inferior Leads</key>
-                    <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step5.CheckPathQInInferiorLeads</class>
+                    <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step5.CheckPathQInInferiorLeads
+                    </class>
                 </operator>
                 <operator>
                     <key>Check Pathological Q in Lateral Leads</key>
-                    <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step5.CheckPathQInLateralLeads</class>
+                    <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Step5.CheckPathQInLateralLeads
+                    </class>
                 </operator>
                 <operator>
                     <key>Check Pathological Q for AMI</key>
@@ -148,7 +152,7 @@
             <operator>
                 <key>Step</key>
                 <class>com.rapidminer.extension.ecg_xai.operator.superOperator.StepOperator</class>
-<!--                <icon>9.png</icon>-->
+                <!--                <icon>9.png</icon>-->
             </operator>
         </group>
 
@@ -158,11 +162,11 @@
                 <class>com.rapidminer.extension.ecg_xai.operator.ConditionOperator</class>
                 <icon>gt.png</icon>
             </operator>
-<!--            <operator>-->
-<!--                <key>IsTrue</key>-->
-<!--                <class>com.rapidminer.extension.ecg_xai.operator.AbandonedOperator.ExistOperator</class>-->
-<!--                <icon>tru.png</icon>-->
-<!--            </operator>-->
+            <!--            <operator>-->
+            <!--                <key>IsTrue</key>-->
+            <!--                <class>com.rapidminer.extension.ecg_xai.operator.AbandonedOperator.ExistOperator</class>-->
+            <!--                <icon>tru.png</icon>-->
+            <!--            </operator>-->
             <operator>
                 <key>IsTrue2</key>
                 <class>com.rapidminer.extension.ecg_xai.operator.ExistOperator2</class>
@@ -220,11 +224,11 @@
                 <key>FeatureData</key>
                 <class>com.rapidminer.extension.ecg_xai.operator.superOperator.FeatureSourceOperator</class>
             </operator>
-<!--            <operator>-->
-<!--                <key>Result</key>-->
-<!--                <class>com.rapidminer.extension.ecg_xai.operator.AbandonedOperator.ResultOperator</class>-->
-<!--                <icon>che.png</icon>-->
-<!--            </operator>-->
+            <!--            <operator>-->
+            <!--                <key>Result</key>-->
+            <!--                <class>com.rapidminer.extension.ecg_xai.operator.AbandonedOperator.ResultOperator</class>-->
+            <!--                <icon>che.png</icon>-->
+            <!--            </operator>-->
             <operator>
                 <key>Result2</key>
                 <class>com.rapidminer.extension.ecg_xai.operator.DataOperarors.ResultOperator2</class>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../../../rapidminerreferencemanual/documentation2html.xsl"?>
+<p1:documents xmlns:p1="http://rapid-i.com/schemas/documentation/reference/1.0"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://rapid-i.com/schemas/documentation/reference/1.0 ">
+
+    <operator key="operator.ecg_xai:Step Start" locale="en"
+              version="6.0.000">
+        <title>Step Start</title>
+        <synopsis>This is the Step Start Operator, it creates a new Step object inside a Pack object, and pass it to the next operator.
+        </synopsis>
+        <text>
+            <paragraph>This Step Start Operator create a new Step object inside a Pack object, and pass it to the next operator.
+            </paragraph>
+        </text>
+        <inputPorts>
+            <port name="In Pack" type="">
+                Input the Pack object.
+            </port>
+        </inputPorts>
+        <outputPorts>
+            <port name="Out Pack" type="">
+                Outputs the Pack object with a new Step object.
+            </port>
+        </outputPorts>
+
+        <parameters>
+            <parameter key="Step Name" type="configurable">
+                Set the name of this Step, use upper class for each word, e.g. "Assess Rhythm and Rate".
+            </parameter>
+        </parameters>
+
+
+        <relatedDocuments>
+            <!-- ... -->
+        </relatedDocuments>
+    </operator>
+</p1:documents>

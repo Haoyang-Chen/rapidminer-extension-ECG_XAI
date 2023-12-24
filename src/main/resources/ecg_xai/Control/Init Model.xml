@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../../../rapidminerreferencemanual/documentation2html.xsl"?>
+<p1:documents xmlns:p1="http://rapid-i.com/schemas/documentation/reference/1.0"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://rapid-i.com/schemas/documentation/reference/1.0 ">
+
+    <operator key="operator.ecg_xai:Init Model" locale="en"
+              version="6.0.000">
+        <title>Init Model</title>
+        <synopsis>This is the Init Model Operator, which initialize a model object and pass it in a pack object.
+        </synopsis>
+        <text>
+            <paragraph>This Init Model Operator does nothing but initialize the model.
+            </paragraph>
+        </text>
+        <outputPorts>
+            <port name="model" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+                Outputs the model in a pack object.
+            </port>
+        </outputPorts>
+
+
+        <relatedDocuments>
+            <!-- ... -->
+        </relatedDocuments>
+    </operator>
+</p1:documents>

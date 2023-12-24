@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../../../rapidminerreferencemanual/documentation2html.xsl"?>
+<p1:documents xmlns:p1="http://rapid-i.com/schemas/documentation/reference/1.0"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://rapid-i.com/schemas/documentation/reference/1.0 ">
+
+    <operator key="operator.ecg_xai:Step6" locale="en"
+              version="6.0.000">
+        <title>Step6</title>
+        <synopsis>Super Operator Template for Step 6 Assess P Waves
+        </synopsis>
+        <text>
+            <paragraph>This is a super operator defined for Step 6 in ECG diagnosis, with pre-deined input ports and outpot ports.</paragraph>
+            <paragraph>The input and output Control ports are to pass control signal between steps. The input and output other ports are extenders for customized inputs. The Summary output port passes data of this step.</paragraph>
+        </text>
+        <inputPorts>
+            <port name="Control" type="">
+                Input port for control signal, indicating the sequence of execution.
+            </port>
+            <port name="other" type="com.rapidminer.extension.ecg_xai.operator.Structures.StringInfo">
+                Input extender for additional data.
+            </port>
+        </inputPorts>
+        <outputPorts>
+            <port name="Control" type="">
+                Output port for control signal, indicating the sequence of execution.
+            </port>
+            <port name="Summary" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+                Information of current step, represented as a pack object containing this step object.
+            </port>
+            <port name="other" type="com.rapidminer.extension.ecg_xai.operator.Structures.StringInfo">
+                Output extender for additional results.
+            </port>
+        </outputPorts>
+
+
+
+        <relatedDocuments>
+            <!-- ... -->
+        </relatedDocuments>
+    </operator>
+</p1:documents>
