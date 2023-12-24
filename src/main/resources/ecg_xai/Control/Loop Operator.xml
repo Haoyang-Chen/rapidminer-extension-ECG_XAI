@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../../../rapidminerreferencemanual/documentation2html.xsl"?>
+<p1:documents xmlns:p1="http://rapid-i.com/schemas/documentation/reference/1.0"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://rapid-i.com/schemas/documentation/reference/1.0 ">
+
+    <operator key="operator.ecg_xai:Loop Operator" locale="en"
+              version="6.0.000">
+        <title>Loop Operator</title>
+        <synopsis>This is the Loop Operator, which loops over the given range.
+        </synopsis>
+        <text>
+            <paragraph>
+                This operator loops over a given range, in each loop, it tags the input data with the current loop index, executes the sub-process. After the loop, all the results are combined into a single node and added to the current step model.
+            </paragraph>
+        </text>
+        <inputPorts>
+            <port name="Model" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+                The input Pack object, which contains the current step model.
+            </port>
+            <port name="Input" type="com.rapidminer.extension.ecg_xai.operator.Structures.StringInfo">
+                An extendable input port for the input data. It should be a raw data string e.g. "SINUS", "RBBB", etc. In each round the input will be taged with the current loop index, becoming "SINUS_II", "RBBB_V1", etc.
+            </port>
+        </inputPorts>
+        <outputPorts>
+            <port name="Model" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+                The output Pack object, which contains the current step model with the new looped and combined Condition Group Node added.
+            </port>
+        </outputPorts>
+
+        <!-- description of the parameters and the corresponding values -->
+        <parameters>
+            <parameter key="Loop Over" type="enumeration">
+                Input the elements of the loop here, e.g. "II", "V1", "V2", "V3", "V4", "V5", "V6".
+            </parameter>
+            <parameter key="Type" type="selection">
+                Select the type of the combination here, ethier "Relation" or "At Least".
+            </parameter>
+            <parameter key="Relation" type="selection">
+                Select the relation of the combination here, ethier "AND" or "OR". (Available when "Type" is set to "Relation".)
+            </parameter>
+            <parameter key="At Least () Satisfied" type="input">
+                Input the number of conditions that should be met here. (Available when "Type" is set to "At Least".)
+            </parameter>
+        </parameters>
+
+
+
+        <relatedDocuments>
+            <!-- ... -->
+        </relatedDocuments>
+    </operator>
+</p1:documents>

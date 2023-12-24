@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../../../rapidminerreferencemanual/documentation2html.xsl"?>
+<p1:documents xmlns:p1="http://rapid-i.com/schemas/documentation/reference/1.0"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://rapid-i.com/schemas/documentation/reference/1.0 ">
+
+    <operator key="operator.ecg_xai:Export Operator" locale="en"
+              version="6.0.000">
+        <title>Export Operator</title>
+        <synopsis>This is the Step Start Operator, it creates a new Step object inside a Pack object, and pass it to the next operator.
+        </synopsis>
+        <text>
+            <paragraph>This Step Start Operator create a new Step object inside a Pack object, and pass it to the next operator.
+            </paragraph>
+        </text>
+        <inputPorts>
+            <port name="Summary" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+                An extendable port to be connected with each step's Summary Port.
+            </port>
+        </inputPorts>
+        <outputPorts>
+            <port name="Summary" type="com.rapidminer.example.ExampleSet">
+                Outputs the Summary of the whole model, as a Table object.
+            </port>
+        </outputPorts>
+
+
+        <relatedDocuments>
+            <!-- ... -->
+        </relatedDocuments>
+    </operator>
+</p1:documents>

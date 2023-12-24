@@ -220,10 +220,10 @@
         </group>
 
         <group key="Data">
-            <operator>
-                <key>FeatureData</key>
-                <class>com.rapidminer.extension.ecg_xai.operator.superOperator.FeatureSourceOperator</class>
-            </operator>
+<!--            <operator>-->
+<!--                <key>FeatureData</key>-->
+<!--                <class>com.rapidminer.extension.ecg_xai.operator.superOperator.FeatureSourceOperator</class>-->
+<!--            </operator>-->
             <!--            <operator>-->
             <!--                <key>Result</key>-->
             <!--                <class>com.rapidminer.extension.ecg_xai.operator.AbandonedOperator.ResultOperator</class>-->
@@ -234,18 +234,18 @@
                 <class>com.rapidminer.extension.ecg_xai.operator.DataOperarors.ResultOperator2</class>
                 <icon>che.png</icon>
             </operator>
-            <operator>
-                <key>Lead Specify Operator</key>
-                <class>com.rapidminer.extension.ecg_xai.operator.DataOperarors.LeadSpecifyOperator</class>
-            </operator>
+<!--            <operator>-->
+<!--                <key>Lead Specify Operator</key>-->
+<!--                <class>com.rapidminer.extension.ecg_xai.operator.DataOperarors.LeadSpecifyOperator</class>-->
+<!--            </operator>-->
             <operator>
                 <key>DataRetriever</key>
                 <class>com.rapidminer.extension.ecg_xai.operator.DataOperarors.DataRetriever</class>
             </operator>
-            <operator>
-                <key>Result Collector</key>
-                <class>com.rapidminer.extension.ecg_xai.operator.DataOperarors.ResultCollectOperator</class>
-            </operator>
+<!--            <operator>-->
+<!--                <key>Result Collector</key>-->
+<!--                <class>com.rapidminer.extension.ecg_xai.operator.DataOperarors.ResultCollectOperator</class>-->
+<!--            </operator>-->
             <group key="ECG Data">
                 <operator>
                     <key>SINUS</key>

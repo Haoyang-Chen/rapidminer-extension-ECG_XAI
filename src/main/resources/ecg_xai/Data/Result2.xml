@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../../../rapidminerreferencemanual/documentation2html.xsl"?>
+<p1:documents xmlns:p1="http://rapid-i.com/schemas/documentation/reference/1.0"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://rapid-i.com/schemas/documentation/reference/1.0 ">
+
+    <operator key="operator.ecg_xai:Result2" locale="en"
+              version="6.0.000">
+        <title>Result</title>
+        <synopsis>This is the Result Operator, which sets the name of the result and add it to the step model.
+        </synopsis>
+        <text>
+            <paragraph>This Result Operator is connected at the end of the step model, it is connected in one trace of the step model. It creates a new Result node with its name and connected it with th parent node, and add it to the step model.
+            </paragraph>
+        </text>
+        <inputPorts>
+            <port name="In pack" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+                The input Pack object, which contains the current step model, the parent where this Pack was generated,
+                and the route indicator[Yes, No] from the parent.
+            </port>
+        </inputPorts>
+        <outputPorts>
+            <port name="Out result" type="com.rapidminer.extension.ecg_xai.operator.Structures.StringInfo">
+                A String object containing the name of the result, could be used in later steps.
+            </port>
+        </outputPorts>
+
+        <!-- description of the parameters and the corresponding values -->
+        <parameters>
+            <parameter key="Result Name" type="Configurable">
+                Input the name of the result here, e.g. "RBBB".
+            </parameter>
+            <parameter key="Result Type" type="Selection">
+                Select the type of the result here, ethier "General" or "Lead Specific", which means that the result is shared with all leads or each lead has its own value of this result.
+            </parameter>
+        </parameters>
+
+
+
+        <relatedDocuments>
+            <!-- ... -->
+        </relatedDocuments>
+    </operator>
+</p1:documents>

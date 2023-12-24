@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../../../rapidminerreferencemanual/documentation2html.xsl"?>
+<p1:documents xmlns:p1="http://rapid-i.com/schemas/documentation/reference/1.0"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://rapid-i.com/schemas/documentation/reference/1.0 ">
+
+    <operator key="operator.ecg_xai:Calculate" locale="en"
+              version="6.0.000">
+        <title>Calculate</title>
+        <synopsis>This is the Calculate Operator, which is to set a compare on the result of a calculation.
+        </synopsis>
+        <text>
+            <paragraph>
+                This operator is used to set a compare on the result of a calculation. It has two feature input and calculate a result from them. Then it compares the result with the threshold and add this compare as a Condition Node to the current step model.
+            </paragraph>
+        </text>
+        <inputPorts>
+            <port name="In pack" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+                The input Pack object, which contains the current step model.
+            </port>
+            <port name="first operand" type="com.rapidminer.extension.ecg_xai.operator.Structures.StringInfo">
+                Receives a String object, containing the name of the first operand, which is the first feature of the calculation.
+            </port>
+            <port name="second operand" type="com.rapidminer.extension.ecg_xai.operator.Structures.StringInfo">
+                Receives a String object, containing the name of the second operand, which is the second feature of the calculation.
+            </port>
+        </inputPorts>
+        <outputPorts>
+            <port name="yes" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+                Outputs a Pack object, which contains the current step model with the new calculated Condition Node added, the
+                parent is set to this new node, and the route indicator is set to Yes.
+            </port>
+            <port name="no" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+                Outputs a Pack object, which contains the current step model with the new calculated Condition Node added, the
+                parent is set to this new node, and the route indicator is set to No.
+            </port>
+        </outputPorts>
+
+        <!-- description of the parameters and the corresponding values -->
+        <parameters>
+            <parameter key="Type" type="selection">
+                Select the type of the calculation here, ethier + - * /.
+            </parameter>
+            <parameter key="Operator" type="selection">
+                Select or input the compare operator for the calculation result here, e.g. > =.
+            </parameter>
+            <parameter key="Right Operand" type="configurable">
+                Input or select the right operand here, normally a number, e.g. 5.
+            </parameter>
+            <parameter key="Result Name" type="Optional">
+                Input the name of the result here, e.g. "RBBB".
+            </parameter>
+            <parameter key="Focused Lead of First Operand" type="Optional">
+                Select the name of the focused lead for First Operand here, e.g. "II". (Doing this will add a lead tag to the first input string of data.)
+            </parameter>
+            <parameter key="Focused Lead of Second Operand" type="Optional">
+                Select the name of the focused lead for Second Operand here, e.g. "II". (Doing this will add a lead tag to the second input string of data.)
+            </parameter>
+        </parameters>
+
+
+
+        <relatedDocuments>
+            <!-- ... -->
+        </relatedDocuments>
+    </operator>
+</p1:documents>

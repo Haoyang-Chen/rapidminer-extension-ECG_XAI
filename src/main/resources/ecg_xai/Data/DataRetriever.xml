@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../../../rapidminerreferencemanual/documentation2html.xsl"?>
+<p1:documents xmlns:p1="http://rapid-i.com/schemas/documentation/reference/1.0"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://rapid-i.com/schemas/documentation/reference/1.0 ">
+
+    <operator key="operator.ecg_xai:DataRetriever" locale="en"
+              version="6.0.000">
+        <title>DataRetriever</title>
+        <synopsis>This is the DataRetriever Operator, which sets the name of a data.
+        </synopsis>
+        <outputPorts>
+            <port name="Data" type="com.rapidminer.extension.ecg_xai.operator.Structures.StringInfo">
+                A String object containing the name of the Data, could be used in later steps.
+            </port>
+        </outputPorts>
+
+        <!-- description of the parameters and the corresponding values -->
+        <parameters>
+            <parameter key="Data Name" type="Configurable">
+                Input the name of the data here, e.g. "AGE".
+            </parameter>
+            <parameter key="Data Type" type="Selection">
+                Select the type of the Data here, ethier "General" or "Lead Specific", which means that the data is shared with all leads or each lead has its own value of this result.
+            </parameter>
+        </parameters>
+
+
+
+        <relatedDocuments>
+            <!-- ... -->
+        </relatedDocuments>
+    </operator>
+</p1:documents>
