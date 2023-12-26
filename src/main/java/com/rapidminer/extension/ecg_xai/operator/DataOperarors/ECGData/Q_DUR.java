@@ -15,7 +15,7 @@ public class Q_DUR extends Operator {
 
     @Override
     public void doWork() throws OperatorException {
-        String name="Q_DUR Q wave duration";
+        String name="Q_DUR";
         StringInfo_Lead data=new StringInfo_Lead(name);
         DataOutput.deliver(data);
     }

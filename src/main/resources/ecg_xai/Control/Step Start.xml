@@ -28,6 +28,9 @@
             <parameter key="Step Name" type="configurable">
                 Set the name of this Step, use upper class for each word, e.g. "Assess Rhythm and Rate".
             </parameter>
+            <parameter key="Focused Leads" type="selection">
+                Select the leads of focus of this step.
+            </parameter>
         </parameters>
 
 

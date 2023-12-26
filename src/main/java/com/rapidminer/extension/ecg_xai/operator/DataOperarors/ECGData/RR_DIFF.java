@@ -15,7 +15,7 @@ public class RR_DIFF extends Operator {
 
     @Override
     public void doWork() throws OperatorException {
-        String name="RR_DIFF RR interval";
+        String name="RR_DIFF";
         StringInfo_General data=new StringInfo_General(name);
         DataOutput.deliver(data);
     }

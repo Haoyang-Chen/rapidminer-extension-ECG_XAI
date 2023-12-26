@@ -15,7 +15,7 @@ public class RAD extends Operator {
 
     @Override
     public void doWork() throws OperatorException {
-        String name="RAD right axis deviation";
+        String name="RAD";
         StringInfo_General data=new StringInfo_General(name);
         DataOutput.deliver(data);
     }

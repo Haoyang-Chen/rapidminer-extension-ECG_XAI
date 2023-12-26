@@ -15,7 +15,7 @@ public class Q_AMP extends Operator {
 
     @Override
     public void doWork() throws OperatorException {
-        String name="Q_AMP Q wave amplitude";
+        String name="Q_AMP";
         StringInfo_Lead data=new StringInfo_Lead(name);
         DataOutput.deliver(data);
     }

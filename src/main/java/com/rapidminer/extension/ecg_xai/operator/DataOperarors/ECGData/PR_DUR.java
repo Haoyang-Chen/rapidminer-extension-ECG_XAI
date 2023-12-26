@@ -15,7 +15,7 @@ public class PR_DUR extends Operator {
 
     @Override
     public void doWork() throws OperatorException {
-        String name="PR_DUR PR duration";
+        String name="PR_DUR";
         StringInfo_General data=new StringInfo_General(name);
         DataOutput.deliver(data);
     }

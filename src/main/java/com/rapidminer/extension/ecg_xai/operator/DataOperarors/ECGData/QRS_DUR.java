@@ -15,7 +15,7 @@ public class QRS_DUR extends Operator {
 
     @Override
     public void doWork() throws OperatorException {
-        String name="QRS_DUR QRS duration";
+        String name="QRS_DUR";
         StringInfo_General data=new StringInfo_General(name);
         DataOutput.deliver(data);
     }

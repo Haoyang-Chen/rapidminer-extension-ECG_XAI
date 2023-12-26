@@ -15,7 +15,7 @@ public class PRWP extends Operator {
 
     @Override
     public void doWork() throws OperatorException {
-        String name="PRWP Poor R wave progression";
+        String name="PRWP";
         StringInfo_General data=new StringInfo_General(name);
         DataOutput.deliver(data);
     }

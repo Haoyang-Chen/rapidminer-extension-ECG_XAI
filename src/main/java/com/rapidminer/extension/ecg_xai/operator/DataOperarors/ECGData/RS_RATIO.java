@@ -15,7 +15,7 @@ public class RS_RATIO extends Operator {
 
     @Override
     public void doWork() throws OperatorException {
-        String name="RS_RATIO R/S wave amplitude ratio";
+        String name="RS_RATIO";
         StringInfo_Lead data=new StringInfo_Lead(name);
         DataOutput.deliver(data);
     }

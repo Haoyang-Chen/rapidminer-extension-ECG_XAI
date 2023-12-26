@@ -185,6 +185,10 @@ public class Step {
             }
         }
         for (String feature:features){
+            int index_space=feature.indexOf(" ");
+            if (index_space!=-1){
+                feature=feature.substring(0,index_space);
+            }
             temp.add("'" + feature + "'");
         }
         return temp;
@@ -217,6 +221,7 @@ public class Step {
 
     public String getFocusedLeads(){
         List<String> temp=new ArrayList<>();
+        focus_leads=focus_leads.substring(1,focus_leads.length()-1);
         for (String lead:focus_leads.split(", ")){
             temp.add("'"+lead+"'");
         }

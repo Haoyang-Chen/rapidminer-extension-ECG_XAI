@@ -15,7 +15,7 @@ public class QRS_SUM extends Operator {
 
     @Override
     public void doWork() throws OperatorException {
-        String name="QRS_SUM QRS complex duration";
+        String name="QRS_SUM";
         StringInfo_Lead data=new StringInfo_Lead(name);
         DataOutput.deliver(data);
     }

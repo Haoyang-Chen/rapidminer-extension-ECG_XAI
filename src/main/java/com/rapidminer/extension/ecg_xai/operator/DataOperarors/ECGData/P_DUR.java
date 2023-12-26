@@ -15,7 +15,7 @@ public class P_DUR extends Operator {
 
     @Override
     public void doWork() throws OperatorException {
-        String name="P_DUR P wave duration";
+        String name="P_DUR";
         StringInfo_Lead data=new StringInfo_Lead(name);
         DataOutput.deliver(data);
     }

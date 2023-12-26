@@ -15,7 +15,7 @@ public class T_AMP extends Operator {
 
     @Override
     public void doWork() throws OperatorException {
-        String name="T_AMP T wave amplitude";
+        String name="T_AMP";
         StringInfo_Lead data=new StringInfo_Lead(name);
         DataOutput.deliver(data);
     }
