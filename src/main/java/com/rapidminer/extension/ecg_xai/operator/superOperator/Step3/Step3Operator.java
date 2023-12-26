@@ -43,15 +43,12 @@ public class Step3Operator extends AbstractStepOperator {
     public void doWork() throws OperatorException {
         outExtender.reset();
         inExtender.passDataThrough();
-        Pack pack=new Pack();
-        InControlOutput.deliver(pack);
         QRS_DURInput.deliver(QRS_DUROutput.getData(StringInfo.class));
         PR_DURInput.deliver(PR_DUROutput.getData(StringInfo.class));
         LBBBInput.deliver(LBBBOutput.getData(StringInfo.class));
         RBBBInput.deliver(RBBBOutput.getData(StringInfo.class));
         getSubprocess(0).execute();
-//        OutControlOutput.deliver(InControlInput.getData(Pack.class));
-        OutSummaryOutput.deliver(pack);
+        OutSummaryOutput.deliver(getSubprocess(0).getAllInnerOperators().get(0).getOutputPorts().getPortByIndex(0).getData(Pack.class));
         WPWOutput.deliver(WPWInput.getData(StringInfo.class));
         IVCDOutput.deliver(IVCDInput.getData(StringInfo.class));
         outExtender.collect();

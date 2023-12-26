@@ -22,7 +22,11 @@ public class Exist extends AbstractCondition{
     }
 
     public String getResultName(){
-        return element;
+        if (lead==null) {
+            return element;
+        }else {
+            return element+"_"+lead;
+        }
     }
 
     @Override
@@ -45,7 +49,11 @@ public class Exist extends AbstractCondition{
 
     @Override
     public String getFeature() {
-        return element;
+        if (lead==null) {
+            return element;
+        }else {
+            return element+"_"+lead;
+        }
     }
 
     @Override

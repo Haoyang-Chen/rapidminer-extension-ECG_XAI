@@ -46,12 +46,9 @@ public class Step9Operator extends AbstractStepOperator {
     public void doWork() throws OperatorException {
         outExtender.reset();
         inExtender.passDataThrough();
-        Pack pack=new Pack();
-        InControlOutput.deliver(pack);
         QRS_SUMInput.deliver(QRS_SUMOutput.getData(StringInfo.class));
         getSubprocess(0).execute();
-//        OutControlOutput.deliver(InControlInput.getData(Pack.class));
-        OutSummaryOutput.deliver(pack);
+        OutSummaryOutput.deliver(getSubprocess(0).getAllInnerOperators().get(0).getOutputPorts().getPortByIndex(0).getData(Pack.class));
         NORM_AXISOutput.deliver(NORM_AXISInput.getData(StringInfo.class));
         LADOutput.deliver(LADInput.getData(StringInfo.class));
         LAFBOutput.deliver(LAFBInput.getData(StringInfo.class));

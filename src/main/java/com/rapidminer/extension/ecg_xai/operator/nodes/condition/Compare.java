@@ -62,11 +62,7 @@ public class Compare extends AbstractCondition{
 
     @Override
     public String toString() {
-        if (lead==null) {
             return leftOperand + " " + operator + " " + rightOperand;
-        }else {
-            return leftOperand+"_"+lead + " " + operator + " " + rightOperand;
-        }
     }
 
     public static void main(String[] args) {

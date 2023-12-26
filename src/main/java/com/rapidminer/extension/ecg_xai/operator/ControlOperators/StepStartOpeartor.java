@@ -18,7 +18,7 @@ import java.util.List;
 import static com.rapidminer.parameter.ParameterTypeCheckBoxGroup.stringToSelection;
 
 public class StepStartOpeartor extends Operator {
-    private final InputPort pacInput=getInputPorts().createPort("In pack");
+//    private final InputPort pacInput=getInputPorts().createPort("In pack");
     private final OutputPortExtender outputPortExtender = new OutputPortExtender("Out pack", getOutputPorts());
     private static final String PARAMETER_LEADS="Focused Leads";
     public static final String PARAMETER_NAME="Step Name";
@@ -31,8 +31,9 @@ public class StepStartOpeartor extends Operator {
     @Override
     public void doWork() throws OperatorException {
         String name=getParameterAsString(PARAMETER_NAME);
-        Pack pack=pacInput.getData(Pack.class);
-        pack.current_parents.clear();
+//        Pack pack=pacInput.getData(Pack.class);
+        Pack pack=new Pack();
+//        pack.current_parents.clear();
 //        Model model=pack.getModel();
 //        Pack pack=new Pack();
         Step step=new Step();

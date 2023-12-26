@@ -10,7 +10,6 @@ import com.rapidminer.operator.ports.metadata.PassThroughRule;
 
 public class AbstractStepOperator extends OperatorChain {
     public final InputPort InControlInput =getInputPorts().createPort("Control");
-    public final OutputPort InControlOutput = getSubprocess(0).getInnerSources().createPort("Control");
     public final OutputPort OutControlOutput=getOutputPorts().createPort("Control");
     public final OutputPort OutSummaryOutput =getOutputPorts().createPort("Summary");
     public final PortPairExtender inExtender =

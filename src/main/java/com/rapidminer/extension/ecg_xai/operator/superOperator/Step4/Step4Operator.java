@@ -64,12 +64,9 @@ public class Step4Operator extends AbstractStepOperator {
     public void doWork() throws OperatorException {
         outExtender.reset();
         inExtender.passDataThrough();
-        Pack pack=new Pack();
-        InControlOutput.deliver(pack);
         ST_AMPInput.deliver(ST_AMPOutput.getData(StringInfo.class));
         getSubprocess(0).execute();
-//        OutControlOutput.deliver(InControlInput.getData(Pack.class));
-        OutSummaryOutput.deliver(pack);
+        OutSummaryOutput.deliver(getSubprocess(0).getAllInnerOperators().get(0).getOutputPorts().getPortByIndex(0).getData(Pack.class));
         LMI_STEOutput.deliver(LMI_STEInput.getData(StringInfo.class));
         AMI_STEOutput.deliver(AMI_STEInput.getData(StringInfo.class));
         IMI_STEOutput.deliver(IMI_STEInput.getData(StringInfo.class));

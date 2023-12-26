@@ -8,6 +8,9 @@ import com.rapidminer.operator.OperatorException;
 import com.rapidminer.operator.ports.InputPort;
 import com.rapidminer.operator.ports.OutputPort;
 import com.rapidminer.operator.ports.metadata.PassThroughRule;
+import com.rapidminer.tools.LogService;
+
+import java.util.logging.Level;
 
 public class Step1Operator extends AbstractStepOperator {
     private final InputPort SINUSOutput=getInputPorts().createPort("SINUS rhythm is sinus");
@@ -57,14 +60,11 @@ public class Step1Operator extends AbstractStepOperator {
     public void doWork() throws OperatorException {
         outExtender.reset();
         inExtender.passDataThrough();
-        Pack pack=new Pack();
-        InControlOutput.deliver(pack);
         SINUSInput.deliver(SINUSOutput.getData(StringInfo.class));
         HRInput.deliver(HROutput.getData(StringInfo.class));
         RR_DIFFInput.deliver(RR_DIFFOutput.getData(StringInfo.class));
         getSubprocess(0).execute();
-//        OutControlOutput.deliver(InControlInput.getData(Pack.class));
-        OutSummaryOutput.deliver(pack);
+        OutSummaryOutput.deliver(getSubprocess(0).getAllInnerOperators().get(0).getOutputPorts().getPortByIndex(0).getData(Pack.class));
         SARRHOutput.deliver(SARRHInput.getData(StringInfo.class));
         STACHOutput.deliver(STACHInput.getData(StringInfo.class));
         SROutput.deliver(SRInput.getData(StringInfo.class));

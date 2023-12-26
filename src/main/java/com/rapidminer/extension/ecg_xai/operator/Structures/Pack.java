@@ -4,6 +4,7 @@ import com.rapidminer.extension.ecg_xai.operator.names.FeatureName;
 import com.rapidminer.extension.ecg_xai.operator.names.ImpressionName;
 import com.rapidminer.extension.ecg_xai.operator.names.LeadName;
 import com.rapidminer.extension.ecg_xai.operator.nodes.AbstractNode;
+import com.rapidminer.operator.IOObject;
 import com.rapidminer.operator.ResultObjectAdapter;
 
 import java.util.HashMap;
@@ -22,6 +23,11 @@ public class Pack extends ResultObjectAdapter {
 
     public Pack(){
 
+    }
+
+    @Override
+    public IOObject copy() {
+        return new Pack(this);
     }
 
     public Pack(Pack pack){
