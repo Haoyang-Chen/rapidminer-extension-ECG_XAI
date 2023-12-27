@@ -17,6 +17,12 @@
         <!--                <class>com.rapidminer.extension.ecg_xai.operator.MyOwnOperator</class>-->
         <!--            </operator>-->
         <!--        </group>-->
+        <group key="Prototype">
+            <operator>
+                <key>Specify Operator</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.ControlOperators.SpecifyOperator</class>
+            </operator>
+        </group>
         <group key="StepOperators">
             <group key="Step1">
                 <operator>
@@ -236,7 +242,7 @@
             </operator>
 <!--            <operator>-->
 <!--                <key>Lead Specify Operator</key>-->
-<!--                <class>com.rapidminer.extension.ecg_xai.operator.DataOperarors.LeadSpecifyOperator</class>-->
+<!--                <class>com.rapidminer.extension.ecg_xai.operator.DataOperarors.SpecifyOperator</class>-->
 <!--            </operator>-->
             <operator>
                 <key>DataRetriever</key>
