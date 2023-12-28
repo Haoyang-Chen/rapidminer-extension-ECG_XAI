@@ -6,14 +6,14 @@
 
 2. Clone this repository
 
-3. Choose an IDE (we recommend using IntellJ and use the RapidMiner tutorial only as a reference)
+3. install Gradle 8.3 from https://gradle.org/next-steps/?version=8.3&format=bin
 
-   If you are more familar with Eclipse: Follow the tutorial in setting up environment from RM https://docs.rapidminer.com/latest/developers/extensions/create/setting-up/index.html This tutorial uses Eclipse as the IDE.
+4. move  [gradle-8.3](../../../../../../../usr/local/opt/gradle-8.3) to where you want to store it.
 
-   If you are more familar with IntellJ: Get IntellJ from https://www.jetbrains.com/idea/ install JDK 11 and Gradle 8.3
+5. add a line to your ~/.zshrc file as export PATH="***YOUR LOCAL PATH***/gradle-8.3/bin:$PATH"
 
-4. Load the project into your IDE, if you are using Eclipse, follow the previous RapidMiner tutorial to init and install the extension to your local RapidMiner Studio. If you are using IntellJ, find the Gradle menu, which should be an elephant on your right bar. Execute init and installExtension using Gradle.
+6. Go to this repository 's location in your local storage, use the command line: gradle installExtension
 
-5. Open RapidMiner Studio, you will find the ECG_XAI folder available in your Operators Panel.
+7. Open RapidMiner Studio, you will find the ECG_XAI folder available in your Operators Panel.
 
-6. Find your RapidMiner Studio local repository and put our tutorial process into the repository, open it inside RapidMiner.
+8. Find your RapidMiner Studio local repository and put our tutorial process into the repository, open it inside RapidMiner.
