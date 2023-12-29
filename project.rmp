@@ -21,7 +21,7 @@
         <parameter key="conda_environment" value="ecg_xai [/opt/anaconda3/envs/ecg_xai/envs/ecg_xai]"/>
         <parameter key="use_macros" value="false"/>
       </operator>
-      <operator activated="true" class="subprocess" compatibility="10.2.000" expanded="true" height="103" name="Define Model" width="90" x="313" y="289">
+      <operator activated="true" class="subprocess" compatibility="10.2.000" expanded="true" height="82" name="Define Model" width="90" x="313" y="289">
         <process expanded="true">
           <operator activated="true" class="ecg_xai:SINUS" compatibility="1.0.000" expanded="true" height="68" name="SINUS (2)" width="90" x="45" y="136"/>
           <operator activated="true" class="ecg_xai:HR" compatibility="1.0.000" expanded="true" height="68" name="HR (2)" width="90" x="45" y="238"/>
@@ -2832,8 +2832,7 @@
               <portSpacing port="sink_other 1" spacing="0"/>
             </process>
           </operator>
-          <operator activated="true" class="multiply" compatibility="10.2.000" expanded="true" height="103" name="Multiply (25)" width="90" x="2088" y="893"/>
-          <operator activated="true" class="ecg_xai:Export Operator" compatibility="1.0.000" expanded="true" height="229" name="Export Operator" width="90" x="2256" y="85"/>
+          <operator activated="true" class="ecg_xai:Export Operator" compatibility="1.0.000" expanded="true" height="250" name="Export Operator" width="90" x="2256" y="85"/>
           <connect from_op="SINUS (2)" from_port="SINUS rhythm is sinus" to_op="Step1" to_port="SINUS rhythm is sinus"/>
           <connect from_op="HR (2)" from_port="HR heart rate" to_op="Step1" to_port="HR heart rate"/>
           <connect from_op="RR_DIFF (2)" from_port="RR_DIFF RR interval" to_op="Step1" to_port="RR_DIFF RR interval"/>
@@ -2873,16 +2872,13 @@
           <connect from_op="Step7" from_port="Summary" to_op="Export Operator" to_port="Summary 7"/>
           <connect from_op="T_AMP (2)" from_port="T_AMP T wave amplitude" to_op="Step8" to_port="T_AMP T wave amplitude"/>
           <connect from_op="Step8" from_port="Control" to_op="Step9" to_port="Control"/>
-          <connect from_op="Step8" from_port="Summary" to_op="Multiply (25)" to_port="input"/>
+          <connect from_op="Step8" from_port="Summary" to_op="Export Operator" to_port="Summary 8"/>
           <connect from_op="QRS_SUM" from_port="QRS_SUM QRS complex duration" to_op="Step9" to_port="QRS_SUM"/>
-          <connect from_op="Step9" from_port="Summary" to_op="Export Operator" to_port="Summary 8"/>
-          <connect from_op="Multiply (25)" from_port="output 1" to_op="Export Operator" to_port="Summary 9"/>
-          <connect from_op="Multiply (25)" from_port="output 2" to_port="out 2"/>
+          <connect from_op="Step9" from_port="Summary" to_op="Export Operator" to_port="Summary 9"/>
           <connect from_op="Export Operator" from_port="Summary of the Model(Table)" to_port="out 1"/>
           <portSpacing port="source_in 1" spacing="0"/>
           <portSpacing port="sink_out 1" spacing="126"/>
           <portSpacing port="sink_out 2" spacing="0"/>
-          <portSpacing port="sink_out 3" spacing="0"/>
         </process>
       </operator>
       <operator activated="false" class="python_scripting:execute_python" compatibility="10.0.001" expanded="true" height="82" name="Print Data" width="90" x="514" y="442">
@@ -2894,8 +2890,8 @@
         <parameter key="conda_environment" value="ecg_xai [/opt/anaconda3/envs/ecg_xai/envs/ecg_xai]"/>
         <parameter key="use_macros" value="false"/>
       </operator>
-      <operator activated="false" class="multiply" compatibility="10.2.000" expanded="true" height="103" name="Multiply (27)" width="90" x="514" y="136"/>
-      <operator activated="false" class="write_excel" compatibility="10.2.000" expanded="true" height="103" name="Write Excel" width="90" x="715" y="187">
+      <operator activated="false" class="multiply" compatibility="10.2.000" expanded="true" height="103" name="Multiply (27)" width="90" x="447" y="136"/>
+      <operator activated="false" class="write_excel" compatibility="10.2.000" expanded="true" height="103" name="Write Excel" width="90" x="648" y="187">
         <parameter key="excel_file" value="/Users/haoyangchen/Desktop/ChenHaoyang/coding/python/ECG_XAI/table.xlsx"/>
         <parameter key="file_format" value="xlsx"/>
         <enumeration key="sheet_names"/>
@@ -2904,7 +2900,7 @@
         <parameter key="number_format" value="#.0"/>
         <parameter key="encoding" value="SYSTEM"/>
       </operator>
-      <operator activated="false" class="python_scripting:execute_python" compatibility="10.0.001" expanded="true" height="103" name="Translator/Constructor" width="90" x="715" y="34">
+      <operator activated="false" class="python_scripting:execute_python" compatibility="10.0.001" expanded="true" height="103" name="Translator/Constructor" width="90" x="648" y="34">
         <parameter key="script" value="import pandas&#10;&#10;# rm_main is a mandatory function, &#10;# the number of arguments has to be the number of input ports (can be none),&#10;#     or the number of input ports plus one if &quot;use macros&quot; parameter is set&#10;# if you want to use macros, use this instead and check &quot;use macros&quot; parameter:&#10;#def rm_main(data,macros):&#10;def rm_main(data):&#10;    print('Hello, world!')&#10;    # output can be found in Log View&#10;    print(type(data))&#10;&#10;    #your code goes here&#10;&#10;    #for example:&#10;    data2 = pandas.DataFrame([3,5,77,8])&#10;&#10;    # connect 2 output ports to see the results&#10;    return data, data2"/>
         <parameter key="script_file" value="/Users/haoyangchen/Desktop/ChenHaoyang/coding/python/ECG_XAI/src/basic/generator.py"/>
         <parameter key="notebook_cell_tag_filter" value=""/>
@@ -2914,13 +2910,13 @@
         <parameter key="use_macros" value="false"/>
       </operator>
       <connect from_op="Define Model" from_port="out 1" to_port="result 1"/>
-      <connect from_op="Define Model" from_port="out 2" to_port="result 2"/>
       <connect from_op="Multiply (27)" from_port="output 1" to_op="Translator/Constructor" to_port="input 1"/>
       <connect from_op="Multiply (27)" from_port="output 2" to_op="Write Excel" to_port="input"/>
       <portSpacing port="source_input 1" spacing="0"/>
       <portSpacing port="sink_result 1" spacing="0"/>
       <portSpacing port="sink_result 2" spacing="0"/>
-      <portSpacing port="sink_result 3" spacing="0"/>
+      <description align="center" color="yellow" colored="false" height="105" resized="false" width="180" x="730" y="405">Python Scripting Operators are currently blocked because they need python source code</description>
+      <description align="center" color="yellow" colored="false" height="105" resized="false" width="180" x="930" y="96">Connect anything to the result output port at the right side of this process to check its value</description>
     </process>
   </operator>
 </process>
