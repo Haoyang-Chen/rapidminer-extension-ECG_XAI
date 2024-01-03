@@ -13,6 +13,11 @@ public class StartNode extends AbstractNode{
     }
 
     @Override
+    public void setImpression(String impression) {
+
+    }
+
+    @Override
     public Set<String> getMidOutput() {
         return null;
     }

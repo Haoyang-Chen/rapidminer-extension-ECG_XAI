@@ -52,17 +52,38 @@ public class CombineOperator extends Operator {
                 String relation=getParameterAsString(PARAMETER_RE);
                 ConditionGroup conditionGroup=new ConditionGroup();
                 conditionGroup.setResultName(result_name);
-                conditionNode=new ConditionNode(conditionGroup);;
+                conditionNode=new ConditionNode(conditionGroup);
+
+                boolean parentCondition=false;
+
+                for (Pack temp_pack:packs){
+                    if (temp_pack!=pack){
+                        Map<AbstractNode, Boolean> current_parents = temp_pack.current_parents;
+                        for (Map.Entry<AbstractNode, Boolean> entry : current_parents.entrySet()) {
+                            AbstractNode node = entry.getKey();
+                            for (AbstractNode parent : node.parents) {
+                                for (AbstractNode temp_node:pack.current_parents.keySet()) {
+                                    if ((parent.YesSon.contains(node) && parent.NoSon.contains(temp_node)) || (parent.NoSon.contains(node) && parent.YesSon.contains(temp_node))) {
+                                        parentCondition = true;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
                 for (Pack temp_pack:packs) {
                     Map<AbstractNode, Boolean> current_parents = temp_pack.current_parents;
                     for (Map.Entry<AbstractNode, Boolean> entry : current_parents.entrySet()) {
                         AbstractNode node = entry.getKey();
                         step.nodes.remove(node);
                         AbstractCondition condition = node.getCondition();
-                        boolean parentCondition=false;
+
                         ConditionGroup tempCG=new ConditionGroup();
                         for (AbstractNode parent:node.parents){
-                            if (parent instanceof ConditionNode){
+
+                            if (parentCondition){
                                 if (parent.YesSon.contains(node)) {
                                     tempCG.setRight(parent.getCondition());
                                     tempCG.setRelation("AND");
@@ -79,11 +100,11 @@ public class CombineOperator extends Operator {
                                         tempCon.setResultName("~"+parentCon.getResultName());
                                     }
                                     tempCG.setRight(parent.getCondition());
-                                    tempCG.setRelation("AND NOT");
+                                    tempCG.setRelation("AND ~");
                                     parent.NoSon.remove(node);
                                 }
                                 tempCG.setLeft(condition);
-                                parentCondition=true;
+//                                parentCondition=true;
                             }
                         }
                         if (parentCondition){

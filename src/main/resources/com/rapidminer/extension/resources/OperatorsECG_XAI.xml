@@ -223,6 +223,10 @@
                 <key>Export Operator</key>
                 <class>com.rapidminer.extension.ecg_xai.operator.ControlOperators.ExportModelOperator</class>
             </operator>
+            <operator>
+                <key>Configurator</key>
+                <class>com.rapidminer.extension.ecg_xai.operator.superOperator.Configurator</class>
+            </operator>
         </group>
 
         <group key="Data">

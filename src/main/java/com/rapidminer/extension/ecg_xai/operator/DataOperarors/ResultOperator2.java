@@ -37,6 +37,7 @@ public class ResultOperator2 extends Operator {
 //        Step step=model.getLastStep();
         Step step=pack.getStep();
         ImpressionNode impNode;
+        name+="_"+step.getName();
         if (ab_type) {
             impNode = new ImpressionNode(name);
             impNode.abnormal=true;

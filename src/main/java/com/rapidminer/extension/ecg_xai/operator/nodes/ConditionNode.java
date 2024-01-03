@@ -49,6 +49,12 @@ public class ConditionNode extends AbstractNode{
     public String getImpression(){
         return null;
     }
+
+    @Override
+    public void setImpression(String impression) {
+
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

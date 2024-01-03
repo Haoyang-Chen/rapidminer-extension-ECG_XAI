@@ -233,7 +233,7 @@ public class Step {
         List<String> temp=new ArrayList<>();
         for (AbstractNode node:nodes){
             if (Objects.equals(node.getType(), "Impression")){
-                resultOutput.add(node.getImpression()+"_"+this.getName());
+                resultOutput.add(node.getImpression());
             }
         }
         for (String obj: resultOutput){
@@ -287,7 +287,7 @@ public class Step {
         for (AbstractNode node:nodes){
             if (Objects.equals(node.getType(), "Impression")){
                 if (node.abnormal){
-                    norm_if_not.add(node.getImpression()+"_"+this.getName()+"_imp");
+                    norm_if_not.add(node.getImpression()+"_imp");
                 }
             }
         }

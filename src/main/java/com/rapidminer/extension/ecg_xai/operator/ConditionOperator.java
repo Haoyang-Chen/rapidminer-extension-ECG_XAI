@@ -103,7 +103,7 @@ public class ConditionOperator extends Operator {
 //        LogService.getRoot().log(Level.INFO,noPack.current_parents.toString());
         yesOutput.deliver(pack);
         noOutput.deliver(noPack);
-        ResultOutput.deliver(new StringInfo(resultName));
+        ResultOutput.deliver(new StringInfo(resultName+'_'+step.getName()));
     }
 
     @Override

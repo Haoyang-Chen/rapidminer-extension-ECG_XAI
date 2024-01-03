@@ -113,6 +113,10 @@ public class AtLeastNode extends AbstractNode{
     }
 
     @Override
+    public void setImpression(String impression) {
+    }
+
+    @Override
     public Set<String> getMidOutput() {
         Set<String> midOutput=new HashSet<>();
         for (AbstractCondition condition : conditions) {
