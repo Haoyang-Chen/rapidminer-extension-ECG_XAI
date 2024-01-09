@@ -12,10 +12,13 @@ import com.rapidminer.parameter.ParameterType;
 import com.rapidminer.parameter.ParameterTypeBoolean;
 import com.rapidminer.parameter.ParameterTypeEnumeration;
 import com.rapidminer.parameter.ParameterTypeStringCategory;
+import com.rapidminer.tools.LogService;
+import org.apache.tools.ant.taskdefs.Tar;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.logging.Level;
 
 public class ResultOperator2 extends Operator {
     private final InputPort Input=getInputPorts().createPort("In pack");
@@ -25,6 +28,33 @@ public class ResultOperator2 extends Operator {
     private static final String PARAMETER_AB_TYPE ="Abnormality";
     public ResultOperator2(OperatorDescription description) {
         super(description);
+    }
+
+    private int findSame(ImpressionNode Target_node, Step step){
+        for (AbstractNode node:step.nodes){
+            if (Objects.equals(node.getImpression(), Target_node.getImpression())){
+                if (node!=Target_node){
+                    if (node instanceof ImpressionNode){
+                        return step.nodes.indexOf(node);
+                    }
+                }
+            }
+        }
+        return -1;
+    }
+    private void rename(ImpressionNode Target_node, Step step){
+        int index=0;
+        String name=Target_node.getImpression();
+        int i=findSame(Target_node,step);
+//        LogService.getRoot().log(Level.INFO, i+"");
+        while (i>=0){
+            Target_node.setImpression(name+"_"+Target_node.parents.stream().findFirst().get().getResultName().substring(0,index));
+            AbstractNode node=step.nodes.get(i);
+            node.setImpression(name+"_"+node.parents.stream().findFirst().get().getResultName().substring(0,index));
+            i=findSame(Target_node,step);
+            index+=1;
+//            LogService.getRoot().log(Level.INFO,"Rename "+Target_node.getImpression());
+        }
     }
 
     @Override
@@ -51,6 +81,8 @@ public class ResultOperator2 extends Operator {
             impNode.addParent(parent,nodeYes);
         }
         step.addNode(impNode);
+        rename(impNode,step);
+
         this.rename(name);
         if (Objects.equals(type, "General")) {
             output.deliver(new StringInfo_General(name));
