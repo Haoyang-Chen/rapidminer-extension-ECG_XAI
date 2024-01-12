@@ -10,12 +10,12 @@
         <synopsis>This is the Print Model Operator, which prints the model to the console.
         </synopsis>
         <inputPorts>
-            <port name="In Pack" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+            <port name="In Pack" type="com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.Pack">
                 Input the Pack object.
             </port>
         </inputPorts>
         <outputPorts>
-            <port name="Out Pack" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+            <port name="Out Pack" type="com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.Pack">
                 Outputs the pack object unchanged.
             </port>
         </outputPorts>

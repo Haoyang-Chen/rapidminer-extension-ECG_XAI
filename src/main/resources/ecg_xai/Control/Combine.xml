@@ -17,16 +17,16 @@
             </paragraph>
         </text>
         <inputPorts>
-            <port name="In pack" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+            <port name="In pack" type="com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.Pack">
                 An extendable input port, which takes input of different Pack object whose most recent node different from each other.
             </port>
         </inputPorts>
         <outputPorts>
-            <port name="yes" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+            <port name="yes" type="com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.Pack">
                 Outputs a Pack object, which contains the current step model with the new combined Condition Node added, the
                 parent is set to this new node, and the route indicator is set to Yes.
             </port>
-            <port name="no" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+            <port name="no" type="com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.Pack">
                 Outputs a Pack object, which contains the current step model with the new combined Condition Node added, the
                 parent is set to this new node, and the route indicator is set to No.
             </port>

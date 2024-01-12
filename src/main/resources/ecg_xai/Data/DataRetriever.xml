@@ -10,7 +10,7 @@
         <synopsis>This is the DataRetriever Operator, which sets the name of a data.
         </synopsis>
         <outputPorts>
-            <port name="Data" type="com.rapidminer.extension.ecg_xai.operator.Structures.StringInfo">
+            <port name="Data" type="com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.StringInfo">
                 A String object containing the name of the Data, could be used in later steps.
             </port>
         </outputPorts>

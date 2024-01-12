@@ -1,10 +1,10 @@
 package com.rapidminer.extension.ecg_xai.operator.ControlOperators;
 
-import com.rapidminer.extension.ecg_xai.operator.Structures.Model;
-import com.rapidminer.extension.ecg_xai.operator.Structures.Pack;
+import com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.NoPack;
+import com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.Pack;
+import com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.YesPack;
 import com.rapidminer.extension.ecg_xai.operator.Structures.Step;
-import com.rapidminer.extension.ecg_xai.operator.Structures.StringInfo;
-import com.rapidminer.extension.ecg_xai.operator.names.FeatureName;
+import com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.StringInfo;
 import com.rapidminer.extension.ecg_xai.operator.names.LeadName;
 import com.rapidminer.extension.ecg_xai.operator.nodes.AbstractNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.ConditionNode;
@@ -14,6 +14,7 @@ import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
 import com.rapidminer.operator.ports.InputPort;
 import com.rapidminer.operator.ports.OutputPort;
+import com.rapidminer.operator.ports.metadata.GenerateNewMDRule;
 import com.rapidminer.parameter.*;
 
 import java.util.List;
@@ -38,6 +39,8 @@ public class CalOperator extends Operator {
 
     public CalOperator(OperatorDescription description) {
         super(description);
+        getTransformer().addRule(new GenerateNewMDRule(yesOutput, YesPack.class));
+        getTransformer().addRule(new GenerateNewMDRule(noOutput, NoPack.class));
     }
 
     @Override

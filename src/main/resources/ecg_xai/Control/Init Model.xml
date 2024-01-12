@@ -14,7 +14,7 @@
             </paragraph>
         </text>
         <outputPorts>
-            <port name="model" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+            <port name="model" type="com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.Pack">
                 Outputs the model in a pack object.
             </port>
         </outputPorts>

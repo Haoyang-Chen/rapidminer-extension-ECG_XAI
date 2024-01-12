@@ -1,6 +1,6 @@
 package com.rapidminer.extension.ecg_xai.operator.AbandonedOperator;
 
-import com.rapidminer.extension.ecg_xai.operator.Structures.Pack;
+import com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.Pack;
 import com.rapidminer.extension.ecg_xai.operator.nodes.AbstractNode;
 import com.rapidminer.operator.Operator;
 import com.rapidminer.operator.OperatorDescription;

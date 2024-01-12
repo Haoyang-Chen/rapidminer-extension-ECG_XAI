@@ -1,25 +1,25 @@
 package com.rapidminer.extension.ecg_xai.operator.superOperator.Step8;
 
 import com.rapidminer.extension.ecg_xai.operator.Structures.*;
-import com.rapidminer.extension.ecg_xai.operator.names.ImpressionName;
+import com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.Pack;
+import com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.StringInfo;
 import com.rapidminer.extension.ecg_xai.operator.names.LeadName;
 import com.rapidminer.extension.ecg_xai.operator.nodes.AbstractNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.AtLeastNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.ConditionNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.condition.AbstractCondition;
 import com.rapidminer.extension.ecg_xai.operator.nodes.condition.ConditionGroup;
-import com.rapidminer.extension.ecg_xai.operator.superOperator.AbstractStepOperator;
 import com.rapidminer.operator.OperatorChain;
 import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
 import com.rapidminer.operator.ports.InputPort;
 import com.rapidminer.operator.ports.OutputPort;
 import com.rapidminer.operator.ports.metadata.PassThroughRule;
+import com.rapidminer.operator.ports.metadata.SubprocessTransformRule;
 import com.rapidminer.parameter.*;
 import com.rapidminer.parameter.conditions.BooleanParameterCondition;
 import com.rapidminer.parameter.conditions.EqualStringCondition;
 
-import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -49,6 +49,7 @@ public class AssessTWaves extends OperatorChain {
 
     public AssessTWaves(OperatorDescription description) {
         super(description, "Executed Process");
+        getTransformer().addRule(new SubprocessTransformRule(getSubprocess(0)));
         getTransformer().addRule(new PassThroughRule(InModelInput, InModelOutput, false));
         getTransformer().addRule(new PassThroughRule(InModelInput, OutModelOutput, false));
         getTransformer().addRule(new PassThroughRule(T_AMPOutput,T_AMPInput, false));

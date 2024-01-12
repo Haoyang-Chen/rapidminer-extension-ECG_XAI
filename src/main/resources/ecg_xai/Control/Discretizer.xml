@@ -15,21 +15,21 @@
             </paragraph>
         </text>
         <inputPorts>
-            <port name="In pack" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+            <port name="In pack" type="com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.Pack">
                 Input the Pack object.
             </port>
-            <port name="Feature" type="com.rapidminer.extension.ecg_xai.operator.Structures.StringInfo">
+            <port name="Feature" type="com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.StringInfo">
                 Receives a String object, containing the name of the feature, which is to be discretized.
             </port>
         </inputPorts>
         <outputPorts>
-            <port name="High" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+            <port name="High" type="com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.Pack">
                 Outputs a Pack object, which contains the current step model with the new high Condition Node added.
             </port>
-            <port name="Mid" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+            <port name="Mid" type="com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.Pack">
                 Outputs a Pack object, which contains the current step model with the new mid Condition Node added.
             </port>
-            <port name="Low" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+            <port name="Low" type="com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.Pack">
                 Outputs a Pack object, which contains the current step model with the new low Condition Node added.
             </port>
         </outputPorts>

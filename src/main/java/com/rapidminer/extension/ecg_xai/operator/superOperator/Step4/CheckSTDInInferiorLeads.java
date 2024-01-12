@@ -1,13 +1,14 @@
 package com.rapidminer.extension.ecg_xai.operator.superOperator.Step4;
 
-import com.rapidminer.extension.ecg_xai.operator.Structures.Pack;
-import com.rapidminer.extension.ecg_xai.operator.Structures.StringInfo;
+import com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.Pack;
+import com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.StringInfo;
 import com.rapidminer.operator.OperatorChain;
 import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
 import com.rapidminer.operator.ports.InputPort;
 import com.rapidminer.operator.ports.OutputPort;
 import com.rapidminer.operator.ports.metadata.PassThroughRule;
+import com.rapidminer.operator.ports.metadata.SubprocessTransformRule;
 
 public class CheckSTDInInferiorLeads extends OperatorChain {
     public final InputPort InModelInput=getInputPorts().createPort("Model");
@@ -25,6 +26,7 @@ public class CheckSTDInInferiorLeads extends OperatorChain {
 
     public CheckSTDInInferiorLeads(OperatorDescription description) {
         super(description,"Executed Process");
+        getTransformer().addRule(new SubprocessTransformRule(getSubprocess(0)));
         getTransformer().addRule(new PassThroughRule(InModelInput, InModelOutput, false));
         getTransformer().addRule(new PassThroughRule(ST_AMPOutput,ST_AMPInput, false));
         getTransformer().addRule(new PassThroughRule(AMI_STDInput, AMI_STDOutput, false));

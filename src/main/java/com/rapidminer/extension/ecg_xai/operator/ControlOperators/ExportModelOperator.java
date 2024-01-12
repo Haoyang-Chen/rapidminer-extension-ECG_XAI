@@ -1,22 +1,18 @@
 package com.rapidminer.extension.ecg_xai.operator.ControlOperators;
 
-import com.rapidminer.extension.ecg_xai.operator.Structures.Model;
-import com.rapidminer.extension.ecg_xai.operator.Structures.Pack;
+import com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.Pack;
 import com.rapidminer.extension.ecg_xai.operator.Structures.Step;
 import com.rapidminer.operator.Operator;
 import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
-import com.rapidminer.operator.ports.InputPort;
 import com.rapidminer.operator.ports.InputPortExtender;
 import com.rapidminer.operator.ports.OutputPort;
 
 import com.rapidminer.example.*;
 import com.rapidminer.example.table .*;
-import com.rapidminer.tools.LogService;
 import com.rapidminer.tools .Ontology;
 
 import java.util.List;
-import java.util.logging.Level;
 
 public class ExportModelOperator extends Operator {
 //    private final InputPort pacInput=getInputPorts().createPort("In pack");

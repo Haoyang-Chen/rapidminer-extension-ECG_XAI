@@ -1,13 +1,11 @@
 package com.rapidminer.extension.ecg_xai.operator.ControlOperators;
 
-import com.rapidminer.extension.ecg_xai.operator.Structures.Model;
-import com.rapidminer.extension.ecg_xai.operator.Structures.Pack;
+import com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.Pack;
 import com.rapidminer.extension.ecg_xai.operator.Structures.Step;
 import com.rapidminer.extension.ecg_xai.operator.names.LeadName;
 import com.rapidminer.operator.Operator;
 import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
-import com.rapidminer.operator.ports.InputPort;
 import com.rapidminer.operator.ports.OutputPort;
 import com.rapidminer.operator.ports.OutputPortExtender;
 import com.rapidminer.parameter.*;

@@ -1,5 +1,6 @@
-package com.rapidminer.extension.ecg_xai.operator.Structures;
+package com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects;
 
+import com.rapidminer.extension.ecg_xai.operator.Structures.Step;
 import com.rapidminer.extension.ecg_xai.operator.names.FeatureName;
 import com.rapidminer.extension.ecg_xai.operator.names.ImpressionName;
 import com.rapidminer.extension.ecg_xai.operator.names.LeadName;

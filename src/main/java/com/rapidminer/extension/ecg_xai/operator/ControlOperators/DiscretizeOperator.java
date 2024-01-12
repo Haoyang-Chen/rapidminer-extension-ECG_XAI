@@ -1,9 +1,7 @@
 package com.rapidminer.extension.ecg_xai.operator.ControlOperators;
 
-import com.rapidminer.extension.ecg_xai.operator.Structures.Model;
-import com.rapidminer.extension.ecg_xai.operator.Structures.Pack;
+import com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.*;
 import com.rapidminer.extension.ecg_xai.operator.Structures.Step;
-import com.rapidminer.extension.ecg_xai.operator.Structures.StringInfo;
 import com.rapidminer.extension.ecg_xai.operator.nodes.AbstractNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.ConditionNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.condition.Compare;
@@ -13,6 +11,7 @@ import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
 import com.rapidminer.operator.ports.InputPort;
 import com.rapidminer.operator.ports.OutputPort;
+import com.rapidminer.operator.ports.metadata.GenerateNewMDRule;
 import com.rapidminer.parameter.*;
 
 import java.util.List;
@@ -36,6 +35,9 @@ public class DiscretizeOperator extends Operator {
 
     public DiscretizeOperator(OperatorDescription description) {
         super(description);
+        getTransformer().addRule(new GenerateNewMDRule(outputPort_High, YesPack.class));
+        getTransformer().addRule(new GenerateNewMDRule(outputPort_Mid, MidPack.class));
+        getTransformer().addRule(new GenerateNewMDRule(outputPort_Low, NoPack.class));
     }
 
     @Override

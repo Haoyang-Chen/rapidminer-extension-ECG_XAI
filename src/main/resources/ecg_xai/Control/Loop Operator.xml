@@ -15,15 +15,15 @@
             </paragraph>
         </text>
         <inputPorts>
-            <port name="Model" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+            <port name="Model" type="com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.Pack">
                 The input Pack object, which contains the current step model.
             </port>
-            <port name="Input" type="com.rapidminer.extension.ecg_xai.operator.Structures.StringInfo">
+            <port name="Input" type="com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.StringInfo">
                 An extendable input port for the input data. It should be a raw data string e.g. "SINUS", "RBBB", etc. In each round the input will be taged with the current loop index, becoming "SINUS_II", "RBBB_V1", etc.
             </port>
         </inputPorts>
         <outputPorts>
-            <port name="Model" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+            <port name="Model" type="com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.Pack">
                 The output Pack object, which contains the current step model with the new looped and combined Condition Group Node added.
             </port>
         </outputPorts>

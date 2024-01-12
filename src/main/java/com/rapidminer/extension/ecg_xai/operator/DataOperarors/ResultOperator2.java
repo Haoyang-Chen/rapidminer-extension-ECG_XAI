@@ -1,6 +1,7 @@
 package com.rapidminer.extension.ecg_xai.operator.DataOperarors;
 
 import com.rapidminer.extension.ecg_xai.operator.Structures.*;
+import com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.*;
 import com.rapidminer.extension.ecg_xai.operator.names.ImpressionName;
 import com.rapidminer.extension.ecg_xai.operator.nodes.AbstractNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.ImpressionNode;
@@ -8,17 +9,15 @@ import com.rapidminer.operator.Operator;
 import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.ports.InputPort;
 import com.rapidminer.operator.ports.OutputPort;
+import com.rapidminer.operator.ports.metadata.GenerateNewMDRule;
 import com.rapidminer.parameter.ParameterType;
 import com.rapidminer.parameter.ParameterTypeBoolean;
 import com.rapidminer.parameter.ParameterTypeEnumeration;
 import com.rapidminer.parameter.ParameterTypeStringCategory;
-import com.rapidminer.tools.LogService;
-import org.apache.tools.ant.taskdefs.Tar;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.logging.Level;
 
 public class ResultOperator2 extends Operator {
     private final InputPort Input=getInputPorts().createPort("In pack");
@@ -28,6 +27,7 @@ public class ResultOperator2 extends Operator {
     private static final String PARAMETER_AB_TYPE ="Abnormality";
     public ResultOperator2(OperatorDescription description) {
         super(description);
+        getTransformer().addRule(new GenerateNewMDRule(output, StringInfo.class));
     }
 
     private int findSame(ImpressionNode Target_node, Step step){

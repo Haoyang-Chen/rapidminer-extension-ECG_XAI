@@ -14,7 +14,7 @@
             <paragraph>The input Model port receives the step model.</paragraph>
         </text>
         <inputPorts>
-            <port name="Model" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+            <port name="Model" type="com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.Pack">
                 Input port for the step model. This operator will add its inner process to this step.
             </port>
         </inputPorts>

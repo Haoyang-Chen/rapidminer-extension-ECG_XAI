@@ -1,7 +1,7 @@
 package com.rapidminer.extension.ecg_xai.operator.DataOperarors;
 
-import com.rapidminer.extension.ecg_xai.operator.Structures.StringInfo_General;
-import com.rapidminer.extension.ecg_xai.operator.Structures.StringInfo_Lead;
+import com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.StringInfo_General;
+import com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.StringInfo_Lead;
 import com.rapidminer.operator.*;
 import com.rapidminer.operator.ports.OutputPort;
 import com.rapidminer.parameter.ParameterType;

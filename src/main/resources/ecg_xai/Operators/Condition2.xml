@@ -22,25 +22,25 @@
             </paragraph>
         </text>
         <inputPorts>
-            <port name="In pack" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+            <port name="In pack" type="com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.Pack">
                 The input Pack object, which contains the current step model, the parent where this Pack was generated,
                 and the route indicator[Yes, No] from the parent.
             </port>
-            <port name="left" type="com.rapidminer.extension.ecg_xai.operator.Structures.StringInfo">
+            <port name="left" type="com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.StringInfo">
                 Receives a String object, containing the name of the left operand, which is the first operand of the
                 compare condition.
             </port>
         </inputPorts>
         <outputPorts>
-            <port name="yes" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+            <port name="yes" type="com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.Pack">
                 Outputs a Pack object, which contains the current step model with the new Condition Node added, the
                 parent is set to this new node, and the route indicator is set to Yes.
             </port>
-            <port name="no" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+            <port name="no" type="com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.Pack">
                 Outputs a Pack object, which contains the current step model with the new Condition Node added, the
                 parent is set to this new node, and the route indicator is set to No.
             </port>
-            <port name="result" type="com.rapidminer.extension.ecg_xai.operator.Structures.StringInfo">
+            <port name="result" type="com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.StringInfo">
                 Outputs a String object, containing the name of the result of the compare condition.
             </port>
         </outputPorts>

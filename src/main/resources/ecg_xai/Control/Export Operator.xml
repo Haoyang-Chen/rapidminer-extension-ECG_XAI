@@ -10,7 +10,7 @@
         <synopsis>This is the Export Operator, it exports the model as a summary table.
         </synopsis>
         <inputPorts>
-            <port name="Summary" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+            <port name="Summary" type="com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.Pack">
                 An extendable port to be connected with each step's Summary Port.
             </port>
         </inputPorts>

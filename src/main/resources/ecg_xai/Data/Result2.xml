@@ -14,13 +14,13 @@
             </paragraph>
         </text>
         <inputPorts>
-            <port name="In pack" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+            <port name="In pack" type="com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.Pack">
                 The input Pack object, which contains the current step model, the parent where this Pack was generated,
                 and the route indicator[Yes, No] from the parent.
             </port>
         </inputPorts>
         <outputPorts>
-            <port name="Out result" type="com.rapidminer.extension.ecg_xai.operator.Structures.StringInfo">
+            <port name="Out result" type="com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.StringInfo">
                 A String object containing the name of the result, could be used in later steps.
             </port>
         </outputPorts>

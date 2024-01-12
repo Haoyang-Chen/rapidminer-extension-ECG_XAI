@@ -7,13 +7,14 @@ import com.rapidminer.example.table.DataRow;
 import com.rapidminer.example.table.DataRowFactory;
 import com.rapidminer.example.table.MemoryExampleTable;
 import com.rapidminer.extension.ecg_xai.operator.ControlOperators.StepStartOpeartor;
-import com.rapidminer.extension.ecg_xai.operator.Structures.Pack;
+import com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.Pack;
 import com.rapidminer.extension.ecg_xai.operator.Structures.Step;
 import com.rapidminer.operator.Operator;
 import com.rapidminer.operator.OperatorChain;
 import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
 import com.rapidminer.operator.ports.OutputPort;
+import com.rapidminer.operator.ports.metadata.SubprocessTransformRule;
 import com.rapidminer.tools.Ontology;
 
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class Configurator extends OperatorChain {
 
     public Configurator(OperatorDescription description) {
         super(description, "Executed Process");
+        getTransformer().addRule(new SubprocessTransformRule(getSubprocess(0)));
     }
 
     @Override

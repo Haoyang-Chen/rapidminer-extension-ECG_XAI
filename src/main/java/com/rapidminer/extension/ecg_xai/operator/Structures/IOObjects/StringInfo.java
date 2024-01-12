@@ -1,4 +1,4 @@
-package com.rapidminer.extension.ecg_xai.operator.Structures;
+package com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects;
 
 import com.rapidminer.operator.ResultObjectAdapter;
 

@@ -15,22 +15,22 @@
             </paragraph>
         </text>
         <inputPorts>
-            <port name="In pack" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+            <port name="In pack" type="com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.Pack">
                 The input Pack object, which contains the current step model.
             </port>
-            <port name="first operand" type="com.rapidminer.extension.ecg_xai.operator.Structures.StringInfo">
+            <port name="first operand" type="com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.StringInfo">
                 Receives a String object, containing the name of the first operand, which is the first feature of the calculation.
             </port>
-            <port name="second operand" type="com.rapidminer.extension.ecg_xai.operator.Structures.StringInfo">
+            <port name="second operand" type="com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.StringInfo">
                 Receives a String object, containing the name of the second operand, which is the second feature of the calculation.
             </port>
         </inputPorts>
         <outputPorts>
-            <port name="yes" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+            <port name="yes" type="com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.Pack">
                 Outputs a Pack object, which contains the current step model with the new calculated Condition Node added, the
                 parent is set to this new node, and the route indicator is set to Yes.
             </port>
-            <port name="no" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+            <port name="no" type="com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.Pack">
                 Outputs a Pack object, which contains the current step model with the new calculated Condition Node added, the
                 parent is set to this new node, and the route indicator is set to No.
             </port>

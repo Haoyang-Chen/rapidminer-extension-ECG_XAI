@@ -1,7 +1,7 @@
 package com.rapidminer.extension.ecg_xai.operator.superOperator.Step3;
 
-import com.rapidminer.extension.ecg_xai.operator.Structures.Pack;
-import com.rapidminer.extension.ecg_xai.operator.Structures.StringInfo;
+import com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.Pack;
+import com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.StringInfo;
 import com.rapidminer.extension.ecg_xai.operator.superOperator.AbstractStepOperator;
 import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;

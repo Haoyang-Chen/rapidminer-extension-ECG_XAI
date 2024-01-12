@@ -1,9 +1,10 @@
 package com.rapidminer.extension.ecg_xai.operator;
 
-import com.rapidminer.extension.ecg_xai.operator.Structures.Model;
-import com.rapidminer.extension.ecg_xai.operator.Structures.Pack;
+import com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.NoPack;
+import com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.Pack;
+import com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.YesPack;
 import com.rapidminer.extension.ecg_xai.operator.Structures.Step;
-import com.rapidminer.extension.ecg_xai.operator.Structures.StringInfo;
+import com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.StringInfo;
 import com.rapidminer.extension.ecg_xai.operator.names.LeadName;
 import com.rapidminer.extension.ecg_xai.operator.nodes.AbstractNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.ConditionNode;
@@ -11,8 +12,12 @@ import com.rapidminer.extension.ecg_xai.operator.nodes.condition.Compare;
 import com.rapidminer.operator.Operator;
 import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
+import com.rapidminer.operator.UserError;
+import com.rapidminer.operator.ports.IncompatibleMDClassException;
 import com.rapidminer.operator.ports.InputPort;
 import com.rapidminer.operator.ports.OutputPort;
+import com.rapidminer.operator.ports.metadata.GenerateNewMDRule;
+import com.rapidminer.operator.ports.metadata.MDTransformationRule;
 import com.rapidminer.parameter.ParameterType;
 import com.rapidminer.parameter.ParameterTypeString;
 import com.rapidminer.parameter.ParameterTypeStringCategory;
@@ -35,6 +40,9 @@ public class ConditionOperator extends Operator {
 
     public ConditionOperator(OperatorDescription description) {
         super(description);
+        getTransformer().addRule(new GenerateNewMDRule(yesOutput, YesPack.class));
+        getTransformer().addRule(new GenerateNewMDRule(noOutput, NoPack.class));
+        getTransformer().addRule(new GenerateNewMDRule(ResultOutput, StringInfo.class));
     }
 
     @Override

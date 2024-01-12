@@ -1,29 +1,24 @@
 package com.rapidminer.extension.ecg_xai.operator.ControlOperators;
 
 import com.rapidminer.extension.ecg_xai.operator.Structures.*;
-import com.rapidminer.extension.ecg_xai.operator.names.ImpressionName;
-import com.rapidminer.extension.ecg_xai.operator.names.LeadName;
+import com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.Pack;
+import com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.StringInfo;
 import com.rapidminer.extension.ecg_xai.operator.nodes.AbstractNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.AtLeastNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.ConditionNode;
 import com.rapidminer.extension.ecg_xai.operator.nodes.condition.AbstractCondition;
 import com.rapidminer.extension.ecg_xai.operator.nodes.condition.ConditionGroup;
-import com.rapidminer.extension.ecg_xai.operator.superOperator.AbstractStepOperator;
 import com.rapidminer.operator.OperatorChain;
 import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
 import com.rapidminer.operator.ports.*;
 import com.rapidminer.operator.ports.metadata.PassThroughRule;
 import com.rapidminer.parameter.*;
-import com.rapidminer.parameter.conditions.BooleanParameterCondition;
 import com.rapidminer.parameter.conditions.EqualStringCondition;
 
-import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
-import static com.rapidminer.parameter.ParameterTypeCheckBoxGroup.stringToSelection;
 
 public class LoopOperator extends OperatorChain {
     public final InputPort InModelInput=getInputPorts().createPort("Model");

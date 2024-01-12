@@ -15,12 +15,12 @@
             </paragraph>
         </text>
         <inputPorts>
-            <port name="input" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+            <port name="input" type="com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.Pack">
                 Input the Pack object.
             </port>
         </inputPorts>
         <outputPorts>
-            <port name="output" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+            <port name="output" type="com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.Pack">
                 Extendable output port for Pack object.
             </port>
         </outputPorts>

@@ -1,16 +1,13 @@
 package com.rapidminer.extension.ecg_xai.operator.superOperator.Step1;
 
-import com.rapidminer.extension.ecg_xai.operator.Structures.Pack;
-import com.rapidminer.extension.ecg_xai.operator.Structures.StringInfo;
+import com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.Pack;
+import com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.StringInfo;
 import com.rapidminer.extension.ecg_xai.operator.superOperator.AbstractStepOperator;
 import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
 import com.rapidminer.operator.ports.InputPort;
 import com.rapidminer.operator.ports.OutputPort;
 import com.rapidminer.operator.ports.metadata.PassThroughRule;
-import com.rapidminer.tools.LogService;
-
-import java.util.logging.Level;
 
 public class Step1Operator extends AbstractStepOperator {
     private final InputPort SINUSOutput=getInputPorts().createPort("SINUS rhythm is sinus");

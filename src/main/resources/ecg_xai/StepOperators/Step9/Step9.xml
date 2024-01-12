@@ -17,7 +17,7 @@
             <port name="Control" type="">
                 Input port for control signal, indicating the sequence of execution.
             </port>
-            <port name="other" type="com.rapidminer.extension.ecg_xai.operator.Structures.StringInfo">
+            <port name="other" type="com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.StringInfo">
                 Input extender for additional data.
             </port>
         </inputPorts>
@@ -25,10 +25,10 @@
             <port name="Control" type="">
                 Output port for control signal, indicating the sequence of execution.
             </port>
-            <port name="Summary" type="com.rapidminer.extension.ecg_xai.operator.Structures.Pack">
+            <port name="Summary" type="com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.Pack">
                 Information of current step, represented as a pack object containing this step object.
             </port>
-            <port name="other" type="com.rapidminer.extension.ecg_xai.operator.Structures.StringInfo">
+            <port name="other" type="com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.StringInfo">
                 Output extender for additional results.
             </port>
         </outputPorts>

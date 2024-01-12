@@ -1,7 +1,8 @@
 package com.rapidminer.extension.ecg_xai.operator.ControlOperators;
 
-import com.rapidminer.extension.ecg_xai.operator.Structures.Model;
-import com.rapidminer.extension.ecg_xai.operator.Structures.Pack;
+import com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.NoPack;
+import com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.Pack;
+import com.rapidminer.extension.ecg_xai.operator.Structures.IOObjects.YesPack;
 import com.rapidminer.extension.ecg_xai.operator.Structures.Step;
 import com.rapidminer.extension.ecg_xai.operator.names.ImpressionName;
 import com.rapidminer.extension.ecg_xai.operator.nodes.AbstractNode;
@@ -15,9 +16,9 @@ import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
 import com.rapidminer.operator.ports.InputPortExtender;
 import com.rapidminer.operator.ports.OutputPort;
+import com.rapidminer.operator.ports.metadata.GenerateNewMDRule;
 import com.rapidminer.parameter.*;
 import com.rapidminer.parameter.conditions.EqualStringCondition;
-import org.checkerframework.checker.units.qual.C;
 
 import java.util.List;
 import java.util.Map;
@@ -33,6 +34,8 @@ public class CombineOperator extends Operator {
     public CombineOperator(OperatorDescription description) {
         super(description);
         inputPortExtender.start();
+        getTransformer().addRule(new GenerateNewMDRule(yesOutput, YesPack.class));
+        getTransformer().addRule(new GenerateNewMDRule(noOutput, NoPack.class));
     }
 
     @Override
